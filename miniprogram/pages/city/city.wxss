@@ -99,9 +99,12 @@
 .inline-city-panel {
   margin-top: 18rpx;
   padding: 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #f3c9ad;
   border-radius: 26rpx;
-  background: #fffaf4;
+  background: #fff2e7;
+  box-shadow:
+    inset 0 0 0 2rpx rgba(255, 255, 255, 0.58),
+    0 10rpx 22rpx rgba(232, 79, 42, 0.08);
 }
 
 .selected-head {
@@ -115,10 +118,11 @@
   flex: 0 0 auto;
   padding: 8rpx 16rpx;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #e84f2a;
+  background: #fff;
+  color: #d94d27;
   font-size: 22rpx;
   font-weight: 900;
+  border: 2rpx solid #ffd5c1;
 }
 
 .city-grid {
@@ -131,9 +135,10 @@
 .city-chip {
   min-height: 92rpx;
   padding: 14rpx 10rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #f0d8c8;
   border-radius: 20rpx;
-  background: #fffaf4;
+  background: #fff;
+  box-shadow: 0 6rpx 14rpx rgba(122, 72, 36, 0.06);
 }
 
 .city-name {
