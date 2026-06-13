@@ -1,0 +1,40 @@
+.search-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 86rpx;
+  padding: 0 26rpx;
+  border-radius: 24rpx;
+  background: #fff;
+  font-size: 30rpx;
+  border: 2rpx solid #ead8c8;
+}
+
+.empty {
+  padding: 42rpx 0;
+  color: #7a6b61;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dish-name {
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.arrow {
+  color: #c85b2e;
+  font-size: 46rpx;
+}
+

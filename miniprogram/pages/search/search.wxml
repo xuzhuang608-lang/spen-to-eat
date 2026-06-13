@@ -1,0 +1,21 @@
+<view class="page">
+  <input class="search-input" value="{{keyword}}" placeholder="搜城市、美食、标签" bindinput="onInput" />
+
+  <view class="section-title">热门搜索</view>
+  <view class="chip-row">
+    <view class="chip" wx:for="{{hotTags}}" wx:key="*this" data-value="{{item}}" bindtap="onTapHot">{{item}}</view>
+  </view>
+
+  <view class="section-title">搜索结果</view>
+  <view wx:if="{{!results.length}}" class="empty">输入关键词后，这里会显示匹配的美食。</view>
+  <view class="result-list">
+    <view class="panel result-item" wx:for="{{results}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
+      <view>
+        <view class="dish-name">{{item.name}}</view>
+        <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+  </view>
+</view>
+

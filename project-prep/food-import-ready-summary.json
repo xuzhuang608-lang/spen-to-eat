@@ -1,0 +1,618 @@
+{
+  "generatedAt": "2026-06-13T19:41:43.316Z",
+  "alignmentNote": "Aligned to current miniprogram filter enums: ???? -> ????; ?? -> ?; ?? removed from avoidTags.",
+  "stats": {
+    "totalRecords": 15722,
+    "provinceCount": 34,
+    "cityCount": 341,
+    "byCategory": {
+      "正餐": 11313,
+      "甜品": 3006,
+      "小吃": 1339,
+      "饮品": 64
+    },
+    "byTaste": {
+      "清淡": 1125,
+      "鲜香": 6636,
+      "重口": 4408,
+      "甜口": 3553
+    },
+    "bySourceBucket": {
+      "cityExact": 4431,
+      "provinceShared": 9111,
+      "nationalGeneral": 1854,
+      "regionalShared": 326
+    },
+    "byMealTime": {
+      "午餐": 15657,
+      "晚餐": 15722,
+      "早餐": 1253,
+      "宵夜": 3817
+    },
+    "byScene": {
+      "两个人": 15722,
+      "朋友聚餐": 11314,
+      "一个人": 4408
+    },
+    "byAvoidTag": {
+      "海鲜": 1799,
+      "肉类": 5280,
+      "甜": 3071,
+      "辣": 764
+    }
+  },
+  "top32Stats": {
+    "totalRecords": 10899,
+    "provinceCount": 34,
+    "cityCount": 341,
+    "byCategory": {
+      "正餐": 7873,
+      "甜品": 1871,
+      "小吃": 1105,
+      "饮品": 50
+    },
+    "byTaste": {
+      "清淡": 978,
+      "鲜香": 5383,
+      "重口": 2323,
+      "甜口": 2215
+    },
+    "bySourceBucket": {
+      "cityExact": 4431,
+      "provinceShared": 6147,
+      "nationalGeneral": 28,
+      "regionalShared": 293
+    },
+    "byMealTime": {
+      "午餐": 10848,
+      "晚餐": 10899,
+      "早餐": 898,
+      "宵夜": 1763
+    },
+    "byScene": {
+      "两个人": 10899,
+      "朋友聚餐": 7873,
+      "一个人": 3026
+    },
+    "byAvoidTag": {
+      "海鲜": 1389,
+      "肉类": 3875,
+      "甜": 1922,
+      "辣": 407
+    }
+  },
+  "enumCheck": {
+    "category": [
+      "小吃",
+      "正餐",
+      "甜品",
+      "饮品"
+    ],
+    "taste": [
+      "清淡",
+      "甜口",
+      "重口",
+      "鲜香"
+    ],
+    "mealTime": [
+      "午餐",
+      "宵夜",
+      "早餐",
+      "晚餐"
+    ],
+    "scene": [
+      "一个人",
+      "两个人",
+      "朋友聚餐"
+    ],
+    "avoidTags": [
+      "海鲜",
+      "甜",
+      "肉类",
+      "辣"
+    ],
+    "iconType": [
+      "bowl",
+      "chili",
+      "flame"
+    ]
+  },
+  "samples": [
+    {
+      "city": "广州",
+      "count": 48,
+      "rows": [
+        {
+          "name": "老火靓汤",
+          "category": "正餐",
+          "taste": "清淡",
+          "mealTime": [
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "八宝冬瓜盅",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "白切鸡",
+          "category": "正餐",
+          "taste": "清淡",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "脆皮烧鹅",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "广式烧乳猪",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "桂峰酿豆腐",
+          "category": "正餐",
+          "taste": "清淡",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        }
+      ]
+    },
+    {
+      "city": "深圳",
+      "count": 48,
+      "rows": [
+        {
+          "name": "白切龙岗三黄鸡",
+          "category": "正餐",
+          "taste": "清淡",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "公明烧鹅",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "光明乳鸽",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "清蒸福永乌头鱼",
+          "category": "正餐",
+          "taste": "清淡",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "海鲜"
+          ]
+        },
+        {
+          "name": "沙井生蚝",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "海鲜"
+          ]
+        },
+        {
+          "name": "深圳窑鸡",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        }
+      ]
+    },
+    {
+      "city": "成都",
+      "count": 48,
+      "rows": [
+        {
+          "name": "回锅肉",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "开水白菜",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "麻婆豆腐",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "蓉城鸡豆花",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "四川宫保鸡丁",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "蒜泥白肉",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        }
+      ]
+    },
+    {
+      "city": "北京",
+      "count": 48,
+      "rows": [
+        {
+          "name": "北京烤鸭",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "馄饨",
+          "category": "小吃",
+          "taste": "鲜香",
+          "mealTime": [
+            "早餐",
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "一个人",
+            "两个人"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "烤冷面",
+          "category": "小吃",
+          "taste": "重口",
+          "mealTime": [
+            "早餐",
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "一个人",
+            "两个人"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "老北京炸酱面",
+          "category": "小吃",
+          "taste": "重口",
+          "mealTime": [
+            "早餐",
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "一个人",
+            "两个人"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "凉皮",
+          "category": "小吃",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "一个人",
+            "两个人"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "卤煮火烧",
+          "category": "小吃",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐",
+            "宵夜"
+          ],
+          "scene": [
+            "一个人",
+            "两个人"
+          ],
+          "avoidTags": []
+        }
+      ]
+    },
+    {
+      "city": "潮州",
+      "count": 48,
+      "rows": [
+        {
+          "name": "八宝素菜",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "潮汕豆酱焗鸡",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "潮汕蚝烙",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "海鲜"
+          ]
+        },
+        {
+          "name": "潮州打冷",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": []
+        },
+        {
+          "name": "潮州金排骨",
+          "category": "正餐",
+          "taste": "鲜香",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        },
+        {
+          "name": "潮州卤水鹅",
+          "category": "正餐",
+          "taste": "重口",
+          "mealTime": [
+            "午餐",
+            "晚餐"
+          ],
+          "scene": [
+            "两个人",
+            "朋友聚餐"
+          ],
+          "avoidTags": [
+            "肉类"
+          ]
+        }
+      ]
+    }
+  ]
+}

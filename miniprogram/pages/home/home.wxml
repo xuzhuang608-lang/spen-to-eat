@@ -1,0 +1,83 @@
+<view class="page home">
+  <view class="brand">
+    <view class="brand-kicker">全国城市特色美食</view>
+    <view class="brand-title">饭点到了，转一下</view>
+    <view class="brand-subtitle">先选这一顿的时间，再把选择交给饭点转转。</view>
+  </view>
+
+  <view class="location-bar">
+    <button class="text-action" loading="{{locating}}" bindtap="onUseLocation">获取定位</button>
+    <button class="text-action" bindtap="onChooseCity">更换城市</button>
+  </view>
+
+  <view class="meal-panel">
+    <view class="meal-title">今天吃点什么？</view>
+    <view class="meal-subtitle">{{city}}这一顿，先从饭点开始选。</view>
+    <view class="meal-grid">
+      <block wx:for="{{mealOptions}}" wx:key="key">
+        <view
+          class="meal-card {{selectedMeal === item.key ? 'active' : ''}}"
+          data-meal="{{item.key}}"
+          bindtap="onSelectMeal"
+        >
+          <view class="meal-icon">{{item.icon}}</view>
+          <view>
+            <view class="meal-name">{{item.title}}</view>
+            <view class="meal-desc">{{item.subtitle}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <button class="primary-button start-button" bindtap="onStartSpin">开始转盘</button>
+
+  <view class="assist-row">
+    <view class="assist-card" bindtap="onCreatePoll">
+      <view class="assist-title">发起群投票</view>
+      <view class="assist-desc">朋友一起决定</view>
+    </view>
+    <view class="assist-card" bindtap="onFavorite">
+      <view class="assist-title">收藏历史</view>
+      <view class="assist-desc">上次想吃的还在</view>
+    </view>
+  </view>
+
+  <view class="inspiration-head">
+    <view>
+      <view class="section-title">今日灵感</view>
+      <view class="muted">{{city}}饭点灵感：{{inspiration}}</view>
+    </view>
+    <button class="search-button" bindtap="onSearch">搜美食</button>
+  </view>
+
+  <view class="inspiration-empty" wx:if="{{!featuredDishes.length}}">
+    <view class="empty-title">这座城市的菜单还在整理</view>
+    <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
+    <button class="empty-button" bindtap="onChooseCity">切换城市</button>
+  </view>
+
+  <view class="inspiration-grid" wx:else>
+    <block wx:for="{{featuredDishes}}" wx:key="id">
+      <view
+        class="inspiration-card {{index === 0 ? 'large' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="onOpenDish"
+      >
+        <view class="dish-meta">{{item.city}} · {{item.category}} · {{item.taste}}</view>
+        <view class="dish-name">{{item.name}}</view>
+        <view class="dish-phrase">{{item.phrase}}</view>
+        <view class="dish-badges">
+          <view class="dish-badge" wx:for="{{item.iconBadges}}" wx:for-item="badge" wx:key="label">
+            <text class="badge-icon">{{badge.icon}}</text>
+            <text>{{badge.label}}</text>
+          </view>
+        </view>
+        <view class="dish-rating">
+          <text class="rating-label">本地特色</text>
+          <text class="rating-icons">{{item.ratingText}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

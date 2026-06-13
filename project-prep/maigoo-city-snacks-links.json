@@ -1,0 +1,1176 @@
+{
+  "sourceIndex": "https://www.maigoo.com/brand10/list_11960.html",
+  "generatedAt": "2026-06-13T18:17:30.587Z",
+  "links": [
+    {
+      "label": "北京美食攻略",
+      "rawCity": "北京",
+      "url": "https://www.maigoo.com/goomai/182413.html",
+      "province": "北京",
+      "city": "北京",
+      "cityId": "110000",
+      "matched": true
+    },
+    {
+      "label": "天津美食攻略",
+      "rawCity": "天津",
+      "url": "https://www.maigoo.com/goomai/190739.html",
+      "province": "天津",
+      "city": "天津",
+      "cityId": "120000",
+      "matched": true
+    },
+    {
+      "label": "石家庄美食攻略",
+      "rawCity": "石家庄",
+      "url": "https://www.maigoo.com/goomai/222134.html",
+      "province": "河北",
+      "city": "石家庄",
+      "cityId": "130100",
+      "matched": true
+    },
+    {
+      "label": "太原美食攻略",
+      "rawCity": "太原",
+      "url": "https://www.maigoo.com/top/393110.html",
+      "province": "山西",
+      "city": "太原",
+      "cityId": "140100",
+      "matched": true
+    },
+    {
+      "label": "呼和浩特十大小吃",
+      "rawCity": "呼和浩特",
+      "url": "https://www.maigoo.com/top/405782.html",
+      "province": "内蒙古",
+      "city": "呼和浩特",
+      "cityId": "150100",
+      "matched": true
+    },
+    {
+      "label": "保定十大小吃",
+      "rawCity": "保定",
+      "url": "https://www.maigoo.com/top/436245.html",
+      "province": "河北",
+      "city": "保定",
+      "cityId": "130600",
+      "matched": true
+    },
+    {
+      "label": "承德十大小吃",
+      "rawCity": "承德",
+      "url": "https://www.maigoo.com/top/405834.html",
+      "province": "河北",
+      "city": "承德",
+      "cityId": "130800",
+      "matched": true
+    },
+    {
+      "label": "秦皇岛十大小吃",
+      "rawCity": "秦皇岛",
+      "url": "https://www.maigoo.com/top/427390.html",
+      "province": "河北",
+      "city": "秦皇岛",
+      "cityId": "130300",
+      "matched": true
+    },
+    {
+      "label": "沧州十大小吃",
+      "rawCity": "沧",
+      "url": "https://www.maigoo.com/top/405833.html",
+      "province": "河北",
+      "city": "沧州",
+      "cityId": "130900",
+      "matched": true
+    },
+    {
+      "label": "廊坊十大小吃",
+      "rawCity": "廊坊",
+      "url": "https://www.maigoo.com/top/405835.html",
+      "province": "河北",
+      "city": "廊坊",
+      "cityId": "131000",
+      "matched": true
+    },
+    {
+      "label": "邢台十大小吃",
+      "rawCity": "邢台",
+      "url": "https://www.maigoo.com/top/426035.html",
+      "province": "河北",
+      "city": "邢台",
+      "cityId": "130500",
+      "matched": true
+    },
+    {
+      "label": "邯郸十大小吃",
+      "rawCity": "邯郸",
+      "url": "https://www.maigoo.com/top/427388.html",
+      "province": "河北",
+      "city": "邯郸",
+      "cityId": "130400",
+      "matched": true
+    },
+    {
+      "label": "唐山十大小吃",
+      "rawCity": "唐山",
+      "url": "https://www.maigoo.com/top/426020.html",
+      "province": "河北",
+      "city": "唐山",
+      "cityId": "130200",
+      "matched": true
+    },
+    {
+      "label": "张家口十大小吃",
+      "rawCity": "张家口",
+      "url": "https://www.maigoo.com/top/405832.html",
+      "province": "河北",
+      "city": "张家口",
+      "cityId": "130700",
+      "matched": true
+    },
+    {
+      "label": "衡水十大小吃",
+      "rawCity": "衡水",
+      "url": "https://www.maigoo.com/top/405836.html",
+      "province": "河北",
+      "city": "衡水",
+      "cityId": "131100",
+      "matched": true
+    },
+    {
+      "label": "阳泉十大小吃",
+      "rawCity": "阳泉",
+      "url": "https://www.maigoo.com/top/427567.html",
+      "province": "山西",
+      "city": "阳泉",
+      "cityId": "140300",
+      "matched": true
+    },
+    {
+      "label": "吕梁十大小吃",
+      "rawCity": "吕梁",
+      "url": "https://www.maigoo.com/top/426195.html",
+      "province": "山西",
+      "city": "吕梁",
+      "cityId": "141100",
+      "matched": true
+    },
+    {
+      "label": "朔州十大小吃",
+      "rawCity": "朔",
+      "url": "https://www.maigoo.com/top/426560.html",
+      "province": "山西",
+      "city": "朔州",
+      "cityId": "140600",
+      "matched": true
+    },
+    {
+      "label": "临汾十大小吃",
+      "rawCity": "临汾",
+      "url": "https://www.maigoo.com/top/422145.html",
+      "province": "山西",
+      "city": "临汾",
+      "cityId": "141000",
+      "matched": true
+    },
+    {
+      "label": "晋中十大小吃",
+      "rawCity": "晋中",
+      "url": "https://www.maigoo.com/top/426067.html",
+      "province": "山西",
+      "city": "晋中",
+      "cityId": "140700",
+      "matched": true
+    },
+    {
+      "label": "大同十大小吃",
+      "rawCity": "大同",
+      "url": "https://www.maigoo.com/top/405857.html",
+      "province": "山西",
+      "city": "大同",
+      "cityId": "140200",
+      "matched": true
+    },
+    {
+      "label": "晋城十大小吃",
+      "rawCity": "晋城",
+      "url": "https://www.maigoo.com/top/426182.html",
+      "province": "山西",
+      "city": "晋城",
+      "cityId": "140500",
+      "matched": true
+    },
+    {
+      "label": "运城十大小吃",
+      "rawCity": "运城",
+      "url": "https://www.maigoo.com/top/422161.html",
+      "province": "山西",
+      "city": "运城",
+      "cityId": "140800",
+      "matched": true
+    },
+    {
+      "label": "忻州十大小吃",
+      "rawCity": "忻",
+      "url": "https://www.maigoo.com/top/405779.html",
+      "province": "山西",
+      "city": "忻州",
+      "cityId": "140900",
+      "matched": true
+    },
+    {
+      "label": "长治十大小吃",
+      "rawCity": "长治",
+      "url": "https://www.maigoo.com/top/426038.html",
+      "province": "山西",
+      "city": "长治",
+      "cityId": "140400",
+      "matched": true
+    },
+    {
+      "label": "包头十大小吃",
+      "rawCity": "包头",
+      "url": "https://www.maigoo.com/top/405848.html",
+      "province": "内蒙古",
+      "city": "包头",
+      "cityId": "150200",
+      "matched": true
+    },
+    {
+      "label": "鄂尔多斯十大小吃",
+      "rawCity": "鄂尔多斯",
+      "url": "https://www.maigoo.com/top/426564.html",
+      "province": "内蒙古",
+      "city": "鄂尔多斯",
+      "cityId": "150600",
+      "matched": true
+    },
+    {
+      "label": "巴彦淖尔十大小吃",
+      "rawCity": "巴彦淖尔",
+      "url": "https://www.maigoo.com/top/427573.html",
+      "province": "内蒙古",
+      "city": "巴彦淖尔",
+      "cityId": "150800",
+      "matched": true
+    },
+    {
+      "label": "哈尔滨美食攻略",
+      "rawCity": "哈尔滨",
+      "url": "https://www.maigoo.com/goomai/210732.html",
+      "province": "黑龙江",
+      "city": "哈尔滨",
+      "cityId": "230100",
+      "matched": true
+    },
+    {
+      "label": "长春美食攻略",
+      "rawCity": "长春",
+      "url": "https://www.maigoo.com/goomai/157952.html",
+      "province": "吉林",
+      "city": "长春",
+      "cityId": "220100",
+      "matched": true
+    },
+    {
+      "label": "沈阳美食攻略",
+      "rawCity": "沈阳",
+      "url": "https://www.maigoo.com/goomai/225067.html",
+      "province": "辽宁",
+      "city": "沈阳",
+      "cityId": "210100",
+      "matched": true
+    },
+    {
+      "label": "大连美食攻略",
+      "rawCity": "大连",
+      "url": "https://www.maigoo.com/goomai/157379.html",
+      "province": "辽宁",
+      "city": "大连",
+      "cityId": "210200",
+      "matched": true
+    },
+    {
+      "label": "东北美食攻略",
+      "rawCity": "东北",
+      "url": "https://www.maigoo.com/goomai/736015.html",
+      "province": "",
+      "city": "东北",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "齐齐哈尔十大小吃",
+      "rawCity": "齐齐哈尔",
+      "url": "https://www.maigoo.com/top/436207.html",
+      "province": "黑龙江",
+      "city": "齐齐哈尔",
+      "cityId": "230200",
+      "matched": true
+    },
+    {
+      "label": "鸡西十大小吃",
+      "rawCity": "鸡西",
+      "url": "https://www.maigoo.com/top/426575.html",
+      "province": "黑龙江",
+      "city": "鸡西",
+      "cityId": "230300",
+      "matched": true
+    },
+    {
+      "label": "漠河十大小吃",
+      "rawCity": "漠河",
+      "url": "https://www.maigoo.com/top/432960.html",
+      "province": "",
+      "city": "漠河",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "延边十大小吃",
+      "rawCity": "延边",
+      "url": "https://www.maigoo.com/top/427374.html",
+      "province": "",
+      "city": "延边",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "白城十大小吃",
+      "rawCity": "白城",
+      "url": "https://www.maigoo.com/top/427739.html",
+      "province": "吉林",
+      "city": "白城",
+      "cityId": "220800",
+      "matched": true
+    },
+    {
+      "label": "通化十大小吃",
+      "rawCity": "通化",
+      "url": "https://www.maigoo.com/top/427736.html",
+      "province": "吉林",
+      "city": "通化",
+      "cityId": "220500",
+      "matched": true
+    },
+    {
+      "label": "丹东十大小吃",
+      "rawCity": "丹东",
+      "url": "https://www.maigoo.com/top/436209.html",
+      "province": "辽宁",
+      "city": "丹东",
+      "cityId": "210600",
+      "matched": true
+    },
+    {
+      "label": "鞍山十大小吃",
+      "rawCity": "鞍山",
+      "url": "https://www.maigoo.com/top/436413.html",
+      "province": "辽宁",
+      "city": "鞍山",
+      "cityId": "210300",
+      "matched": true
+    },
+    {
+      "label": "锦州特色十大小吃",
+      "rawCity": "锦",
+      "url": "https://www.maigoo.com/top/406813.html",
+      "province": "辽宁",
+      "city": "锦州",
+      "cityId": "210700",
+      "matched": true
+    },
+    {
+      "label": "上海美食攻略",
+      "rawCity": "上海",
+      "url": "https://www.maigoo.com/goomai/182567.html",
+      "province": "上海",
+      "city": "上海",
+      "cityId": "310000",
+      "matched": true
+    },
+    {
+      "label": "南京美食攻略",
+      "rawCity": "南京",
+      "url": "https://www.maigoo.com/goomai/199095.html",
+      "province": "江苏",
+      "city": "南京",
+      "cityId": "320100",
+      "matched": true
+    },
+    {
+      "label": "无锡美食攻略",
+      "rawCity": "无锡",
+      "url": "https://www.maigoo.com/goomai/216993.html",
+      "province": "江苏",
+      "city": "无锡",
+      "cityId": "320200",
+      "matched": true
+    },
+    {
+      "label": "苏州美食攻略",
+      "rawCity": "苏",
+      "url": "https://www.maigoo.com/goomai/156391.html",
+      "province": "江苏",
+      "city": "苏州",
+      "cityId": "320500",
+      "matched": true
+    },
+    {
+      "label": "杭州美食攻略",
+      "rawCity": "杭",
+      "url": "https://www.maigoo.com/goomai/185385.html",
+      "province": "浙江",
+      "city": "杭州",
+      "cityId": "330100",
+      "matched": true
+    },
+    {
+      "label": "宁波美食攻略",
+      "rawCity": "宁波",
+      "url": "https://www.maigoo.com/goomai/158315.html",
+      "province": "浙江",
+      "city": "宁波",
+      "cityId": "330200",
+      "matched": true
+    },
+    {
+      "label": "温州美食攻略",
+      "rawCity": "温",
+      "url": "https://www.maigoo.com/goomai/158690.html",
+      "province": "浙江",
+      "city": "温州",
+      "cityId": "330300",
+      "matched": true
+    },
+    {
+      "label": "湖州美食攻略",
+      "rawCity": "湖",
+      "url": "https://www.maigoo.com/goomai/158519.html",
+      "province": "浙江",
+      "city": "湖州",
+      "cityId": "330500",
+      "matched": true
+    },
+    {
+      "label": "绍兴美食攻略",
+      "rawCity": "绍兴",
+      "url": "https://www.maigoo.com/goomai/240848.html",
+      "province": "浙江",
+      "city": "绍兴",
+      "cityId": "330600",
+      "matched": true
+    },
+    {
+      "label": "合肥美食攻略",
+      "rawCity": "合肥",
+      "url": "https://www.maigoo.com/goomai/157748.html",
+      "province": "安徽",
+      "city": "合肥",
+      "cityId": "340100",
+      "matched": true
+    },
+    {
+      "label": "福州美食攻略",
+      "rawCity": "福",
+      "url": "https://www.maigoo.com/goomai/157063.html",
+      "province": "福建",
+      "city": "福州",
+      "cityId": "350100",
+      "matched": true
+    },
+    {
+      "label": "厦门美食攻略",
+      "rawCity": "厦门",
+      "url": "https://www.maigoo.com/goomai/153154.html",
+      "province": "福建",
+      "city": "厦门",
+      "cityId": "350200",
+      "matched": true
+    },
+    {
+      "label": "泉州美食攻略",
+      "rawCity": "泉",
+      "url": "https://www.maigoo.com/goomai/228033.html",
+      "province": "福建",
+      "city": "泉州",
+      "cityId": "350500",
+      "matched": true
+    },
+    {
+      "label": "南昌美食攻略",
+      "rawCity": "南昌",
+      "url": "https://www.maigoo.com/goomai/157486.html",
+      "province": "江西",
+      "city": "南昌",
+      "cityId": "360100",
+      "matched": true
+    },
+    {
+      "label": "济南美食攻略",
+      "rawCity": "济南",
+      "url": "https://www.maigoo.com/goomai/158302.html",
+      "province": "山东",
+      "city": "济南",
+      "cityId": "370100",
+      "matched": true
+    },
+    {
+      "label": "青岛美食攻略",
+      "rawCity": "青岛",
+      "url": "https://www.maigoo.com/goomai/204620.html",
+      "province": "山东",
+      "city": "青岛",
+      "cityId": "370200",
+      "matched": true
+    },
+    {
+      "label": "郑州美食攻略",
+      "rawCity": "郑",
+      "url": "https://www.maigoo.com/goomai/157385.html",
+      "province": "河南",
+      "city": "郑州",
+      "cityId": "410100",
+      "matched": true
+    },
+    {
+      "label": "武汉美食攻略",
+      "rawCity": "武汉",
+      "url": "https://www.maigoo.com/goomai/200069.html",
+      "province": "湖北",
+      "city": "武汉",
+      "cityId": "420100",
+      "matched": true
+    },
+    {
+      "label": "长沙美食美食攻略",
+      "rawCity": "长沙",
+      "url": "https://www.maigoo.com/goomai/221125.html",
+      "province": "湖南",
+      "city": "长沙",
+      "cityId": "430100",
+      "matched": true
+    },
+    {
+      "label": "开封十大小吃",
+      "rawCity": "开封",
+      "url": "https://www.maigoo.com/top/405886.html",
+      "province": "河南",
+      "city": "开封",
+      "cityId": "410200",
+      "matched": true
+    },
+    {
+      "label": "洛阳十大小吃",
+      "rawCity": "洛阳",
+      "url": "https://www.maigoo.com/top/399560.html",
+      "province": "河南",
+      "city": "洛阳",
+      "cityId": "410300",
+      "matched": true
+    },
+    {
+      "label": "许昌十大名小吃",
+      "rawCity": "许昌十大名小吃",
+      "url": "https://www.maigoo.com/top/436208.html",
+      "province": "",
+      "city": "许昌十大名小吃",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "商丘十大小吃",
+      "rawCity": "商丘",
+      "url": "https://www.maigoo.com/top/426044.html",
+      "province": "河南",
+      "city": "商丘",
+      "cityId": "411400",
+      "matched": true
+    },
+    {
+      "label": "信阳十大名小吃",
+      "rawCity": "信阳十大名小吃",
+      "url": "https://www.maigoo.com/top/436072.html",
+      "province": "",
+      "city": "信阳十大名小吃",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "驻马店十大小吃",
+      "rawCity": "驻马店",
+      "url": "https://www.maigoo.com/top/405892.html",
+      "province": "河南",
+      "city": "驻马店",
+      "cityId": "411700",
+      "matched": true
+    },
+    {
+      "label": "宜昌十大小吃",
+      "rawCity": "宜昌",
+      "url": "https://www.maigoo.com/top/406192.html",
+      "province": "湖北",
+      "city": "宜昌",
+      "cityId": "420500",
+      "matched": true
+    },
+    {
+      "label": "荆州十大小吃",
+      "rawCity": "荆",
+      "url": "https://www.maigoo.com/top/406193.html",
+      "province": "湖北",
+      "city": "荆州",
+      "cityId": "421000",
+      "matched": true
+    },
+    {
+      "label": "十堰十大小吃",
+      "rawCity": "十堰",
+      "url": "https://www.maigoo.com/top/436059.html",
+      "province": "湖北",
+      "city": "十堰",
+      "cityId": "420300",
+      "matched": true
+    },
+    {
+      "label": "黄冈十大小吃",
+      "rawCity": "黄冈",
+      "url": "https://www.maigoo.com/top/427135.html",
+      "province": "湖北",
+      "city": "黄冈",
+      "cityId": "421100",
+      "matched": true
+    },
+    {
+      "label": "襄阳十大小吃",
+      "rawCity": "襄阳",
+      "url": "https://www.maigoo.com/top/405740.html",
+      "province": "湖北",
+      "city": "襄阳",
+      "cityId": "420600",
+      "matched": true
+    },
+    {
+      "label": "恩施十大小吃",
+      "rawCity": "恩施",
+      "url": "https://www.maigoo.com/top/426569.html",
+      "province": "湖北",
+      "city": "恩施",
+      "cityId": "422800",
+      "matched": true
+    },
+    {
+      "label": "衡阳十大小吃",
+      "rawCity": "衡阳",
+      "url": "https://www.maigoo.com/top/405838.html",
+      "province": "湖南",
+      "city": "衡阳",
+      "cityId": "430400",
+      "matched": true
+    },
+    {
+      "label": "张家界十大小吃",
+      "rawCity": "张家界",
+      "url": "https://www.maigoo.com/top/405841.html",
+      "province": "湖南",
+      "city": "张家界",
+      "cityId": "430800",
+      "matched": true
+    },
+    {
+      "label": "岳阳十大小吃",
+      "rawCity": "岳阳",
+      "url": "https://www.maigoo.com/top/405840.html",
+      "province": "湖南",
+      "city": "岳阳",
+      "cityId": "430600",
+      "matched": true
+    },
+    {
+      "label": "湘潭十大小吃",
+      "rawCity": "湘潭",
+      "url": "https://www.maigoo.com/top/423852.html",
+      "province": "湖南",
+      "city": "湘潭",
+      "cityId": "430300",
+      "matched": true
+    },
+    {
+      "label": "永州十大小吃",
+      "rawCity": "永",
+      "url": "https://www.maigoo.com/top/428624.html",
+      "province": "湖南",
+      "city": "永州",
+      "cityId": "431100",
+      "matched": true
+    },
+    {
+      "label": "香港美食攻略",
+      "rawCity": "香港",
+      "url": "https://www.maigoo.com/goomai/155446.html",
+      "province": "",
+      "city": "香港",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "澳门美食攻略",
+      "rawCity": "澳门",
+      "url": "https://www.maigoo.com/goomai/170472.html",
+      "province": "",
+      "city": "澳门",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "广州美食攻略",
+      "rawCity": "广",
+      "url": "https://www.maigoo.com/goomai/200926.html",
+      "province": "广东",
+      "city": "广州",
+      "cityId": "440100",
+      "matched": true
+    },
+    {
+      "label": "深圳美食攻略",
+      "rawCity": "深圳",
+      "url": "https://www.maigoo.com/goomai/154397.html",
+      "province": "广东",
+      "city": "深圳",
+      "cityId": "440300",
+      "matched": true
+    },
+    {
+      "label": "珠海美食攻略",
+      "rawCity": "珠海",
+      "url": "https://www.maigoo.com/goomai/156234.html",
+      "province": "广东",
+      "city": "珠海",
+      "cityId": "440400",
+      "matched": true
+    },
+    {
+      "label": "佛山美食攻略",
+      "rawCity": "佛山",
+      "url": "https://www.maigoo.com/goomai/155501.html",
+      "province": "广东",
+      "city": "佛山",
+      "cityId": "440600",
+      "matched": true
+    },
+    {
+      "label": "东莞美食攻略",
+      "rawCity": "东莞",
+      "url": "https://www.maigoo.com/goomai/156352.html",
+      "province": "广东",
+      "city": "东莞",
+      "cityId": "441900",
+      "matched": true
+    },
+    {
+      "label": "惠州美食攻略",
+      "rawCity": "惠",
+      "url": "https://www.maigoo.com/goomai/281094.html",
+      "province": "广东",
+      "city": "惠州",
+      "cityId": "441300",
+      "matched": true
+    },
+    {
+      "label": "中山美食攻略",
+      "rawCity": "中山",
+      "url": "https://www.maigoo.com/goomai/156639.html",
+      "province": "广东",
+      "city": "中山",
+      "cityId": "442000",
+      "matched": true
+    },
+    {
+      "label": "汕头美食攻略",
+      "rawCity": "汕头",
+      "url": "https://www.maigoo.com/goomai/157437.html",
+      "province": "广东",
+      "city": "汕头",
+      "cityId": "440500",
+      "matched": true
+    },
+    {
+      "label": "南宁美食攻略",
+      "rawCity": "南宁",
+      "url": "https://www.maigoo.com/goomai/225631.html",
+      "province": "广西",
+      "city": "南宁",
+      "cityId": "450100",
+      "matched": true
+    },
+    {
+      "label": "桂林美食攻略",
+      "rawCity": "桂林",
+      "url": "https://www.maigoo.com/goomai/226497.html",
+      "province": "广西",
+      "city": "桂林",
+      "cityId": "450300",
+      "matched": true
+    },
+    {
+      "label": "重庆美食攻略",
+      "rawCity": "重庆",
+      "url": "https://www.maigoo.com/goomai/187698.html",
+      "province": "重庆",
+      "city": "重庆",
+      "cityId": "500000",
+      "matched": true
+    },
+    {
+      "label": "成都美食攻略",
+      "rawCity": "成都",
+      "url": "https://www.maigoo.com/goomai/202266.html",
+      "province": "四川",
+      "city": "成都",
+      "cityId": "510100",
+      "matched": true
+    },
+    {
+      "label": "贵阳美食攻略",
+      "rawCity": "贵阳",
+      "url": "https://www.maigoo.com/goomai/158318.html",
+      "province": "贵州",
+      "city": "贵阳",
+      "cityId": "520100",
+      "matched": true
+    },
+    {
+      "label": "昆明美食攻略",
+      "rawCity": "昆明",
+      "url": "https://www.maigoo.com/goomai/157950.html",
+      "province": "云南",
+      "city": "昆明",
+      "cityId": "530100",
+      "matched": true
+    },
+    {
+      "label": "丽江美食攻略",
+      "rawCity": "丽江",
+      "url": "https://www.maigoo.com/goomai/239621.html",
+      "province": "云南",
+      "city": "丽江",
+      "cityId": "530700",
+      "matched": true
+    },
+    {
+      "label": "绵阳十大小吃",
+      "rawCity": "绵阳",
+      "url": "https://www.maigoo.com/top/427140.html",
+      "province": "四川",
+      "city": "绵阳",
+      "cityId": "510700",
+      "matched": true
+    },
+    {
+      "label": "遂宁十大小吃",
+      "rawCity": "遂宁",
+      "url": "https://www.maigoo.com/top/405878.html",
+      "province": "四川",
+      "city": "遂宁",
+      "cityId": "510900",
+      "matched": true
+    },
+    {
+      "label": "乐山十大小吃",
+      "rawCity": "乐山",
+      "url": "https://www.maigoo.com/top/427142.html",
+      "province": "四川",
+      "city": "乐山",
+      "cityId": "511100",
+      "matched": true
+    },
+    {
+      "label": "泸州十大小吃",
+      "rawCity": "泸",
+      "url": "https://www.maigoo.com/top/405907.html",
+      "province": "四川",
+      "city": "泸州",
+      "cityId": "510500",
+      "matched": true
+    },
+    {
+      "label": "都江堰十大小吃",
+      "rawCity": "都江堰",
+      "url": "https://www.maigoo.com/top/432955.html",
+      "province": "",
+      "city": "都江堰",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "自贡十大小吃",
+      "rawCity": "自贡",
+      "url": "https://www.maigoo.com/top/405259.html",
+      "province": "四川",
+      "city": "自贡",
+      "cityId": "510300",
+      "matched": true
+    },
+    {
+      "label": "大理十大小吃",
+      "rawCity": "大理",
+      "url": "https://www.maigoo.com/top/405852.html",
+      "province": "云南",
+      "city": "大理",
+      "cityId": "532900",
+      "matched": true
+    },
+    {
+      "label": "普洱十大小吃",
+      "rawCity": "普洱",
+      "url": "https://www.maigoo.com/top/426737.html",
+      "province": "云南",
+      "city": "普洱",
+      "cityId": "530800",
+      "matched": true
+    },
+    {
+      "label": "宣威十大小吃",
+      "rawCity": "宣威",
+      "url": "https://www.maigoo.com/top/426194.html",
+      "province": "",
+      "city": "宣威",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "玉溪十大小吃",
+      "rawCity": "玉溪",
+      "url": "https://www.maigoo.com/top/427395.html",
+      "province": "云南",
+      "city": "玉溪",
+      "cityId": "530400",
+      "matched": true
+    },
+    {
+      "label": "遵义十大小吃",
+      "rawCity": "遵义",
+      "url": "https://www.maigoo.com/top/420734.html",
+      "province": "贵州",
+      "city": "遵义",
+      "cityId": "520300",
+      "matched": true
+    },
+    {
+      "label": "都匀十大小吃",
+      "rawCity": "都匀",
+      "url": "https://www.maigoo.com/top/405897.html",
+      "province": "",
+      "city": "都匀",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "凯里十大小吃",
+      "rawCity": "凯里",
+      "url": "https://www.maigoo.com/top/426600.html",
+      "province": "",
+      "city": "凯里",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "铜仁十大小吃",
+      "rawCity": "铜仁",
+      "url": "https://www.maigoo.com/top/405939.html",
+      "province": "贵州",
+      "city": "铜仁",
+      "cityId": "520600",
+      "matched": true
+    },
+    {
+      "label": "毕节十大小吃",
+      "rawCity": "毕节",
+      "url": "https://www.maigoo.com/top/405988.html",
+      "province": "贵州",
+      "city": "毕节",
+      "cityId": "520500",
+      "matched": true
+    },
+    {
+      "label": "西安美食攻略",
+      "rawCity": "西安",
+      "url": "https://www.maigoo.com/goomai/203436.html",
+      "province": "陕西",
+      "city": "西安",
+      "cityId": "610100",
+      "matched": true
+    },
+    {
+      "label": "商洛十大小吃",
+      "rawCity": "商洛",
+      "url": "https://www.maigoo.com/top/405787.html",
+      "province": "陕西",
+      "city": "商洛",
+      "cityId": "611000",
+      "matched": true
+    },
+    {
+      "label": "咸阳十大小吃",
+      "rawCity": "咸阳",
+      "url": "https://www.maigoo.com/top/426022.html",
+      "province": "陕西",
+      "city": "咸阳",
+      "cityId": "610400",
+      "matched": true
+    },
+    {
+      "label": "渭南十大小吃",
+      "rawCity": "渭南",
+      "url": "https://www.maigoo.com/top/426021.html",
+      "province": "陕西",
+      "city": "渭南",
+      "cityId": "610500",
+      "matched": true
+    },
+    {
+      "label": "乌鲁木齐十大小吃",
+      "rawCity": "乌鲁木齐",
+      "url": "https://www.maigoo.com/top/405992.html",
+      "province": "新疆",
+      "city": "乌鲁木齐",
+      "cityId": "650100",
+      "matched": true
+    },
+    {
+      "label": "和田十大小吃",
+      "rawCity": "和田",
+      "url": "https://www.maigoo.com/top/427539.html",
+      "province": "新疆",
+      "city": "和田",
+      "cityId": "653200",
+      "matched": true
+    },
+    {
+      "label": "阿勒泰十大小吃",
+      "rawCity": "阿勒泰",
+      "url": "https://www.maigoo.com/top/427373.html",
+      "province": "新疆",
+      "city": "阿勒泰",
+      "cityId": "654300",
+      "matched": true
+    },
+    {
+      "label": "哈密十大小吃",
+      "rawCity": "哈密",
+      "url": "https://www.maigoo.com/top/426565.html",
+      "province": "新疆",
+      "city": "哈密",
+      "cityId": "650500",
+      "matched": true
+    },
+    {
+      "label": "吐鲁番十大小吃",
+      "rawCity": "吐鲁番",
+      "url": "https://www.maigoo.com/top/426552.html",
+      "province": "新疆",
+      "city": "吐鲁番",
+      "cityId": "650400",
+      "matched": true
+    },
+    {
+      "label": "兰州十大小吃",
+      "rawCity": "兰",
+      "url": "https://www.maigoo.com/top/436236.html",
+      "province": "甘肃",
+      "city": "兰州",
+      "cityId": "620100",
+      "matched": true
+    },
+    {
+      "label": "天水十大小吃",
+      "rawCity": "天水",
+      "url": "https://www.maigoo.com/top/405582.html",
+      "province": "甘肃",
+      "city": "天水",
+      "cityId": "620500",
+      "matched": true
+    },
+    {
+      "label": "张掖十大小吃",
+      "rawCity": "张掖",
+      "url": "https://www.maigoo.com/top/405797.html",
+      "province": "甘肃",
+      "city": "张掖",
+      "cityId": "620700",
+      "matched": true
+    },
+    {
+      "label": "酒泉十大小吃",
+      "rawCity": "酒泉",
+      "url": "https://www.maigoo.com/top/405756.html",
+      "province": "甘肃",
+      "city": "酒泉",
+      "cityId": "620900",
+      "matched": true
+    },
+    {
+      "label": "嘉峪关十大小吃",
+      "rawCity": "嘉峪关",
+      "url": "https://www.maigoo.com/top/427007.html",
+      "province": "甘肃",
+      "city": "嘉峪关",
+      "cityId": "620200",
+      "matched": true
+    },
+    {
+      "label": "银川十大小吃",
+      "rawCity": "银川",
+      "url": "https://www.maigoo.com/top/405557.html",
+      "province": "宁夏",
+      "city": "银川",
+      "cityId": "640100",
+      "matched": true
+    },
+    {
+      "label": "青铜峡十大小吃",
+      "rawCity": "青铜峡",
+      "url": "https://www.maigoo.com/top/436230.html",
+      "province": "",
+      "city": "青铜峡",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "吴忠十大小吃",
+      "rawCity": "吴忠",
+      "url": "https://www.maigoo.com/top/426594.html",
+      "province": "宁夏",
+      "city": "吴忠",
+      "cityId": "640300",
+      "matched": true
+    },
+    {
+      "label": "灵武十大小吃",
+      "rawCity": "灵武",
+      "url": "https://www.maigoo.com/top/426991.html",
+      "province": "",
+      "city": "灵武",
+      "cityId": "",
+      "matched": false
+    },
+    {
+      "label": "西宁十大小吃",
+      "rawCity": "西宁",
+      "url": "https://www.maigoo.com/top/437058.html",
+      "province": "青海",
+      "city": "西宁",
+      "cityId": "630100",
+      "matched": true
+    },
+    {
+      "label": "玉树十大小吃",
+      "rawCity": "玉树",
+      "url": "https://www.maigoo.com/top/426973.html",
+      "province": "青海",
+      "city": "玉树",
+      "cityId": "632700",
+      "matched": true
+    }
+  ]
+}

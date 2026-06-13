@@ -1,0 +1,2239 @@
+{
+  "note": "MAIGOO province region index and province food guide/topic links. Links only; descriptions are not copied.",
+  "sourceIndex": "https://www.maigoo.com/maigoo/2455gjdq_index.html",
+  "generatedAt": "2026-06-13T18:47:46.599Z",
+  "provinceCount": 32,
+  "topicLinkCount": 302,
+  "failedCount": 0,
+  "provinces": [
+    {
+      "province": "广东省",
+      "provinceShort": "广东",
+      "regionUrl": "https://www.maigoo.com/maigoo/3258gds_index.html",
+      "foodGuideLabel": "广东美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/181214.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "广东十大名菜",
+          "sourceUrl": "https://www.maigoo.com/goomai/180514.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "广东十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/156450.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "广东十大经典老火靓汤",
+          "sourceUrl": "https://www.maigoo.com/goomai/180626.html",
+          "sceneTags": [
+            "汤"
+          ]
+        },
+        {
+          "sourceLabel": "广派十大糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436397.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广东十大火锅品种",
+          "sourceUrl": "https://www.maigoo.com/top/439635.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广东十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442979.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广东十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/443767.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "十大好吃的粤菜家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421291.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广东鸡肉名菜",
+          "sourceUrl": "https://www.maigoo.com/top/391009.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "广东十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392072.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "江苏省",
+      "provinceShort": "江苏",
+      "regionUrl": "https://www.maigoo.com/maigoo/3142js_index.html",
+      "foodGuideLabel": "江苏美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/184068.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "江苏十大名菜",
+          "sourceUrl": "https://www.maigoo.com/goomai/156553.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "江苏十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/156573.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宁派十大糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436395.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "苏菜十大宴席名菜",
+          "sourceUrl": "https://www.maigoo.com/top/410130.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "江苏十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443191.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "十大好吃的苏菜家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421339.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "南京十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/398200.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "苏州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/398360.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "江苏十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391604.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "山东省",
+      "provinceShort": "山东",
+      "regionUrl": "https://www.maigoo.com/maigoo/3198sds_index.html",
+      "foodGuideLabel": "山东美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/183641.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "山东十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398795.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "山东十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/390694.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "山东十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/444161.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "山东十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443107.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "济南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405456.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "青岛十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/234681.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "山东十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/435969.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "山东十大海鲜",
+          "sourceUrl": "https://www.maigoo.com/top/443872.html",
+          "sceneTags": []
+        }
+      ]
+    },
+    {
+      "province": "浙江省",
+      "provinceShort": "浙江",
+      "regionUrl": "https://www.maigoo.com/maigoo/3153zj_index.html",
+      "foodGuideLabel": "浙江美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/182937.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "浙江十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398778.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "浙江十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/225095.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "浙江十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443093.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "浙江十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/444081.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "浙江十大零食",
+          "sourceUrl": "https://www.maigoo.com/goomai/181691.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "杭州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/389991.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宁波十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436077.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "绍兴十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405276.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "温州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405279.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "浙江必买特产",
+          "sourceUrl": "https://www.maigoo.com/top/404428.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "河南省",
+      "provinceShort": "河南",
+      "regionUrl": "https://www.maigoo.com/maigoo/3214hns_index.html",
+      "foodGuideLabel": "河南美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/184354.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "河南十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/391302.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "河南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/391182.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "中国最好吃的10种胡辣汤",
+          "sourceUrl": "https://www.maigoo.com/top/424824.html",
+          "sceneTags": [
+            "汤"
+          ]
+        },
+        {
+          "sourceLabel": "河南十大好吃的面食",
+          "sourceUrl": "https://www.maigoo.com/top/406073.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "河南十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/444162.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "河南十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443102.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "郑州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436075.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "河南家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421287.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "河南十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391184.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "四川省",
+      "provinceShort": "四川",
+      "regionUrl": "https://www.maigoo.com/maigoo/3288scs_index.html",
+      "foodGuideLabel": "四川美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/184242.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "四川十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398808.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "四川十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157240.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "川派十大糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436577.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "四川十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442757.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "成都十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/400343.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "绵阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427140.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "四川十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421356.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "四川十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391012.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "四川特产水果",
+          "sourceUrl": "https://www.maigoo.com/top/431836.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "四川成都十大特色菜 10款成都经典名菜你都吃过哪些",
+          "sourceUrl": "https://www.maigoo.com/top/406272.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "湖北省",
+      "provinceShort": "湖北",
+      "regionUrl": "https://www.maigoo.com/maigoo/3231hbs_index.html",
+      "foodGuideLabel": "湖北美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/190782.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "湖北十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404047.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "湖北十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157401.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "湖北十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/444165.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "十大好吃的湖北菜家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421250.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "湖北十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443020.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "武汉十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/392661.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "恩施十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426569.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "襄阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405740.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "黄冈十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427135.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "湖北十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404531.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "福建省",
+      "provinceShort": "福建",
+      "regionUrl": "https://www.maigoo.com/maigoo/3179fj_index.html",
+      "foodGuideLabel": "福建美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/183513.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "福建十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398788.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "福建十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/390690.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "闽派十大糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436585.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "福建十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/443969.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "福建十大零食",
+          "sourceUrl": "https://www.maigoo.com/goomai/181692.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "厦门十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436411.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "福州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/398478.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "泉州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405268.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "莆田十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405263.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "十大闽南家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/429756.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "福建必买特产",
+          "sourceUrl": "https://www.maigoo.com/top/391613.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "莆田十大特产 福建莆田特产有哪些 莆田有什么特产值得买",
+          "sourceUrl": "https://www.maigoo.com/top/405486.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "湖南省",
+      "provinceShort": "湖南",
+      "regionUrl": "https://www.maigoo.com/maigoo/3244hn_index.html",
+      "foodGuideLabel": "湖南美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/188976.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "湖南十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/403999.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "湖南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157106.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "湖南10大特色米粉",
+          "sourceUrl": "https://www.maigoo.com/top/390461.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "湖南十大火锅品种",
+          "sourceUrl": "https://www.maigoo.com/top/439633.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "湖南十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443098.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "湖南十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443019.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "长沙十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/368095.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "张家界十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405841.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "湖南十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392423.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "湖南特产大全 湖南特色伴手礼有哪些 湖南值得带走的土特产",
+          "sourceUrl": "https://www.maigoo.com/goomai/738345.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "安徽省",
+      "provinceShort": "安徽",
+      "regionUrl": "https://www.maigoo.com/maigoo/3162ahs_index.html",
+      "foodGuideLabel": "安徽美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/187287.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "安徽十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398845.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "安徽十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157630.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "安徽十大面条",
+          "sourceUrl": "https://www.maigoo.com/top/434604.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "安徽十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443582.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "安徽十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443192.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "合肥十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436074.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "蚌埠十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/423570.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宣城十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426566.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "淮南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426190.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "安徽十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421267.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "安徽十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391077.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "上海市",
+      "provinceShort": "上海",
+      "regionUrl": "https://www.maigoo.com/maigoo/2769sh_index.html",
+      "foodGuideLabel": "上海美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/182567.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "上海鲜肉月饼",
+          "sourceUrl": "https://www.maigoo.com/goomai/277646.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "上海十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404213.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "上海十大零食",
+          "sourceUrl": "https://www.maigoo.com/goomai/181759.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "十大好吃的上海特色糕点 最受欢迎的10种沪派糕点小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436406.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "十大上海最经典的早餐排名 最受欢迎的10款上海特色早点",
+          "sourceUrl": "https://www.maigoo.com/top/442876.html",
+          "sceneTags": [
+            "早餐"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "河北省",
+      "provinceShort": "河北",
+      "regionUrl": "https://www.maigoo.com/maigoo/3076hb_index.html",
+      "foodGuideLabel": "河北美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/188393.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "河北十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/403994.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "河北十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157678.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "河北十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443097.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "河北十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443256.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "河北十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421862.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "石家庄十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157359.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "保定十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436245.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "唐山十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426020.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "邯郸十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427388.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "河北十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392087.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "邢台十大特产 邢台特产有哪些 河北邢台有什么特产值得买",
+          "sourceUrl": "https://www.maigoo.com/top/404915.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "北京市",
+      "provinceShort": "北京",
+      "regionUrl": "https://www.maigoo.com/maigoo/2753bj_index.html",
+      "foodGuideLabel": "北京美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/182413.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "北京十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404210.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "北京十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/437623.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "十大正宗老北京早点排名 10种北京早餐特色美食盘点",
+          "sourceUrl": "https://www.maigoo.com/top/442871.html",
+          "sceneTags": [
+            "早餐"
+          ]
+        },
+        {
+          "sourceLabel": "北京菜最有名的代表菜是什么 10道北京名菜盘点",
+          "sourceUrl": "https://www.maigoo.com/top/398776.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "陕西省",
+      "provinceShort": "陕西",
+      "regionUrl": "https://www.maigoo.com/maigoo/3342sxs_index.html",
+      "foodGuideLabel": "陕西美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/189092.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "陕西十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404000.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "陕西十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/393536.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "陕西十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442782.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "陕西十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421871.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "西安十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436237.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "延安十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426041.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "汉中十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427574.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "咸阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426022.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宝鸡十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405790.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "陕西十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404610.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "江西省",
+      "provinceShort": "江西",
+      "regionUrl": "https://www.maigoo.com/maigoo/3187jx_index.html",
+      "foodGuideLabel": "江西美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/192023.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "江西十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404048.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "江西十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157849.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "江西十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443583.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "江西历史上十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/391539.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "江西十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443108.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "南昌十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405777.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "景德镇十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405636.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "庐山十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426567.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "江西十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391538.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "重庆市",
+      "provinceShort": "重庆",
+      "regionUrl": "https://www.maigoo.com/maigoo/2814cqs_index.html",
+      "foodGuideLabel": "重庆美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/187698.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "重庆十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/403988.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "重庆十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/169973.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "重庆十大好吃的夜宵",
+          "sourceUrl": "https://www.maigoo.com/top/432992.html",
+          "sceneTags": [
+            "夜宵"
+          ]
+        },
+        {
+          "sourceLabel": "重庆十大早餐",
+          "sourceUrl": "https://www.maigoo.com/top/443259.html",
+          "sceneTags": [
+            "早餐"
+          ]
+        },
+        {
+          "sourceLabel": "重庆十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/437633.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "重庆十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421872.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "酉阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436263.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "重庆糕点",
+          "sourceUrl": "https://www.maigoo.com/top/446243.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "重庆十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392073.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "重庆特产大全 重庆有哪些土特产值得买 重庆地方特色礼品必买清单",
+          "sourceUrl": "https://www.maigoo.com/goomai/738080.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "辽宁省",
+      "provinceShort": "辽宁",
+      "regionUrl": "https://www.maigoo.com/maigoo/3109ln_index.html",
+      "foodGuideLabel": "辽宁美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/192971.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "辽宁十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404051.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "辽宁十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157389.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "辽宁十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/444080.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "辽宁十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442968.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "辽宁十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421870.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "大连十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/401695.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "丹东十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436209.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "沈阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405710.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "盘锦十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436223.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "辽宁十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391467.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "锦州最有名的十大特产排行 辽宁锦州出名的十大特产盘点",
+          "sourceUrl": "https://www.maigoo.com/top/425765.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "云南省",
+      "provinceShort": "云南",
+      "regionUrl": "https://www.maigoo.com/maigoo/3318yns_index.html",
+      "foodGuideLabel": "云南美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/187082.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "云南十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398830.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "云南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/153147.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "滇派十大糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436580.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "云南十大火锅品种",
+          "sourceUrl": "https://www.maigoo.com/top/439636.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "云南十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442761.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "云南十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404604.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "云南小众特产",
+          "sourceUrl": "https://www.maigoo.com/top/439747.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "云南楚雄十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/405608.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "大理十大特产 云南大理特产有哪些 大理有什么特产值得买",
+          "sourceUrl": "https://www.maigoo.com/top/405604.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "广西",
+      "provinceShort": "广西",
+      "regionUrl": "https://www.maigoo.com/maigoo/3273gxs_index.html",
+      "foodGuideLabel": "广西美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/187529.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "广西十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/403982.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "广西十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/158243.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "广西十大米粉",
+          "sourceUrl": "https://www.maigoo.com/top/439285.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广西十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/443768.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "广西十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442689.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广西十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/391976.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "南宁十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/418479.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "桂林十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436239.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "广西糕点",
+          "sourceUrl": "https://www.maigoo.com/top/446528.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "广西十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391022.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "山西省",
+      "provinceShort": "山西",
+      "regionUrl": "https://www.maigoo.com/maigoo/3085sxs_index.html",
+      "foodGuideLabel": "山西美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/192061.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "山西十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404050.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "山西十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/393492.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "山西十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/443095.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "山西十大面食",
+          "sourceUrl": "https://www.maigoo.com/top/442879.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "山西十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421860.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "山西十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/443255.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "太原十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/392044.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "大同十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405857.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "晋城十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426182.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "山西十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392090.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "阳泉十大特产 阳泉著名特产有哪些 山西阳泉有什么特产值得买",
+          "sourceUrl": "https://www.maigoo.com/top/405048.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "内蒙古",
+      "provinceShort": "内蒙古",
+      "regionUrl": "https://www.maigoo.com/maigoo/3096nmgu_index.html",
+      "foodGuideLabel": "内蒙古美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/189661.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "内蒙古十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404001.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "内蒙古十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157598.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "内蒙古十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421865.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "内蒙古十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442691.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "呼和浩特十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405782.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "呼伦贝尔十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426574.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "鄂尔多斯十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426564.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "乌兰察布十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426605.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "包头十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405848.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "内蒙古糕点(甜品/茶点)",
+          "sourceUrl": "https://www.maigoo.com/top/446242.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "内蒙古十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404654.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "贵州省",
+      "provinceShort": "贵州",
+      "regionUrl": "https://www.maigoo.com/maigoo/3309gzs_index.html",
+      "foodGuideLabel": "贵州美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/185861.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "贵州十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398828.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "贵州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/391698.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "贵州十大火锅品种",
+          "sourceUrl": "https://www.maigoo.com/top/439634.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "贵州十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442758.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "贵阳十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/400390.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "遵义十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/420734.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "安顺十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427992.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "毕节十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405988.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "贵州十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391699.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "贵州特产大全 贵州有哪些特产值得带 贵州伴手礼必买清单",
+          "sourceUrl": "https://www.maigoo.com/goomai/738371.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "铜仁十大著名特产排行 贵州铜仁适合带走的十大特产推荐",
+          "sourceUrl": "https://www.maigoo.com/top/423670.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "新疆",
+      "provinceShort": "新疆",
+      "regionUrl": "https://www.maigoo.com/maigoo/3380xj_index.html",
+      "foodGuideLabel": "新疆美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/186369.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "新疆十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/398829.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "新疆十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/406687.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "新疆十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/436380.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "新疆十大水产海鲜",
+          "sourceUrl": "https://www.maigoo.com/top/439740.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "新疆十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442571.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "新疆十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421867.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "新疆必买特产",
+          "sourceUrl": "https://www.maigoo.com/top/436063.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "新疆伊犁十大特产排行 到伊犁哈萨克自治州必带的10大土特产盘点",
+          "sourceUrl": "https://www.maigoo.com/top/425748.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "新疆乌鲁木齐十大名小吃盘点 到乌鲁木齐必吃的十大风味小吃推荐",
+          "sourceUrl": "https://www.maigoo.com/top/405992.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "十大乌鲁木齐最好吃的早餐 10种乌鲁木齐特色早餐盘点",
+          "sourceUrl": "https://www.maigoo.com/top/443867.html",
+          "sceneTags": [
+            "早餐"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "天津市",
+      "provinceShort": "天津",
+      "regionUrl": "https://www.maigoo.com/maigoo/2754tjs_index.html",
+      "foodGuideLabel": "天津美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/190739.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "天津十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421879.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "天津十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/390381.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "天津十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442570.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "看着就流口水的天津美食 天津传统小吃菜谱做法都在这了",
+          "sourceUrl": "https://www.maigoo.com/goomai/237688.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "黑龙江",
+      "provinceShort": "黑龙江",
+      "regionUrl": "https://www.maigoo.com/maigoo/3129hlj_index.html",
+      "foodGuideLabel": "黑龙江美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/192972.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "黑龙江十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/404052.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "黑龙江十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157275.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "黑龙江十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421868.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "黑龙江十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442977.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "哈尔滨十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436246.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "漠河十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/432960.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "大庆十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426743.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "佳木斯十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426606.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "鸡西十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426575.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "黑龙江十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/392421.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "10种佳木斯可以带走的特产盘点 到黑龙江佳木斯必买的十大特色产品",
+          "sourceUrl": "https://www.maigoo.com/top/432853.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "吉林省",
+      "provinceShort": "吉林",
+      "regionUrl": "https://www.maigoo.com/maigoo/3121jls_index.html",
+      "foodGuideLabel": "吉林美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/193987.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "吉林省十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/408310.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "吉林省十大小吃",
+          "sourceUrl": "https://www.maigoo.com/goomai/157840.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "吉林省十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421873.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "吉林十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442976.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "长春十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405972.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "延边十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427374.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "通化十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427736.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "辽源十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427018.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "吉林市十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/437617.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "吉林十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404410.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "吉林市十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/398736.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "吉林松原十大特产 松原有什么特产值得买 松原著名特产有哪些",
+          "sourceUrl": "https://www.maigoo.com/top/405351.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "吉林长春十大特产 长春有哪些土特产 长春可以带走的特产盘点",
+          "sourceUrl": "https://www.maigoo.com/top/398733.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "甘肃省",
+      "provinceShort": "甘肃",
+      "regionUrl": "https://www.maigoo.com/maigoo/3352gs_index.html",
+      "foodGuideLabel": "甘肃美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/194959.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "甘肃十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/408414.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "甘肃十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/234763.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "甘肃十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421875.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "甘肃十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442759.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "兰州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/436236.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "天水十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405582.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "甘南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427839.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "酒泉十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405756.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "嘉峪关十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427007.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "甘肃十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404623.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "甘肃特产大全 甘肃最好的特产是什么 到甘肃必买特色伴手礼一览",
+          "sourceUrl": "https://www.maigoo.com/goomai/738368.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "陇南十大特产 陇南有什么特产值得买 甘肃陇南特产有哪些出名",
+          "sourceUrl": "https://www.maigoo.com/top/405366.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "海南省",
+      "provinceShort": "海南",
+      "regionUrl": "https://www.maigoo.com/maigoo/3285hn_index.html",
+      "foodGuideLabel": "海南美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/194003.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "海南十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/408323.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "海南十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/391406.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "海南十大海鲜特产",
+          "sourceUrl": "https://www.maigoo.com/top/443769.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "海南十大传统糕点",
+          "sourceUrl": "https://www.maigoo.com/top/444166.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "海南十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421874.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "海南十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442756.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "三亚十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/406286.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "海口十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/406287.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "儋州十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427399.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "海南必买特产",
+          "sourceUrl": "https://www.maigoo.com/top/390123.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "海南特产大全 海南的土特产品有哪些 海南特色伴手礼必买清单",
+          "sourceUrl": "https://www.maigoo.com/goomai/738374.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "十大最受欢迎的海南文昌土特产 10大文昌可以带走特产介绍",
+          "sourceUrl": "https://www.maigoo.com/top/436000.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "十大海口早餐特色美食 海口早茶十大排名",
+          "sourceUrl": "https://www.maigoo.com/top/443693.html",
+          "sceneTags": [
+            "早餐"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "宁夏",
+      "provinceShort": "宁夏",
+      "regionUrl": "https://www.maigoo.com/maigoo/3375nx_index.html",
+      "foodGuideLabel": "宁夏美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/197820.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "宁夏十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/409758.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/390717.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421878.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "宁夏十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442572.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "银川十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405557.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "中卫十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426551.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "吴忠十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/426594.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "固原十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/405551.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "石嘴山十大小吃",
+          "sourceUrl": "https://www.maigoo.com/top/427400.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/391020.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大名菜",
+          "sourceUrl": "https://m.maigoo.com/top/409758.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大家常菜",
+          "sourceUrl": "https://m.maigoo.com/top/421878.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "宁夏十大特产",
+          "sourceUrl": "https://m.maigoo.com/top/391020.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "宁夏十大零食",
+          "sourceUrl": "https://m.maigoo.com/top/442572.html",
+          "sceneTags": []
+        }
+      ]
+    },
+    {
+      "province": "青海省",
+      "provinceShort": "青海",
+      "regionUrl": "https://www.maigoo.com/maigoo/3366qhs_index.html",
+      "foodGuideLabel": "青海美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/197473.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "青海十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/404638.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "青海十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442754.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "十大最受欢迎的格尔木小吃 青海格尔木游玩必吃10大风味名吃",
+          "sourceUrl": "https://www.maigoo.com/top/436265.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        },
+        {
+          "sourceLabel": "海东十大美食名吃排行 青海海东有名的10大特色小吃盘点",
+          "sourceUrl": "https://www.maigoo.com/top/427125.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "西藏",
+      "provinceShort": "西藏",
+      "regionUrl": "https://www.maigoo.com/maigoo/3334xzzq_index.html",
+      "foodGuideLabel": "西藏美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/198464.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "西藏十大名菜",
+          "sourceUrl": "https://www.maigoo.com/top/409967.html",
+          "sceneTags": [
+            "名菜"
+          ]
+        },
+        {
+          "sourceLabel": "西藏十大家常菜",
+          "sourceUrl": "https://www.maigoo.com/top/421877.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "西藏十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/390743.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "西藏十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442573.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "西藏林芝十大特产",
+          "sourceUrl": "https://www.maigoo.com/top/405354.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "西藏特产大全 西藏特色伴手礼有哪些 西藏土特产必买清单",
+          "sourceUrl": "https://www.maigoo.com/goomai/738365.html",
+          "sceneTags": [
+            "特产"
+          ]
+        }
+      ]
+    },
+    {
+      "province": "台湾省",
+      "provinceShort": "台湾",
+      "regionUrl": "https://www.maigoo.com/maigoo/3395tw_index.html",
+      "foodGuideLabel": "台湾美食",
+      "foodGuideUrl": "https://www.maigoo.com/goomai/212251.html",
+      "topicLinks": [
+        {
+          "sourceLabel": "台湾必买特产",
+          "sourceUrl": "https://www.maigoo.com/top/435996.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "台湾十大零食",
+          "sourceUrl": "https://www.maigoo.com/top/442693.html",
+          "sceneTags": []
+        },
+        {
+          "sourceLabel": "凤梨酥是哪里的特产 台湾凤梨酥的由来故事及寓意",
+          "sourceUrl": "https://www.maigoo.com/goomai/299849.html",
+          "sceneTags": [
+            "特产"
+          ]
+        },
+        {
+          "sourceLabel": "台湾新北十大必吃美食小吃 新北市最好吃的10种特色美食推荐",
+          "sourceUrl": "https://www.maigoo.com/top/427419.html",
+          "sceneTags": [
+            "小吃"
+          ]
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

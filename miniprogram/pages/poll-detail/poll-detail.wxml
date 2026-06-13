@@ -1,0 +1,37 @@
+<view class="page" wx:if="{{poll}}">
+  <view class="section-title">{{pageTitle}}</view>
+  <view class="muted">{{pageDesc}}</view>
+
+  <view wx:if="{{expired}}" class="expired">投票已结束</view>
+
+  <view wx:if="{{!poll.anonymous && !expired}}" class="name-panel">
+    <input class="name-input" value="{{voterName}}" placeholder="填个称呼，投完会显示在选项下" bindinput="onNameInput" />
+  </view>
+
+  <view class="dish-list">
+    <view class="panel dish-item {{isSingle ? 'single' : ''}} {{selectedMap[item.id] ? 'active' : ''}}" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleVote">
+      <view class="dish-main">
+        <view wx:if="{{isSingle}}" class="proposal-label">饭局提案</view>
+        <view class="dish-title-row">
+          <text class="dish-name">{{item.name}}</text>
+          <text wx:if="{{item.custom}}" class="custom-badge">自定义</text>
+        </view>
+        <view class="muted">{{item.city}} · {{item.category}}</view>
+        <view wx:if="{{!poll.anonymous && item.voterText}}" class="voter-line">{{item.voterText}}</view>
+      </view>
+      <view class="dish-side">
+        <view class="count">{{item.countText}}</view>
+        <view wx:if="{{!item.custom}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看看</view>
+      </view>
+    </view>
+  </view>
+
+  <button wx:if="{{!expired}}" class="primary-button submit-button" bindtap="onSubmitVote">{{submitText}}</button>
+  <view class="share-panel">
+    <view>
+      <view class="share-title">{{shareTitle}}</view>
+      <view class="muted">{{shareDesc}}</view>
+    </view>
+    <button class="share-button" open-type="share">发到群聊</button>
+  </view>
+</view>

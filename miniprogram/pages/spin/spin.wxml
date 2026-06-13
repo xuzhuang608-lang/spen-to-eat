@@ -1,0 +1,131 @@
+<view class="page spin-page">
+  <view class="spin-head">
+    <view>
+      <view class="section-title">{{city}}这一桌</view>
+      <view class="muted">本轮 {{candidateDishes.length}} 道候选，不想吃就换一批，也能自己加一道。</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!hasContent}}" class="empty-panel">
+    <view class="empty-title">这座城市的菜单还在整理</view>
+    <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
+  </view>
+
+  <view wx:else>
+    <view class="plate-wrap">
+      <view class="plate">
+        <block wx:for="{{candidateDishes}}" wx:key="id">
+          <view
+            class="plate-dish {{item.posClass}} {{item.plateClass}} {{chosenMap[item.id] ? 'picked' : ''}} {{customMode && customTargetIndex === index ? 'replace-target' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="onOpenDish"
+          >
+            <view wx:if="{{item.custom}}" class="custom-badge">自选</view>
+            <view class="dish-icon">{{item.icon}}</view>
+            <view class="dish-title">{{item.shortName}}</view>
+          </view>
+        </block>
+        <view class="plate-core">
+          <view class="turner-chopsticks" style="transform: translate(-50%, -50%) rotate({{spinAngle}}deg);">
+            <view class="turner-stick one"></view>
+            <view class="turner-stick two"></view>
+            <view class="turner-rest"></view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{pickedName}}" class="spin-reveal">这顿就它了：{{pickedName}}</view>
+    </view>
+
+    <view class="spin-actions">
+      <button class="secondary-button" bindtap="onRefreshCandidates">换一批</button>
+      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">转到哪吃哪</button>
+    </view>
+  </view>
+
+  <view class="filter-summary">
+    <view class="summary-copy">
+      <view class="summary-title">当前条件</view>
+      <view class="muted summary-text">{{filterSummary}}</view>
+    </view>
+    <button class="adjust-button" bindtap="onToggleFilters">{{filterToggleText}}</button>
+  </view>
+
+  <view class="menu-panel" wx:if="{{hasContent}}">
+    <view class="menu-head">
+      <view>
+        <view class="menu-title">本轮菜单</view>
+        <view class="muted">完整菜名在这里，想了解可以点开看看。</view>
+      </view>
+      <button class="add-dish-button" bindtap="onStartCustomReplace">+ 加一道</button>
+    </view>
+    <view class="menu-list">
+      <block wx:for="{{candidateDishes}}" wx:key="id">
+        <view
+          class="menu-chip {{item.custom ? 'custom' : ''}} {{customMode && customTargetIndex === index ? 'replace-target' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="onOpenDish"
+        >
+          {{item.name}}<text wx:if="{{item.custom}}"> · 自选</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="custom-mask" wx:if="{{customMode}}">
+    <view class="custom-panel">
+      <view class="custom-title">换掉哪一道？</view>
+      <view class="muted">点一个不想吃的，换成你想加的。</view>
+      <view class="replace-list">
+        <block wx:for="{{candidateDishes}}" wx:key="id">
+          <view
+            class="replace-chip {{customTargetIndex === index ? 'active' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="onOpenDish"
+          >
+            {{item.name}}
+          </view>
+        </block>
+      </view>
+      <input class="custom-input" value="{{customName}}" maxlength="8" placeholder="比如：牛肉火锅" bindinput="onInputCustomName" />
+      <view class="custom-actions">
+        <button class="secondary-button small" bindtap="onCancelCustomReplace">取消</button>
+        <button class="primary-button small" bindtap="onConfirmCustomReplace">换上它</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="filter-panel" wx:if="{{filterVisible}}">
+    <block wx:for="{{optionGroups}}" wx:key="key">
+      <view class="filter-block">
+        <view class="filter-title">{{item.title}}</view>
+        <view class="chip-row">
+          <block wx:for="{{item.options}}" wx:for-item="option" wx:key="label">
+            <view
+              class="chip {{option.active ? 'active' : ''}}"
+              data-key="{{item.key}}"
+              data-value="{{option.label}}"
+              bindtap="onSelectOption"
+            >
+              {{option.label}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <view class="filter-block">
+      <view class="filter-title">避雷</view>
+      <view class="chip-row">
+        <block wx:for="{{avoidOptions}}" wx:key="label">
+          <view
+            class="chip {{item.active ? 'active' : ''}}"
+            data-value="{{item.label}}"
+            bindtap="onToggleAvoid"
+          >
+            {{item.label}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

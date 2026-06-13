@@ -1,0 +1,77 @@
+page {
+  min-height: 100vh;
+  background: #fffaf4;
+  color: #2f251f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32rpx 28rpx 48rpx;
+}
+
+.section-title {
+  margin: 28rpx 0 16rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.muted {
+  color: #7a6b61;
+  font-size: 26rpx;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92rpx;
+  border-radius: 24rpx;
+  background: #e84f2a;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 700;
+  box-shadow: 0 16rpx 32rpx rgba(232, 79, 42, 0.2);
+}
+
+.ghost-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 78rpx;
+  border: 2rpx solid #ead8c8;
+  border-radius: 22rpx;
+  background: #fff;
+  color: #4f3b30;
+  font-size: 28rpx;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.chip {
+  padding: 14rpx 22rpx;
+  border-radius: 999rpx;
+  background: #fff;
+  border: 2rpx solid #ead8c8;
+  color: #4f3b30;
+  font-size: 26rpx;
+}
+
+.chip.active {
+  background: #2f251f;
+  border-color: #2f251f;
+  color: #fff;
+}
+
+.panel {
+  border-radius: 24rpx;
+  background: #fff;
+  padding: 26rpx;
+  box-shadow: 0 12rpx 34rpx rgba(67, 45, 29, 0.08);
+}
+

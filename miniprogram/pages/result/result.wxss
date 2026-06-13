@@ -1,0 +1,159 @@
+.result-card {
+  padding: 44rpx 32rpx;
+  border-radius: 32rpx;
+  background: #2f251f;
+  color: #fff;
+}
+
+.city {
+  color: #ffd166;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.dish-name {
+  margin-top: 10rpx;
+  font-size: 54rpx;
+  font-weight: 900;
+}
+
+.phrase {
+  margin-top: 18rpx;
+  color: #ffe8d5;
+  font-size: 30rpx;
+  line-height: 1.45;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 26rpx;
+  padding-top: 22rpx;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.16);
+  font-size: 34rpx;
+}
+
+.rating-label {
+  font-size: 26rpx;
+  color: #ffe8d5;
+}
+
+.detail {
+  margin-top: 26rpx;
+}
+
+.detail-title {
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.tag-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.tag-line text {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #fff2e7;
+  color: #8a3e1d;
+  font-size: 24rpx;
+}
+
+.desc {
+  margin-top: 20rpx;
+  color: #4f3b30;
+  font-size: 29rpx;
+  line-height: 1.6;
+}
+
+.action-row {
+  display: flex;
+  justify-content: center;
+  gap: 24rpx;
+  margin-top: 26rpx;
+}
+
+.sub-actions {
+  margin-top: 16rpx;
+}
+
+.compact-action,
+.mini-action {
+  margin: 0;
+}
+
+.compact-action {
+  width: 214rpx;
+}
+
+.mini-action {
+  width: 190rpx;
+  min-height: 70rpx;
+  border-radius: 20rpx;
+  font-size: 25rpx;
+}
+
+.related {
+  margin-top: 28rpx;
+}
+
+.related-title {
+  color: #2f251f;
+  font-size: 31rpx;
+  font-weight: 900;
+}
+
+.related-list {
+  margin-top: 20rpx;
+}
+
+.related-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 18rpx 0;
+  border-top: 2rpx solid #f1e3d5;
+}
+
+.related-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.related-item:last-child {
+  padding-bottom: 0;
+}
+
+.related-name {
+  color: #2f251f;
+  font-size: 29rpx;
+  font-weight: 900;
+}
+
+.related-meta {
+  margin-top: 6rpx;
+  color: #7a6b61;
+  font-size: 24rpx;
+}
+
+.related-index {
+  flex: 0 0 auto;
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #fff2e7;
+  color: #8a3e1d;
+  font-size: 23rpx;
+  font-weight: 800;
+}
+
+.feedback {
+  margin-top: 18rpx;
+  color: #7a6b61;
+  background: transparent;
+  font-size: 24rpx;
+}

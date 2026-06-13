@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/city/city",
+    "pages/spin/spin",
+    "pages/result/result",
+    "pages/search/search",
+    "pages/favorite/favorite",
+    "pages/poll-create/poll-create",
+    "pages/poll-detail/poll-detail",
+    "pages/feedback/feedback",
+    "pages/privacy/privacy"
+  ],
+  "window": {
+    "navigationBarTitleText": "饭点转转",
+    "navigationBarBackgroundColor": "#fff7ed",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fffaf4"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于识别当前所在城市，推荐对应城市特色美食；也可以手动选择城市。"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
+

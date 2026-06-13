@@ -1,0 +1,1432 @@
+{
+  "note": "Night snack dish names only. Descriptions are not copied. Use as supplemental mealTime/scene candidates.",
+  "sourceIndex": "https://www.maigoo.com/citiao/top_10583.html",
+  "generatedAt": "2026-06-13T18:34:47.672Z",
+  "sourceLinkCount": 30,
+  "crawledCount": 30,
+  "failedCount": 0,
+  "cityCount": 29,
+  "dishReferenceCount": 371,
+  "sceneTags": [
+    "夜宵"
+  ],
+  "groupedByProvince": {
+    "四川": {
+      "成都": {
+        "sourceLabel": "成都十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432996.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "麻辣兔头",
+          "烧烤",
+          "火锅",
+          "冒菜",
+          "烤鱼",
+          "担担面",
+          "蹄花汤",
+          "锅巴土豆",
+          "鸡豆花",
+          "糖油果子",
+          "钵钵鸡",
+          "三大炮",
+          "蛋烘糕",
+          "肥肠粉",
+          "铁板豆腐"
+        ]
+      }
+    },
+    "广东": {
+      "广州": {
+        "sourceLabel": "广州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/433005.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "生滚粥",
+          "广州肠粉",
+          "云吞面",
+          "广东糖水",
+          "煲仔饭",
+          "老火靓汤",
+          "干炒牛河",
+          "钵仔糕",
+          "萝卜牛腩",
+          "烧烤",
+          "麻辣烫",
+          "鸡煲"
+        ]
+      },
+      "深圳": {
+        "sourceLabel": "深圳十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/425761.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "小龙虾",
+          "广东米粉",
+          "关东煮",
+          "砂锅粥",
+          "奶茶",
+          "火锅",
+          "啫啫煲",
+          "西式快餐",
+          "烧鹅"
+        ]
+      },
+      "佛山": {
+        "sourceLabel": "佛山十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426062.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "酸菜鱼",
+          "双皮奶",
+          "西樵大饼",
+          "烤鱼",
+          "煲仔饭",
+          "牛杂",
+          "猪杂粥",
+          "干炒牛河",
+          "大良炒鲜奶",
+          "佛山九层糕",
+          "石湾鱼腐",
+          "汾宁白糖棉花糕"
+        ]
+      }
+    },
+    "全国通用": {
+      "通用夜宵": {
+        "sourceLabel": "十大夜宵烧烤必点",
+        "sourceUrl": "https://www.maigoo.com/top/433402.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "羊肉串",
+          "烤面筋",
+          "烤韭菜",
+          "烤五花",
+          "烤鸡翅",
+          "烤鱿鱼",
+          "烤茄子",
+          "烤玉米",
+          "烤馒头",
+          "烤年糕",
+          "烤苕皮",
+          "烤鸡腿",
+          "烤蚕蛹",
+          "烤生蚝",
+          "烤辣椒",
+          "烤猪蹄",
+          "烤土豆片"
+        ]
+      }
+    },
+    "江苏": {
+      "南京": {
+        "sourceLabel": "南京十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/433002.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "鸭血粉丝汤",
+          "烧烤",
+          "蟹黄汤包",
+          "牛肉锅贴",
+          "南京臭豆腐",
+          "糕团小点",
+          "什锦豆腐涝",
+          "皮肚面",
+          "蛋烧卖",
+          "小笼包",
+          "火锅",
+          "鸡汤面",
+          "五香蛋"
+        ]
+      },
+      "苏州": {
+        "sourceLabel": "苏州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432997.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "砂锅粥",
+          "海鲜",
+          "奥灶面",
+          "火锅",
+          "蟹壳黄",
+          "骨头汤",
+          "馄饨",
+          "梅花糕",
+          "串串香",
+          "姜母鸭",
+          "面线糊",
+          "糖粥"
+        ]
+      },
+      "常州": {
+        "sourceLabel": "常州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/427850.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "花甲",
+          "小龙虾",
+          "火锅",
+          "麻辣烫",
+          "炸鸡锁骨",
+          "串串香",
+          "潮汕砂锅粥",
+          "卷饼",
+          "铁板炒饭",
+          "牛肉锅贴",
+          "馄饨",
+          "牛肉面"
+        ]
+      },
+      "无锡": {
+        "sourceLabel": "无锡十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426055.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "无锡小笼包",
+          "无锡三鲜馄饨",
+          "无锡糖芋头",
+          "梅花糕",
+          "肉酿面筋",
+          "刀鱼面",
+          "江苏海棠糕",
+          "酒酿棉子圆",
+          "酱烧肝"
+        ]
+      }
+    },
+    "贵州": {
+      "贵阳": {
+        "sourceLabel": "贵阳十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432539.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "贵阳牛肉粉",
+          "烙锅",
+          "酸汤鱼",
+          "肠旺面",
+          "烤鱼",
+          "状元蹄",
+          "水果豆花",
+          "饺子",
+          "丝娃娃",
+          "贵阳米豆腐",
+          "片鸡粉"
+        ]
+      }
+    },
+    "河南": {
+      "郑州": {
+        "sourceLabel": "郑州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426060.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "郑州烩面",
+          "葛记焖饼",
+          "三鲜伊府面",
+          "蔡记蒸饺",
+          "鲤鱼三吃",
+          "郑州烤鸭",
+          "小龙虾",
+          "烧烤",
+          "海鲜",
+          "丁家粉蒸肉",
+          "龙须糕"
+        ]
+      }
+    },
+    "上海": {
+      "上海": {
+        "sourceLabel": "上海十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432680.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "上海生煎包",
+          "小龙虾",
+          "海鲜",
+          "砂锅粥",
+          "烧烤",
+          "串串香",
+          "糖水",
+          "汤面",
+          "大饼油条",
+          "馄饨",
+          "上海酱鸭"
+        ]
+      }
+    },
+    "山东": {
+      "青岛": {
+        "sourceLabel": "青岛十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/433001.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烤鱿鱼",
+          "酱猪蹄",
+          "海菜凉粉",
+          "海鲜疙瘩汤",
+          "辣炒蛤蜊",
+          "海鲜水饺",
+          "鸡汤馄饨",
+          "青岛锅贴",
+          "酸辣鱼丸",
+          "油爆海螺",
+          "戳子肉",
+          "海鲜卤面"
+        ]
+      },
+      "烟台": {
+        "sourceLabel": "烟台十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/428002.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "海鲜",
+          "馄饨",
+          "烟台焖子",
+          "小龙虾",
+          "炸鸡架",
+          "海蜇汤",
+          "关东煮",
+          "肉夹馍",
+          "刀削面",
+          "沙茶面",
+          "麻辣烫",
+          "蚵仔煎",
+          "烤冷面",
+          "奶茶",
+          "臭豆腐"
+        ]
+      },
+      "济南": {
+        "sourceLabel": "济南十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426026.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "济南把子肉",
+          "黄家烤肉",
+          "甜沫",
+          "济南油旋",
+          "布袋鸡",
+          "胡庄玫瑰花球",
+          "草包包子",
+          "济南糖酥煎饼",
+          "玉皇庙豆腐皮"
+        ]
+      }
+    },
+    "浙江": {
+      "杭州": {
+        "sourceLabel": "杭州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/433003.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "片儿川",
+          "烧烤",
+          "羊蝎子",
+          "小龙虾",
+          "葱包桧",
+          "酸辣粉",
+          "海鲜",
+          "虾爆鳝面",
+          "臭豆腐",
+          "苏州定胜糕"
+        ]
+      },
+      "宁波": {
+        "sourceLabel": "宁波十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426056.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "海鲜",
+          "宁波汤圆",
+          "酒酿圆子",
+          "水晶油包",
+          "溪口千层饼",
+          "奉化牛肉面",
+          "羊肉骨头粥",
+          "烧鸭面",
+          "凉冻梅糕",
+          "宁波炒年糕",
+          "宁波油赞子",
+          "龙凤金团",
+          "豆沙八宝饭",
+          "猪油汤团",
+          "宁式苔生片",
+          "宁式百果糕",
+          "三北豆酥糖"
+        ]
+      }
+    },
+    "河北": {
+      "石家庄": {
+        "sourceLabel": "石家庄十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432138.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "无极饸饹",
+          "烧烤",
+          "串串香",
+          "石家庄缸炉烧饼",
+          "赵县驴肉",
+          "正定马家卤鸡",
+          "干锅鸭头",
+          "藁城宫面"
+        ]
+      }
+    },
+    "北京": {
+      "北京": {
+        "sourceLabel": "北京十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432681.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "卤煮火烧",
+          "麻辣烫",
+          "老北京炸酱面",
+          "小龙虾",
+          "馄饨",
+          "北京烤鸭",
+          "烤冷面",
+          "糖耳朵",
+          "凉皮",
+          "驴肉火烧",
+          "面茶",
+          "皮蛋瘦肉粥"
+        ]
+      }
+    },
+    "黑龙江": {
+      "哈尔滨": {
+        "sourceLabel": "哈尔滨十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432387.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "小龙虾",
+          "烤生蚝",
+          "哈尔滨三鲜饺子",
+          "俄式西餐",
+          "格瓦斯",
+          "烤冷面",
+          "罐虾",
+          "哈尔滨红肠",
+          "臭豆腐",
+          "炸鸡",
+          "烤鱿鱼"
+        ]
+      }
+    },
+    "江西": {
+      "南昌": {
+        "sourceLabel": "南昌十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432283.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "南昌拌粉",
+          "南昌瓦罐汤",
+          "紫苏炒田螺",
+          "南昌水煮",
+          "烤鱼",
+          "小龙虾",
+          "麻辣烫",
+          "火锅",
+          "南昌炒粉",
+          "烤鱿鱼",
+          "冷锅串串"
+        ]
+      }
+    },
+    "陕西": {
+      "西安": {
+        "sourceLabel": "西安十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426048.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "炒细面",
+          "肉夹馍",
+          "陕西凉皮",
+          "粉汤羊血",
+          "羊肉泡馍",
+          "炸串夹馍",
+          "烤面筋",
+          "热米皮",
+          "砂锅米线",
+          "熏肉大饼",
+          "小龙虾",
+          "煎饼果子",
+          "麻辣烫",
+          "擀面皮",
+          "火锅",
+          "烤肉"
+        ]
+      }
+    },
+    "湖北": {
+      "武汉": {
+        "sourceLabel": "武汉十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432994.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "热干面",
+          "武汉鸭脖",
+          "三鲜豆皮",
+          "糊汤粉",
+          "牛杂",
+          "烤鱼",
+          "鸡冠饺",
+          "汽水包",
+          "麻辣烫",
+          "铁板烧",
+          "糊米酒",
+          "火锅"
+        ]
+      }
+    },
+    "福建": {
+      "厦门": {
+        "sourceLabel": "厦门十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/425725.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "沙茶面",
+          "土笋冻",
+          "炸五香",
+          "面线糊",
+          "海鲜",
+          "烧烤",
+          "麻辣烫",
+          "小龙虾",
+          "海蛎煎",
+          "厦门煸豆干",
+          "花生汤",
+          "四果汤",
+          "烤肉",
+          "炒泡面"
+        ]
+      },
+      "福州": {
+        "sourceLabel": "福州十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426043.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "佛跳墙",
+          "福州鱼丸",
+          "肉燕",
+          "咸时",
+          "太极芋泥",
+          "福州线面",
+          "鼎边糊",
+          "千页糕",
+          "炒肉糕",
+          "猪油炒米",
+          "福清光饼"
+        ]
+      }
+    },
+    "重庆": {
+      "重庆": {
+        "sourceLabel": "重庆十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432992.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "钵钵鸡",
+          "抄手",
+          "重庆小面",
+          "重庆火锅",
+          "凉糕",
+          "烧鸡公",
+          "豆花饭",
+          "重庆酸辣粉",
+          "山城小汤圆",
+          "豌豆凉粉",
+          "串串香",
+          "油醪糟",
+          "烤苕皮",
+          "重庆麻辣烫"
+        ]
+      }
+    },
+    "云南": {
+      "昆明": {
+        "sourceLabel": "昆明十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/431257.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "米线",
+          "烧饵块",
+          "竹筒饭",
+          "官渡粑粑",
+          "香茅草烤鱼",
+          "海鲜粥",
+          "烤乳扇",
+          "包浆豆腐"
+        ]
+      }
+    },
+    "天津": {
+      "天津": {
+        "sourceLabel": "天津十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/426058.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "小龙虾",
+          "煎饼果子",
+          "天津麻花",
+          "耳朵眼炸糕",
+          "狗不理包子",
+          "杨村糕干",
+          "煎焖子",
+          "油炸蚂蚱",
+          "烧烤",
+          "海鲜",
+          "芝兰斋糕干",
+          "豆皮卷圈",
+          "花样馃子"
+        ]
+      }
+    },
+    "吉林": {
+      "长春": {
+        "sourceLabel": "长春十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/432300.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "麻辣烫",
+          "小龙虾",
+          "面条",
+          "粥类",
+          "海鲜",
+          "汉堡",
+          "烤鱼",
+          "馄饨",
+          "炸鸡",
+          "酱骨头",
+          "披萨"
+        ]
+      }
+    },
+    "澳门": {
+      "澳门": {
+        "sourceLabel": "澳门十大好吃的夜宵",
+        "sourceUrl": "https://www.maigoo.com/top/444160.html",
+        "sceneTags": [
+          "夜宵"
+        ],
+        "dishes": [
+          "烧烤",
+          "海鲜",
+          "葡国鸡",
+          "葡式蛋挞",
+          "砂锅粥",
+          "煲仔饭",
+          "澳门牛杂",
+          "咖喱鱼蛋",
+          "澳门猪扒包",
+          "鸡蛋仔",
+          "广东碌鹅",
+          "非洲鸡",
+          "干炒牛河"
+        ]
+      }
+    }
+  },
+  "flatRows": [
+    {
+      "sourceLabel": "成都十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432996.html",
+      "city": "成都",
+      "province": "四川",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "麻辣兔头",
+        "烧烤",
+        "火锅",
+        "冒菜",
+        "烤鱼",
+        "担担面",
+        "蹄花汤",
+        "锅巴土豆",
+        "鸡豆花",
+        "糖油果子",
+        "钵钵鸡",
+        "三大炮",
+        "蛋烘糕",
+        "肥肠粉",
+        "铁板豆腐"
+      ]
+    },
+    {
+      "sourceLabel": "广州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/433005.html",
+      "city": "广州",
+      "province": "广东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "生滚粥",
+        "广州肠粉",
+        "云吞面",
+        "广东糖水",
+        "煲仔饭",
+        "老火靓汤",
+        "干炒牛河",
+        "钵仔糕",
+        "萝卜牛腩",
+        "烧烤",
+        "麻辣烫",
+        "鸡煲"
+      ]
+    },
+    {
+      "sourceLabel": "十大夜宵烧烤必点",
+      "sourceUrl": "https://www.maigoo.com/top/433402.html",
+      "city": null,
+      "province": null,
+      "scope": "general",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "羊肉串",
+        "烤面筋",
+        "烤韭菜",
+        "烤五花",
+        "烤鸡翅",
+        "烤鱿鱼",
+        "烤茄子",
+        "烤玉米",
+        "烤馒头",
+        "烤年糕",
+        "烤苕皮",
+        "烤鸡腿",
+        "烤蚕蛹",
+        "烤生蚝",
+        "烤辣椒",
+        "烤猪蹄",
+        "烤土豆片"
+      ]
+    },
+    {
+      "sourceLabel": "南京十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/433002.html",
+      "city": "南京",
+      "province": "江苏",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "鸭血粉丝汤",
+        "烧烤",
+        "蟹黄汤包",
+        "牛肉锅贴",
+        "南京臭豆腐",
+        "糕团小点",
+        "什锦豆腐涝",
+        "皮肚面",
+        "蛋烧卖",
+        "小笼包",
+        "火锅",
+        "鸡汤面",
+        "五香蛋"
+      ]
+    },
+    {
+      "sourceLabel": "贵阳十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432539.html",
+      "city": "贵阳",
+      "province": "贵州",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "贵阳牛肉粉",
+        "烙锅",
+        "酸汤鱼",
+        "肠旺面",
+        "烤鱼",
+        "状元蹄",
+        "水果豆花",
+        "饺子",
+        "丝娃娃",
+        "贵阳米豆腐",
+        "片鸡粉"
+      ]
+    },
+    {
+      "sourceLabel": "郑州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426060.html",
+      "city": "郑州",
+      "province": "河南",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "郑州烩面",
+        "葛记焖饼",
+        "三鲜伊府面",
+        "蔡记蒸饺",
+        "鲤鱼三吃",
+        "郑州烤鸭",
+        "小龙虾",
+        "烧烤",
+        "海鲜",
+        "丁家粉蒸肉",
+        "龙须糕"
+      ]
+    },
+    {
+      "sourceLabel": "上海十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432680.html",
+      "city": "上海",
+      "province": "上海",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "上海生煎包",
+        "小龙虾",
+        "海鲜",
+        "砂锅粥",
+        "烧烤",
+        "串串香",
+        "糖水",
+        "汤面",
+        "大饼油条",
+        "馄饨",
+        "上海酱鸭"
+      ]
+    },
+    {
+      "sourceLabel": "青岛十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/433001.html",
+      "city": "青岛",
+      "province": "山东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烤鱿鱼",
+        "酱猪蹄",
+        "海菜凉粉",
+        "海鲜疙瘩汤",
+        "辣炒蛤蜊",
+        "海鲜水饺",
+        "鸡汤馄饨",
+        "青岛锅贴",
+        "酸辣鱼丸",
+        "油爆海螺",
+        "戳子肉",
+        "海鲜卤面"
+      ]
+    },
+    {
+      "sourceLabel": "苏州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432997.html",
+      "city": "苏州",
+      "province": "江苏",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "砂锅粥",
+        "海鲜",
+        "奥灶面",
+        "火锅",
+        "蟹壳黄",
+        "骨头汤",
+        "馄饨",
+        "梅花糕",
+        "串串香",
+        "姜母鸭",
+        "面线糊",
+        "糖粥"
+      ]
+    },
+    {
+      "sourceLabel": "杭州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/433003.html",
+      "city": "杭州",
+      "province": "浙江",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "片儿川",
+        "烧烤",
+        "羊蝎子",
+        "小龙虾",
+        "葱包桧",
+        "酸辣粉",
+        "海鲜",
+        "虾爆鳝面",
+        "臭豆腐",
+        "苏州定胜糕"
+      ]
+    },
+    {
+      "sourceLabel": "石家庄十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432138.html",
+      "city": "石家庄",
+      "province": "河北",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "无极饸饹",
+        "烧烤",
+        "串串香",
+        "石家庄缸炉烧饼",
+        "赵县驴肉",
+        "正定马家卤鸡",
+        "干锅鸭头",
+        "藁城宫面"
+      ]
+    },
+    {
+      "sourceLabel": "北京十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432681.html",
+      "city": "北京",
+      "province": "北京",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "卤煮火烧",
+        "麻辣烫",
+        "老北京炸酱面",
+        "小龙虾",
+        "馄饨",
+        "北京烤鸭",
+        "烤冷面",
+        "糖耳朵",
+        "凉皮",
+        "驴肉火烧",
+        "面茶",
+        "皮蛋瘦肉粥"
+      ]
+    },
+    {
+      "sourceLabel": "哈尔滨十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432387.html",
+      "city": "哈尔滨",
+      "province": "黑龙江",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "小龙虾",
+        "烤生蚝",
+        "哈尔滨三鲜饺子",
+        "俄式西餐",
+        "格瓦斯",
+        "烤冷面",
+        "罐虾",
+        "哈尔滨红肠",
+        "臭豆腐",
+        "炸鸡",
+        "烤鱿鱼"
+      ]
+    },
+    {
+      "sourceLabel": "南昌十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432283.html",
+      "city": "南昌",
+      "province": "江西",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "南昌拌粉",
+        "南昌瓦罐汤",
+        "紫苏炒田螺",
+        "南昌水煮",
+        "烤鱼",
+        "小龙虾",
+        "麻辣烫",
+        "火锅",
+        "南昌炒粉",
+        "烤鱿鱼",
+        "冷锅串串"
+      ]
+    },
+    {
+      "sourceLabel": "西安十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426048.html",
+      "city": "西安",
+      "province": "陕西",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "炒细面",
+        "肉夹馍",
+        "陕西凉皮",
+        "粉汤羊血",
+        "羊肉泡馍",
+        "炸串夹馍",
+        "烤面筋",
+        "热米皮",
+        "砂锅米线",
+        "熏肉大饼",
+        "小龙虾",
+        "煎饼果子",
+        "麻辣烫",
+        "擀面皮",
+        "火锅",
+        "烤肉"
+      ]
+    },
+    {
+      "sourceLabel": "武汉十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432994.html",
+      "city": "武汉",
+      "province": "湖北",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "热干面",
+        "武汉鸭脖",
+        "三鲜豆皮",
+        "糊汤粉",
+        "牛杂",
+        "烤鱼",
+        "鸡冠饺",
+        "汽水包",
+        "麻辣烫",
+        "铁板烧",
+        "糊米酒",
+        "火锅"
+      ]
+    },
+    {
+      "sourceLabel": "烟台十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/428002.html",
+      "city": "烟台",
+      "province": "山东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "海鲜",
+        "馄饨",
+        "烟台焖子",
+        "小龙虾",
+        "炸鸡架",
+        "海蜇汤",
+        "关东煮",
+        "肉夹馍",
+        "刀削面",
+        "沙茶面",
+        "麻辣烫",
+        "蚵仔煎",
+        "烤冷面",
+        "奶茶",
+        "臭豆腐"
+      ]
+    },
+    {
+      "sourceLabel": "厦门十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/425725.html",
+      "city": "厦门",
+      "province": "福建",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "沙茶面",
+        "土笋冻",
+        "炸五香",
+        "面线糊",
+        "海鲜",
+        "烧烤",
+        "麻辣烫",
+        "小龙虾",
+        "海蛎煎",
+        "厦门煸豆干",
+        "花生汤",
+        "四果汤",
+        "烤肉",
+        "炒泡面"
+      ]
+    },
+    {
+      "sourceLabel": "重庆十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432992.html",
+      "city": "重庆",
+      "province": "重庆",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "钵钵鸡",
+        "抄手",
+        "重庆小面",
+        "重庆火锅",
+        "凉糕",
+        "烧鸡公",
+        "豆花饭",
+        "重庆酸辣粉",
+        "山城小汤圆",
+        "豌豆凉粉",
+        "串串香",
+        "油醪糟",
+        "烤苕皮",
+        "重庆麻辣烫"
+      ]
+    },
+    {
+      "sourceLabel": "常州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/427850.html",
+      "city": "常州",
+      "province": "江苏",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "花甲",
+        "小龙虾",
+        "火锅",
+        "麻辣烫",
+        "炸鸡锁骨",
+        "串串香",
+        "潮汕砂锅粥",
+        "卷饼",
+        "铁板炒饭",
+        "牛肉锅贴",
+        "馄饨",
+        "牛肉面"
+      ]
+    },
+    {
+      "sourceLabel": "深圳十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/425761.html",
+      "city": "深圳",
+      "province": "广东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "小龙虾",
+        "广东米粉",
+        "关东煮",
+        "砂锅粥",
+        "奶茶",
+        "火锅",
+        "啫啫煲",
+        "西式快餐",
+        "烧鹅"
+      ]
+    },
+    {
+      "sourceLabel": "佛山十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426062.html",
+      "city": "佛山",
+      "province": "广东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "酸菜鱼",
+        "双皮奶",
+        "西樵大饼",
+        "烤鱼",
+        "煲仔饭",
+        "牛杂",
+        "猪杂粥",
+        "干炒牛河",
+        "大良炒鲜奶",
+        "佛山九层糕",
+        "石湾鱼腐",
+        "汾宁白糖棉花糕"
+      ]
+    },
+    {
+      "sourceLabel": "昆明十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/431257.html",
+      "city": "昆明",
+      "province": "云南",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "米线",
+        "烧饵块",
+        "竹筒饭",
+        "官渡粑粑",
+        "香茅草烤鱼",
+        "海鲜粥",
+        "烤乳扇",
+        "包浆豆腐"
+      ]
+    },
+    {
+      "sourceLabel": "宁波十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426056.html",
+      "city": "宁波",
+      "province": "浙江",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "海鲜",
+        "宁波汤圆",
+        "酒酿圆子",
+        "水晶油包",
+        "溪口千层饼",
+        "奉化牛肉面",
+        "羊肉骨头粥",
+        "烧鸭面",
+        "凉冻梅糕",
+        "宁波炒年糕",
+        "宁波油赞子",
+        "龙凤金团",
+        "豆沙八宝饭",
+        "猪油汤团",
+        "宁式苔生片",
+        "宁式百果糕",
+        "三北豆酥糖"
+      ]
+    },
+    {
+      "sourceLabel": "福州十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426043.html",
+      "city": "福州",
+      "province": "福建",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "佛跳墙",
+        "福州鱼丸",
+        "肉燕",
+        "咸时",
+        "太极芋泥",
+        "福州线面",
+        "鼎边糊",
+        "千页糕",
+        "炒肉糕",
+        "猪油炒米",
+        "福清光饼"
+      ]
+    },
+    {
+      "sourceLabel": "无锡十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426055.html",
+      "city": "无锡",
+      "province": "江苏",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "无锡小笼包",
+        "无锡三鲜馄饨",
+        "无锡糖芋头",
+        "梅花糕",
+        "肉酿面筋",
+        "刀鱼面",
+        "江苏海棠糕",
+        "酒酿棉子圆",
+        "酱烧肝"
+      ]
+    },
+    {
+      "sourceLabel": "天津十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426058.html",
+      "city": "天津",
+      "province": "天津",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "小龙虾",
+        "煎饼果子",
+        "天津麻花",
+        "耳朵眼炸糕",
+        "狗不理包子",
+        "杨村糕干",
+        "煎焖子",
+        "油炸蚂蚱",
+        "烧烤",
+        "海鲜",
+        "芝兰斋糕干",
+        "豆皮卷圈",
+        "花样馃子"
+      ]
+    },
+    {
+      "sourceLabel": "济南十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/426026.html",
+      "city": "济南",
+      "province": "山东",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "济南把子肉",
+        "黄家烤肉",
+        "甜沫",
+        "济南油旋",
+        "布袋鸡",
+        "胡庄玫瑰花球",
+        "草包包子",
+        "济南糖酥煎饼",
+        "玉皇庙豆腐皮"
+      ]
+    },
+    {
+      "sourceLabel": "长春十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/432300.html",
+      "city": "长春",
+      "province": "吉林",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "麻辣烫",
+        "小龙虾",
+        "面条",
+        "粥类",
+        "海鲜",
+        "汉堡",
+        "烤鱼",
+        "馄饨",
+        "炸鸡",
+        "酱骨头",
+        "披萨"
+      ]
+    },
+    {
+      "sourceLabel": "澳门十大好吃的夜宵",
+      "sourceUrl": "https://www.maigoo.com/top/444160.html",
+      "city": "澳门",
+      "province": "澳门",
+      "scope": "city",
+      "sceneTags": [
+        "夜宵"
+      ],
+      "dishes": [
+        "烧烤",
+        "海鲜",
+        "葡国鸡",
+        "葡式蛋挞",
+        "砂锅粥",
+        "煲仔饭",
+        "澳门牛杂",
+        "咖喱鱼蛋",
+        "澳门猪扒包",
+        "鸡蛋仔",
+        "广东碌鹅",
+        "非洲鸡",
+        "干炒牛河"
+      ]
+    }
+  ],
+  "failures": []
+}

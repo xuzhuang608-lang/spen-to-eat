@@ -1,0 +1,15 @@
+node_modules/
+miniprogram/miniprogram_npm/
+admin/dist/
+admin/node_modules/
+cloudfunctions/**/node_modules/
+
+project.private.config.json
+*.local
+*.log
+.DS_Store
+Thumbs.db
+~$*
+
+.env
+.env.*

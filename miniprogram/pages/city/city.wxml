@@ -1,0 +1,63 @@
+<view class="page city-page">
+  <view class="section-title">选择城市</view>
+  <view class="muted">点开省份选择城市，也可以直接搜索城市名。</view>
+
+  <view class="search-row">
+    <input class="search-input" value="{{keyword}}" placeholder="搜索城市或省份" bindinput="onSearchInput" />
+    <button wx:if="{{keyword}}" class="clear-button" bindtap="onClearSearch">清空</button>
+  </view>
+
+  <view wx:if="{{keyword}}" class="result-block">
+    <view class="block-title">搜索结果</view>
+    <view wx:if="{{!searchResults.length}}" class="empty">没有找到匹配城市</view>
+    <view class="city-grid">
+      <block wx:for="{{searchResults}}" wx:key="id">
+        <view class="city-chip" data-city="{{item.name}}" bindtap="onSelectCity">
+          <view class="city-name">{{item.name}}</view>
+          <view class="province-name">{{item.province}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view wx:else>
+    <view class="block-title province-title">选择省份</view>
+    <view class="province-groups">
+      <block wx:for="{{provinceGroups}}" wx:key="letter">
+        <view class="province-group">
+          <view class="letter">{{item.letter}}</view>
+          <view class="province-grid">
+            <block wx:for="{{item.provinces}}" wx:for-item="province" wx:key="id">
+              <view
+                class="province-chip {{province.active ? 'active' : ''}}"
+                data-province-id="{{province.id}}"
+                bindtap="onSelectProvince"
+              >
+                {{province.name}}
+              </view>
+            </block>
+          </view>
+
+          <view class="inline-city-panel" wx:if="{{item.expandedProvince}}">
+            <view class="selected-head">
+              <view>
+                <view class="block-title">{{item.expandedProvince.name}}</view>
+                <view class="muted">点击城市后返回首页</view>
+              </view>
+              <view class="city-count">{{item.expandedProvince.cities.length}} 个</view>
+            </view>
+
+            <view class="city-grid">
+              <block wx:for="{{item.expandedProvince.cities}}" wx:for-item="city" wx:key="id">
+                <view class="city-chip" data-city="{{city.name}}" bindtap="onSelectCity">
+                  <view class="city-name">{{city.name}}</view>
+                  <view class="province-name">{{city.fullName}}</view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

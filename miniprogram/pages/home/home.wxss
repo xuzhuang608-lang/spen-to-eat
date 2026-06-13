@@ -1,0 +1,309 @@
+.home {
+  padding-top: 22rpx;
+  background: #fffaf4;
+}
+
+.brand {
+  padding: 28rpx 24rpx 24rpx;
+  border-radius: 28rpx;
+  background: #2f251f;
+  color: #fff;
+  box-shadow: 0 18rpx 42rpx rgba(67, 45, 29, 0.14);
+}
+
+.brand-kicker {
+  color: #ffd166;
+  font-size: 23rpx;
+  font-weight: 800;
+}
+
+.brand-title {
+  margin-top: 10rpx;
+  font-size: 48rpx;
+  line-height: 1.12;
+  font-weight: 900;
+}
+
+.brand-subtitle {
+  margin-top: 14rpx;
+  max-width: 560rpx;
+  color: #ffe8d5;
+  font-size: 27rpx;
+  line-height: 1.45;
+}
+
+.location-bar {
+  display: flex;
+  justify-content: center;
+  gap: 28rpx;
+  margin-top: 18rpx;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.text-action {
+  width: 168rpx;
+  min-width: 0;
+  height: 58rpx;
+  padding: 0 8rpx;
+  border: 2rpx solid #ead8c8;
+  border-radius: 999rpx;
+  background: #fff;
+  color: #4f3b30;
+  font-size: 24rpx;
+  font-weight: 800;
+  line-height: 54rpx;
+  white-space: nowrap;
+}
+
+.meal-panel {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  border: 2rpx solid #ead8c8;
+}
+
+.meal-title {
+  font-size: 40rpx;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.meal-subtitle {
+  margin-top: 8rpx;
+  color: #7a6b61;
+  font-size: 26rpx;
+}
+
+.meal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
+
+.meal-card {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  min-height: 112rpx;
+  padding: 18rpx;
+  border: 2rpx solid #ead8c8;
+  border-radius: 22rpx;
+  background: #fffaf4;
+}
+
+.meal-card.active {
+  border-color: #e84f2a;
+  background: #fff2e7;
+  box-shadow: 0 10rpx 24rpx rgba(232, 79, 42, 0.12);
+}
+
+.meal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 18rpx;
+  background: #fff;
+  font-size: 32rpx;
+}
+
+.meal-name {
+  font-size: 29rpx;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.meal-desc {
+  margin-top: 5rpx;
+  color: #7a6b61;
+  font-size: 22rpx;
+}
+
+.start-button {
+  margin-top: 20rpx;
+}
+
+.assist-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+  margin-top: 18rpx;
+}
+
+.assist-card {
+  min-height: 112rpx;
+  padding: 20rpx;
+  border-radius: 22rpx;
+  background: #fff;
+  border: 2rpx solid #ead8c8;
+}
+
+.assist-title {
+  font-size: 29rpx;
+  font-weight: 900;
+}
+
+.assist-desc {
+  margin-top: 8rpx;
+  color: #7a6b61;
+  font-size: 23rpx;
+}
+
+.inspiration-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-top: 30rpx;
+}
+
+.section-title {
+  margin: 0 0 8rpx;
+  font-size: 36rpx;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.search-button {
+  flex: 0 0 auto;
+  min-width: 116rpx;
+  height: 58rpx;
+  border-radius: 999rpx;
+  background: #2f251f;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+  margin-top: 18rpx;
+  padding-bottom: 34rpx;
+}
+
+.inspiration-empty {
+  margin-top: 18rpx;
+  padding: 28rpx;
+  border: 2rpx solid #ead8c8;
+  border-radius: 24rpx;
+  background: #fff;
+}
+
+.empty-title {
+  color: #2f251f;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.empty-desc {
+  margin-top: 12rpx;
+  color: #7a6b61;
+  font-size: 25rpx;
+  line-height: 1.45;
+}
+
+.empty-button {
+  margin-top: 20rpx;
+  width: 180rpx;
+  height: 62rpx;
+  border-radius: 999rpx;
+  background: #2f251f;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.inspiration-card {
+  min-height: 190rpx;
+  padding: 20rpx;
+  border-radius: 24rpx;
+  border: 2rpx solid #ead8c8;
+  background: #fff;
+}
+
+.inspiration-card.large {
+  grid-column: span 2;
+  min-height: 230rpx;
+  background: #fff2e7;
+  border-color: #f2c6a7;
+}
+
+.dish-meta {
+  color: #a4491e;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.dish-name {
+  margin-top: 10rpx;
+  color: #2f251f;
+  font-size: 36rpx;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.inspiration-card.large .dish-name {
+  font-size: 42rpx;
+}
+
+.dish-phrase {
+  margin-top: 12rpx;
+  color: #6d5d53;
+  font-size: 24rpx;
+  line-height: 1.38;
+}
+
+.dish-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  margin-top: 14rpx;
+}
+
+.dish-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5rpx;
+  max-width: 100%;
+  padding: 6rpx 10rpx;
+  border-radius: 999rpx;
+  background: #fffaf4;
+  color: #7a3d1d;
+  font-size: 20rpx;
+  font-weight: 800;
+}
+
+.badge-icon {
+  font-size: 20rpx;
+  line-height: 1;
+}
+
+.dish-rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6rpx;
+  margin-top: 12rpx;
+}
+
+.rating-label {
+  color: #e84f2a;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.rating-icons {
+  display: inline-block;
+  min-width: 56rpx;
+  color: #e84f2a;
+  font-size: 22rpx;
+  line-height: 1;
+}

@@ -1,0 +1,1588 @@
+{
+  "note": "Old public web reference. Dish names only; use for cross-checking and supplemental candidates.",
+  "generatedAt": "2026-06-13T18:23:51.470Z",
+  "count": 87,
+  "flat": [
+    {
+      "order": 1,
+      "rawCity": "台北",
+      "city": "台北",
+      "province": "台湾",
+      "dish": "鸳鸯火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 2,
+      "rawCity": "高雄",
+      "city": "高雄",
+      "province": "台湾",
+      "dish": "蚵仔煎",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 3,
+      "rawCity": "台南",
+      "city": "台南",
+      "province": "台湾",
+      "dish": "炒鳝鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 4,
+      "rawCity": "香港",
+      "city": "香港",
+      "province": "香港",
+      "dish": "烧腊",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 5,
+      "rawCity": "哈尔滨",
+      "province": "黑龙江",
+      "dish": "得莫利炖活鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 6,
+      "rawCity": "大连",
+      "province": "辽宁",
+      "dish": "咸鱼饼子",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 7,
+      "rawCity": "梅州",
+      "province": "广东",
+      "dish": "客家酿豆腐",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 8,
+      "rawCity": "齐齐哈尔",
+      "province": "黑龙江",
+      "dish": "杀猪菜",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 9,
+      "rawCity": "湛江",
+      "province": "广东",
+      "dish": "本地鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 10,
+      "rawCity": "延安",
+      "province": "陕西",
+      "dish": "羊腥汤",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 11,
+      "rawCity": "西安",
+      "province": "陕西",
+      "dish": "凉拌驴肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 12,
+      "rawCity": "湘潭",
+      "province": "湖南",
+      "dish": "毛家红烧肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 13,
+      "rawCity": "广州",
+      "province": "广东",
+      "dish": "老火靓汤",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 14,
+      "rawCity": "顺德",
+      "city": "佛山",
+      "province": "广东",
+      "dish": "菊花鱼生",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 15,
+      "rawCity": "延吉",
+      "city": "延边",
+      "province": "吉林",
+      "dish": "狗肉火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 16,
+      "rawCity": "长春",
+      "province": "吉林",
+      "dish": "地三鲜",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 17,
+      "rawCity": "佳木斯",
+      "province": "黑龙江",
+      "dish": "酸菜猪肉炖粉条",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 18,
+      "rawCity": "沈阳",
+      "province": "辽宁",
+      "dish": "四川火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 19,
+      "rawCity": "呼和浩特",
+      "province": "内蒙古",
+      "dish": "蒙古烤肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 20,
+      "rawCity": "北京",
+      "province": "北京",
+      "dish": "水煮鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 21,
+      "rawCity": "吉林",
+      "province": "吉林",
+      "dish": "狗肉汤",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 22,
+      "rawCity": "深圳",
+      "province": "广东",
+      "dish": "重庆老火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 23,
+      "rawCity": "珠海",
+      "province": "广东",
+      "dish": "黄骨鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 24,
+      "rawCity": "厦门",
+      "province": "福建",
+      "dish": "水煮活鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 25,
+      "rawCity": "龙岩",
+      "province": "福建",
+      "dish": "酒醉河田鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 26,
+      "rawCity": "成都",
+      "province": "四川",
+      "dish": "泡椒墨鱼仔",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 27,
+      "rawCity": "宜宾",
+      "province": "四川",
+      "dish": "黄辣丁鱼火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 28,
+      "rawCity": "长沙",
+      "province": "湖南",
+      "dish": "干窝带皮蛇",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 29,
+      "rawCity": "海口",
+      "province": "海南",
+      "dish": "砂窝文昌鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 30,
+      "rawCity": "三亚",
+      "province": "海南",
+      "dish": "红咖喱金瓜加积鸭",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 31,
+      "rawCity": "南昌",
+      "province": "江西",
+      "dish": "藜蒿炒腊肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 32,
+      "rawCity": "赣州",
+      "province": "江西",
+      "dish": "赣南小炒鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 33,
+      "rawCity": "萍乡",
+      "province": "江西",
+      "dish": "辣子炒薰肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 34,
+      "rawCity": "吉安",
+      "province": "江西",
+      "dish": "井冈山烟笋烧肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 35,
+      "rawCity": "安顺",
+      "province": "贵州",
+      "dish": "炒饵块",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 36,
+      "rawCity": "银川",
+      "province": "宁夏",
+      "dish": "雪花羊肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 37,
+      "rawCity": "柳州",
+      "province": "广西",
+      "dish": "螺丝鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 38,
+      "rawCity": "泸州",
+      "province": "四川",
+      "dish": "鱼头火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 39,
+      "rawCity": "敦煌",
+      "city": "酒泉",
+      "province": "甘肃",
+      "dish": "双塔鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 40,
+      "rawCity": "泉州",
+      "province": "福建",
+      "dish": "姜母鸭",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 41,
+      "rawCity": "彭州",
+      "city": "成都",
+      "province": "四川",
+      "dish": "九尺板鸭",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 42,
+      "rawCity": "南阳",
+      "province": "河南",
+      "dish": "镇平道口烧鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 43,
+      "rawCity": "邵阳",
+      "province": "湖南",
+      "dish": "爆炒猪血丸子",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 44,
+      "rawCity": "西双版纳",
+      "city": "西双版纳",
+      "province": "云南",
+      "dish": "傣味拼盘",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 45,
+      "rawCity": "天水",
+      "province": "甘肃",
+      "dish": "天水杂烩",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 46,
+      "rawCity": "周庄",
+      "city": "苏州",
+      "province": "江苏",
+      "dish": "万三蹄",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 47,
+      "rawCity": "乌鲁木齐",
+      "province": "新疆",
+      "dish": "手抓羊肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 48,
+      "rawCity": "伊犁",
+      "city": "伊犁",
+      "province": "新疆",
+      "dish": "马肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 49,
+      "rawCity": "喀什",
+      "city": "喀什",
+      "province": "新疆",
+      "dish": "馕坑肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 66,
+      "rawCity": "杭州",
+      "province": "浙江",
+      "dish": "老鸭煲",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 67,
+      "rawCity": "绍兴",
+      "province": "浙江",
+      "dish": "霉干菜烧肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 68,
+      "rawCity": "宁波",
+      "province": "浙江",
+      "dish": "雪菜笋丝汤",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 69,
+      "rawCity": "金华",
+      "province": "浙江",
+      "dish": "兔头煲",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 70,
+      "rawCity": "温州",
+      "province": "浙江",
+      "dish": "红烧梭子蟹",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 71,
+      "rawCity": "合肥",
+      "province": "安徽",
+      "dish": "咸鸭烧黄豆",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 72,
+      "rawCity": "芜湖",
+      "province": "安徽",
+      "dish": "芥菜圆子",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 73,
+      "rawCity": "潮汕",
+      "city": "潮汕",
+      "province": "",
+      "dish": "卤水鹅掌",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 74,
+      "rawCity": "丽江",
+      "province": "云南",
+      "dish": "牦牛火锅",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 75,
+      "rawCity": "腾冲",
+      "city": "腾冲",
+      "province": "",
+      "dish": "大救驾",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 76,
+      "rawCity": "永州",
+      "province": "湖南",
+      "dish": "炒血鸭",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 77,
+      "rawCity": "拉萨",
+      "province": "西藏",
+      "dish": "生牛肉酱",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 78,
+      "rawCity": "昆明",
+      "province": "云南",
+      "dish": "鸡杂炒干巴菌",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 79,
+      "rawCity": "大理",
+      "province": "云南",
+      "dish": "翠梅酸辣鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 80,
+      "rawCity": "遵义",
+      "province": "贵州",
+      "dish": "折耳根炒腊肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 81,
+      "rawCity": "贵阳",
+      "province": "贵州",
+      "dish": "花江狗肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 82,
+      "rawCity": "安顺",
+      "province": "贵州",
+      "dish": "二块粑炒火腿",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 83,
+      "rawCity": "凯里",
+      "city": "凯里",
+      "province": "",
+      "dish": "酸汤鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 84,
+      "rawCity": "桂林",
+      "province": "广西",
+      "dish": "爆炒乌鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 85,
+      "rawCity": "阳朔",
+      "city": "阳朔",
+      "province": "",
+      "dish": "啤酒鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 86,
+      "rawCity": "长沙",
+      "province": "湖南",
+      "dish": "口味虾",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 87,
+      "rawCity": "武汉",
+      "province": "湖北",
+      "dish": "香菜圆子",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 88,
+      "rawCity": "天津",
+      "province": "天津",
+      "dish": "炒清虾仁",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 89,
+      "rawCity": "库尔勒",
+      "city": "库尔勒",
+      "province": "",
+      "dish": "烤鱼",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 90,
+      "rawCity": "沔阳",
+      "city": "沔阳",
+      "province": "",
+      "dish": "沔阳三蒸",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 91,
+      "rawCity": "济南",
+      "province": "山东",
+      "dish": "谭鱼头",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 92,
+      "rawCity": "青岛",
+      "province": "山东",
+      "dish": "海鲜小豆腐",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 93,
+      "rawCity": "烟台",
+      "province": "山东",
+      "dish": "蝎滚绣球",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 94,
+      "rawCity": "德州",
+      "province": "山东",
+      "dish": "德州扒鸡",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 95,
+      "rawCity": "澳门",
+      "province": "澳门",
+      "dish": "葡国生蚝",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 96,
+      "rawCity": "房县",
+      "city": "房县",
+      "province": "",
+      "dish": "清炒小花菇",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 97,
+      "rawCity": "襄樊",
+      "city": "襄樊",
+      "province": "",
+      "dish": "泡菜牛肚丝",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 99,
+      "rawCity": "承德",
+      "province": "河北",
+      "dish": "万字扣肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 101,
+      "rawCity": "重庆",
+      "province": "重庆",
+      "dish": "香辣蟹",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 102,
+      "rawCity": "厦门",
+      "province": "福建",
+      "dish": "菊花酿鱼肚",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 103,
+      "rawCity": "凤凰",
+      "city": "凤凰",
+      "province": "",
+      "dish": "苗家粉蒸肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 104,
+      "rawCity": "济南",
+      "province": "山东",
+      "dish": "孔府地锅一绝",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    },
+    {
+      "order": 105,
+      "rawCity": "西宁",
+      "province": "青海",
+      "dish": "夹沙牛肉",
+      "source": "CCTV ????/???????",
+      "sourceUrls": [
+        "https://www.cctv.com/geography/mfms/20020930/8.html",
+        "https://www.cctv.com/geography/mfms/20020930/21.html"
+      ]
+    }
+  ],
+  "groupedByProvince": {
+    "台湾": {
+      "台北": [
+        {
+          "dish": "鸳鸯火锅",
+          "rawCity": "台北",
+          "order": 1
+        }
+      ],
+      "高雄": [
+        {
+          "dish": "蚵仔煎",
+          "rawCity": "高雄",
+          "order": 2
+        }
+      ],
+      "台南": [
+        {
+          "dish": "炒鳝鱼",
+          "rawCity": "台南",
+          "order": 3
+        }
+      ]
+    },
+    "香港": {
+      "香港": [
+        {
+          "dish": "烧腊",
+          "rawCity": "香港",
+          "order": 4
+        }
+      ]
+    },
+    "黑龙江": {
+      "undefined": [
+        {
+          "dish": "得莫利炖活鱼",
+          "rawCity": "哈尔滨",
+          "order": 5
+        },
+        {
+          "dish": "杀猪菜",
+          "rawCity": "齐齐哈尔",
+          "order": 8
+        },
+        {
+          "dish": "酸菜猪肉炖粉条",
+          "rawCity": "佳木斯",
+          "order": 17
+        }
+      ]
+    },
+    "辽宁": {
+      "undefined": [
+        {
+          "dish": "咸鱼饼子",
+          "rawCity": "大连",
+          "order": 6
+        },
+        {
+          "dish": "四川火锅",
+          "rawCity": "沈阳",
+          "order": 18
+        }
+      ]
+    },
+    "广东": {
+      "undefined": [
+        {
+          "dish": "客家酿豆腐",
+          "rawCity": "梅州",
+          "order": 7
+        },
+        {
+          "dish": "本地鸡",
+          "rawCity": "湛江",
+          "order": 9
+        },
+        {
+          "dish": "老火靓汤",
+          "rawCity": "广州",
+          "order": 13
+        },
+        {
+          "dish": "重庆老火锅",
+          "rawCity": "深圳",
+          "order": 22
+        },
+        {
+          "dish": "黄骨鱼",
+          "rawCity": "珠海",
+          "order": 23
+        }
+      ],
+      "佛山": [
+        {
+          "dish": "菊花鱼生",
+          "rawCity": "顺德",
+          "order": 14
+        }
+      ]
+    },
+    "陕西": {
+      "undefined": [
+        {
+          "dish": "羊腥汤",
+          "rawCity": "延安",
+          "order": 10
+        },
+        {
+          "dish": "凉拌驴肉",
+          "rawCity": "西安",
+          "order": 11
+        }
+      ]
+    },
+    "湖南": {
+      "undefined": [
+        {
+          "dish": "毛家红烧肉",
+          "rawCity": "湘潭",
+          "order": 12
+        },
+        {
+          "dish": "干窝带皮蛇",
+          "rawCity": "长沙",
+          "order": 28
+        },
+        {
+          "dish": "爆炒猪血丸子",
+          "rawCity": "邵阳",
+          "order": 43
+        },
+        {
+          "dish": "炒血鸭",
+          "rawCity": "永州",
+          "order": 76
+        },
+        {
+          "dish": "口味虾",
+          "rawCity": "长沙",
+          "order": 86
+        }
+      ]
+    },
+    "吉林": {
+      "延边": [
+        {
+          "dish": "狗肉火锅",
+          "rawCity": "延吉",
+          "order": 15
+        }
+      ],
+      "undefined": [
+        {
+          "dish": "地三鲜",
+          "rawCity": "长春",
+          "order": 16
+        },
+        {
+          "dish": "狗肉汤",
+          "rawCity": "吉林",
+          "order": 21
+        }
+      ]
+    },
+    "内蒙古": {
+      "undefined": [
+        {
+          "dish": "蒙古烤肉",
+          "rawCity": "呼和浩特",
+          "order": 19
+        }
+      ]
+    },
+    "北京": {
+      "undefined": [
+        {
+          "dish": "水煮鱼",
+          "rawCity": "北京",
+          "order": 20
+        }
+      ]
+    },
+    "福建": {
+      "undefined": [
+        {
+          "dish": "水煮活鱼",
+          "rawCity": "厦门",
+          "order": 24
+        },
+        {
+          "dish": "酒醉河田鸡",
+          "rawCity": "龙岩",
+          "order": 25
+        },
+        {
+          "dish": "姜母鸭",
+          "rawCity": "泉州",
+          "order": 40
+        },
+        {
+          "dish": "菊花酿鱼肚",
+          "rawCity": "厦门",
+          "order": 102
+        }
+      ]
+    },
+    "四川": {
+      "undefined": [
+        {
+          "dish": "泡椒墨鱼仔",
+          "rawCity": "成都",
+          "order": 26
+        },
+        {
+          "dish": "黄辣丁鱼火锅",
+          "rawCity": "宜宾",
+          "order": 27
+        },
+        {
+          "dish": "鱼头火锅",
+          "rawCity": "泸州",
+          "order": 38
+        }
+      ],
+      "成都": [
+        {
+          "dish": "九尺板鸭",
+          "rawCity": "彭州",
+          "order": 41
+        }
+      ]
+    },
+    "海南": {
+      "undefined": [
+        {
+          "dish": "砂窝文昌鸡",
+          "rawCity": "海口",
+          "order": 29
+        },
+        {
+          "dish": "红咖喱金瓜加积鸭",
+          "rawCity": "三亚",
+          "order": 30
+        }
+      ]
+    },
+    "江西": {
+      "undefined": [
+        {
+          "dish": "藜蒿炒腊肉",
+          "rawCity": "南昌",
+          "order": 31
+        },
+        {
+          "dish": "赣南小炒鱼",
+          "rawCity": "赣州",
+          "order": 32
+        },
+        {
+          "dish": "辣子炒薰肉",
+          "rawCity": "萍乡",
+          "order": 33
+        },
+        {
+          "dish": "井冈山烟笋烧肉",
+          "rawCity": "吉安",
+          "order": 34
+        }
+      ]
+    },
+    "贵州": {
+      "undefined": [
+        {
+          "dish": "炒饵块",
+          "rawCity": "安顺",
+          "order": 35
+        },
+        {
+          "dish": "折耳根炒腊肉",
+          "rawCity": "遵义",
+          "order": 80
+        },
+        {
+          "dish": "花江狗肉",
+          "rawCity": "贵阳",
+          "order": 81
+        },
+        {
+          "dish": "二块粑炒火腿",
+          "rawCity": "安顺",
+          "order": 82
+        }
+      ]
+    },
+    "宁夏": {
+      "undefined": [
+        {
+          "dish": "雪花羊肉",
+          "rawCity": "银川",
+          "order": 36
+        }
+      ]
+    },
+    "广西": {
+      "undefined": [
+        {
+          "dish": "螺丝鸡",
+          "rawCity": "柳州",
+          "order": 37
+        },
+        {
+          "dish": "爆炒乌鸡",
+          "rawCity": "桂林",
+          "order": 84
+        }
+      ]
+    },
+    "甘肃": {
+      "酒泉": [
+        {
+          "dish": "双塔鱼",
+          "rawCity": "敦煌",
+          "order": 39
+        }
+      ],
+      "undefined": [
+        {
+          "dish": "天水杂烩",
+          "rawCity": "天水",
+          "order": 45
+        }
+      ]
+    },
+    "河南": {
+      "undefined": [
+        {
+          "dish": "镇平道口烧鸡",
+          "rawCity": "南阳",
+          "order": 42
+        }
+      ]
+    },
+    "云南": {
+      "西双版纳": [
+        {
+          "dish": "傣味拼盘",
+          "rawCity": "西双版纳",
+          "order": 44
+        }
+      ],
+      "undefined": [
+        {
+          "dish": "牦牛火锅",
+          "rawCity": "丽江",
+          "order": 74
+        },
+        {
+          "dish": "鸡杂炒干巴菌",
+          "rawCity": "昆明",
+          "order": 78
+        },
+        {
+          "dish": "翠梅酸辣鱼",
+          "rawCity": "大理",
+          "order": 79
+        }
+      ]
+    },
+    "江苏": {
+      "苏州": [
+        {
+          "dish": "万三蹄",
+          "rawCity": "周庄",
+          "order": 46
+        }
+      ]
+    },
+    "新疆": {
+      "undefined": [
+        {
+          "dish": "手抓羊肉",
+          "rawCity": "乌鲁木齐",
+          "order": 47
+        }
+      ],
+      "伊犁": [
+        {
+          "dish": "马肉",
+          "rawCity": "伊犁",
+          "order": 48
+        }
+      ],
+      "喀什": [
+        {
+          "dish": "馕坑肉",
+          "rawCity": "喀什",
+          "order": 49
+        }
+      ]
+    },
+    "浙江": {
+      "undefined": [
+        {
+          "dish": "老鸭煲",
+          "rawCity": "杭州",
+          "order": 66
+        },
+        {
+          "dish": "霉干菜烧肉",
+          "rawCity": "绍兴",
+          "order": 67
+        },
+        {
+          "dish": "雪菜笋丝汤",
+          "rawCity": "宁波",
+          "order": 68
+        },
+        {
+          "dish": "兔头煲",
+          "rawCity": "金华",
+          "order": 69
+        },
+        {
+          "dish": "红烧梭子蟹",
+          "rawCity": "温州",
+          "order": 70
+        }
+      ]
+    },
+    "安徽": {
+      "undefined": [
+        {
+          "dish": "咸鸭烧黄豆",
+          "rawCity": "合肥",
+          "order": 71
+        },
+        {
+          "dish": "芥菜圆子",
+          "rawCity": "芜湖",
+          "order": 72
+        }
+      ]
+    },
+    "unmatched": {
+      "潮汕": [
+        {
+          "dish": "卤水鹅掌",
+          "rawCity": "潮汕",
+          "order": 73
+        }
+      ],
+      "腾冲": [
+        {
+          "dish": "大救驾",
+          "rawCity": "腾冲",
+          "order": 75
+        }
+      ],
+      "凯里": [
+        {
+          "dish": "酸汤鱼",
+          "rawCity": "凯里",
+          "order": 83
+        }
+      ],
+      "阳朔": [
+        {
+          "dish": "啤酒鱼",
+          "rawCity": "阳朔",
+          "order": 85
+        }
+      ],
+      "库尔勒": [
+        {
+          "dish": "烤鱼",
+          "rawCity": "库尔勒",
+          "order": 89
+        }
+      ],
+      "沔阳": [
+        {
+          "dish": "沔阳三蒸",
+          "rawCity": "沔阳",
+          "order": 90
+        }
+      ],
+      "房县": [
+        {
+          "dish": "清炒小花菇",
+          "rawCity": "房县",
+          "order": 96
+        }
+      ],
+      "襄樊": [
+        {
+          "dish": "泡菜牛肚丝",
+          "rawCity": "襄樊",
+          "order": 97
+        }
+      ],
+      "凤凰": [
+        {
+          "dish": "苗家粉蒸肉",
+          "rawCity": "凤凰",
+          "order": 103
+        }
+      ]
+    },
+    "西藏": {
+      "undefined": [
+        {
+          "dish": "生牛肉酱",
+          "rawCity": "拉萨",
+          "order": 77
+        }
+      ]
+    },
+    "湖北": {
+      "undefined": [
+        {
+          "dish": "香菜圆子",
+          "rawCity": "武汉",
+          "order": 87
+        }
+      ]
+    },
+    "天津": {
+      "undefined": [
+        {
+          "dish": "炒清虾仁",
+          "rawCity": "天津",
+          "order": 88
+        }
+      ]
+    },
+    "山东": {
+      "undefined": [
+        {
+          "dish": "谭鱼头",
+          "rawCity": "济南",
+          "order": 91
+        },
+        {
+          "dish": "海鲜小豆腐",
+          "rawCity": "青岛",
+          "order": 92
+        },
+        {
+          "dish": "蝎滚绣球",
+          "rawCity": "烟台",
+          "order": 93
+        },
+        {
+          "dish": "德州扒鸡",
+          "rawCity": "德州",
+          "order": 94
+        },
+        {
+          "dish": "孔府地锅一绝",
+          "rawCity": "济南",
+          "order": 104
+        }
+      ]
+    },
+    "澳门": {
+      "undefined": [
+        {
+          "dish": "葡国生蚝",
+          "rawCity": "澳门",
+          "order": 95
+        }
+      ]
+    },
+    "河北": {
+      "undefined": [
+        {
+          "dish": "万字扣肉",
+          "rawCity": "承德",
+          "order": 99
+        }
+      ]
+    },
+    "重庆": {
+      "undefined": [
+        {
+          "dish": "香辣蟹",
+          "rawCity": "重庆",
+          "order": 101
+        }
+      ]
+    },
+    "青海": {
+      "undefined": [
+        {
+          "dish": "夹沙牛肉",
+          "rawCity": "西宁",
+          "order": 105
+        }
+      ]
+    }
+  }
+}
