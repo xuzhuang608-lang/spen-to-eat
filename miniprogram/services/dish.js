@@ -74,6 +74,11 @@ const cityByName = selectableCities.reduce((map, city) => {
   return map;
 }, {});
 
+const selectableCityNames = selectableCities
+  .map((city) => city.name)
+  .filter((name) => name && name.length >= 2)
+  .sort((a, b) => b.length - a.length);
+
 const citySlogans = {};
 const dishesByCity = {};
 const dishById = {};
@@ -177,6 +182,15 @@ function expandDish(compactDish, province, index) {
   return dish;
 }
 
+function shouldDropSharedPlaceDish(dish) {
+  if (dish.sourceBucket === "cityExact" || dish.sourceBucket === "nationalGeneral") {
+    return false;
+  }
+  return selectableCityNames.some((cityName) => (
+    cityName !== dish.city && dish.name.includes(cityName)
+  ));
+}
+
 function ensureAllDishes() {
   if (allDishes) return allDishes;
 
@@ -189,6 +203,7 @@ function ensureAllDishes() {
     });
     provinceData.dishes.forEach((compactDish, index) => {
       const dish = expandDish(compactDish, province, index);
+      if (shouldDropSharedPlaceDish(dish)) return;
       allDishes.push(dish);
       dishById[dish.id] = dish;
       if (!dishesByCity[dish.city]) dishesByCity[dish.city] = [];

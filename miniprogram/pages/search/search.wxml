@@ -12,10 +12,12 @@
     <view class="panel result-item" wx:for="{{results}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
       <view>
         <view class="dish-name">{{item.name}}</view>
-        <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
+        <view class="muted">
+          {{item.cityLabel || item.city}} · {{item.category}} · {{item.taste}}
+          <text wx:if="{{item.duplicateCount > 1}}"> · 已合并同名</text>
+        </view>
       </view>
       <view class="arrow">›</view>
     </view>
   </view>
 </view>
-
