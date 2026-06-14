@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "饭局提议"
+  "navigationBarTitleText": "饭局提议",
+  "usingComponents": {
+    "dish-sheet": "/components/dish-sheet/dish-sheet"
+  }
 }

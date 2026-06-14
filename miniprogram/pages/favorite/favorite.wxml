@@ -16,4 +16,6 @@
   </view>
 
   <button class="primary-button poll-button" bindtap="onCreatePoll">用这些组饭局</button>
+
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bind:close="onCloseDishSheet" />
 </view>

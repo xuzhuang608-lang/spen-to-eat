@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "收藏历史"
+  "navigationBarTitleText": "收藏历史",
+  "usingComponents": {
+    "dish-sheet": "/components/dish-sheet/dish-sheet"
+  }
 }
-

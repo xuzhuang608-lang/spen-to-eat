@@ -1,0 +1,34 @@
+<view wx:if="{{visible && viewDish}}" class="dish-sheet-mask" catchtap="onClose">
+  <view class="dish-sheet" catchtap="noop">
+    <view class="sheet-handle"></view>
+    <view class="sheet-head">
+      <view>
+        <view class="sheet-city">{{viewDish.city}}</view>
+        <view class="sheet-title">{{viewDish.name}}</view>
+      </view>
+      <view class="sheet-close" catchtap="onClose">×</view>
+    </view>
+
+    <view class="sheet-phrase">{{viewDish.phrase}}</view>
+
+    <view class="sheet-tags">
+      <text wx:for="{{viewDish.tagLine}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="sheet-rating">
+      <text class="rating-label">本地特色</text>
+      <view class="rating-icons">
+        <text class="rating-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{viewDish.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+      </view>
+    </view>
+
+    <view class="sheet-desc">{{viewDish.description}}</view>
+
+    <view class="sheet-actions">
+      <button class="sheet-action primary" bindtap="onPick">就吃这个</button>
+      <button class="sheet-action" bindtap="onFavorite">{{favorited ? "已经收好" : "收藏起来"}}</button>
+      <button class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
+      <button class="sheet-action" bindtap="onFeedback">提个建议</button>
+    </view>
+  </view>
+</view>

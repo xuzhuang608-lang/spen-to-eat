@@ -77,4 +77,6 @@
       <button wx:if="{{addWheelPicked}}" class="add-wheel-confirm" bindtap="onAddPickedDish">加进这桌</button>
     </view>
   </view>
+
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bind:close="onCloseDishSheet" />
 </view>

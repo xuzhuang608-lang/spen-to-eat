@@ -30,6 +30,8 @@ Page({
   data: {
     keyword: "",
     results: [],
+    dishSheetVisible: false,
+    detailDish: null,
     hotTags: ["宵夜", "甜品", "不吃辣", "海鲜", "早餐", "牛肉"]
   },
 
@@ -51,6 +53,15 @@ Page({
 
   onOpenDish(event) {
     const { id } = event.currentTarget.dataset;
-    wx.navigateTo({ url: `/pages/result/result?id=${id}` });
+    const detailDish = this.data.results.find((dish) => dish.id === id);
+    if (!detailDish) return;
+    this.setData({
+      detailDish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
   }
 });

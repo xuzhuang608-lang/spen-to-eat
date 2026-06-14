@@ -104,7 +104,9 @@ Page({
     selectedMeal: "午餐",
     mealOptions,
     featuredDishes: [],
-    inspiration: ""
+    inspiration: "",
+    dishSheetVisible: false,
+    detailDish: null
   },
 
   onShow() {
@@ -165,7 +167,17 @@ Page({
   },
 
   onOpenDish(event) {
-    wx.navigateTo({ url: `/pages/result/result?id=${event.currentTarget.dataset.id}` });
+    const { id } = event.currentTarget.dataset;
+    const detailDish = this.data.featuredDishes.find((dish) => dish.id === id);
+    if (!detailDish) return;
+    this.setData({
+      detailDish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
   },
 
   onSearch() {

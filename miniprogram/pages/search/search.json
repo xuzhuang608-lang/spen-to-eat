@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "搜索"
+  "navigationBarTitleText": "搜索",
+  "usingComponents": {
+    "dish-sheet": "/components/dish-sheet/dish-sheet"
+  }
 }
-

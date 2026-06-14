@@ -128,4 +128,6 @@
       </view>
     </view>
   </view>
+
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bind:close="onCloseDishSheet" />
 </view>

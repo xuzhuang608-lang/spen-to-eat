@@ -166,7 +166,9 @@ Page({
     addWheelSpinning: false,
     addWheelAngle: 0,
     addWheelPicked: null,
-    addWheelChosenMap: {}
+    addWheelChosenMap: {},
+    dishSheetVisible: false,
+    detailDish: null
   },
 
   onLoad(query) {
@@ -212,7 +214,14 @@ Page({
     const { id } = event.currentTarget.dataset;
     const dish = this.data.dishes.find((item) => item.id === id);
     if (!dish || dish.custom) return;
-    wx.navigateTo({ url: `/pages/result/result?id=${id}` });
+    this.setData({
+      detailDish: dish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
   },
 
   noop() {},

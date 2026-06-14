@@ -1,5 +1,5 @@
 const app = getApp();
-const { getCandidateDishes } = require("../../services/dish");
+const { getCandidateDishes, getDishById } = require("../../services/dish");
 
 const rawOptionGroups = [
   { key: "mealTime", title: "用餐时间", options: ["不限", "早餐", "午餐", "晚餐", "夜宵"] },
@@ -165,7 +165,9 @@ Page({
     hasContent: true,
     customMode: false,
     customTargetIndex: -1,
-    customName: ""
+    customName: "",
+    dishSheetVisible: false,
+    detailDish: null
   },
 
   onLoad(query) {
@@ -288,7 +290,16 @@ Page({
       wx.showToast({ title: "自选菜不看详情", icon: "none" });
       return;
     }
-    wx.navigateTo({ url: `/pages/result/result?id=${id}` });
+    const detailDish = getDishById(id);
+    if (!detailDish) return;
+    this.setData({
+      detailDish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
   },
 
   onStartCustomReplace() {

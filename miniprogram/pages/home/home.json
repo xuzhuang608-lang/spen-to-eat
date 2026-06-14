@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "饭点转转"
+  "navigationBarTitleText": "饭点转转",
+  "usingComponents": {
+    "dish-sheet": "/components/dish-sheet/dish-sheet"
+  }
 }
-
