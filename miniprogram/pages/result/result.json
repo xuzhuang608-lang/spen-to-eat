@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "转盘结果"
+  "navigationBarTitleText": "转盘结果",
+  "usingComponents": {
+    "dish-sheet": "/components/dish-sheet/dish-sheet"
+  }
 }
-

@@ -8,7 +8,9 @@ Page({
     rating: "",
     favorited: false,
     favoriteText: "\u6536\u85cf\u8d77\u6765",
-    relatedDishes: []
+    relatedDishes: [],
+    dishSheetVisible: false,
+    detailDish: null
   },
 
   onLoad(query) {
@@ -63,7 +65,16 @@ Page({
 
   onOpenRelated(event) {
     const { id } = event.currentTarget.dataset;
-    this.loadDish(id);
+    const detailDish = this.data.relatedDishes.find((item) => item.id === id) || getDishById(id);
+    if (!detailDish) return;
+    this.setData({
+      detailDish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
   },
 
   onFeedback() {
