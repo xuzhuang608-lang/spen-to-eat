@@ -19,7 +19,7 @@
       </view>
       <view class="dish-side">
         <view class="want-pill">{{item.wantText}}</view>
-        <view wx:if="{{item.showDetail}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看看</view>
+        <view wx:if="{{item.showDetail}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看详情</view>
       </view>
     </view>
   </view>
@@ -78,5 +78,5 @@
     </view>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="{{detailPickLabel}}" pick-mode="emit" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

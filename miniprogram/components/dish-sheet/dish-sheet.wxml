@@ -25,7 +25,7 @@
     <view class="sheet-desc">{{viewDish.description}}</view>
 
     <view class="sheet-actions">
-      <button class="sheet-action primary" bindtap="onPick">就吃这个</button>
+      <button class="sheet-action primary" bindtap="onPick">{{pickLabel}}</button>
       <button class="sheet-action" bindtap="onFavorite">{{favoriteLabel}}</button>
       <button class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
       <button class="sheet-action" bindtap="onFeedback">提个建议</button>

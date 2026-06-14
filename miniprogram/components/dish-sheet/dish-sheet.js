@@ -30,6 +30,14 @@ Component({
       observer(value) {
         this.syncDish(value);
       }
+    },
+    pickLabel: {
+      type: String,
+      value: "\u5c31\u5403\u8fd9\u4e2a"
+    },
+    pickMode: {
+      type: String,
+      value: "result"
     }
   },
 
@@ -69,6 +77,10 @@ Component({
     onPick() {
       const dish = this.data.viewDish;
       if (!dish) return;
+      if (this.properties.pickMode === "emit") {
+        this.triggerEvent("pick", { dish });
+        return;
+      }
       this.triggerEvent("close");
       wx.navigateTo({ url: `/pages/result/result?id=${dish.id}` });
     },

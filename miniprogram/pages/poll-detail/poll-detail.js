@@ -190,7 +190,8 @@ Page({
     addWheelButtonText: "\u5f00\u59cb\u8f6c",
     addWheelChosenMap: {},
     dishSheetVisible: false,
-    detailDish: null
+    detailDish: null,
+    detailPickLabel: "\u60f3\u5403\u8fd9\u4e2a"
   },
 
   onLoad(query) {
@@ -241,12 +242,30 @@ Page({
     if (!dish || dish.custom) return;
     this.setData({
       detailDish: dish,
+      detailPickLabel: this.data.selectedMap[id] ? "\u5df2\u7ecf\u60f3\u5403" : "\u60f3\u5403\u8fd9\u4e2a",
       dishSheetVisible: true
     });
   },
 
   onCloseDishSheet() {
     this.setData({ dishSheetVisible: false });
+  },
+
+  onPickDetailDish(event) {
+    const dish = event.detail && event.detail.dish;
+    if (!dish) return;
+    const selectedMap = Object.assign({}, this.data.selectedMap);
+    selectedMap[dish.id] = true;
+    const reacted = Object.keys(selectedMap).some((key) => selectedMap[key]);
+    const copy = getPageCopy(this.data.isSingle, reacted);
+    this.setData({
+      selectedMap,
+      dishes: decorateDishes(this.data.dishes, selectedMap, this.data.isSingle, copy.reactText),
+      dishSheetVisible: false,
+      detailPickLabel: "\u5df2\u7ecf\u60f3\u5403",
+      ...copy
+    });
+    wx.showToast({ title: "\u5df2\u8bb0\u4e0b\uff0c\u60f3\u5403", icon: "none" });
   },
 
   noop() {},
