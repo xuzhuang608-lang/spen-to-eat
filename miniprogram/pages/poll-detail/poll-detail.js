@@ -147,7 +147,7 @@ function getPageCopy(isSingle, reacted) {
     };
   }
   return {
-    pageTitle: "这几道，挑一个开吃",
+    pageTitle: "这几道，挑一个",
     pageDesc: "先把想吃的放桌上，发群里少纠结一点。",
     reactText: "想吃",
     shareTitle: "这几道先放桌上",
