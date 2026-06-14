@@ -34,8 +34,8 @@
 
   <view class="assist-row">
     <view class="assist-card" bindtap="onCreatePoll">
-      <view class="assist-title">发起群投票</view>
-      <view class="assist-desc">朋友一起决定</view>
+      <view class="assist-title">组个饭局</view>
+      <view class="assist-desc">把想吃的发出去</view>
     </view>
     <view class="assist-card" bindtap="onFavorite">
       <view class="assist-title">收藏历史</view>
@@ -75,7 +75,9 @@
         </view>
         <view class="dish-rating">
           <text class="rating-label">本地特色</text>
-          <text class="rating-icons">{{item.ratingText}}</text>
+          <view class="rating-icons">
+            <text class="rating-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+          </view>
         </view>
       </view>
     </block>

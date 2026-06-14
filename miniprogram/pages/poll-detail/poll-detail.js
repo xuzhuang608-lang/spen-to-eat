@@ -1,92 +1,211 @@
-const { getDishById } = require("../../services/dish");
+const { getDishById, getProposalDishes } = require("../../services/dish");
 
-function getPageCopy(isSingle, voteSubmitted) {
+const MAX_PROPOSAL_ITEMS = 8;
+const wheelSlotAngles = [315, 0, 45, 90, 135, 180, 225, 270];
+
+function shuffle(list) {
+  const copy = list.slice();
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const target = Math.floor(Math.random() * (index + 1));
+    const temp = copy[index];
+    copy[index] = copy[target];
+    copy[target] = temp;
+  }
+  return copy;
+}
+
+function uniqueByName(list) {
+  const seen = {};
+  return list.filter((dish) => {
+    if (!dish || seen[dish.name]) return false;
+    seen[dish.name] = true;
+    return true;
+  });
+}
+
+function getDishIcon(dish) {
+  const tags = dish.tags || [];
+  if (tags.includes("海鲜") || dish.name.includes("虾") || dish.name.includes("蟹")) return "🦐";
+  if (tags.includes("牛肉") || dish.name.includes("牛")) return "🥩";
+  if (tags.includes("粥品") || dish.name.includes("粥")) return "🥣";
+  if (tags.includes("火锅") || dish.name.includes("锅")) return "🍲";
+  if (tags.includes("面食") || tags.includes("汤粉") || tags.includes("米粉") || dish.name.includes("面") || dish.name.includes("粉")) return "🍜";
+  if (tags.includes("糕点") || dish.category === "甜品") return "🍮";
+  if (dish.category === "饮品") return "🥤";
+  if (dish.category === "小吃") return "🥟";
+  return "🍚";
+}
+
+function buildWheelItems(list) {
+  return list.slice(0, 8).map((dish, index) => Object.assign({}, dish, {
+    icon: getDishIcon(dish),
+    shortName: dish.name.length > 5 ? `${dish.name.slice(0, 5)}...` : dish.name,
+    posClass: `mini-pos-${index}`,
+    slotIndex: index
+  }));
+}
+
+function weightedPick(list) {
+  if (!list.length) return null;
+  const total = list.reduce((sum, dish) => sum + (dish.weight || 1), 0);
+  let cursor = Math.random() * total;
+  for (let index = 0; index < list.length; index += 1) {
+    cursor -= list[index].weight || 1;
+    if (cursor <= 0) return list[index];
+  }
+  return list[list.length - 1];
+}
+
+function getTargetWheelAngle(currentAngle, slotIndex) {
+  const target = (wheelSlotAngles[slotIndex] + 360) % 360;
+  const current = ((currentAngle % 360) + 360) % 360;
+  const delta = (target - current + 360) % 360;
+  return currentAngle + 2160 + delta;
+}
+
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch (error) {
+    return value || "";
+  }
+}
+
+function parseCustomDishes(value, city) {
+  if (!value) return [];
+  try {
+    const list = JSON.parse(safeDecode(value));
+    return list.slice(0, 2).map((item, index) => ({
+      id: item.id || `share-custom-${index}`,
+      name: String(item.name || item.n || "").slice(0, 8),
+      city: item.city || item.c || city || "自定义",
+      category: item.category || item.k || "自定义",
+      taste: item.taste || item.t || "想吃",
+      custom: true
+    })).filter((item) => item.name);
+  } catch (error) {
+    return [];
+  }
+}
+
+function makeProposalFromQuery(query) {
+  const city = safeDecode(query.city || "");
+  const ids = String(query.ids || query.dishId || "")
+    .split(",")
+    .map((id) => safeDecode(id).trim())
+    .filter(Boolean);
+  const items = ids.map((id) => getDishById(id)).filter(Boolean);
+  const customItems = parseCustomDishes(query.custom, city);
+  const allItems = items.concat(customItems).slice(0, MAX_PROPOSAL_ITEMS);
+  if (!allItems.length) return null;
+  return {
+    id: query.id || "",
+    city: city || allItems[0].city,
+    selectedIds: allItems.map((item) => item.id),
+    items: allItems,
+    createdAt: Date.now()
+  };
+}
+
+function getStoredProposal(id) {
+  const proposals = wx.getStorageSync("proposals") || {};
+  if (proposals[id]) return proposals[id];
+
+  const oldPolls = wx.getStorageSync("polls") || {};
+  return oldPolls[id] || null;
+}
+
+function getPageCopy(isSingle, reacted) {
   if (isSingle) {
     return {
-      pageTitle: "就吃这个？",
-      pageDesc: "有人提了这个，看看大家想不想一起吃。",
-      submitText: "我也想吃",
-      shareTitle: voteSubmitted ? "你也想吃，喊朋友一起看看" : "把这个提议发群里",
-      shareDesc: voteSubmitted ? "看看最后有多少人一起点头。" : "看看大家想不想一起吃。"
+      pageTitle: "这顿就它？",
+      pageDesc: "有人提了这道菜，看看你想不想一起吃。",
+      reactText: reacted ? "已经点头" : "我也想吃",
+      shareTitle: reacted ? "我也想吃，喊朋友一起看看" : "这道看起来可以，来看看？",
+      shareDesc: "发到群里，让大家先有个方向。"
     };
   }
   return {
-    pageTitle: "这顿吃什么",
-    pageDesc: "",
-    submitText: "提交投票",
-    shareTitle: voteSubmitted ? "投好了，喊朋友也来选" : "把这顿饭局发出去",
-    shareDesc: voteSubmitted ? "看看大家最后会把票投给谁。" : "发到群里，让大家一起定。"
+    pageTitle: "这几道，挑一个开吃",
+    pageDesc: "先把想吃的放桌上，发群里少纠结一点。",
+    reactText: "想吃",
+    shareTitle: "这几道先放桌上",
+    shareDesc: "今晚挑一个，别让饭点卡太久。"
   };
+}
+
+function buildSharePath(dishes) {
+  const normalIds = dishes.filter((dish) => !dish.custom).map((dish) => dish.id);
+  const custom = dishes.filter((dish) => dish.custom).slice(0, 2).map((dish) => ({
+    id: dish.id,
+    n: dish.name,
+    c: dish.city,
+    k: dish.category,
+    t: dish.taste
+  }));
+  const params = [];
+  if (normalIds.length) params.push(`ids=${normalIds.map(encodeURIComponent).join(",")}`);
+  if (custom.length) params.push(`custom=${encodeURIComponent(JSON.stringify(custom))}`);
+  if (dishes[0] && dishes[0].city) params.push(`city=${encodeURIComponent(dishes[0].city)}`);
+  return `/pages/poll-detail/poll-detail?${params.join("&")}`;
 }
 
 Page({
   data: {
-    pollId: "",
-    poll: null,
+    proposal: null,
     dishes: [],
     selectedMap: {},
-    expired: false,
-    voterName: "",
-    voteSubmitted: false,
     isSingle: false,
     pageTitle: "这顿吃什么",
     pageDesc: "",
-    submitText: "提交投票",
+    reactText: "想吃这个",
     shareTitle: "把这顿饭局发出去",
-    shareDesc: "发到群里，让大家一起定。"
+    shareDesc: "发到群里，让大家先有个方向。",
+    addWheelVisible: false,
+    addWheelItems: [],
+    addWheelSpinning: false,
+    addWheelAngle: 0,
+    addWheelPicked: null,
+    addWheelChosenMap: {}
   },
 
   onLoad(query) {
-    this.setData({ pollId: query.id });
-    this.loadPoll(query.id);
+    this.loadProposal(query || {});
   },
 
-  loadPoll(id) {
-    const polls = wx.getStorageSync("polls") || {};
-    const poll = polls[id];
-    if (!poll) {
-      wx.showToast({ title: "投票不存在", icon: "none" });
+  loadProposal(query) {
+    const proposal = query.id ? getStoredProposal(query.id) : makeProposalFromQuery(query);
+    if (!proposal) {
+      wx.showToast({ title: "提议内容不见了", icon: "none" });
       return;
     }
-    const pollItems = poll.items || [];
-    const dishes = poll.selectedIds.map((dishId) => {
-      const dish = pollItems.find((item) => item.id === dishId) || getDishById(dishId);
-      const count = poll.votes[dishId] || 0;
-      const voters = poll.voters && poll.voters[dishId] ? poll.voters[dishId] : [];
-      return Object.assign({}, dish, {
-        count,
-        voters,
-        voterText: voters.join("、")
-      });
-    }).filter((dish) => dish.id);
+
+    const proposalItems = proposal.items || [];
+    const dishes = (proposal.selectedIds || proposalItems.map((item) => item.id)).map((dishId) => (
+      proposalItems.find((item) => item.id === dishId) || getDishById(dishId)
+    )).filter(Boolean).slice(0, MAX_PROPOSAL_ITEMS);
     const isSingle = dishes.length === 1;
-    const displayDishes = dishes.map((dish) => Object.assign({}, dish, {
-      countText: isSingle ? `${dish.count} 人想吃` : `${dish.count} 票`
-    }));
+    const copy = getPageCopy(isSingle, false);
+
     this.setData({
-      poll,
-      dishes: displayDishes,
-      expired: Date.now() > poll.expiresAt,
+      proposal,
+      dishes,
+      selectedMap: {},
       isSingle,
-      ...getPageCopy(isSingle, this.data.voteSubmitted),
-      pageDesc: isSingle ? "有人提了这个，看看大家想不想一起吃。" : `每人最多投 ${poll.voteLimit} 个，投票 24 小时后结束。`
+      ...copy
     });
   },
 
-  onToggleVote(event) {
-    if (this.data.expired) return;
+  onToggleWant(event) {
     const id = event.currentTarget.dataset.id;
     const selectedMap = Object.assign({}, this.data.selectedMap);
-    const selectedCount = Object.keys(selectedMap).filter((key) => selectedMap[key]).length;
-    if (selectedMap[id]) {
-      selectedMap[id] = false;
-    } else if (selectedCount < this.data.poll.voteLimit) {
-      selectedMap[id] = true;
-    } else {
-      wx.showToast({ title: `最多投 ${this.data.poll.voteLimit} 个`, icon: "none" });
-      return;
-    }
-    this.setData({ selectedMap });
+    selectedMap[id] = !selectedMap[id];
+    const reacted = Object.keys(selectedMap).some((key) => selectedMap[key]);
+    this.setData({
+      selectedMap,
+      ...getPageCopy(this.data.isSingle, reacted)
+    });
+    wx.showToast({ title: selectedMap[id] ? "记下了，想吃" : "已取消", icon: "none" });
   },
 
   onOpenDishDetail(event) {
@@ -96,51 +215,137 @@ Page({
     wx.navigateTo({ url: `/pages/result/result?id=${id}` });
   },
 
-  onNameInput(event) {
-    this.setData({ voterName: event.detail.value });
+  noop() {},
+
+  onSpinAgain() {
+    if (this.data.dishes.length >= MAX_PROPOSAL_ITEMS) {
+      wx.showModal({
+        title: "这桌已经满了",
+        content: `最多先放 ${MAX_PROPOSAL_ITEMS} 道菜。想继续换口味，可以重新配一桌。`,
+        confirmText: "知道了",
+        showCancel: false
+      });
+      return;
+    }
+    const city = this.data.proposal && this.data.proposal.city ? this.data.proposal.city : this.data.dishes[0].city;
+    const existingNames = this.data.dishes.reduce((map, dish) => {
+      map[dish.name] = true;
+      return map;
+    }, {});
+    const pool = uniqueByName(["local", "province", "common"].reduce((list, scope) => (
+      list.concat(getProposalDishes(city, scope))
+    ), [])).filter((dish) => !existingNames[dish.name]);
+    const addWheelItems = buildWheelItems(shuffle(pool));
+    if (!addWheelItems.length) {
+      wx.showToast({ title: "暂时没有可加的菜", icon: "none" });
+      return;
+    }
+    this.setData({
+      addWheelVisible: true,
+      addWheelItems,
+      addWheelPicked: null,
+      addWheelChosenMap: {},
+      addWheelSpinning: false
+    });
   },
 
-  onSubmitVote() {
-    if (this.data.expired) return;
-    let selectedIds = Object.keys(this.data.selectedMap).filter((id) => this.data.selectedMap[id]);
-    if (!selectedIds.length && this.data.isSingle && this.data.dishes[0]) {
-      selectedIds = [this.data.dishes[0].id];
-    }
-    if (!selectedIds.length) {
-      wx.showToast({ title: "先选一个", icon: "none" });
-      return;
-    }
-    const voterName = String(this.data.voterName || "").trim();
-    if (!this.data.poll.anonymous && !voterName) {
-      wx.showToast({ title: "先填个称呼", icon: "none" });
-      return;
-    }
-    const polls = wx.getStorageSync("polls") || {};
-    const poll = polls[this.data.pollId];
-    poll.voters = poll.voters || {};
-    selectedIds.forEach((id) => {
-      poll.votes[id] = (poll.votes[id] || 0) + 1;
-      if (!poll.anonymous) {
-        const voters = poll.voters[id] || [];
-        if (!voters.includes(voterName)) voters.push(voterName);
-        poll.voters[id] = voters;
-      }
-    });
-    polls[this.data.pollId] = poll;
-    wx.setStorageSync("polls", polls);
+  onCloseAddWheel() {
+    if (this.data.addWheelSpinning) return;
     this.setData({
-      selectedMap: {},
-      voteSubmitted: true,
-      ...getPageCopy(this.data.isSingle, true)
+      addWheelVisible: false,
+      addWheelPicked: null,
+      addWheelChosenMap: {}
     });
-    this.loadPoll(this.data.pollId);
-    wx.showToast({ title: "投票成功", icon: "success" });
+  },
+
+  onRefreshAddWheel() {
+    if (this.data.addWheelSpinning) return;
+    const previousIds = this.data.addWheelItems.map((dish) => dish.id);
+    const city = this.data.proposal && this.data.proposal.city ? this.data.proposal.city : this.data.dishes[0].city;
+    const existingNames = this.data.dishes.reduce((map, dish) => {
+      map[dish.name] = true;
+      return map;
+    }, {});
+    const pool = uniqueByName(["local", "province", "common"].reduce((list, scope) => (
+      list.concat(getProposalDishes(city, scope))
+    ), [])).filter((dish) => !existingNames[dish.name]);
+    const fresh = pool.filter((dish) => !previousIds.includes(dish.id));
+    this.setData({
+      addWheelItems: buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)),
+      addWheelPicked: null,
+      addWheelChosenMap: {}
+    });
+  },
+
+  onStartAddWheel() {
+    if (this.data.addWheelSpinning) return;
+    const result = weightedPick(this.data.addWheelItems);
+    if (!result) {
+      wx.showToast({ title: "暂时没有可转的菜", icon: "none" });
+      return;
+    }
+    const nextAngle = getTargetWheelAngle(this.data.addWheelAngle, result.slotIndex || 0);
+    this.setData({
+      addWheelSpinning: true,
+      addWheelAngle: nextAngle,
+      addWheelPicked: null,
+      addWheelChosenMap: {}
+    });
+    setTimeout(() => {
+      this.setData({
+        addWheelSpinning: false,
+        addWheelPicked: result,
+        addWheelChosenMap: { [result.id]: true }
+      });
+    }, 1500);
+  },
+
+  onAddPickedDish() {
+    const dish = this.data.addWheelPicked;
+    if (!dish) {
+      wx.showToast({ title: "先转一道菜", icon: "none" });
+      return;
+    }
+    if (this.data.dishes.length >= MAX_PROPOSAL_ITEMS) {
+      wx.showModal({
+        title: "这桌已经满了",
+        content: `最多先放 ${MAX_PROPOSAL_ITEMS} 道菜。想继续换口味，可以重新配一桌。`,
+        confirmText: "知道了",
+        showCancel: false
+      });
+      return;
+    }
+    const dishes = this.data.dishes.concat(dish).slice(0, MAX_PROPOSAL_ITEMS);
+    const proposal = Object.assign({}, this.data.proposal, {
+      selectedIds: dishes.map((item) => item.id),
+      items: dishes
+    });
+    if (proposal.id) {
+      const proposals = wx.getStorageSync("proposals") || {};
+      proposals[proposal.id] = proposal;
+      wx.setStorageSync("proposals", proposals);
+    }
+    const reacted = Object.keys(this.data.selectedMap).some((key) => this.data.selectedMap[key]);
+    this.setData({
+      proposal,
+      dishes,
+      isSingle: dishes.length === 1,
+      addWheelVisible: false,
+      addWheelPicked: null,
+      addWheelChosenMap: {},
+      ...getPageCopy(dishes.length === 1, reacted)
+    });
+    wx.showToast({ title: "已加进这桌", icon: "none" });
+  },
+
+  onCreateAgain() {
+    wx.navigateTo({ url: "/pages/poll-create/poll-create" });
   },
 
   onShareAppMessage() {
     return {
-      title: this.data.isSingle ? "这个想吃吗？来点个头" : "饭点投票：今天吃哪个？",
-      path: `/pages/poll-detail/poll-detail?id=${this.data.pollId}`
+      title: this.data.isSingle ? "这道看起来可以，来看看？" : "这几道先放桌上，今晚挑一个",
+      path: buildSharePath(this.data.dishes)
     };
   }
 });

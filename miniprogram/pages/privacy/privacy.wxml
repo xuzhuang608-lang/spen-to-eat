@@ -1,10 +1,9 @@
 <view class="page">
   <view class="section-title">隐私说明</view>
   <view class="panel">
-    <view class="para">饭点转转用于展示城市特色美食信息，并提供转盘、收藏、历史、搜索和投票功能。</view>
+    <view class="para">饭点转转用于展示城市特色美食信息，并提供转盘、收藏、历史、搜索和饭局提议功能。</view>
     <view class="para">位置权限仅用于识别当前所在城市，推荐对应城市特色美食。用户可以拒绝定位，并手动选择城市。</view>
     <view class="para">首版不强制获取头像昵称，不提供在线交易、点餐、外卖、团购或商家入驻服务。</view>
-    <view class="para">收藏、历史、投票和反馈会用于改善产品体验。后续接入云开发时，会在正式隐私指引中进一步说明数据用途。</view>
+    <view class="para">收藏、历史、饭局提议和反馈会用于改善产品体验。后续接入云开发时，会在正式隐私指引中进一步说明数据用途。</view>
   </view>
 </view>
-

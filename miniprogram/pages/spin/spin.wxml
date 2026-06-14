@@ -2,7 +2,7 @@
   <view class="spin-head">
     <view>
       <view class="section-title">{{city}}这一桌</view>
-      <view class="muted">本轮 {{candidateDishes.length}} 道候选，不想吃就换一批，也能自己加一道。</view>
+      <view class="muted">先摆 {{candidateDishes.length}} 道看看，不合胃口就换一批，也能自己加一道。</view>
     </view>
   </view>
 
@@ -53,8 +53,8 @@
   <view class="menu-panel" wx:if="{{hasContent}}">
     <view class="menu-head">
       <view>
-        <view class="menu-title">本轮菜单</view>
-        <view class="muted">完整菜名在这里，想了解可以点开看看。</view>
+        <view class="menu-title">这轮先摆这些</view>
+        <view class="muted">看中哪道可以点开，不想吃也能换掉。</view>
       </view>
       <button class="add-dish-button" bindtap="onStartCustomReplace">+ 加一道</button>
     </view>

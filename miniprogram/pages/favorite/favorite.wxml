@@ -15,6 +15,5 @@
     </view>
   </view>
 
-  <button class="primary-button poll-button" bindtap="onCreatePoll">用收藏/历史发起投票</button>
+  <button class="primary-button poll-button" bindtap="onCreatePoll">用这些组饭局</button>
 </view>
-

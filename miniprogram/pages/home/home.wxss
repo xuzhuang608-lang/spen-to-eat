@@ -301,9 +301,30 @@
 }
 
 .rating-icons {
-  display: inline-block;
-  min-width: 56rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 128rpx;
+  height: 34rpx;
+  padding: 0 8rpx;
+  border-radius: 999rpx;
+  background: #fff7f1;
   color: #e84f2a;
   font-size: 22rpx;
   line-height: 1;
+  white-space: nowrap;
+}
+
+.rating-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20rpx;
+  opacity: 0.22;
+  line-height: 1;
+}
+
+.rating-icon.active {
+  opacity: 1;
 }

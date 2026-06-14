@@ -39,9 +39,23 @@ function iconRating(count, type) {
   return new Array(count).fill(icons[type] || "🍚").join("");
 }
 
+function iconRatingItems(count, type) {
+  const icon = {
+    chili: "🌶",
+    bowl: "🍚",
+    flame: "🔥"
+  }[type] || "🍚";
+  const activeCount = Math.max(0, Math.min(5, Number(count) || 0));
+  return [0, 1, 2, 3, 4].map((index) => ({
+    key: index,
+    icon,
+    active: index < activeCount
+  }));
+}
+
 module.exports = {
   filterDishes,
   weightedPick,
-  iconRating
+  iconRating,
+  iconRatingItems
 };
-

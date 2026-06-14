@@ -1,5 +1,5 @@
 const { getDishById, getDishesByCity } = require("../../services/dish");
-const { iconRating } = require("../../utils/random");
+const { iconRating, iconRatingItems } = require("../../utils/random");
 const storage = require("../../services/storage");
 
 Page({
@@ -22,7 +22,8 @@ Page({
     }
     const sameCity = getDishesByCity(dish.city).filter((item) => item.id !== dish.id);
     const relatedDishes = sameCity.slice(0, 3).map((item) => Object.assign({}, item, {
-      rating: iconRating(item.localIndex, item.iconType)
+      rating: iconRating(item.localIndex, item.iconType),
+      ratingItems: iconRatingItems(item.localIndex, item.iconType)
     }));
     storage.addUnique("historyDishIds", dish.id);
     this.setData({
@@ -48,7 +49,10 @@ Page({
   },
 
   onCreatePoll() {
-    wx.navigateTo({ url: `/pages/poll-create/poll-create?dishId=${this.data.dish.id}` });
+    const dish = this.data.dish;
+    wx.navigateTo({
+      url: `/pages/poll-detail/poll-detail?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
+    });
   },
 
   onOpenRelated(event) {

@@ -20,13 +20,10 @@
   </view>
 
   <view class="action-row main-actions">
-    <button class="ghost-button compact-action" bindtap="onSpinAgain">再转一次</button>
-    <button class="ghost-button compact-action" bindtap="onFavorite">{{favorited ? "取消收藏" : "收藏"}}</button>
-  </view>
-
-  <view class="action-row sub-actions">
-    <button class="ghost-button mini-action" bindtap="onCreatePoll">发起投票</button>
-    <button class="ghost-button mini-action" open-type="share">分享给朋友</button>
+    <button class="ghost-button compact-action" bindtap="onSpinAgain">再来一轮</button>
+    <button class="ghost-button compact-action" bindtap="onFavorite">{{favorited ? "已经收好" : "收藏起来"}}</button>
+    <button class="ghost-button compact-action" bindtap="onCreatePoll">组个饭局</button>
+    <button class="ghost-button compact-action" bindtap="onFeedback">提个建议</button>
   </view>
 
   <view class="panel related" wx:if="{{relatedDishes.length}}">
@@ -43,11 +40,11 @@
             <view class="related-name">{{item.name}}</view>
             <view class="related-meta">{{item.taste}} · {{item.category}}</view>
           </view>
-          <view class="related-index">{{item.rating}}</view>
+          <view class="related-index">
+            <text class="related-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+          </view>
         </view>
       </block>
     </view>
   </view>
-
-  <button class="feedback" bindtap="onFeedback">信息有误 / 我有建议</button>
 </view>

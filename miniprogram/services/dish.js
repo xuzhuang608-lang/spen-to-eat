@@ -86,6 +86,21 @@ let allDishes = null;
 
 const MIN_CANDIDATE_COUNT = 8;
 const ANY_FILTER = "\u4e0d\u9650";
+const DISH_NAME_REPLACEMENTS = {
+  "\u5ba2\u5bb6\u76d0\u7117\u9e21\u9996\u9009": "\u5ba2\u5bb6\u76d0\u7117\u9e21"
+};
+const INVALID_DISH_NAMES = {
+  "\u7c73\u7ca5\u505a\u9505\u5e95": true,
+  "\u6d77\u9c9c": true,
+  "\u672c\u5730\u9e21": true,
+  "\u7ca5\u7c7b": true
+};
+const SOURCE_BUCKET_PRIORITY = {
+  cityExact: 4,
+  regionalShared: 3,
+  provinceShared: 2,
+  nationalGeneral: 1
+};
 const NATIONAL_FALLBACK_TEMPLATES = [
   { name: "\u8c46\u6d46", category: "\u996e\u54c1", taste: "\u6e05\u6de1", mealTime: ["\u65e9\u9910", "\u5348\u9910"], scene: ["\u4e00\u4e2a\u4eba", "\u4e24\u4e2a\u4eba"], avoidTags: [], tags: ["\u65e9\u9910", "\u996e\u54c1"], iconType: "bowl", weight: 4 },
   { name: "\u6cb9\u6761", category: "\u5c0f\u5403", taste: "\u9c9c\u9999", mealTime: ["\u65e9\u9910", "\u5348\u9910"], scene: ["\u4e00\u4e2a\u4eba", "\u4e24\u4e2a\u4eba"], avoidTags: [], tags: ["\u65e9\u9910", "\u5c0f\u5403"], iconType: "bowl", weight: 4 },
@@ -138,6 +153,10 @@ function pickText(list, index, fallback) {
   return list[index] || fallback;
 }
 
+function normalizeDishName(name) {
+  return DISH_NAME_REPLACEMENTS[name] || name;
+}
+
 function makePhrase(dish) {
   const templates = [
     `${dish.city}这一轮，${dish.name}先来露个脸。`,
@@ -151,7 +170,7 @@ function makePhrase(dish) {
 function makeDescription(dish) {
   const meal = dish.mealTime.length ? dish.mealTime.join("、") : "正餐";
   const tags = dish.tags.length ? dish.tags.join("、") : dish.category;
-  return `${dish.name}是${dish.city}候选菜单里的${tags}选择，口味偏${dish.taste}，适合${meal}来一份。本地特色指数${dish.localIndex}星，适合在不知道吃什么的时候交给转盘决定。`;
+  return `${dish.name}是${dish.city}菜单里的${tags}选择，口味偏${dish.taste}，适合${meal}来一份。本地特色指数${dish.localIndex}星，适合在不知道吃什么的时候交给转盘决定。`;
 }
 
 function makePollText(dish) {
@@ -159,11 +178,12 @@ function makePollText(dish) {
 }
 
 function expandDish(compactDish, province, index) {
+  const dishName = normalizeDishName(compactDish.n);
   const dish = {
-    id: `dish_${hashText(`${province}|${compactDish.c}|${compactDish.n}`)}`,
+    id: `dish_${hashText(`${province}|${compactDish.c}|${dishName}`)}`,
     city: compactDish.c,
     province,
-    name: compactDish.n,
+    name: dishName,
     category: pickText(dictionary.category, compactDish.k, "正餐"),
     taste: pickText(dictionary.taste, compactDish.t, "鲜香"),
     mealTime: (compactDish.m || []).map((item) => pickText(dictionary.mealTime, item, "")).filter(Boolean),
@@ -183,6 +203,9 @@ function expandDish(compactDish, province, index) {
 }
 
 function shouldDropSharedPlaceDish(dish) {
+  if (INVALID_DISH_NAMES[dish.name]) {
+    return true;
+  }
   if (dish.sourceBucket === "cityExact" || dish.sourceBucket === "nationalGeneral") {
     return false;
   }
@@ -191,10 +214,49 @@ function shouldDropSharedPlaceDish(dish) {
   ));
 }
 
+function shouldReplaceDuplicateDish(existing, dish) {
+  const existingPriority = SOURCE_BUCKET_PRIORITY[existing.sourceBucket] || 0;
+  const nextPriority = SOURCE_BUCKET_PRIORITY[dish.sourceBucket] || 0;
+  if (nextPriority !== existingPriority) {
+    return nextPriority > existingPriority;
+  }
+  if ((dish.localIndex || 0) !== (existing.localIndex || 0)) {
+    return (dish.localIndex || 0) > (existing.localIndex || 0);
+  }
+  return (dish.weight || 0) > (existing.weight || 0);
+}
+
+function registerDish(dish, dishIndexByCityName) {
+  const key = `${dish.city}|${dish.name}`;
+  if (Object.prototype.hasOwnProperty.call(dishIndexByCityName, key)) {
+    const existingIndex = dishIndexByCityName[key];
+    const existingDish = allDishes[existingIndex];
+    if (!shouldReplaceDuplicateDish(existingDish, dish)) return;
+
+    allDishes[existingIndex] = dish;
+    delete dishById[existingDish.id];
+    dishById[dish.id] = dish;
+
+    const cityDishes = dishesByCity[dish.city] || [];
+    const cityIndex = cityDishes.findIndex((item) => item.id === existingDish.id);
+    if (cityIndex >= 0) {
+      cityDishes[cityIndex] = dish;
+    }
+    return;
+  }
+
+  dishIndexByCityName[key] = allDishes.length;
+  allDishes.push(dish);
+  dishById[dish.id] = dish;
+  if (!dishesByCity[dish.city]) dishesByCity[dish.city] = [];
+  dishesByCity[dish.city].push(dish);
+}
+
 function ensureAllDishes() {
   if (allDishes) return allDishes;
 
   allDishes = [];
+  const dishIndexByCityName = {};
   Object.keys(provinceDataMap).forEach((slug) => {
     const provinceData = provinceDataMap[slug];
     const province = provinceData.province;
@@ -204,10 +266,7 @@ function ensureAllDishes() {
     provinceData.dishes.forEach((compactDish, index) => {
       const dish = expandDish(compactDish, province, index);
       if (shouldDropSharedPlaceDish(dish)) return;
-      allDishes.push(dish);
-      dishById[dish.id] = dish;
-      if (!dishesByCity[dish.city]) dishesByCity[dish.city] = [];
-      dishesByCity[dish.city].push(dish);
+      registerDish(dish, dishIndexByCityName);
     });
   });
 
@@ -251,7 +310,23 @@ function getDishById(id) {
 
 function getDishesByCity(city) {
   ensureAllDishes();
-  return dishesByCity[city] || [];
+  const cityDishes = dishesByCity[city] || [];
+  if (cityDishes.length >= MIN_CANDIDATE_COUNT) {
+    return cityDishes;
+  }
+  const existingNames = cityDishes.reduce((map, dish) => {
+    map[dish.name] = true;
+    return map;
+  }, {});
+  const fallbackDishes = getNationalFallbackDishes({
+    city,
+    mealTime: ANY_FILTER,
+    category: ANY_FILTER,
+    taste: ANY_FILTER,
+    scene: ANY_FILTER,
+    avoidTags: []
+  }, existingNames);
+  return cityDishes.concat(fallbackDishes).slice(0, MIN_CANDIDATE_COUNT);
 }
 
 function getProvinceDishes(provinceName) {
@@ -320,6 +395,38 @@ function getNationalFallbackDishes(filters, existingNames) {
   return fallbackDishes;
 }
 
+function uniqueDishesByName(list) {
+  const byName = {};
+  list.filter(Boolean).forEach((dish) => {
+    if (!byName[dish.name]) byName[dish.name] = dish;
+  });
+  return Object.keys(byName).map((name) => byName[name]);
+}
+
+function getProposalDishes(cityName, scope) {
+  const city = getCity(cityName);
+  const cityDishes = getDishesByCity(city.name);
+  const localDishes = cityDishes.filter((dish) => dish.sourceBucket === "cityExact");
+  const commonDishes = () => getNationalFallbackDishes({
+    city: city.name,
+    mealTime: ANY_FILTER,
+    category: ANY_FILTER,
+    taste: ANY_FILTER,
+    scene: ANY_FILTER,
+    avoidTags: []
+  }, {});
+  if (scope === "province") {
+    const provinceDishes = uniqueDishesByName(getProvinceDishes(city.province).filter((dish) => (
+      dish.sourceBucket === "provinceShared" || dish.sourceBucket === "regionalShared"
+    )));
+    return provinceDishes;
+  }
+  if (scope === "common") {
+    return commonDishes();
+  }
+  return localDishes;
+}
+
 function getCandidateDishes(filters) {
   const normalized = normalizeFilters(filters);
   const cityDishes = getDishesByCity(normalized.city);
@@ -368,6 +475,7 @@ module.exports = {
   getDishById,
   getDishesByCity,
   getProvinceDishes,
+  getProposalDishes,
   getCandidateDishes,
   spinDish,
   searchDishes

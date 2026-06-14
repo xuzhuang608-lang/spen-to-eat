@@ -1,57 +1,83 @@
 <view class="page">
   <view class="poll-hero">
     <view>
-      <view class="section-title">饭局投票</view>
-      <view class="muted">先凑几个想吃的，发群里一起定。</view>
+      <view class="section-title">组个饭局</view>
+      <view class="muted">先把想吃的放桌上，发群里少纠结一点。</view>
     </view>
   </view>
 
   <view class="add-box">
     <input class="search-input" value="{{keyword}}" placeholder="输入菜名，比如牛杂、砂锅粥" bindinput="onInput" confirm-type="done" bindconfirm="onAddCandidate" />
-    <button class="add-button" bindtap="onAddCandidate">加入</button>
+    <button class="add-button" bindtap="onAddCandidate">加一道</button>
+  </view>
+  <view class="custom-hint">菜单里没有也没关系，输入名字就能自己加一道。</view>
+
+  <view class="proposal-note">
+    <view class="note-title">已放 {{selectedCount}} / {{maxSelected}} 道</view>
+    <view class="muted">先把想吃的放桌上，够一桌人慢慢挑。</view>
   </view>
 
-  <view class="settings-panel">
-    <view class="setting-block">
-      <view>
-        <view class="setting-title">每人最多投 {{voteLimit}} 个</view>
-        <view class="muted">第一版先支持 1-5 个</view>
-      </view>
-      <slider min="0" max="4" value="{{voteLimit - 1}}" step="1" bindchange="onLimitChange" />
+  <view class="tips-row">
+    <view class="tip-card">
+      <view class="tip-title">看到想吃的</view>
+      <view class="muted">顺手放进这顿饭局。</view>
     </view>
+    <view class="tip-card">
+      <view class="tip-title">人多别纠结</view>
+      <view class="muted">多放几道，群里更好聊。</view>
+    </view>
+  </view>
 
-    <view class="setting-block display-block">
-      <view>
-        <view class="setting-title">结果显示方式</view>
-        <view class="muted">{{anonymous ? "群里投着玩，不暴露谁选了谁" : "适合小范围认真统计"}}</view>
-      </view>
-      <view class="segment">
-        <view class="segment-item {{anonymous ? 'active' : ''}}" data-mode="anonymous" bindtap="onSelectDisplayMode">只看票数</view>
-        <view class="segment-item {{anonymous ? '' : 'active'}}" data-mode="public" bindtap="onSelectDisplayMode">显示投票人</view>
+  <view class="selected-panel" wx:if="{{selectedDishes.length}}">
+    <view class="selected-head">
+      <view class="selected-title">已经放上桌</view>
+      <button class="clear-button" bindtap="onClearSelected">清空</button>
+    </view>
+    <view class="selected-chips">
+      <view class="selected-chip" wx:for="{{selectedDishes}}" wx:key="id">
+        <text>{{item.name}}</text>
+        <text class="chip-source">{{item.sourceLabel}}</text>
+        <text class="chip-close" data-id="{{item.id}}" catchtap="onRemoveSelected">×</text>
       </view>
     </view>
   </view>
 
   <view class="candidate-head">
     <view>
-      <view class="candidate-title">这顿先从这些选</view>
-      <view class="muted">也可以自己加菜，临时想吃什么都能放进来。</view>
+      <view class="candidate-title">{{candidateTitle}}</view>
+      <view class="muted">{{candidateDesc}}</view>
     </view>
-    <button class="fill-button" bindtap="onFillLocal">来点本地味</button>
   </view>
 
-  <view class="dish-list">
+  <view class="scope-tabs">
+    <view class="scope-tab {{item.active ? 'active' : ''}}" wx:for="{{scopeTabs}}" wx:key="key" data-scope="{{item.key}}" bindtap="onSelectScope">{{item.label}}</view>
+  </view>
+
+  <view class="tool-row">
+    <button class="tool-button primary-tool" bindtap="onFillLocal">{{fillButtonText}}</button>
+    <button class="tool-button" bindtap="onRefreshCandidates">换一批</button>
+  </view>
+
+  <view wx:if="{{!candidates.length}}" class="empty-candidates">
+    <view class="empty-title">{{emptyCandidateTitle}}</view>
+    <view class="muted">{{emptyCandidateDesc}}</view>
+  </view>
+
+  <view wx:else class="dish-list">
     <view class="dish-item {{selectedMap[item.id] ? 'active' : ''}}" wx:for="{{candidates}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleDish">
-      <view>
+      <view class="dish-main">
         <view class="dish-title-row">
           <text class="dish-name">{{item.name}}</text>
-          <text wx:if="{{item.custom}}" class="custom-badge">自定义</text>
         </view>
-        <view class="dish-meta">{{item.city}} · {{item.category}} · {{item.taste}}</view>
+        <view class="dish-meta">
+          <text class="source-badge {{item.sourceKey}}">{{item.sourceLabel}}</text>
+          <text>{{item.city}} · {{item.category}} · {{item.taste}}</text>
+        </view>
       </view>
       <view class="select-dot">{{selectedMap[item.id] ? "✓" : ""}}</view>
     </view>
   </view>
 
-  <button class="primary-button create-button" bindtap="onCreatePoll">创建 24 小时投票</button>
+  <view class="create-copy">这几道先放桌上，发出去让大家有得聊。</view>
+  <button class="primary-button create-button" bindtap="onCreatePoll">生成饭局提议</button>
 </view>

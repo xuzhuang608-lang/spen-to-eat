@@ -22,7 +22,9 @@
       "desc": "用于识别当前所在城市，推荐对应城市特色美食；也可以手动选择城市。"
     }
   },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
-

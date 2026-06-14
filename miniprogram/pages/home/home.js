@@ -1,5 +1,6 @@
 const app = getApp();
 const { getCity, getDishesByCity } = require("../../services/dish");
+const { getCurrentCityByLocation } = require("../../services/location");
 
 const mealOptions = [
   { key: "早餐", icon: "🥟", title: "早餐", subtitle: "先垫一口" },
@@ -66,12 +67,33 @@ function withRatingIcons(dish) {
   const ratingIcon = getRatingIcon(dish.iconType);
   return Object.assign({}, dish, {
     ratingText: ratingIcon.repeat(count) || "🍚",
+    ratingItems: [0, 1, 2, 3, 4].map((index) => ({
+      key: index,
+      icon: ratingIcon,
+      active: index < count
+    })),
     iconBadges: [
       { icon: getKindIcon(dish), label: dish.category },
       { icon: getTasteIcon(dish.taste), label: dish.taste },
       { icon: ratingIcon, label: `特色${dish.localIndex || 0}` }
     ]
   });
+}
+
+function uniqueByName(dishes) {
+  const used = {};
+  return dishes.filter((dish) => {
+    if (!dish || used[dish.name]) return false;
+    used[dish.name] = true;
+    return true;
+  });
+}
+
+function getFeaturedDishes(cityName) {
+  const dishes = uniqueByName(getDishesByCity(cityName));
+  const localDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact");
+  const fallbackDishes = dishes.filter((dish) => dish.sourceBucket !== "cityExact");
+  return localDishes.concat(fallbackDishes).slice(0, 3).map(withRatingIcons);
 }
 
 Page({
@@ -92,7 +114,7 @@ Page({
 
   setCity(cityName) {
     const city = getCity(cityName);
-    const featuredDishes = getDishesByCity(city.name).slice(0, 3).map(withRatingIcons);
+    const featuredDishes = getFeaturedDishes(city.name);
     this.setData({
       city: city.name,
       province: city.province || "广东",
@@ -103,26 +125,28 @@ Page({
 
   onUseLocation() {
     this.setData({ locating: true });
-    wx.getLocation({
-      type: "wgs84",
-      success: () => {
-        app.setCurrentCity("广州");
-        this.setCity("广州");
+    const finish = () => {
+      this.setData({ locating: false });
+    };
+    getCurrentCityByLocation()
+      .then(({ city }) => {
+        app.setCurrentCity(city);
+        this.setCity(city);
         wx.showToast({
-          title: "已识别为广州",
+          title: `已切到${city}`,
           icon: "success"
         });
-      },
-      fail: () => {
-        wx.showToast({
-          title: "可手动选城市",
-          icon: "none"
+      })
+      .catch((error) => {
+        console.error("定位失败", error);
+        wx.showModal({
+          title: "定位失败",
+          content: error && error.message ? error.message : "可以先手动选择城市。",
+          confirmText: "知道了",
+          showCancel: false
         });
-      },
-      complete: () => {
-        this.setData({ locating: false });
-      }
-    });
+      })
+      .then(finish, finish);
   },
 
   onChooseCity() {
