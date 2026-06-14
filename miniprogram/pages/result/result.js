@@ -7,6 +7,7 @@ Page({
     dish: null,
     rating: "",
     favorited: false,
+    favoriteText: "\u6536\u85cf\u8d77\u6765",
     relatedDishes: []
   },
 
@@ -30,6 +31,7 @@ Page({
       dish,
       rating: iconRating(dish.localIndex, dish.iconType),
       favorited: storage.hasItem("favoriteDishIds", dish.id),
+      favoriteText: storage.hasItem("favoriteDishIds", dish.id) ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765",
       relatedDishes
     });
   },
@@ -41,7 +43,11 @@ Page({
     } else {
       storage.addUnique(key, this.data.dish.id);
     }
-    this.setData({ favorited: !this.data.favorited });
+    const favorited = !this.data.favorited;
+    this.setData({
+      favorited,
+      favoriteText: favorited ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765"
+    });
   },
 
   onSpinAgain() {

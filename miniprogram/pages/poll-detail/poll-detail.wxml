@@ -18,7 +18,10 @@
         <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
       </view>
       <view class="dish-side">
-        <view class="want-pill">{{selectedMap[item.id] ? "已想吃" : reactText}}</view>
+        <view class="want-pill">
+          <text wx:if="{{selectedMap[item.id]}}">已想吃</text>
+          <text wx:else>{{reactText}}</text>
+        </view>
         <view wx:if="{{!item.custom}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看看</view>
       </view>
     </view>
@@ -72,11 +75,11 @@
 
       <view class="add-wheel-actions">
         <button class="add-wheel-button ghost" bindtap="onRefreshAddWheel">换一批</button>
-        <button class="add-wheel-button primary" bindtap="onStartAddWheel">{{addWheelPicked ? "再转一次" : "开始转"}}</button>
+        <button class="add-wheel-button primary" bindtap="onStartAddWheel">{{addWheelButtonText}}</button>
       </view>
       <button wx:if="{{addWheelPicked}}" class="add-wheel-confirm" bindtap="onAddPickedDish">加进这桌</button>
     </view>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bind:close="onCloseDishSheet" />
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

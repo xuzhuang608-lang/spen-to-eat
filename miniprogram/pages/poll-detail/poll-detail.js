@@ -166,6 +166,7 @@ Page({
     addWheelSpinning: false,
     addWheelAngle: 0,
     addWheelPicked: null,
+    addWheelButtonText: "\u5f00\u59cb\u8f6c",
     addWheelChosenMap: {},
     dishSheetVisible: false,
     detailDish: null
@@ -253,6 +254,7 @@ Page({
       addWheelVisible: true,
       addWheelItems,
       addWheelPicked: null,
+      addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {},
       addWheelSpinning: false
     });
@@ -263,6 +265,7 @@ Page({
     this.setData({
       addWheelVisible: false,
       addWheelPicked: null,
+      addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {}
     });
   },
@@ -282,6 +285,7 @@ Page({
     this.setData({
       addWheelItems: buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)),
       addWheelPicked: null,
+      addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {}
     });
   },
@@ -298,12 +302,14 @@ Page({
       addWheelSpinning: true,
       addWheelAngle: nextAngle,
       addWheelPicked: null,
+      addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {}
     });
     setTimeout(() => {
       this.setData({
         addWheelSpinning: false,
         addWheelPicked: result,
+        addWheelButtonText: "\u518d\u8f6c\u4e00\u6b21",
         addWheelChosenMap: { [result.id]: true }
       });
     }, 1500);
@@ -341,6 +347,7 @@ Page({
       isSingle: dishes.length === 1,
       addWheelVisible: false,
       addWheelPicked: null,
+      addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {},
       ...getPageCopy(dishes.length === 1, reacted)
     });

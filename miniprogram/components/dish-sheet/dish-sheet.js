@@ -3,10 +3,15 @@ const storage = require("../../services/storage");
 
 function buildViewDish(dish) {
   if (!dish) return null;
+  const ratingItems = iconRatingItems(dish.localIndex, dish.iconType).map((item) =>
+    Object.assign({}, item, {
+      className: item.active ? "active" : ""
+    })
+  );
   return Object.assign({}, dish, {
     mealLine: (dish.mealTime || []).join(" / "),
     tagLine: [dish.category, dish.taste].concat(dish.tags || []).filter(Boolean).slice(0, 5),
-    ratingItems: iconRatingItems(dish.localIndex, dish.iconType)
+    ratingItems
   });
 }
 
@@ -27,7 +32,8 @@ Component({
 
   data: {
     viewDish: null,
-    favorited: false
+    favorited: false,
+    favoriteLabel: "\u6536\u85cf\u8d77\u6765"
   },
 
   lifetimes: {
@@ -41,7 +47,11 @@ Component({
       const viewDish = buildViewDish(dish);
       this.setData({
         viewDish,
-        favorited: viewDish ? storage.hasItem("favoriteDishIds", viewDish.id) : false
+        favorited: viewDish ? storage.hasItem("favoriteDishIds", viewDish.id) : false,
+        favoriteLabel:
+          viewDish && storage.hasItem("favoriteDishIds", viewDish.id)
+            ? "\u5df2\u7ecf\u6536\u597d"
+            : "\u6536\u85cf\u8d77\u6765"
       });
     },
 
@@ -67,9 +77,13 @@ Component({
       } else {
         storage.addUnique(key, dish.id);
       }
-      this.setData({ favorited: !this.data.favorited });
+      const favorited = !this.data.favorited;
+      this.setData({
+        favorited,
+        favoriteLabel: favorited ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765"
+      });
       wx.showToast({
-        title: this.data.favorited ? "收藏起来了" : "已经取消",
+        title: favorited ? "\u6536\u85cf\u8d77\u6765\u4e86" : "\u5df2\u7ecf\u53d6\u6d88",
         icon: "none"
       });
     },

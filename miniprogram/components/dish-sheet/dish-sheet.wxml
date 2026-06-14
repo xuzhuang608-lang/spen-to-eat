@@ -18,7 +18,7 @@
     <view class="sheet-rating">
       <text class="rating-label">本地特色</text>
       <view class="rating-icons">
-        <text class="rating-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{viewDish.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+        <text class="rating-icon {{iconItem.className}}" wx:for="{{viewDish.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
       </view>
     </view>
 
@@ -26,7 +26,7 @@
 
     <view class="sheet-actions">
       <button class="sheet-action primary" bindtap="onPick">就吃这个</button>
-      <button class="sheet-action" bindtap="onFavorite">{{favorited ? "已经收好" : "收藏起来"}}</button>
+      <button class="sheet-action" bindtap="onFavorite">{{favoriteLabel}}</button>
       <button class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
       <button class="sheet-action" bindtap="onFeedback">提个建议</button>
     </view>

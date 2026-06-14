@@ -74,7 +74,7 @@
           <text>{{item.city}} · {{item.category}} · {{item.taste}}</text>
         </view>
       </view>
-      <view class="select-dot">{{selectedMap[item.id] ? "✓" : ""}}</view>
+      <view class="select-dot"><text wx:if="{{selectedMap[item.id]}}">✓</text></view>
     </view>
   </view>
 
