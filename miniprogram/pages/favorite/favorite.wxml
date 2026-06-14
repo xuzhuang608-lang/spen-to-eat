@@ -4,6 +4,11 @@
     <view class="tab {{historyTabClass}}" data-tab="history" bindtap="onSwitchTab">历史</view>
   </view>
 
+  <view class="manage-row">
+    <view class="manage-hint">可整理不想保留的内容</view>
+    <button class="edit-button" bindtap="onToggleEdit">{{editButtonText}}</button>
+  </view>
+
   <view wx:if="{{emptyVisible}}" class="empty">还没有内容，先去转一次吧。</view>
   <view class="dish-list">
     <view class="panel dish-item" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
@@ -11,10 +16,12 @@
         <view class="dish-name">{{item.name}}</view>
         <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
       </view>
-      <view class="arrow">›</view>
+      <button wx:if="{{editMode}}" class="delete-button" data-id="{{item.id}}" catchtap="onRemoveDish">删除</button>
+      <view wx:else class="arrow">›</view>
     </view>
   </view>
 
+  <button wx:if="{{manageVisible}}" class="clear-current-button" bindtap="onClearCurrent">{{clearButtonText}}</button>
   <button class="primary-button poll-button" bindtap="onCreatePoll">用这些组饭局</button>
 
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
