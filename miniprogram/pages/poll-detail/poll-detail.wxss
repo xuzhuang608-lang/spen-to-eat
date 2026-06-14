@@ -1,13 +1,13 @@
 .proposal-tip {
   margin-top: 20rpx;
   padding: 20rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 22rpx;
-  background: #fffaf5;
+  background: #fffdf8;
 }
 
 .tip-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 28rpx;
   font-weight: 900;
 }
@@ -28,14 +28,14 @@
 }
 
 .dish-item.active {
-  border-color: #e84f2a;
-  background: #fff7f1;
+  border-color: #e85d3d;
+  background: #fff6f0;
 }
 
 .dish-item.single {
   align-items: flex-start;
   padding: 30rpx;
-  background: linear-gradient(180deg, #fff 0%, #fff7f1 100%);
+  background: linear-gradient(180deg, #fffdf8 0%, #fff6f0 100%);
 }
 
 .dish-main {
@@ -48,8 +48,8 @@
   margin-bottom: 12rpx;
   padding: 6rpx 12rpx;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #c43f20;
+  background: #fff0e8;
+  color: #bf4e32;
   font-size: 22rpx;
   font-weight: 900;
 }
@@ -72,7 +72,7 @@
 .custom-badge {
   padding: 5rpx 10rpx;
   border-radius: 999rpx;
-  background: #2f251f;
+  background: #4a3025;
   color: #fff;
   font-size: 20rpx;
   font-weight: 800;
@@ -81,8 +81,8 @@
 .want-pill {
   padding: 8rpx 16rpx;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #e84f2a;
+  background: #fff0e8;
+  color: #e85d3d;
   font-size: 23rpx;
   font-weight: 900;
   white-space: nowrap;
@@ -98,10 +98,10 @@
 
 .detail-link {
   padding: 7rpx 16rpx;
-  border: 2rpx solid #ffd5c1;
+  border: 2rpx solid #f4c7b6;
   border-radius: 999rpx;
-  background: #fff7f1;
-  color: #c43f20;
+  background: #fff6f0;
+  color: #bf4e32;
   font-size: 22rpx;
   font-weight: 900;
 }
@@ -113,7 +113,7 @@
   margin: 24rpx 0 0;
   padding: 8rpx;
   border-radius: 22rpx;
-  background: #fff1e8;
+  background: #fff0e8;
   box-sizing: border-box;
 }
 
@@ -130,7 +130,7 @@
   border: 0;
   border-radius: 18rpx;
   background: transparent;
-  color: #7a6b61;
+  color: #7a6a5f;
   box-sizing: border-box;
   font-size: 24rpx;
   font-weight: 900;
@@ -138,10 +138,10 @@
 }
 
 .action-button:first-child {
-  background: #ffe9dc;
-  border: 2rpx solid #ff6b4a;
-  color: #e84f2a;
-  box-shadow: 0 8rpx 18rpx rgba(232, 79, 42, 0.1);
+  background: #ffe7dc;
+  border: 2rpx solid #ee7558;
+  color: #e85d3d;
+  box-shadow: 0 8rpx 18rpx rgba(232, 93, 61, 0.1);
 }
 
 .action-button::after {
@@ -155,13 +155,13 @@
   gap: 18rpx;
   margin-top: 22rpx;
   padding: 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
 }
 
 .share-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 28rpx;
   font-weight: 900;
 }
@@ -176,10 +176,10 @@
   min-height: 66rpx;
   padding: 0;
   margin: 0;
-  border: 2rpx solid #f0d4c5;
+  border: 2rpx solid #eccfc1;
   border-radius: 999rpx;
-  background: #fff7f1;
-  color: #e84f2a;
+  background: #fff6f0;
+  color: #e85d3d;
   font-size: 24rpx;
   font-weight: 900;
   line-height: 1;
@@ -198,7 +198,7 @@
   z-index: 30;
   display: flex;
   align-items: flex-end;
-  background: rgba(47, 37, 31, 0.24);
+  background: rgba(53, 38, 29, 0.24);
 }
 
 .add-wheel-panel {
@@ -206,8 +206,8 @@
   width: 100%;
   padding: 26rpx 28rpx 36rpx;
   border-radius: 32rpx 32rpx 0 0;
-  background: #fffaf4;
-  box-shadow: 0 -18rpx 42rpx rgba(47, 37, 31, 0.18);
+  background: #fff8ef;
+  box-shadow: 0 -18rpx 42rpx rgba(53, 38, 29, 0.18);
 }
 
 .add-wheel-head {
@@ -218,7 +218,7 @@
 }
 
 .add-wheel-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 34rpx;
   font-weight: 900;
 }
@@ -232,8 +232,8 @@
   margin: 0;
   border: 0;
   border-radius: 50%;
-  background: #fff1e8;
-  color: #8a3e1d;
+  background: #fff0e8;
+  color: #84452f;
   font-size: 36rpx;
   font-weight: 800;
   line-height: 58rpx;
@@ -257,12 +257,12 @@
     radial-gradient(circle at center, rgba(255, 248, 235, 0.95) 0 26%, transparent 27%),
     repeating-radial-gradient(circle at 48% 48%, rgba(120, 70, 32, 0.1) 0 5rpx, rgba(255, 255, 255, 0) 6rpx 24rpx),
     linear-gradient(100deg, rgba(255, 255, 255, 0.22), rgba(108, 58, 26, 0.08) 42%, rgba(255, 255, 255, 0.16)),
-    #c88445;
-  border: 8rpx solid #9f612d;
+    #bd7a42;
+  border: 8rpx solid #8f562c;
   box-shadow:
     inset 0 0 0 12rpx rgba(255, 232, 198, 0.22),
     inset 0 0 38rpx rgba(86, 45, 18, 0.18),
-    0 16rpx 38rpx rgba(67, 45, 29, 0.16);
+    0 16rpx 38rpx rgba(78, 52, 39, 0.16);
 }
 
 .mini-dish {
@@ -282,11 +282,11 @@
 }
 
 .mini-dish.picked {
-  background: #fff7f1;
+  background: #fff6f0;
   box-shadow:
     inset 0 0 0 6rpx rgba(255, 255, 255, 0.72),
-    0 0 0 4rpx rgba(232, 79, 42, 0.68),
-    0 12rpx 22rpx rgba(232, 79, 42, 0.18);
+    0 0 0 4rpx rgba(232, 93, 61, 0.68),
+    0 12rpx 22rpx rgba(232, 93, 61, 0.18);
 }
 
 .mini-dish-icon {
@@ -298,7 +298,7 @@
   max-width: 94rpx;
   margin-top: 5rpx;
   overflow: hidden;
-  color: #2f251f;
+  color: #35261d;
   font-size: 20rpx;
   font-weight: 900;
   text-overflow: ellipsis;
@@ -364,7 +364,7 @@
   border-radius: 999rpx;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 44%),
-    linear-gradient(180deg, #6f3b1d 0%, #c08345 72%, #5b2d16 100%);
+    linear-gradient(180deg, #654022 0%, #b8743f 72%, #523018 100%);
   box-shadow:
     0 6rpx 12rpx rgba(86, 45, 18, 0.18),
     inset -2rpx 0 0 rgba(74, 36, 15, 0.14);
@@ -388,7 +388,7 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.82) 0 14%, transparent 15%),
-    linear-gradient(180deg, #f8dfbc 0%, #c58241 100%);
+    linear-gradient(180deg, #f7dfbd 0%, #b97842 100%);
   box-shadow:
     inset 0 0 0 4rpx rgba(255, 248, 235, 0.5),
     0 6rpx 12rpx rgba(86, 45, 18, 0.14);
@@ -398,21 +398,21 @@
 .add-wheel-result {
   margin: 18rpx auto 0;
   padding: 16rpx 20rpx;
-  border: 2rpx solid #ffd5c1;
+  border: 2rpx solid #f4c7b6;
   border-radius: 22rpx;
-  background: #fff7f1;
+  background: #fff6f0;
   text-align: center;
 }
 
 .add-wheel-result-label {
-  color: #c43f20;
+  color: #bf4e32;
   font-size: 22rpx;
   font-weight: 900;
 }
 
 .add-wheel-result-name {
   margin-top: 6rpx;
-  color: #2f251f;
+  color: #35261d;
   font-size: 34rpx;
   font-weight: 900;
 }
@@ -424,7 +424,7 @@
   margin-top: 18rpx;
   padding: 8rpx;
   border-radius: 22rpx;
-  background: #fff1e8;
+  background: #fff0e8;
 }
 
 .add-wheel-button,
@@ -452,14 +452,14 @@
 
 .add-wheel-button.ghost {
   background: transparent;
-  color: #7a6b61;
+  color: #7a6a5f;
 }
 
 .add-wheel-button.primary,
 .add-wheel-confirm {
-  border: 2rpx solid #ff6b4a;
-  background: #ffe9dc;
-  color: #e84f2a;
+  border: 2rpx solid #ee7558;
+  background: #ffe7dc;
+  color: #e85d3d;
 }
 
 .add-wheel-confirm {

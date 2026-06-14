@@ -4,7 +4,7 @@
   gap: 14rpx;
   padding: 10rpx;
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
 }
 
 .tab {
@@ -13,19 +13,19 @@
   justify-content: center;
   min-height: 72rpx;
   border-radius: 18rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 28rpx;
 }
 
 .tab.active {
-  background: #2f251f;
+  background: #4a3025;
   color: #fff;
   font-weight: 700;
 }
 
 .empty {
   padding: 60rpx 0;
-  color: #7a6b61;
+  color: #7a6a5f;
   text-align: center;
   font-size: 28rpx;
 }
@@ -49,11 +49,10 @@
 }
 
 .arrow {
-  color: #c85b2e;
+  color: #c55335;
   font-size: 46rpx;
 }
 
 .poll-button {
   margin-top: 28rpx;
 }
-

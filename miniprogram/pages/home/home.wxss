@@ -1,18 +1,18 @@
 .home {
   padding-top: 22rpx;
-  background: #fffaf4;
+  background: #fff8ef;
 }
 
 .brand {
   padding: 28rpx 24rpx 24rpx;
   border-radius: 28rpx;
-  background: #2f251f;
-  color: #fff;
-  box-shadow: 0 18rpx 42rpx rgba(67, 45, 29, 0.14);
+  background: #4a3025;
+  color: #fffdf8;
+  box-shadow: 0 18rpx 42rpx rgba(78, 52, 39, 0.13);
 }
 
 .brand-kicker {
-  color: #ffd166;
+  color: #ffd36b;
   font-size: 23rpx;
   font-weight: 800;
 }
@@ -27,7 +27,7 @@
 .brand-subtitle {
   margin-top: 14rpx;
   max-width: 560rpx;
-  color: #ffe8d5;
+  color: #ffe3d3;
   font-size: 27rpx;
   line-height: 1.45;
 }
@@ -47,10 +47,10 @@
   min-width: 0;
   height: 58rpx;
   padding: 0 8rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 999rpx;
-  background: #fff;
-  color: #4f3b30;
+  background: #fffdf8;
+  color: #5a463b;
   font-size: 24rpx;
   font-weight: 800;
   line-height: 54rpx;
@@ -61,8 +61,8 @@
   margin-top: 20rpx;
   padding: 24rpx;
   border-radius: 28rpx;
-  background: #fff;
-  border: 2rpx solid #ead8c8;
+  background: #fffdf8;
+  border: 2rpx solid #e8d6c6;
 }
 
 .meal-title {
@@ -73,7 +73,7 @@
 
 .meal-subtitle {
   margin-top: 8rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 26rpx;
 }
 
@@ -90,15 +90,15 @@
   gap: 14rpx;
   min-height: 112rpx;
   padding: 18rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 22rpx;
-  background: #fffaf4;
+  background: #fff8ef;
 }
 
 .meal-card.active {
-  border-color: #e84f2a;
-  background: #fff2e7;
-  box-shadow: 0 10rpx 24rpx rgba(232, 79, 42, 0.12);
+  border-color: #e85d3d;
+  background: #fff0e8;
+  box-shadow: 0 10rpx 24rpx rgba(232, 93, 61, 0.12);
 }
 
 .meal-icon {
@@ -109,7 +109,7 @@
   width: 56rpx;
   height: 56rpx;
   border-radius: 18rpx;
-  background: #fff;
+  background: #fffdf8;
   font-size: 32rpx;
 }
 
@@ -121,7 +121,7 @@
 
 .meal-desc {
   margin-top: 5rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 22rpx;
 }
 
@@ -140,8 +140,8 @@
   min-height: 112rpx;
   padding: 20rpx;
   border-radius: 22rpx;
-  background: #fff;
-  border: 2rpx solid #ead8c8;
+  background: #fffdf8;
+  border: 2rpx solid #e8d6c6;
 }
 
 .assist-title {
@@ -151,7 +151,7 @@
 
 .assist-desc {
   margin-top: 8rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 23rpx;
 }
 
@@ -175,7 +175,7 @@
   min-width: 116rpx;
   height: 58rpx;
   border-radius: 999rpx;
-  background: #2f251f;
+  background: #4a3025;
   color: #fff;
   font-size: 24rpx;
   font-weight: 800;
@@ -192,20 +192,20 @@
 .inspiration-empty {
   margin-top: 18rpx;
   padding: 28rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
 }
 
 .empty-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 32rpx;
   font-weight: 900;
 }
 
 .empty-desc {
   margin-top: 12rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 25rpx;
   line-height: 1.45;
 }
@@ -215,7 +215,7 @@
   width: 180rpx;
   height: 62rpx;
   border-radius: 999rpx;
-  background: #2f251f;
+  background: #4a3025;
   color: #fff;
   font-size: 24rpx;
   font-weight: 800;
@@ -225,26 +225,26 @@
   min-height: 190rpx;
   padding: 20rpx;
   border-radius: 24rpx;
-  border: 2rpx solid #ead8c8;
-  background: #fff;
+  border: 2rpx solid #e8d6c6;
+  background: #fffdf8;
 }
 
 .inspiration-card.large {
   grid-column: span 2;
   min-height: 230rpx;
-  background: #fff2e7;
-  border-color: #f2c6a7;
+  background: linear-gradient(180deg, #fffdf8 0%, #fff0e8 100%);
+  border-color: #efc5ad;
 }
 
 .dish-meta {
-  color: #a4491e;
+  color: #a65334;
   font-size: 22rpx;
   font-weight: 800;
 }
 
 .dish-name {
   margin-top: 10rpx;
-  color: #2f251f;
+  color: #35261d;
   font-size: 36rpx;
   line-height: 1.15;
   font-weight: 900;
@@ -256,7 +256,7 @@
 
 .dish-phrase {
   margin-top: 12rpx;
-  color: #6d5d53;
+  color: #6f5f55;
   font-size: 24rpx;
   line-height: 1.38;
 }
@@ -275,8 +275,8 @@
   max-width: 100%;
   padding: 6rpx 10rpx;
   border-radius: 999rpx;
-  background: #fffaf4;
-  color: #7a3d1d;
+  background: #fff8ef;
+  color: #794631;
   font-size: 20rpx;
   font-weight: 800;
 }
@@ -295,7 +295,7 @@
 }
 
 .rating-label {
-  color: #e84f2a;
+  color: #e85d3d;
   font-size: 22rpx;
   font-weight: 900;
 }
@@ -309,8 +309,8 @@
   height: 34rpx;
   padding: 0 8rpx;
   border-radius: 999rpx;
-  background: #fff7f1;
-  color: #e84f2a;
+  background: #fff6f0;
+  color: #e85d3d;
   font-size: 22rpx;
   line-height: 1;
   white-space: nowrap;

@@ -1,7 +1,7 @@
 page {
   min-height: 100vh;
-  background: #fffaf4;
-  color: #2f251f;
+  background: #fff8ef;
+  color: #35261d;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
 }
 
@@ -18,7 +18,7 @@ page {
 }
 
 .muted {
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 26rpx;
 }
 
@@ -28,11 +28,11 @@ page {
   justify-content: center;
   min-height: 92rpx;
   border-radius: 24rpx;
-  background: #e84f2a;
+  background: linear-gradient(180deg, #ee6a4b 0%, #e85d3d 100%);
   color: #fff;
   font-size: 32rpx;
   font-weight: 700;
-  box-shadow: 0 16rpx 32rpx rgba(232, 79, 42, 0.2);
+  box-shadow: 0 16rpx 32rpx rgba(232, 93, 61, 0.18);
 }
 
 .ghost-button {
@@ -40,10 +40,10 @@ page {
   align-items: center;
   justify-content: center;
   min-height: 78rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 22rpx;
-  background: #fff;
-  color: #4f3b30;
+  background: #fffdf8;
+  color: #5a463b;
   font-size: 28rpx;
 }
 
@@ -56,22 +56,21 @@ page {
 .chip {
   padding: 14rpx 22rpx;
   border-radius: 999rpx;
-  background: #fff;
-  border: 2rpx solid #ead8c8;
-  color: #4f3b30;
+  background: #fffdf8;
+  border: 2rpx solid #e8d6c6;
+  color: #5a463b;
   font-size: 26rpx;
 }
 
 .chip.active {
-  background: #2f251f;
-  border-color: #2f251f;
+  background: #4a3025;
+  border-color: #4a3025;
   color: #fff;
 }
 
 .panel {
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
   padding: 26rpx;
-  box-shadow: 0 12rpx 34rpx rgba(67, 45, 29, 0.08);
+  box-shadow: 0 12rpx 34rpx rgba(78, 52, 39, 0.08);
 }
-

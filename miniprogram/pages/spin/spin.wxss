@@ -1,5 +1,5 @@
 .spin-page {
-  background: #fffaf4;
+  background: #fff8ef;
 }
 
 .spin-head {
@@ -21,12 +21,12 @@
     radial-gradient(circle at center, rgba(255, 248, 235, 0.95) 0 24%, transparent 25%),
     repeating-radial-gradient(circle at 48% 48%, rgba(120, 70, 32, 0.1) 0 5rpx, rgba(255, 255, 255, 0) 6rpx 26rpx),
     linear-gradient(100deg, rgba(255, 255, 255, 0.22), rgba(108, 58, 26, 0.08) 42%, rgba(255, 255, 255, 0.16)),
-    #c88445;
-  border: 8rpx solid #9f612d;
+    #bd7a42;
+  border: 8rpx solid #8f562c;
   box-shadow:
     inset 0 0 0 12rpx rgba(255, 232, 198, 0.22),
     inset 0 0 42rpx rgba(86, 45, 18, 0.18),
-    0 18rpx 46rpx rgba(67, 45, 29, 0.16);
+    0 18rpx 46rpx rgba(78, 52, 39, 0.16);
 }
 
 .plate-core {
@@ -38,12 +38,12 @@
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 50%, #fffdf8 0 42%, #f5e4cf 43% 61%, #fffaf4 62% 100%);
-  color: #2f251f;
+    radial-gradient(circle at 50% 50%, #fffdf8 0 42%, #f5e4cf 43% 61%, #fff8ef 62% 100%);
+  color: #35261d;
   box-shadow:
     inset 0 0 0 8rpx rgba(255, 255, 255, 0.55),
     inset 0 -12rpx 22rpx rgba(159, 97, 45, 0.08),
-    0 10rpx 24rpx rgba(47, 37, 31, 0.14);
+    0 10rpx 24rpx rgba(53, 38, 29, 0.14);
 }
 
 .turner-chopsticks {
@@ -65,7 +65,7 @@
   border-radius: 999rpx;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 44%),
-    linear-gradient(180deg, #6f3b1d 0%, #c08345 72%, #5b2d16 100%);
+    linear-gradient(180deg, #654022 0%, #b8743f 72%, #523018 100%);
   box-shadow:
     0 6rpx 12rpx rgba(86, 45, 18, 0.18),
     inset -2rpx 0 0 rgba(74, 36, 15, 0.14);
@@ -89,7 +89,7 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.82) 0 14%, transparent 15%),
-    linear-gradient(180deg, #f8dfbc 0%, #c58241 100%);
+    linear-gradient(180deg, #f7dfbd 0%, #b97842 100%);
   box-shadow:
     inset 0 0 0 4rpx rgba(255, 248, 235, 0.5),
     0 6rpx 12rpx rgba(86, 45, 18, 0.14);
@@ -134,18 +134,18 @@
 }
 
 .plate-dish.picked {
-  background: #fff7f1;
+  background: #fff6f0;
   box-shadow:
     inset 0 0 0 6rpx rgba(255, 255, 255, 0.72),
-    0 0 0 4rpx rgba(232, 79, 42, 0.68),
-    0 12rpx 24rpx rgba(232, 79, 42, 0.18);
+    0 0 0 4rpx rgba(232, 93, 61, 0.68),
+    0 12rpx 24rpx rgba(232, 93, 61, 0.18);
 }
 
 .plate-dish.replace-target {
   box-shadow:
     inset 0 0 0 6rpx rgba(255, 255, 255, 0.72),
-    0 0 0 5rpx rgba(232, 79, 42, 0.72),
-    0 12rpx 24rpx rgba(232, 79, 42, 0.16);
+    0 0 0 5rpx rgba(232, 93, 61, 0.72),
+    0 12rpx 24rpx rgba(232, 93, 61, 0.16);
 }
 
 .custom-badge {
@@ -167,13 +167,13 @@
   margin: 18rpx auto 0;
   padding: 12rpx 22rpx;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #c43f20;
+  background: #fff0e8;
+  color: #bf4e32;
   font-size: 25rpx;
   font-weight: 900;
   text-align: center;
-  border: 2rpx solid #ffd5c1;
-  box-shadow: 0 10rpx 22rpx rgba(232, 79, 42, 0.12);
+  border: 2rpx solid #f4c7b6;
+  box-shadow: 0 10rpx 22rpx rgba(232, 93, 61, 0.12);
 }
 
 .dish-icon {
@@ -184,7 +184,7 @@
 .dish-title {
   max-width: 108rpx;
   overflow: hidden;
-  color: #2f251f;
+  color: #35261d;
   font-size: 22rpx;
   font-weight: 900;
   text-overflow: ellipsis;
@@ -244,10 +244,10 @@
   width: 220rpx;
   min-height: 92rpx;
   line-height: 92rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
   background: #fff;
-  color: #4f3b30;
+  color: #5a463b;
   font-size: 30rpx;
   font-weight: 900;
 }
@@ -256,11 +256,11 @@
   margin: 0;
   width: 220rpx;
   min-height: 92rpx;
-  border: 2rpx solid #f7b49d;
+  border: 2rpx solid #efb49f;
   background:
-    linear-gradient(180deg, #ff7a56 0%, #ef5b3a 100%);
+    linear-gradient(180deg, #ee6a4b 0%, #e85d3d 100%);
   font-size: 28rpx;
-  box-shadow: 0 12rpx 24rpx rgba(232, 79, 42, 0.16);
+  box-shadow: 0 12rpx 24rpx rgba(232, 93, 61, 0.16);
 }
 
 .spin-button::after {
@@ -274,7 +274,7 @@
   gap: 18rpx;
   margin-top: 28rpx;
   padding: 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
   background: #fff;
 }
@@ -286,7 +286,7 @@
 
 .summary-title {
   margin-bottom: 6rpx;
-  color: #2f251f;
+  color: #35261d;
   font-size: 28rpx;
   font-weight: 900;
 }
@@ -299,17 +299,17 @@
 
 .adjust-button {
   flex: 0 0 auto;
-  min-width: 156rpx;
-  height: 62rpx;
-  line-height: 62rpx;
-  padding: 0 22rpx;
+  width: 176rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  padding: 0;
   margin: 0;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #c43f20;
-  font-size: 24rpx;
-  font-weight: 800;
-  border: 2rpx solid #ffd5c1;
+  background: #fff6f0;
+  color: #bf4e32;
+  font-size: 23rpx;
+  font-weight: 900;
+  border: 2rpx solid #f4c7b6;
 }
 
 .adjust-button::after {
@@ -319,7 +319,7 @@
 .menu-panel {
   margin-top: 20rpx;
   padding: 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
   background: #fff;
 }
@@ -333,22 +333,22 @@
 
 .menu-title {
   margin-bottom: 6rpx;
-  color: #2f251f;
+  color: #35261d;
   font-size: 30rpx;
   font-weight: 900;
 }
 
 .add-dish-button {
   flex: 0 0 auto;
-  min-width: 142rpx;
+  width: 176rpx;
   height: 58rpx;
   line-height: 58rpx;
   margin: 0;
-  padding: 0 18rpx;
-  border: 2rpx solid #d9c8a3;
+  padding: 0;
+  border: 2rpx solid #f4c7b6;
   border-radius: 999rpx;
-  background: #f8f1df;
-  color: #7a4a1f;
+  background: #fff6f0;
+  color: #bf4e32;
   font-size: 23rpx;
   font-weight: 900;
 }
@@ -368,8 +368,8 @@
   max-width: 100%;
   padding: 12rpx 18rpx;
   border-radius: 999rpx;
-  background: #fff2e7;
-  color: #7a3d1d;
+  background: #fff0e8;
+  color: #794631;
   font-size: 24rpx;
   font-weight: 800;
 }
@@ -381,8 +381,8 @@
 
 .menu-chip.replace-target {
   background: #ffe4d7;
-  color: #c43f20;
-  box-shadow: inset 0 0 0 2rpx rgba(232, 79, 42, 0.22);
+  color: #bf4e32;
+  box-shadow: inset 0 0 0 2rpx rgba(232, 93, 61, 0.22);
 }
 
 .custom-mask {
@@ -394,7 +394,7 @@
   z-index: 20;
   display: flex;
   align-items: flex-end;
-  background: rgba(47, 37, 31, 0.22);
+  background: rgba(53, 38, 29, 0.22);
 }
 
 .custom-panel {
@@ -402,12 +402,12 @@
   width: 100%;
   padding: 28rpx 28rpx 38rpx;
   border-radius: 32rpx 32rpx 0 0;
-  background: #fffaf4;
-  box-shadow: 0 -18rpx 40rpx rgba(47, 37, 31, 0.16);
+  background: #fff8ef;
+  box-shadow: 0 -18rpx 40rpx rgba(53, 38, 29, 0.16);
 }
 
 .custom-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 34rpx;
   font-weight: 900;
 }
@@ -422,18 +422,18 @@
 .replace-chip {
   max-width: 100%;
   padding: 12rpx 18rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 999rpx;
   background: #fff;
-  color: #4f3b30;
+  color: #5a463b;
   font-size: 24rpx;
   font-weight: 800;
 }
 
 .replace-chip.active {
-  border-color: #f7b49d;
-  background: #fff2e7;
-  color: #c43f20;
+  border-color: #efb49f;
+  background: #fff0e8;
+  color: #bf4e32;
 }
 
 .custom-input {
@@ -442,10 +442,10 @@
   height: 86rpx;
   margin-top: 22rpx;
   padding: 0 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 22rpx;
   background: #fff;
-  color: #2f251f;
+  color: #35261d;
   font-size: 28rpx;
 }
 
@@ -467,7 +467,7 @@
 .filter-panel {
   margin-top: 20rpx;
   padding: 22rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
   background: #fff;
 }
@@ -488,20 +488,20 @@
 
 .empty-panel {
   padding: 32rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
   border-radius: 26rpx;
   background: #fff;
 }
 
 .empty-title {
-  color: #2f251f;
+  color: #35261d;
   font-size: 34rpx;
   font-weight: 900;
 }
 
 .empty-desc {
   margin-top: 12rpx;
-  color: #7a6b61;
+  color: #7a6a5f;
   font-size: 26rpx;
   line-height: 1.5;
 }

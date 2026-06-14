@@ -13,9 +13,9 @@
   ],
   "window": {
     "navigationBarTitleText": "饭点转转",
-    "navigationBarBackgroundColor": "#fff7ed",
+    "navigationBarBackgroundColor": "#fff8ef",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fffaf4"
+    "backgroundColor": "#fff8ef"
   },
   "permission": {
     "scope.userLocation": {

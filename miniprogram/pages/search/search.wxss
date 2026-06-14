@@ -4,14 +4,14 @@
   height: 86rpx;
   padding: 0 26rpx;
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
   font-size: 30rpx;
-  border: 2rpx solid #ead8c8;
+  border: 2rpx solid #e8d6c6;
 }
 
 .empty {
   padding: 42rpx 0;
-  color: #7a6b61;
+  color: #7a6a5f;
   text-align: center;
   font-size: 28rpx;
 }
@@ -34,7 +34,6 @@
 }
 
 .arrow {
-  color: #c85b2e;
+  color: #c55335;
   font-size: 46rpx;
 }
-

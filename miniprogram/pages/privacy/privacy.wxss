@@ -1,6 +1,6 @@
 .para {
   margin-bottom: 20rpx;
-  color: #4f3b30;
+  color: #5a463b;
   font-size: 29rpx;
   line-height: 1.65;
 }
