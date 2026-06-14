@@ -66,7 +66,8 @@ function markSelectedProvinceGroups(groups, selectedProvince) {
   return groups.map((group) => ({
     letter: group.letter,
     provinces: group.provinces.map((province) => Object.assign({}, province, {
-      active: selectedProvince && province.id === selectedProvince.id
+      active: selectedProvince && province.id === selectedProvince.id,
+      className: selectedProvince && province.id === selectedProvince.id ? "active" : ""
     })),
     expandedProvince: selectedProvince && group.provinces.some((province) => province.id === selectedProvince.id)
       ? selectedProvince
@@ -78,7 +79,8 @@ Page({
   data: {
     keyword: "",
     provinceGroups: [],
-    searchResults: []
+    searchResults: [],
+    searchEmpty: false
   },
 
   onLoad() {
@@ -94,14 +96,16 @@ Page({
     const searchResults = keyword ? getCities().filter((city) => cityMatches(city, keyword)).slice(0, 80) : [];
     this.setData({
       keyword,
-      searchResults
+      searchResults,
+      searchEmpty: !!keyword && !searchResults.length
     });
   },
 
   onClearSearch() {
     this.setData({
       keyword: "",
-      searchResults: []
+      searchResults: [],
+      searchEmpty: false
     });
   },
 

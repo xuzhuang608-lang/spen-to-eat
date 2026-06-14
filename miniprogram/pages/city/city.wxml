@@ -9,7 +9,7 @@
 
   <view wx:if="{{keyword}}" class="result-block">
     <view class="block-title">搜索结果</view>
-    <view wx:if="{{!searchResults.length}}" class="empty">没有找到匹配城市</view>
+    <view wx:if="{{searchEmpty}}" class="empty">没有找到匹配城市</view>
     <view class="city-grid">
       <block wx:for="{{searchResults}}" wx:key="id">
         <view class="city-chip" data-city="{{item.name}}" bindtap="onSelectCity">
@@ -29,7 +29,7 @@
           <view class="province-grid">
             <block wx:for="{{item.provinces}}" wx:for-item="province" wx:key="id">
               <view
-                class="province-chip {{province.active ? 'active' : ''}}"
+                class="province-chip {{province.className}}"
                 data-province-id="{{province.id}}"
                 bindtap="onSelectProvince"
               >

@@ -1,4 +1,4 @@
-<view wx:if="{{visible && viewDish}}" class="dish-sheet-mask" catchtap="onClose">
+<view wx:if="{{showSheet}}" class="dish-sheet-mask" catchtap="onClose">
   <view class="dish-sheet" catchtap="noop">
     <view class="sheet-handle"></view>
     <view class="sheet-head">

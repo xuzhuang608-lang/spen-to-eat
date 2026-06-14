@@ -5,6 +5,9 @@ Page({
   data: {
     tab: "favorite",
     dishes: [],
+    favoriteTabClass: "active",
+    historyTabClass: "",
+    emptyVisible: true,
     dishSheetVisible: false,
     detailDish: null
   },
@@ -14,13 +17,21 @@ Page({
   },
 
   onSwitchTab(event) {
-    this.setData({ tab: event.currentTarget.dataset.tab }, () => this.loadDishes());
+    const tab = event.currentTarget.dataset.tab;
+    this.setData({
+      tab,
+      favoriteTabClass: tab === "favorite" ? "active" : "",
+      historyTabClass: tab === "history" ? "active" : ""
+    }, () => this.loadDishes());
   },
 
   loadDishes() {
     const key = this.data.tab === "favorite" ? "favoriteDishIds" : "historyDishIds";
     const dishes = storage.getList(key).map((id) => getDishById(id)).filter(Boolean);
-    this.setData({ dishes });
+    this.setData({
+      dishes,
+      emptyVisible: !dishes.length
+    });
   },
 
   onOpenDish(event) {
@@ -41,4 +52,3 @@ Page({
     wx.navigateTo({ url: "/pages/poll-create/poll-create" });
   }
 });
-

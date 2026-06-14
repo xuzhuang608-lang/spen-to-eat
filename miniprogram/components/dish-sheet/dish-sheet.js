@@ -19,7 +19,10 @@ Component({
   properties: {
     visible: {
       type: Boolean,
-      value: false
+      value: false,
+      observer() {
+        this.syncDish(this.properties.dish);
+      }
     },
     dish: {
       type: Object,
@@ -31,6 +34,7 @@ Component({
   },
 
   data: {
+    showSheet: false,
     viewDish: null,
     favorited: false,
     favoriteLabel: "\u6536\u85cf\u8d77\u6765"
@@ -46,6 +50,7 @@ Component({
     syncDish(dish) {
       const viewDish = buildViewDish(dish);
       this.setData({
+        showSheet: !!(this.properties.visible && viewDish),
         viewDish,
         favorited: viewDish ? storage.hasItem("favoriteDishIds", viewDish.id) : false,
         favoriteLabel:

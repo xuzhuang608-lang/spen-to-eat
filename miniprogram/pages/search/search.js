@@ -21,7 +21,9 @@ function groupResults(list, currentCity) {
     const cities = Array.from(new Set(items.map((dish) => dish.city)));
     return Object.assign({}, main, {
       cityLabel: cities.length > 1 ? `${main.city}等${cities.length}地` : main.city,
-      duplicateCount: cities.length
+      duplicateCount: cities.length,
+      cityDisplay: cities.length > 1 ? `${main.city}\u7b49${cities.length}\u5730` : main.city,
+      showDuplicate: cities.length > 1
     });
   });
 }
@@ -30,6 +32,7 @@ Page({
   data: {
     keyword: "",
     results: [],
+    resultsEmpty: true,
     dishSheetVisible: false,
     detailDish: null,
     hotTags: ["宵夜", "甜品", "不吃辣", "海鲜", "早餐", "牛肉"]
@@ -37,9 +40,11 @@ Page({
 
   updateResults(keyword) {
     const currentCity = app.globalData.currentCity;
+    const results = groupResults(searchDishes(keyword), currentCity);
     this.setData({
       keyword,
-      results: groupResults(searchDishes(keyword), currentCity)
+      results,
+      resultsEmpty: !results.length
     });
   },
 

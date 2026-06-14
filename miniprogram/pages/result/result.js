@@ -26,7 +26,11 @@ Page({
     const sameCity = getDishesByCity(dish.city).filter((item) => item.id !== dish.id);
     const relatedDishes = sameCity.slice(0, 3).map((item) => Object.assign({}, item, {
       rating: iconRating(item.localIndex, item.iconType),
-      ratingItems: iconRatingItems(item.localIndex, item.iconType)
+      ratingItems: iconRatingItems(item.localIndex, item.iconType).map((ratingItem) =>
+        Object.assign({}, ratingItem, {
+          className: ratingItem.active ? "active" : ""
+        })
+      )
     }));
     storage.addUnique("historyDishIds", dish.id);
     this.setData({

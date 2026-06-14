@@ -41,7 +41,28 @@ function buildWheelItems(list) {
     icon: getDishIcon(dish),
     shortName: dish.name.length > 5 ? `${dish.name.slice(0, 5)}...` : dish.name,
     posClass: `mini-pos-${index}`,
+    chosenClass: "",
     slotIndex: index
+  }));
+}
+
+function decorateDishes(dishes, selectedMap, isSingle, reactText) {
+  return (dishes || []).map((dish) => {
+    const selected = !!(selectedMap && selectedMap[dish.id]);
+    const classNames = [];
+    if (isSingle) classNames.push("single");
+    if (selected) classNames.push("active");
+    return Object.assign({}, dish, {
+      cardClass: classNames.join(" "),
+      wantText: selected ? "\u5df2\u60f3\u5403" : reactText,
+      showDetail: !dish.custom
+    });
+  });
+}
+
+function decorateAddWheelItems(items, chosenMap) {
+  return (items || []).map((dish) => Object.assign({}, dish, {
+    chosenClass: chosenMap && chosenMap[dish.id] ? "picked" : ""
   }));
 }
 
@@ -184,11 +205,12 @@ Page({
     }
 
     const proposalItems = proposal.items || [];
-    const dishes = (proposal.selectedIds || proposalItems.map((item) => item.id)).map((dishId) => (
+    const rawDishes = (proposal.selectedIds || proposalItems.map((item) => item.id)).map((dishId) => (
       proposalItems.find((item) => item.id === dishId) || getDishById(dishId)
     )).filter(Boolean).slice(0, MAX_PROPOSAL_ITEMS);
-    const isSingle = dishes.length === 1;
+    const isSingle = rawDishes.length === 1;
     const copy = getPageCopy(isSingle, false);
+    const dishes = decorateDishes(rawDishes, {}, isSingle, copy.reactText);
 
     this.setData({
       proposal,
@@ -204,9 +226,11 @@ Page({
     const selectedMap = Object.assign({}, this.data.selectedMap);
     selectedMap[id] = !selectedMap[id];
     const reacted = Object.keys(selectedMap).some((key) => selectedMap[key]);
+    const copy = getPageCopy(this.data.isSingle, reacted);
     this.setData({
       selectedMap,
-      ...getPageCopy(this.data.isSingle, reacted)
+      dishes: decorateDishes(this.data.dishes, selectedMap, this.data.isSingle, copy.reactText),
+      ...copy
     });
     wx.showToast({ title: selectedMap[id] ? "记下了，想吃" : "已取消", icon: "none" });
   },
@@ -245,7 +269,7 @@ Page({
     const pool = uniqueByName(["local", "province", "common"].reduce((list, scope) => (
       list.concat(getProposalDishes(city, scope))
     ), [])).filter((dish) => !existingNames[dish.name]);
-    const addWheelItems = buildWheelItems(shuffle(pool));
+    const addWheelItems = decorateAddWheelItems(buildWheelItems(shuffle(pool)), {});
     if (!addWheelItems.length) {
       wx.showToast({ title: "暂时没有可加的菜", icon: "none" });
       return;
@@ -283,7 +307,7 @@ Page({
     ), [])).filter((dish) => !existingNames[dish.name]);
     const fresh = pool.filter((dish) => !previousIds.includes(dish.id));
     this.setData({
-      addWheelItems: buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)),
+      addWheelItems: decorateAddWheelItems(buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)), {}),
       addWheelPicked: null,
       addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {}
@@ -310,7 +334,8 @@ Page({
         addWheelSpinning: false,
         addWheelPicked: result,
         addWheelButtonText: "\u518d\u8f6c\u4e00\u6b21",
-        addWheelChosenMap: { [result.id]: true }
+        addWheelChosenMap: { [result.id]: true },
+        addWheelItems: decorateAddWheelItems(this.data.addWheelItems, { [result.id]: true })
       });
     }, 1500);
   },
@@ -330,10 +355,10 @@ Page({
       });
       return;
     }
-    const dishes = this.data.dishes.concat(dish).slice(0, MAX_PROPOSAL_ITEMS);
+    const rawDishes = this.data.dishes.concat(dish).slice(0, MAX_PROPOSAL_ITEMS);
     const proposal = Object.assign({}, this.data.proposal, {
-      selectedIds: dishes.map((item) => item.id),
-      items: dishes
+      selectedIds: rawDishes.map((item) => item.id),
+      items: rawDishes
     });
     if (proposal.id) {
       const proposals = wx.getStorageSync("proposals") || {};
@@ -341,15 +366,16 @@ Page({
       wx.setStorageSync("proposals", proposals);
     }
     const reacted = Object.keys(this.data.selectedMap).some((key) => this.data.selectedMap[key]);
+    const copy = getPageCopy(rawDishes.length === 1, reacted);
     this.setData({
       proposal,
-      dishes,
-      isSingle: dishes.length === 1,
+      dishes: decorateDishes(rawDishes, this.data.selectedMap, rawDishes.length === 1, copy.reactText),
+      isSingle: rawDishes.length === 1,
       addWheelVisible: false,
       addWheelPicked: null,
       addWheelButtonText: "\u5f00\u59cb\u8f6c",
       addWheelChosenMap: {},
-      ...getPageCopy(dishes.length === 1, reacted)
+      ...copy
     });
     wx.showToast({ title: "已加进这桌", icon: "none" });
   },

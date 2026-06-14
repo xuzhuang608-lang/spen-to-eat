@@ -6,7 +6,7 @@
     </view>
   </view>
 
-  <view wx:if="{{!hasContent}}" class="empty-panel">
+  <view wx:if="{{emptyVisible}}" class="empty-panel">
     <view class="empty-title">这座城市的菜单还在整理</view>
     <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
   </view>
@@ -16,7 +16,7 @@
       <view class="plate">
         <block wx:for="{{candidateDishes}}" wx:key="id">
           <view
-            class="plate-dish {{item.posClass}} {{item.plateClass}} {{chosenMap[item.id] ? 'picked' : ''}} {{customMode && customTargetIndex === index ? 'replace-target' : ''}}"
+            class="plate-dish {{item.posClass}} {{item.plateClass}} {{item.spinStateClass}}"
             data-id="{{item.id}}"
             bindtap="onOpenDish"
           >
@@ -61,7 +61,7 @@
     <view class="menu-list">
       <block wx:for="{{candidateDishes}}" wx:key="id">
         <view
-          class="menu-chip {{item.custom ? 'custom' : ''}} {{customMode && customTargetIndex === index ? 'replace-target' : ''}}"
+          class="menu-chip {{item.menuStateClass}}"
           data-id="{{item.id}}"
           bindtap="onOpenDish"
         >
@@ -78,7 +78,7 @@
       <view class="replace-list">
         <block wx:for="{{candidateDishes}}" wx:key="id">
           <view
-            class="replace-chip {{customTargetIndex === index ? 'active' : ''}}"
+            class="replace-chip {{item.replaceClass}}"
             data-id="{{item.id}}"
             bindtap="onOpenDish"
           >
@@ -101,7 +101,7 @@
         <view class="chip-row">
           <block wx:for="{{item.options}}" wx:for-item="option" wx:key="label">
             <view
-              class="chip {{option.active ? 'active' : ''}}"
+              class="chip {{option.className}}"
               data-key="{{item.key}}"
               data-value="{{option.label}}"
               bindtap="onSelectOption"
@@ -118,7 +118,7 @@
       <view class="chip-row">
         <block wx:for="{{avoidOptions}}" wx:key="label">
           <view
-            class="chip {{item.active ? 'active' : ''}}"
+            class="chip {{item.className}}"
             data-value="{{item.label}}"
             bindtap="onToggleAvoid"
           >

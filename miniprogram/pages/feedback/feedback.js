@@ -1,9 +1,18 @@
+const types = ["信息有误", "忌口不准", "不好吃这个", "我有建议"];
+
+function buildTypeOptions(activeType) {
+  return types.map((type) => ({
+    label: type,
+    className: type === activeType ? "active" : ""
+  }));
+}
+
 Page({
   data: {
     dishId: "",
     type: "信息有误",
     content: "",
-    types: ["信息有误", "忌口不准", "不好吃这个", "我有建议"]
+    typeOptions: buildTypeOptions("信息有误")
   },
 
   onLoad(query) {
@@ -11,7 +20,11 @@ Page({
   },
 
   onSelectType(event) {
-    this.setData({ type: event.currentTarget.dataset.type });
+    const type = event.currentTarget.dataset.type;
+    this.setData({
+      type,
+      typeOptions: buildTypeOptions(type)
+    });
   },
 
   onInput(event) {
@@ -31,4 +44,3 @@ Page({
     setTimeout(() => wx.navigateBack(), 500);
   }
 });
-

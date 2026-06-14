@@ -38,7 +38,8 @@ function buildOptionGroups(filters) {
     title: group.title,
     options: group.options.map((option) => ({
       label: option,
-      active: filters[group.key] === option
+      active: filters[group.key] === option,
+      className: filters[group.key] === option ? "active" : ""
     }))
   }));
 }
@@ -46,7 +47,8 @@ function buildOptionGroups(filters) {
 function buildAvoidOptions(avoidLabels) {
   return rawAvoidOptions.map((label) => ({
     label,
-    active: avoidLabels.includes(label)
+    active: avoidLabels.includes(label),
+    className: avoidLabels.includes(label) ? "active" : ""
   }));
 }
 
@@ -99,8 +101,29 @@ function pickCandidates(pool, previousIds) {
     posClass: `pos-${index}`,
     slotIndex: index,
     plateClass: getDishPlateClass(dish),
+    spinStateClass: "",
+    menuStateClass: dish.custom ? "custom" : "",
+    replaceClass: "",
     custom: !!dish.custom
   }));
+}
+
+function decorateCandidateState(list, chosenMap, customMode, customTargetIndex) {
+  return (list || []).map((dish, index) => {
+    const spinClasses = [];
+    const menuClasses = [];
+    if (chosenMap && chosenMap[dish.id]) spinClasses.push("picked");
+    if (dish.custom) menuClasses.push("custom");
+    if (customMode && customTargetIndex === index) {
+      spinClasses.push("replace-target");
+      menuClasses.push("replace-target");
+    }
+    return Object.assign({}, dish, {
+      spinStateClass: spinClasses.join(" "),
+      menuStateClass: menuClasses.join(" "),
+      replaceClass: customMode && customTargetIndex === index ? "active" : ""
+    });
+  });
 }
 
 function createCustomDish(name, index, replacedDish) {
@@ -163,6 +186,7 @@ Page({
     pickedName: "",
     chosenMap: {},
     hasContent: true,
+    emptyVisible: false,
     customMode: false,
     customTargetIndex: -1,
     customName: "",
@@ -223,9 +247,11 @@ Page({
 
   refreshCandidates(previousIds) {
     const pool = this.getPool();
+    const candidateDishes = pickCandidates(pool, previousIds);
     this.setData({
-      candidateDishes: pickCandidates(pool, previousIds),
-      hasContent: pool.length > 0
+      candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
+      hasContent: pool.length > 0,
+      emptyVisible: pool.length <= 0
     });
   },
 
@@ -281,7 +307,10 @@ Page({
     if (this.data.customMode) {
       const index = this.data.candidateDishes.findIndex((dish) => dish.id === id);
       if (index >= 0) {
-        this.setData({ customTargetIndex: index });
+        this.setData({
+          customTargetIndex: index,
+          candidateDishes: decorateCandidateState(this.data.candidateDishes, this.data.chosenMap, true, index)
+        });
       }
       return;
     }
@@ -307,7 +336,8 @@ Page({
     this.setData({
       customMode: true,
       customTargetIndex: -1,
-      customName: ""
+      customName: "",
+      candidateDishes: decorateCandidateState(this.data.candidateDishes, this.data.chosenMap, true, -1)
     });
   },
 
@@ -315,7 +345,8 @@ Page({
     this.setData({
       customMode: false,
       customTargetIndex: -1,
-      customName: ""
+      customName: "",
+      candidateDishes: decorateCandidateState(this.data.candidateDishes, this.data.chosenMap, false, -1)
     });
   },
 
@@ -337,7 +368,7 @@ Page({
     const candidateDishes = this.data.candidateDishes.slice();
     candidateDishes[index] = createCustomDish(name, index, candidateDishes[index]);
     this.setData({
-      candidateDishes,
+      candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       pickedName: "",
       chosenMap: {},
       customMode: false,
@@ -361,14 +392,16 @@ Page({
       spinRound: this.data.spinRound + 1,
       spinAngle: nextAngle,
       pickedName: "",
-      chosenMap: {}
+      chosenMap: {},
+      candidateDishes: decorateCandidateState(this.data.candidateDishes, {}, this.data.customMode, this.data.customTargetIndex)
     });
 
     setTimeout(() => {
       this.setData({
         spinning: false,
         pickedName: result.name,
-        chosenMap: { [result.id]: true }
+        chosenMap: { [result.id]: true },
+        candidateDishes: decorateCandidateState(this.data.candidateDishes, { [result.id]: true }, this.data.customMode, this.data.customTargetIndex)
       });
       if (result.custom) {
         wx.showToast({ title: `就吃${result.name}`, icon: "none" });

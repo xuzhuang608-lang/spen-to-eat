@@ -41,7 +41,7 @@
             <view class="related-meta">{{item.taste}} · {{item.category}}</view>
           </view>
           <view class="related-index">
-            <text class="related-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+            <text class="related-icon {{iconItem.className}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
           </view>
         </view>
       </block>

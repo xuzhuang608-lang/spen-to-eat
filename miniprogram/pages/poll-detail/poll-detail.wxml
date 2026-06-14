@@ -8,7 +8,7 @@
   </view>
 
   <view class="dish-list">
-    <view class="panel dish-item {{isSingle ? 'single' : ''}} {{selectedMap[item.id] ? 'active' : ''}}" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleWant">
+    <view class="panel dish-item {{item.cardClass}}" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleWant">
       <view class="dish-main">
         <view wx:if="{{isSingle}}" class="proposal-label">就这道</view>
         <view class="dish-title-row">
@@ -18,11 +18,8 @@
         <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
       </view>
       <view class="dish-side">
-        <view class="want-pill">
-          <text wx:if="{{selectedMap[item.id]}}">已想吃</text>
-          <text wx:else>{{reactText}}</text>
-        </view>
-        <view wx:if="{{!item.custom}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看看</view>
+        <view class="want-pill">{{item.wantText}}</view>
+        <view wx:if="{{item.showDetail}}" class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看看</view>
       </view>
     </view>
   </view>
@@ -53,7 +50,7 @@
       <view class="mini-wheel-wrap">
         <view class="mini-plate">
           <view
-            class="mini-dish {{item.posClass}} {{addWheelChosenMap[item.id] ? 'picked' : ''}}"
+            class="mini-dish {{item.posClass}} {{item.chosenClass}}"
             wx:for="{{addWheelItems}}"
             wx:key="id"
           >

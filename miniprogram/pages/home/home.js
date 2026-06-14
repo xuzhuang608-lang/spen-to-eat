@@ -9,6 +9,12 @@ const mealOptions = [
   { key: "夜宵", icon: "🌙", title: "宵夜", subtitle: "不许饿睡" }
 ];
 
+function buildMealOptions(selectedMeal) {
+  return mealOptions.map((item) => Object.assign({}, item, {
+    className: item.key === selectedMeal ? "active" : ""
+  }));
+}
+
 const cityInspiration = {
   广州: "老广说，先喝碗热的。",
   深圳: "快一点，也要好吃一点。",
@@ -70,7 +76,8 @@ function withRatingIcons(dish) {
     ratingItems: [0, 1, 2, 3, 4].map((index) => ({
       key: index,
       icon: ratingIcon,
-      active: index < count
+      active: index < count,
+      className: index < count ? "active" : ""
     })),
     iconBadges: [
       { icon: getKindIcon(dish), label: dish.category },
@@ -93,7 +100,11 @@ function getFeaturedDishes(cityName) {
   const dishes = uniqueByName(getDishesByCity(cityName));
   const localDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact");
   const fallbackDishes = dishes.filter((dish) => dish.sourceBucket !== "cityExact");
-  return localDishes.concat(fallbackDishes).slice(0, 3).map(withRatingIcons);
+  return localDishes.concat(fallbackDishes).slice(0, 3).map((dish, index) =>
+    Object.assign(withRatingIcons(dish), {
+      cardClass: index === 0 ? "large" : ""
+    })
+  );
 }
 
 Page({
@@ -102,8 +113,9 @@ Page({
     province: "广东",
     locating: false,
     selectedMeal: "午餐",
-    mealOptions,
+    mealOptions: buildMealOptions("??"),
     featuredDishes: [],
+    featuredEmpty: true,
     inspiration: "",
     dishSheetVisible: false,
     detailDish: null
@@ -121,6 +133,7 @@ Page({
       city: city.name,
       province: city.province || "广东",
       featuredDishes,
+      featuredEmpty: !featuredDishes.length,
       inspiration: cityInspiration[city.name] || city.slogan || "今天这一顿，交给饭点转转。"
     });
   },
@@ -156,7 +169,11 @@ Page({
   },
 
   onSelectMeal(event) {
-    this.setData({ selectedMeal: event.currentTarget.dataset.meal });
+    const selectedMeal = event.currentTarget.dataset.meal;
+    this.setData({
+      selectedMeal,
+      mealOptions: buildMealOptions(selectedMeal)
+    });
   },
 
   onStartSpin() {

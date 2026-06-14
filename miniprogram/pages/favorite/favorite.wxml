@@ -1,10 +1,10 @@
 <view class="page">
   <view class="tabs">
-    <view class="tab {{tab === 'favorite' ? 'active' : ''}}" data-tab="favorite" bindtap="onSwitchTab">收藏</view>
-    <view class="tab {{tab === 'history' ? 'active' : ''}}" data-tab="history" bindtap="onSwitchTab">历史</view>
+    <view class="tab {{favoriteTabClass}}" data-tab="favorite" bindtap="onSwitchTab">收藏</view>
+    <view class="tab {{historyTabClass}}" data-tab="history" bindtap="onSwitchTab">历史</view>
   </view>
 
-  <view wx:if="{{!dishes.length}}" class="empty">还没有内容，先去转一次吧。</view>
+  <view wx:if="{{emptyVisible}}" class="empty">还没有内容，先去转一次吧。</view>
   <view class="dish-list">
     <view class="panel dish-item" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
       <view>

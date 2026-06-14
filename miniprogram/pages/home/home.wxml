@@ -16,7 +16,7 @@
     <view class="meal-grid">
       <block wx:for="{{mealOptions}}" wx:key="key">
         <view
-          class="meal-card {{selectedMeal === item.key ? 'active' : ''}}"
+          class="meal-card {{item.className}}"
           data-meal="{{item.key}}"
           bindtap="onSelectMeal"
         >
@@ -51,7 +51,7 @@
     <button class="search-button" bindtap="onSearch">搜美食</button>
   </view>
 
-  <view class="inspiration-empty" wx:if="{{!featuredDishes.length}}">
+  <view class="inspiration-empty" wx:if="{{featuredEmpty}}">
     <view class="empty-title">这座城市的菜单还在整理</view>
     <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
     <button class="empty-button" bindtap="onChooseCity">切换城市</button>
@@ -60,7 +60,7 @@
   <view class="inspiration-grid" wx:else>
     <block wx:for="{{featuredDishes}}" wx:key="id">
       <view
-        class="inspiration-card {{index === 0 ? 'large' : ''}}"
+        class="inspiration-card {{item.cardClass}}"
         data-id="{{item.id}}"
         bindtap="onOpenDish"
       >
@@ -76,7 +76,7 @@
         <view class="dish-rating">
           <text class="rating-label">本地特色</text>
           <view class="rating-icons">
-            <text class="rating-icon {{iconItem.active ? 'active' : ''}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+            <text class="rating-icon {{iconItem.className}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
           </view>
         </view>
       </view>

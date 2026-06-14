@@ -85,7 +85,15 @@ function rotateList(list, offset) {
 
 function buildScopeTabs(activeScope, cityName) {
   return getScopeCopy(cityName).tabs.map((tab) => Object.assign({}, tab, {
-    active: tab.key === activeScope
+    active: tab.key === activeScope,
+    className: tab.key === activeScope ? "active" : ""
+  }));
+}
+
+function decorateCandidates(candidates, selectedMap) {
+  return (candidates || []).map((dish) => Object.assign({}, dish, {
+    className: selectedMap && selectedMap[dish.id] ? "active" : "",
+    selected: !!(selectedMap && selectedMap[dish.id])
   }));
 }
 
@@ -100,6 +108,7 @@ Page({
     emptyCandidateTitle: regularScopeCopy.emptyTitle,
     emptyCandidateDesc: regularScopeCopy.emptyDesc,
     candidates: [],
+    candidatesEmpty: true,
     selectedDishes: [],
     selectedIds: [],
     selectedMap: {},
@@ -143,11 +152,14 @@ Page({
 
   syncSelection(selectedDishes, extraData) {
     const selectedIds = selectedDishes.map((dish) => dish.id);
+    const selectedMap = this.toMap(selectedIds);
     this.setData(Object.assign({
       selectedDishes,
       selectedIds,
-      selectedMap: this.toMap(selectedIds),
-      selectedCount: selectedIds.length
+      selectedMap,
+      selectedCount: selectedIds.length,
+      candidates: decorateCandidates(this.data.candidates, selectedMap),
+      candidatesEmpty: !this.data.candidates.length
     }, extraData || {}));
   },
 
@@ -175,7 +187,8 @@ Page({
       candidateDesc: scopeCopy.desc,
       emptyCandidateTitle: activeScope === "province" && isDirectCity(this.data.city) ? directScopeCopy.emptyTitle : regularScopeCopy.emptyTitle,
       emptyCandidateDesc: activeScope === "province" && isDirectCity(this.data.city) ? directScopeCopy.emptyDesc : regularScopeCopy.emptyDesc,
-      candidates,
+      candidates: decorateCandidates(candidates, this.data.selectedMap),
+      candidatesEmpty: !candidates.length,
       batchOffset
     });
   },
@@ -195,7 +208,8 @@ Page({
     const candidates = this.filterByScope(searched, this.data.activeScope).slice(0, 30);
     this.setData({
       keyword,
-      candidates
+      candidates: decorateCandidates(candidates, this.data.selectedMap),
+      candidatesEmpty: !candidates.length
     });
   },
 

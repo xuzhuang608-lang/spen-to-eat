@@ -50,7 +50,7 @@
   </view>
 
   <view class="scope-tabs">
-    <view class="scope-tab {{item.active ? 'active' : ''}}" wx:for="{{scopeTabs}}" wx:key="key" data-scope="{{item.key}}" bindtap="onSelectScope">{{item.label}}</view>
+    <view class="scope-tab {{item.className}}" wx:for="{{scopeTabs}}" wx:key="key" data-scope="{{item.key}}" bindtap="onSelectScope">{{item.label}}</view>
   </view>
 
   <view class="tool-row">
@@ -58,13 +58,13 @@
     <button class="tool-button" bindtap="onRefreshCandidates">换一批</button>
   </view>
 
-  <view wx:if="{{!candidates.length}}" class="empty-candidates">
+  <view wx:if="{{candidatesEmpty}}" class="empty-candidates">
     <view class="empty-title">{{emptyCandidateTitle}}</view>
     <view class="muted">{{emptyCandidateDesc}}</view>
   </view>
 
   <view wx:else class="dish-list">
-    <view class="dish-item {{selectedMap[item.id] ? 'active' : ''}}" wx:for="{{candidates}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleDish">
+    <view class="dish-item {{item.className}}" wx:for="{{candidates}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleDish">
       <view class="dish-main">
         <view class="dish-title-row">
           <text class="dish-name">{{item.name}}</text>
@@ -74,7 +74,7 @@
           <text>{{item.city}} · {{item.category}} · {{item.taste}}</text>
         </view>
       </view>
-      <view class="select-dot"><text wx:if="{{selectedMap[item.id]}}">✓</text></view>
+      <view class="select-dot"><text wx:if="{{item.selected}}">✓</text></view>
     </view>
   </view>
 
