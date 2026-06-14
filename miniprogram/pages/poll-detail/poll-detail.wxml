@@ -44,7 +44,7 @@
           <view class="add-wheel-title">给这桌再转一道</view>
           <view class="muted">转到以后再决定要不要加进来。</view>
         </view>
-        <button class="add-wheel-close" bindtap="onCloseAddWheel">×</button>
+        <view class="add-wheel-close" catchtap="onCloseAddWheel">×</view>
       </view>
 
       <view class="mini-wheel-wrap">

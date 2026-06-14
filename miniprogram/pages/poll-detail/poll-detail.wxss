@@ -225,22 +225,18 @@
 
 .add-wheel-close {
   flex: 0 0 auto;
-  width: 58rpx;
-  height: 58rpx;
-  min-height: 58rpx;
-  padding: 0;
-  margin: 0;
-  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 44rpx;
+  margin-top: 2rpx;
   border-radius: 50%;
-  background: #fff0e8;
-  color: #84452f;
-  font-size: 36rpx;
+  background: #fff2ea;
+  color: #a26049;
+  font-size: 26rpx;
   font-weight: 800;
-  line-height: 58rpx;
-}
-
-.add-wheel-close::after {
-  border: 0;
+  line-height: 1;
 }
 
 .mini-wheel-wrap {
