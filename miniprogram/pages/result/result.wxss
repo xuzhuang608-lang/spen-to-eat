@@ -73,11 +73,11 @@
 .action-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12rpx;
+  gap: 14rpx 16rpx;
   margin-top: 26rpx;
-  padding: 8rpx;
-  border-radius: 22rpx;
-  background: #fff0e8;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -87,14 +87,14 @@
   justify-content: center;
   width: 100%;
   min-width: 0;
-  height: 62rpx;
-  min-height: 62rpx;
+  height: 64rpx;
+  min-height: 64rpx;
   padding: 0;
   margin: 0;
-  border: 0;
-  border-radius: 18rpx;
-  background: transparent;
-  color: #7a6a5f;
+  border: 2rpx solid #f1d8cb;
+  border-radius: 16rpx;
+  background: #fffdf8;
+  color: #7b5b4b;
   box-sizing: border-box;
   font-size: 24rpx;
   font-weight: 900;
@@ -102,10 +102,10 @@
 }
 
 .compact-action:first-child {
-  background: #ffe7dc;
-  border: 2rpx solid #ee7558;
-  color: #e85d3d;
-  box-shadow: 0 8rpx 18rpx rgba(232, 93, 61, 0.1);
+  border-color: #f2b8a7;
+  background: #fff0e8;
+  color: #d9573d;
+  box-shadow: 0 8rpx 16rpx rgba(216, 87, 61, 0.08);
 }
 
 .compact-action::after {

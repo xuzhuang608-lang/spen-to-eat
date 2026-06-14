@@ -20,7 +20,7 @@
   </view>
 
   <view class="action-row main-actions">
-    <button class="ghost-button compact-action" bindtap="onSpinAgain">再来一轮</button>
+    <button class="ghost-button compact-action" bindtap="onSpinAgain">再转一次</button>
     <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>
     <button class="ghost-button compact-action" bindtap="onCreatePoll">组个饭局</button>
     <button class="ghost-button compact-action" bindtap="onFeedback">提个建议</button>
