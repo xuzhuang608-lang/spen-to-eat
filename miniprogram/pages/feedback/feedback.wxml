@@ -10,4 +10,7 @@
 
   <textarea class="textarea" value="{{content}}" maxlength="300" placeholder="可以简单说说哪里不准，或者你想加什么美食。" bindinput="onInput" />
   <button class="primary-button" bindtap="onSubmit">提交反馈</button>
+  <view class="feedback-footer">
+    <text class="privacy-link" bindtap="onOpenPrivacy">隐私说明</text>
+  </view>
 </view>

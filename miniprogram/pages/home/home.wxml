@@ -86,5 +86,9 @@
     </block>
   </view>
 
+  <view class="home-footer">
+    <text class="privacy-link" bindtap="onOpenPrivacy">隐私说明</text>
+  </view>
+
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

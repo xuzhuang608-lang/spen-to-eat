@@ -41,6 +41,10 @@ Page({
     this.setData({ content: event.detail.value });
   },
 
+  onOpenPrivacy() {
+    wx.navigateTo({ url: "/pages/privacy/privacy" });
+  },
+
   onSubmit() {
     const createdAt = Date.now();
     const feedback = {

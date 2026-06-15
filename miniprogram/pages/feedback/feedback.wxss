@@ -31,3 +31,15 @@
   font-size: 29rpx;
   line-height: 1.5;
 }
+
+.feedback-footer {
+  display: flex;
+  justify-content: center;
+  padding: 28rpx 0 6rpx;
+}
+
+.privacy-link {
+  color: #7a6a5f;
+  font-size: 25rpx;
+  text-decoration: underline;
+}

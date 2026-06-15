@@ -350,3 +350,15 @@
 .rating-icon.active {
   opacity: 1;
 }
+
+.home-footer {
+  display: flex;
+  justify-content: center;
+  padding: 4rpx 0 18rpx;
+}
+
+.privacy-link {
+  color: #7a6a5f;
+  font-size: 24rpx;
+  text-decoration: underline;
+}

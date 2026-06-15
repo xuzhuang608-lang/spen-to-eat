@@ -207,5 +207,9 @@ Page({
 
   onCreatePoll() {
     wx.navigateTo({ url: "/pages/poll-create/poll-create" });
+  },
+
+  onOpenPrivacy() {
+    wx.navigateTo({ url: "/pages/privacy/privacy" });
   }
 });
