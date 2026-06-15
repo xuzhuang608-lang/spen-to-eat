@@ -49,7 +49,7 @@
   <view class="inspiration-head">
     <view>
       <view class="section-title">今日灵感</view>
-      <view class="muted">{{city}}饭点灵感：{{inspiration}}</view>
+      <view class="muted">{{inspiration}}</view>
     </view>
     <button class="search-button" bindtap="onSearch">搜美食</button>
   </view>
