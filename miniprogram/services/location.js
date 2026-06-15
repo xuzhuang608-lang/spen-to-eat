@@ -1,5 +1,12 @@
-const { AMAP_KEY } = require("../config/map");
 const { getCities } = require("./dish");
+
+function getAmapKey() {
+  try {
+    return require("../config/map").AMAP_KEY || "";
+  } catch (error) {
+    return "";
+  }
+}
 
 function normalizeCityName(value) {
   return String(value || "")
@@ -31,6 +38,7 @@ function getWxErrorMessage(error, fallback) {
 
 function reverseGeocode(latitude, longitude) {
   return new Promise((resolve, reject) => {
+    const AMAP_KEY = getAmapKey();
     if (!AMAP_KEY || AMAP_KEY.includes("请填写")) {
       reject(new Error("缺少高德地图 Key"));
       return;
