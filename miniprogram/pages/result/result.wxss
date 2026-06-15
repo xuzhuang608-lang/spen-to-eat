@@ -70,6 +70,32 @@
   line-height: 1.6;
 }
 
+.decision-panel {
+  display: grid;
+  gap: 14rpx;
+  margin-top: 24rpx;
+}
+
+.decision-item {
+  padding: 22rpx;
+  border: 2rpx solid #eadbd0;
+  border-radius: 24rpx;
+  background: #fffdf8;
+}
+
+.decision-title {
+  color: #35261d;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.decision-text {
+  margin-top: 10rpx;
+  color: #6f5b50;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
 .action-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

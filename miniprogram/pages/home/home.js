@@ -113,7 +113,7 @@ Page({
     province: "广东",
     locating: false,
     selectedMeal: "午餐",
-    mealOptions: buildMealOptions("??"),
+    mealOptions: buildMealOptions("午餐"),
     featuredDishes: [],
     featuredEmpty: true,
     inspiration: "",

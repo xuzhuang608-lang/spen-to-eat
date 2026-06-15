@@ -8,7 +8,7 @@
 
   <view wx:if="{{emptyVisible}}" class="empty-panel">
     <view class="empty-title">这座城市的菜单还在整理</view>
-    <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
+    <view class="empty-desc">可以先换个附近城市，或放宽偏好条件再转一次。</view>
   </view>
 
   <view wx:else>
@@ -33,7 +33,13 @@
           </view>
         </view>
       </view>
-      <view wx:if="{{pickedName}}" class="spin-reveal">这顿就它了：{{pickedName}}</view>
+      <view wx:if="{{pickedName}}" class="spin-result-panel">
+        <view class="spin-reveal">这顿就它了：{{pickedName}}</view>
+        <view wx:if="{{pickedDishId}}" class="spin-result-actions">
+          <button class="result-action secondary" bindtap="onSpin">再转一次</button>
+          <button class="result-action primary" bindtap="onViewResult">看详情</button>
+        </view>
+      </view>
     </view>
 
     <view class="spin-actions">

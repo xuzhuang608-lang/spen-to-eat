@@ -453,7 +453,8 @@ function spinDish(filters) {
 function searchDishes(keyword) {
   const text = String(keyword || "").trim().toLowerCase();
   if (!text) return [];
-  return ensureAllDishes().filter((dish) => {
+  ensureAllDishes();
+  return Object.keys(dishById).map((id) => dishById[id]).filter((dish) => {
     const haystack = [
       dish.city,
       dish.province,

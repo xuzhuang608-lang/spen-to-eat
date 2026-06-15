@@ -2,12 +2,53 @@ const { getDishById, getDishesByCity } = require("../../services/dish");
 const { iconRating, iconRatingItems } = require("../../utils/random");
 const storage = require("../../services/storage");
 
+function buildNowReason(dish) {
+  const meal = (dish.mealTime || []).slice(0, 2).join("、") || "这一顿";
+  const taste = dish.taste || "顺口";
+  const category = dish.category || "本地味";
+  return `${meal}想吃点${taste}的，${dish.name}比随便点一份${category}更有方向。`;
+}
+
+function buildFitText(dish) {
+  const scenes = (dish.scene || []).filter(Boolean);
+  if (scenes.length) {
+    return `适合${scenes.slice(0, 3).join("、")}。想少纠结时，可以先把它放进候选。`;
+  }
+  return "适合想快速定下一顿的人。先有一个选择，饭点就不容易拖住。";
+}
+
+function buildCautionText(dish) {
+  const avoidTags = (dish.avoidTags || []).filter(Boolean);
+  if (avoidTags.length) {
+    return `如果你介意${avoidTags.slice(0, 3).join("、")}，点之前可以再确认一下。`;
+  }
+  return "没有明显避雷标签。口味仍以实际做法为准，可以按个人忌口再判断。";
+}
+
+function buildDecisionCards(dish) {
+  return [
+    {
+      title: "为什么现在适合吃",
+      text: buildNowReason(dish)
+    },
+    {
+      title: "适合这类饭局",
+      text: buildFitText(dish)
+    },
+    {
+      title: "可能不适合",
+      text: buildCautionText(dish)
+    }
+  ];
+}
+
 Page({
   data: {
     dish: null,
     rating: "",
     favorited: false,
     favoriteText: "\u6536\u85cf\u8d77\u6765",
+    decisionCards: [],
     relatedDishes: [],
     dishSheetVisible: false,
     detailDish: null
@@ -38,6 +79,7 @@ Page({
       rating: iconRating(dish.localIndex, dish.iconType),
       favorited: storage.hasItem("favoriteDishIds", dish.id),
       favoriteText: storage.hasItem("favoriteDishIds", dish.id) ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765",
+      decisionCards: buildDecisionCards(dish),
       relatedDishes
     });
   },
@@ -57,7 +99,14 @@ Page({
   },
 
   onSpinAgain() {
-    wx.navigateBack();
+    const pages = getCurrentPages();
+    if (pages.length > 1) {
+      wx.navigateBack();
+      return;
+    }
+    wx.redirectTo({
+      url: `/pages/spin/spin?city=${encodeURIComponent(this.data.dish.city)}`
+    });
   },
 
   onCreatePoll() {

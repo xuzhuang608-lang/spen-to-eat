@@ -19,6 +19,15 @@
     <view class="desc">{{dish.description}}</view>
   </view>
 
+  <view class="decision-panel">
+    <block wx:for="{{decisionCards}}" wx:key="title">
+      <view class="decision-item">
+        <view class="decision-title">{{item.title}}</view>
+        <view class="decision-text">{{item.text}}</view>
+      </view>
+    </block>
+  </view>
+
   <view class="action-row main-actions">
     <button class="ghost-button compact-action" bindtap="onSpinAgain">再来一轮</button>
     <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>

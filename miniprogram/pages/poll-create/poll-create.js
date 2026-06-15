@@ -58,6 +58,26 @@ function createCustomId() {
   return `custom-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 }
 
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch (error) {
+    return value || "";
+  }
+}
+
+function parseQueryIds(query) {
+  const ids = [];
+  if (query.dishId) ids.push(query.dishId);
+  if (query.ids) {
+    String(query.ids).split(",").forEach((id) => {
+      const decoded = safeDecode(id).trim();
+      if (decoded) ids.push(decoded);
+    });
+  }
+  return Array.from(new Set(ids)).slice(0, MAX_SELECTED);
+}
+
 function uniqueDishes(list) {
   const byId = {};
   list.filter(Boolean).forEach((dish) => {
@@ -121,20 +141,20 @@ Page({
 
   onLoad(query) {
     const city = app.globalData.currentCity || "广州";
-    const ids = [];
-    if (query.dishId) ids.push(query.dishId);
+    const ids = parseQueryIds(query || {});
     const savedIds = storage.getList("favoriteDishIds").concat(storage.getList("historyDishIds"));
-    const selectedDishes = Array.from(new Set(ids))
+    const selectedDishes = ids
       .map((id) => getDishById(id))
       .filter(Boolean)
       .map(decorateDish);
+    const proposalCity = selectedDishes[0] ? selectedDishes[0].city : city;
     const savedDishes = Array.from(new Set(savedIds))
       .map((id) => getDishById(id))
       .filter(Boolean)
       .map(decorateDish);
 
     this.setData({
-      city,
+      city: proposalCity,
       selectedDishes,
       selectedIds: selectedDishes.map((dish) => dish.id),
       selectedMap: this.toMap(selectedDishes.map((dish) => dish.id)),

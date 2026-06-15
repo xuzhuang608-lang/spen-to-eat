@@ -184,6 +184,7 @@ Page({
     spinRound: 0,
     spinAngle: 0,
     pickedName: "",
+    pickedDishId: "",
     chosenMap: {},
     hasContent: true,
     emptyVisible: false,
@@ -222,6 +223,7 @@ Page({
       city,
       candidateDishes: [],
       pickedName: "",
+      pickedDishId: "",
       chosenMap: {},
       spinning: false,
       customMode: false,
@@ -251,7 +253,9 @@ Page({
     this.setData({
       candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       hasContent: pool.length > 0,
-      emptyVisible: pool.length <= 0
+      emptyVisible: pool.length <= 0,
+      pickedName: "",
+      pickedDishId: ""
     });
   },
 
@@ -259,6 +263,7 @@ Page({
     const previousIds = this.data.candidateDishes.map((dish) => dish.id);
     this.setData({
       pickedName: "",
+      pickedDishId: "",
       chosenMap: {},
       customMode: false,
       customTargetIndex: -1,
@@ -370,6 +375,7 @@ Page({
     this.setData({
       candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       pickedName: "",
+      pickedDishId: "",
       chosenMap: {},
       customMode: false,
       customTargetIndex: -1,
@@ -400,16 +406,21 @@ Page({
       this.setData({
         spinning: false,
         pickedName: result.name,
+        pickedDishId: result.custom ? "" : result.id,
         chosenMap: { [result.id]: true },
         candidateDishes: decorateCandidateState(this.data.candidateDishes, { [result.id]: true }, this.data.customMode, this.data.customTargetIndex)
       });
       if (result.custom) {
         wx.showToast({ title: `就吃${result.name}`, icon: "none" });
-        return;
       }
-      setTimeout(() => {
-        wx.navigateTo({ url: `/pages/result/result?id=${result.id}` });
-      }, 450);
     }, 1650);
+  },
+
+  onViewResult() {
+    if (!this.data.pickedDishId) {
+      wx.showToast({ title: "先转一道菜", icon: "none" });
+      return;
+    }
+    wx.navigateTo({ url: `/pages/result/result?id=${this.data.pickedDishId}` });
   }
 });

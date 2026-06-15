@@ -176,6 +176,51 @@
   box-shadow: 0 10rpx 22rpx rgba(232, 93, 61, 0.12);
 }
 
+.spin-result-panel {
+  margin-top: 18rpx;
+}
+
+.spin-result-panel .spin-reveal {
+  margin-top: 0;
+}
+
+.spin-result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18rpx;
+  width: 520rpx;
+  max-width: 520rpx;
+  margin: 16rpx auto 0;
+}
+
+.result-action {
+  flex: 1;
+  height: 74rpx;
+  line-height: 74rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 22rpx;
+  font-size: 27rpx;
+  font-weight: 900;
+}
+
+.result-action::after {
+  border: 0;
+}
+
+.result-action.secondary {
+  border: 2rpx solid #e8d6c6;
+  background: #fff;
+  color: #5a463b;
+}
+
+.result-action.primary {
+  border: 2rpx solid #efb49f;
+  background: linear-gradient(180deg, #ee6a4b 0%, #e85d3d 100%);
+  color: #fff;
+  box-shadow: 0 10rpx 18rpx rgba(232, 93, 61, 0.14);
+}
+
 .dish-icon {
   font-size: 34rpx;
   line-height: 1;

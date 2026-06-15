@@ -109,6 +109,13 @@ Page({
   },
 
   onCreatePoll() {
-    wx.navigateTo({ url: "/pages/poll-create/poll-create" });
+    const ids = this.data.dishes.slice(0, 8).map((dish) => dish.id);
+    if (!ids.length) {
+      wx.showToast({ title: "\u5148\u6536\u85cf\u6216\u8f6c\u5230\u4e00\u9053\u83dc", icon: "none" });
+      return;
+    }
+    wx.navigateTo({
+      url: `/pages/poll-create/poll-create?ids=${ids.map(encodeURIComponent).join(",")}`
+    });
   }
 });

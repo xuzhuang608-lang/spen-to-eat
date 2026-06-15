@@ -53,7 +53,7 @@
 
   <view class="inspiration-empty" wx:if="{{featuredEmpty}}">
     <view class="empty-title">这座城市的菜单还在整理</view>
-    <view class="empty-desc">先试试广东城市，后面会慢慢补齐更多地方味。</view>
+    <view class="empty-desc">可以先换个附近城市，或用常见菜先顶上。</view>
     <button class="empty-button" bindtap="onChooseCity">切换城市</button>
   </view>
 
