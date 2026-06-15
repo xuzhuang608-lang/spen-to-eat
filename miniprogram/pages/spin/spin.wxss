@@ -46,122 +46,26 @@
     0 10rpx 24rpx rgba(53, 38, 29, 0.14);
 }
 
-.rice-bowl {
+.rice-bowl-image {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 112rpx;
-  height: 96rpx;
-  transform: translate(-50%, -42%);
+  top: 54%;
+  z-index: 1;
+  width: 150rpx;
+  height: 150rpx;
+  transform: translate(-50%, -50%);
 }
 
-.rice-face {
-  position: absolute;
-  left: 16rpx;
-  top: 0;
-  width: 80rpx;
-  height: 62rpx;
-  border-radius: 48rpx 48rpx 34rpx 34rpx;
-  background:
-    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.94) 0 10%, transparent 11%),
-    linear-gradient(180deg, #fffdf8 0%, #fff7e7 100%);
-  box-shadow:
-    inset 0 -5rpx 0 rgba(238, 212, 178, 0.28),
-    0 5rpx 10rpx rgba(86, 45, 18, 0.08);
-}
-
-.rice-eye {
-  position: absolute;
-  top: 25rpx;
-  width: 8rpx;
-  height: 8rpx;
-  border-radius: 50%;
-  background: #5f4030;
-}
-
-.rice-eye.left {
-  left: 25rpx;
-}
-
-.rice-eye.right {
-  right: 25rpx;
-}
-
-.rice-smile {
-  position: absolute;
-  left: 50%;
-  top: 35rpx;
-  width: 24rpx;
-  height: 12rpx;
-  border-bottom: 4rpx solid #d85c3d;
-  border-radius: 0 0 999rpx 999rpx;
-  transform: translateX(-50%);
-}
-
-.bowl-body {
-  position: absolute;
-  left: 4rpx;
-  bottom: 0;
-  width: 104rpx;
-  height: 48rpx;
-  border-radius: 8rpx 8rpx 46rpx 46rpx;
-  background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.64) 0 12%, transparent 13%),
-    linear-gradient(180deg, #ff7b55 0%, #e85d3d 100%);
-  box-shadow:
-    inset 0 -7rpx 0 rgba(155, 55, 35, 0.18),
-    0 7rpx 13rpx rgba(232, 93, 61, 0.16);
-}
-
-.turner-chopsticks {
+.chopsticks-pointer-image {
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 2;
-  width: 128rpx;
-  height: 128rpx;
+  width: 184rpx;
+  height: 184rpx;
   transform: translate(-50%, -50%);
   transition: transform 1.65s cubic-bezier(0.15, 0.86, 0.18, 1);
-}
-
-.turner-stick {
-  position: absolute;
-  left: 59rpx;
-  top: 8rpx;
-  width: 10rpx;
-  height: 116rpx;
-  border-radius: 999rpx;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 44%),
-    linear-gradient(180deg, #654022 0%, #b8743f 72%, #523018 100%);
-  box-shadow:
-    0 6rpx 12rpx rgba(86, 45, 18, 0.18),
-    inset -2rpx 0 0 rgba(74, 36, 15, 0.14);
   transform-origin: 50% 50%;
-}
-
-.turner-stick.one {
-  transform: rotate(39deg) translateX(-9rpx);
-}
-
-.turner-stick.two {
-  transform: rotate(48deg) translateX(9rpx);
-}
-
-.turner-rest {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 42rpx;
-  height: 42rpx;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.82) 0 14%, transparent 15%),
-    linear-gradient(180deg, #f7dfbd 0%, #b97842 100%);
-  box-shadow:
-    inset 0 0 0 4rpx rgba(255, 248, 235, 0.5),
-    0 6rpx 12rpx rgba(86, 45, 18, 0.14);
-  transform: translate(-50%, -50%);
 }
 
 .plate-dish {

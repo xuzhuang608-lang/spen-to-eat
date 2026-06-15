@@ -26,19 +26,8 @@
           </view>
         </block>
         <view class="plate-core">
-          <view class="rice-bowl" aria-hidden="true">
-            <view class="rice-face">
-              <view class="rice-eye left"></view>
-              <view class="rice-eye right"></view>
-              <view class="rice-smile"></view>
-            </view>
-            <view class="bowl-body"></view>
-          </view>
-          <view class="turner-chopsticks" style="transform: translate(-50%, -50%) rotate({{spinAngle}}deg);">
-            <view class="turner-stick one"></view>
-            <view class="turner-stick two"></view>
-            <view class="turner-rest"></view>
-          </view>
+          <image class="rice-bowl-image" src="/assets/spin/rice-bowl.png" mode="aspectFit"></image>
+          <image class="chopsticks-pointer-image" src="/assets/spin/chopsticks-pointer.png" mode="aspectFit" style="transform: translate(-50%, -50%) rotate({{spinAngle}}deg);"></image>
         </view>
       </view>
       <view wx:if="{{pickedName}}" class="spin-result-panel">
