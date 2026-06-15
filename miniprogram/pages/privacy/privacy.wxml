@@ -13,7 +13,7 @@
     <view class="para">当前版本不强制获取头像昵称，不使用云数据库同步收藏、历史或反馈。</view>
 
     <view class="para-title">反馈处理</view>
-    <view class="para">提交反馈后，小程序会在本机保存一份记录，并提供复制反馈内容的入口。是否发送给开发者由用户自行决定。</view>
+    <view class="para">提交反馈后，小程序会先在本机保存一份记录。后续接入云端反馈能力时，可用于统一处理菜品、标签和体验问题。</view>
 
     <view class="para-title">内容提示</view>
     <view class="para">菜品介绍、口味、忌口和适合场景仅供参考，实际做法和食材请以线下商家或个人判断为准。</view>

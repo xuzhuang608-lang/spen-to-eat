@@ -2,7 +2,7 @@
   <view class="section-title">给饭点转转一点反馈</view>
   <view class="feedback-note">
     <view class="note-title">{{dishLabel}}</view>
-    <view class="note-desc">当前版本不上传云端。提交后可复制反馈内容，发给开发者处理。</view>
+    <view class="note-desc">当前版本会先记录在本机。后续接入云端后，可用于统一处理菜品和标签问题。</view>
   </view>
   <view class="chip-row">
     <view class="chip {{item.className}}" wx:for="{{typeOptions}}" wx:key="label" data-type="{{item.label}}" bindtap="onSelectType">{{item.label}}</view>

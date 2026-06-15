@@ -9,24 +9,6 @@ function buildTypeOptions(activeType) {
   }));
 }
 
-function formatDate(timestamp) {
-  const date = new Date(timestamp);
-  const pad = (value) => String(value).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
-function buildFeedbackSummary(feedback, dish) {
-  const dishLine = dish ? `${dish.city} / ${dish.name}` : feedback.dishId || "未关联菜品";
-  const content = feedback.content || "未填写补充说明";
-  return [
-    "饭点转转反馈",
-    `菜品：${dishLine}`,
-    `类型：${feedback.type}`,
-    `内容：${content}`,
-    `时间：${formatDate(feedback.createdAt)}`
-  ].join("\n");
-}
-
 Page({
   data: {
     dishId: "",
@@ -70,29 +52,7 @@ Page({
     const feedbacks = wx.getStorageSync("feedbacks") || [];
     feedbacks.unshift(feedback);
     wx.setStorageSync("feedbacks", feedbacks.slice(0, 100));
-
-    const summary = buildFeedbackSummary(feedback, this.data.dish);
-    wx.showModal({
-      title: "反馈已保存在本机",
-      content: "当前版本不上传云端。可以复制反馈内容，发给开发者处理。",
-      confirmText: "复制反馈",
-      cancelText: "先不复制",
-      success: (res) => {
-        if (!res.confirm) {
-          wx.navigateBack();
-          return;
-        }
-        wx.setClipboardData({
-          data: summary,
-          success: () => {
-            wx.showToast({ title: "已复制", icon: "success" });
-            setTimeout(() => wx.navigateBack(), 600);
-          },
-          fail: () => {
-            wx.showToast({ title: "复制失败", icon: "none" });
-          }
-        });
-      }
-    });
+    wx.showToast({ title: "已记录", icon: "success" });
+    setTimeout(() => wx.navigateBack(), 600);
   }
 });
