@@ -24,6 +24,11 @@ function pickCityName(component) {
   return fuzzy ? fuzzy.name : city;
 }
 
+function getWxErrorMessage(error, fallback) {
+  if (!error) return fallback;
+  return error.message || error.errMsg || error.info || fallback;
+}
+
 function reverseGeocode(latitude, longitude) {
   return new Promise((resolve, reject) => {
     if (!AMAP_KEY || AMAP_KEY.includes("请填写")) {
@@ -56,7 +61,9 @@ function reverseGeocode(latitude, longitude) {
           district: component.district
         });
       },
-      fail: reject
+      fail(error) {
+        reject(new Error(getWxErrorMessage(error, "逆地址解析请求失败")));
+      }
     });
   });
 }
@@ -68,7 +75,9 @@ function getCurrentCityByLocation() {
       success(location) {
         reverseGeocode(location.latitude, location.longitude).then(resolve).catch(reject);
       },
-      fail: reject
+      fail(error) {
+        reject(new Error(getWxErrorMessage(error, "获取位置失败")));
+      }
     });
   });
 }

@@ -87,6 +87,20 @@ function withRatingIcons(dish) {
   });
 }
 
+function getLocationFailureMessage(error) {
+  const message = error && error.message ? error.message : "可以先手动选择城市。";
+  if (message.includes("auth deny") || message.includes("authorize") || message.includes("permission")) {
+    return "还没有开启位置权限，可以稍后在微信授权里打开，也可以先手动选择城市。";
+  }
+  if (message.includes("url not in domain list") || message.includes("domain")) {
+    return "定位服务域名还没有在当前环境生效，可以刷新项目配置后再试，或先手动选择城市。";
+  }
+  if (message.includes("INVALID_USER_KEY") || message.includes("USERKEY")) {
+    return "定位服务配置暂不可用，可以先手动选择城市。";
+  }
+  return message;
+}
+
 function uniqueByName(dishes) {
   const used = {};
   return dishes.filter((dish) => {
@@ -211,9 +225,12 @@ Page({
         console.error("定位失败", error);
         wx.showModal({
           title: "定位失败",
-          content: error && error.message ? error.message : "可以先手动选择城市。",
-          confirmText: "知道了",
-          showCancel: false
+          content: getLocationFailureMessage(error),
+          confirmText: "手动选城",
+          cancelText: "知道了",
+          success: (res) => {
+            if (res.confirm) this.onChooseCity();
+          }
         });
       })
       .then(finish, finish);
