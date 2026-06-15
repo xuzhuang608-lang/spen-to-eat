@@ -2,7 +2,7 @@
   <view class="spin-head">
     <view>
       <view class="section-title">{{city}}这一桌</view>
-      <view class="muted spin-subtitle">先摆 {{candidateDishes.length}} 道看看，不合胃口就换一批，也能自己加一道。</view>
+      <view class="muted spin-subtitle">先摆 {{candidateDishes.length}} 道看看，不合胃口就换一桌菜，也能自定义菜品。</view>
     </view>
   </view>
 
@@ -40,8 +40,8 @@
     </view>
 
     <view class="spin-actions">
-      <button class="secondary-button" bindtap="onRefreshCandidates">换一批</button>
-      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">转到哪吃哪</button>
+      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">开始转动</button>
+      <button class="secondary-button" bindtap="onRefreshCandidates">换一桌菜</button>
     </view>
   </view>
 
@@ -59,7 +59,7 @@
         <view class="menu-title">这轮先摆这些</view>
         <view class="muted">看中哪道可以点开，不想吃也能换掉。</view>
       </view>
-      <button class="add-dish-button" bindtap="onStartCustomReplace">+ 加一道</button>
+      <button class="add-dish-button" bindtap="onStartCustomReplace">自定义菜品</button>
     </view>
     <view class="menu-list">
       <block wx:for="{{candidateDishes}}" wx:key="id">
