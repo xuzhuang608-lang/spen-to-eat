@@ -57,10 +57,9 @@
             <view class="mini-dish-icon">{{item.icon}}</view>
             <view class="mini-dish-name">{{item.shortName}}</view>
           </view>
-          <view class="mini-turner" style="transform: translate(-50%, -50%) rotate({{addWheelAngle}}deg);">
-            <view class="mini-stick one"></view>
-            <view class="mini-stick two"></view>
-            <view class="mini-rest"></view>
+          <view class="mini-plate-core">
+            <image class="mini-rice-bowl-image" src="/assets/spin/rice-bowl.png" mode="aspectFit"></image>
+            <image class="mini-chopsticks-pointer-image" src="/assets/spin/chopsticks-pointer.png" mode="aspectFit" style="transform: translate(-50%, -50%) rotate({{addWheelAngle}}deg);"></image>
           </view>
         </view>
       </view>

@@ -39,7 +39,7 @@ function getDishIcon(dish) {
 function buildWheelItems(list) {
   return list.slice(0, 8).map((dish, index) => Object.assign({}, dish, {
     icon: getDishIcon(dish),
-    shortName: dish.name.length > 5 ? `${dish.name.slice(0, 5)}...` : dish.name,
+    shortName: String(dish.name || "").trim().slice(0, 6),
     posClass: `mini-pos-${index}`,
     chosenClass: "",
     slotIndex: index

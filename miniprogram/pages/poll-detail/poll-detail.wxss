@@ -250,15 +250,17 @@
   margin: 0 auto;
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, rgba(255, 248, 235, 0.95) 0 26%, transparent 27%),
-    repeating-radial-gradient(circle at 48% 48%, rgba(120, 70, 32, 0.1) 0 5rpx, rgba(255, 255, 255, 0) 6rpx 24rpx),
-    linear-gradient(100deg, rgba(255, 255, 255, 0.22), rgba(108, 58, 26, 0.08) 42%, rgba(255, 255, 255, 0.16)),
-    #bd7a42;
-  border: 8rpx solid #8f562c;
+    radial-gradient(circle at center, rgba(255, 253, 246, 0.98) 0 24%, rgba(255, 246, 225, 0.96) 25% 39%, transparent 40%),
+    linear-gradient(24deg, transparent 0 45%, rgba(255, 183, 99, 0.16) 46% 54%, transparent 55% 100%),
+    linear-gradient(114deg, transparent 0 45%, rgba(255, 213, 139, 0.16) 46% 54%, transparent 55% 100%),
+    linear-gradient(204deg, transparent 0 45%, rgba(255, 183, 99, 0.14) 46% 54%, transparent 55% 100%),
+    linear-gradient(294deg, transparent 0 45%, rgba(255, 213, 139, 0.14) 46% 54%, transparent 55% 100%),
+    radial-gradient(circle at 50% 50%, #fffdf7 0 58%, #ffe6bd 59% 78%, #ff9c58 79% 100%);
+  border: 8rpx solid #ffb56f;
   box-shadow:
-    inset 0 0 0 12rpx rgba(255, 232, 198, 0.22),
-    inset 0 0 38rpx rgba(86, 45, 18, 0.18),
-    0 16rpx 38rpx rgba(78, 52, 39, 0.16);
+    inset 0 0 0 10rpx rgba(255, 255, 255, 0.58),
+    inset 0 -14rpx 24rpx rgba(255, 153, 78, 0.08),
+    0 16rpx 36rpx rgba(214, 118, 61, 0.14);
 }
 
 .mini-dish {
@@ -267,22 +269,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 104rpx;
+  width: 136rpx;
   min-height: 80rpx;
   padding: 8rpx;
-  border-radius: 50%;
-  background: rgba(255, 250, 244, 0.84);
-  box-shadow:
-    inset 0 0 0 6rpx rgba(255, 255, 255, 0.62),
-    0 8rpx 18rpx rgba(86, 45, 18, 0.12);
+  border-radius: 18rpx;
+  background: transparent;
+  box-shadow: none;
 }
 
 .mini-dish.picked {
-  background: #fff6f0;
+  width: 136rpx;
+  min-height: 136rpx;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255, 246, 239, 0.66);
   box-shadow:
-    inset 0 0 0 6rpx rgba(255, 255, 255, 0.72),
-    0 0 0 4rpx rgba(232, 93, 61, 0.68),
-    0 12rpx 22rpx rgba(232, 93, 61, 0.18);
+    inset 0 0 0 3rpx rgba(232, 93, 61, 0.34),
+    0 8rpx 18rpx rgba(232, 93, 61, 0.12);
 }
 
 .mini-dish-icon {
@@ -291,104 +294,97 @@
 }
 
 .mini-dish-name {
-  max-width: 94rpx;
+  max-width: 132rpx;
   margin-top: 5rpx;
   overflow: hidden;
-  color: #35261d;
-  font-size: 20rpx;
+  padding: 3rpx 8rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 253, 247, 0.82);
+  color: #2f2119;
+  font-size: 19rpx;
   font-weight: 900;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
+  box-shadow: 0 3rpx 8rpx rgba(214, 118, 61, 0.12);
 }
 
 .mini-pos-0 {
-  left: 188rpx;
+  left: 172rpx;
   top: 20rpx;
 }
 
 .mini-pos-1 {
-  right: 62rpx;
+  right: 42rpx;
   top: 62rpx;
 }
 
 .mini-pos-2 {
-  right: 18rpx;
+  right: 8rpx;
   top: 188rpx;
 }
 
 .mini-pos-3 {
-  right: 62rpx;
+  right: 42rpx;
   bottom: 62rpx;
 }
 
 .mini-pos-4 {
-  left: 188rpx;
+  left: 172rpx;
   bottom: 20rpx;
 }
 
 .mini-pos-5 {
-  left: 62rpx;
+  left: 42rpx;
   bottom: 62rpx;
 }
 
 .mini-pos-6 {
-  left: 18rpx;
+  left: 8rpx;
   top: 188rpx;
 }
 
 .mini-pos-7 {
-  left: 62rpx;
+  left: 42rpx;
   top: 62rpx;
 }
 
-.mini-turner {
+.mini-plate-core {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 118rpx;
-  height: 118rpx;
+  width: 156rpx;
+  height: 156rpx;
   transform: translate(-50%, -50%);
-  transition: transform 1.5s cubic-bezier(0.15, 0.86, 0.18, 1);
-}
-
-.mini-stick {
-  position: absolute;
-  left: 54rpx;
-  top: 7rpx;
-  width: 9rpx;
-  height: 106rpx;
-  border-radius: 999rpx;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 44%),
-    linear-gradient(180deg, #654022 0%, #b8743f 72%, #523018 100%);
-  box-shadow:
-    0 6rpx 12rpx rgba(86, 45, 18, 0.18),
-    inset -2rpx 0 0 rgba(74, 36, 15, 0.14);
-  transform-origin: 50% 50%;
-}
-
-.mini-stick.one {
-  transform: rotate(39deg) translateX(-8rpx);
-}
-
-.mini-stick.two {
-  transform: rotate(48deg) translateX(8rpx);
-}
-
-.mini-rest {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 38rpx;
-  height: 38rpx;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.82) 0 14%, transparent 15%),
-    linear-gradient(180deg, #f7dfbd 0%, #b97842 100%);
+    radial-gradient(circle at 50% 50%, #fffdf8 0 48%, #ffe7c7 49% 64%, #fff7eb 65% 100%);
   box-shadow:
-    inset 0 0 0 4rpx rgba(255, 248, 235, 0.5),
-    0 6rpx 12rpx rgba(86, 45, 18, 0.14);
+    inset 0 0 0 7rpx rgba(255, 255, 255, 0.68),
+    inset 0 -9rpx 16rpx rgba(255, 157, 88, 0.08),
+    0 10rpx 20rpx rgba(214, 118, 61, 0.12);
+}
+
+.mini-rice-bowl-image {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  z-index: 1;
+  width: 126rpx;
+  height: 126rpx;
   transform: translate(-50%, -50%);
+}
+
+.mini-chopsticks-pointer-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 154rpx;
+  height: 154rpx;
+  transform: translate(-50%, -50%);
+  transition: transform 1.5s cubic-bezier(0.15, 0.86, 0.18, 1);
+  transform-origin: 50% 50%;
 }
 
 .add-wheel-result {
