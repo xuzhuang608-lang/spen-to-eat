@@ -11,6 +11,7 @@ const SUMMARY_FILE = path.join(ROOT, "project-prep", "selected-dish-additions-su
 const TARGET_ADDITIONS = 1000;
 const REBUILD_FROM_GIT_HEAD = process.env.REBUILD_FROM_GIT_HEAD === "1";
 const REFRESH_SELECTION = process.env.REFRESH_SELECTION === "1";
+const BASE_REF = process.env.BASE_REF || "HEAD";
 
 const provinceIndex = require("../miniprogram/data/provinces/index");
 const { cities: nationalCities } = require("../miniprogram/data/national-cities");
@@ -38,7 +39,11 @@ const genericNames = new Set([
 
 const riskTerms = [
   "狗肉", "蛇", "蝎", "野味", "生牛肉", "河豚", "活鱼", "田鸡", "牛蛙",
-  "甲鱼", "鳖", "羊腥", "马肉", "驴肉", "兔头", "血"
+  "甲鱼", "鳖", "羊腥", "马肉", "驴肉", "全驴", "仙驴", "青蛙", "孔雀",
+  "兔头", "血"
+];
+const nonDishNameTerms = [
+  "首选", "推荐", "必吃", "最好", "做法", "锅底", "一绝", "拼盘", "全席", "宴"
 ];
 
 const sourceBucketScore = {
@@ -104,6 +109,10 @@ function normalizeDishName(name) {
 
 function hasRiskName(name) {
   return riskTerms.some((term) => name.includes(term));
+}
+
+function hasNonDishName(name) {
+  return nonDishNameTerms.some((term) => name.includes(term));
 }
 
 function hasOtherCityMarker(row) {
@@ -173,7 +182,7 @@ function loadProvinceData() {
     const file = path.join(PROVINCE_DIR, province.file);
     let data;
     if (REBUILD_FROM_GIT_HEAD) {
-      const source = childProcess.execFileSync("git", ["show", `HEAD:miniprogram/data/provinces/${province.file}`], {
+      const source = childProcess.execFileSync("git", ["show", `${BASE_REF}:miniprogram/data/provinces/${province.file}`], {
         cwd: ROOT,
         encoding: "utf8"
       });
@@ -212,6 +221,7 @@ function isEligible(row, existingKeys, options) {
   if (existingKeys.has(`${row.city}|${name}`)) return false;
   if (genericNames.has(name)) return false;
   if (hasRiskName(name)) return false;
+  if (hasNonDishName(name)) return false;
   if (hasOtherCityMarker(row)) return false;
   if (toNumber(row.localIndex, 0) < options.minLocalIndex) return false;
   if (toNumber(row.weight, 0) < options.minWeight) return false;
