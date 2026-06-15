@@ -118,7 +118,9 @@ Page({
     featuredEmpty: true,
     inspiration: "",
     dishSheetVisible: false,
-    detailDish: null
+    detailDish: null,
+    privacyVisible: false,
+    privacyContractName: "《用户隐私保护指引》"
   },
 
   onShow() {
@@ -139,6 +141,59 @@ Page({
   },
 
   onUseLocation() {
+    this.ensurePrivacyAuthorization(() => this.startLocation());
+  },
+
+  ensurePrivacyAuthorization(next) {
+    if (typeof wx.getPrivacySetting !== "function") {
+      next();
+      return;
+    }
+    wx.getPrivacySetting({
+      success: (res) => {
+        if (!res.needAuthorization) {
+          next();
+          return;
+        }
+        this.pendingPrivacyAction = next;
+        this.setData({
+          privacyVisible: true,
+          privacyContractName: res.privacyContractName || "《用户隐私保护指引》"
+        });
+      },
+      fail: () => next()
+    });
+  },
+
+  onOpenPrivacyContract() {
+    if (typeof wx.openPrivacyContract !== "function") {
+      wx.navigateTo({ url: "/pages/privacy/privacy" });
+      return;
+    }
+    wx.openPrivacyContract({
+      fail: () => {
+        wx.navigateTo({ url: "/pages/privacy/privacy" });
+      }
+    });
+  },
+
+  onAgreePrivacyAuthorization() {
+    const action = this.pendingPrivacyAction;
+    this.pendingPrivacyAction = null;
+    this.setData({ privacyVisible: false });
+    if (action) action();
+  },
+
+  onRejectPrivacyAuthorization() {
+    this.pendingPrivacyAction = null;
+    this.setData({ privacyVisible: false });
+    wx.showToast({
+      title: "可以手动选择城市",
+      icon: "none"
+    });
+  },
+
+  startLocation() {
     this.setData({ locating: true });
     const finish = () => {
       this.setData({ locating: false });

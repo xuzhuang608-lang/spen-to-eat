@@ -90,5 +90,23 @@
     <text class="privacy-link" bindtap="onOpenPrivacy">隐私说明</text>
   </view>
 
+  <view wx:if="{{privacyVisible}}" class="privacy-mask">
+    <view class="privacy-sheet">
+      <view class="privacy-title">定位前需要你的授权</view>
+      <view class="privacy-desc">
+        获取位置只用于识别当前城市，帮你推荐附近城市的特色美食。也可以暂不授权，手动选择城市继续使用。
+      </view>
+      <view class="privacy-contract" bindtap="onOpenPrivacyContract">{{privacyContractName}}</view>
+      <view class="privacy-actions">
+        <button class="privacy-secondary" bindtap="onRejectPrivacyAuthorization">暂不使用</button>
+        <button
+          class="privacy-primary"
+          open-type="agreePrivacyAuthorization"
+          bindagreeprivacyauthorization="onAgreePrivacyAuthorization"
+        >同意并继续</button>
+      </view>
+    </view>
+  </view>
+
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
 </view>
