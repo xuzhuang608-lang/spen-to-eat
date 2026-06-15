@@ -76,7 +76,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 118rpx;
+  width: 142rpx;
   min-height: 92rpx;
   padding: 8rpx;
   border: 0;
@@ -179,13 +179,13 @@
 }
 
 .dish-title {
-  max-width: 108rpx;
+  max-width: 136rpx;
   overflow: hidden;
   padding: 3rpx 8rpx;
   border-radius: 999rpx;
   background: rgba(255, 253, 247, 0.82);
   color: #2f2119;
-  font-size: 23rpx;
+  font-size: 22rpx;
   font-weight: 900;
   line-height: 1.25;
   text-overflow: ellipsis;
@@ -196,42 +196,42 @@
 }
 
 .pos-0 {
-  left: 226rpx;
+  left: 214rpx;
   top: 26rpx;
 }
 
 .pos-1 {
-  right: 82rpx;
+  right: 62rpx;
   top: 80rpx;
 }
 
 .pos-2 {
-  right: 28rpx;
+  right: 16rpx;
   top: 226rpx;
 }
 
 .pos-3 {
-  right: 82rpx;
+  right: 62rpx;
   bottom: 80rpx;
 }
 
 .pos-4 {
-  left: 226rpx;
+  left: 214rpx;
   bottom: 26rpx;
 }
 
 .pos-5 {
-  left: 82rpx;
+  left: 62rpx;
   bottom: 80rpx;
 }
 
 .pos-6 {
-  left: 28rpx;
+  left: 16rpx;
   top: 226rpx;
 }
 
 .pos-7 {
-  left: 82rpx;
+  left: 62rpx;
   top: 80rpx;
 }
 

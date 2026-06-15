@@ -93,7 +93,7 @@ function pickCandidates(pool, previousIds) {
   return shuffle(source).slice(0, 8).map((dish, index) => ({
     id: dish.id,
     name: dish.name,
-    shortName: dish.name.length > 5 ? `${dish.name.slice(0, 5)}...` : dish.name,
+    shortName: String(dish.name || "").trim().slice(0, 5),
     icon: getDishIcon(dish),
     category: dish.category,
     taste: dish.taste,
@@ -131,7 +131,7 @@ function createCustomDish(name, index, replacedDish) {
   return {
     id: `custom-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
     name: text,
-    shortName: text.length > 5 ? `${text.slice(0, 5)}...` : text,
+    shortName: String(text || "").trim().slice(0, 5),
     icon: "🍽️",
     category: "自选",
     taste: "想吃",
