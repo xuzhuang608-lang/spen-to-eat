@@ -346,12 +346,24 @@ function matchesCandidateFilters(dish, filters) {
   const avoidTags = filters.avoidTags || [];
   const avoidHit = avoidTags.some((tag) => dish.avoidTags.includes(tag));
   return (
+    !isMealTimeMismatch(dish, filters.mealTime) &&
     matchesValue(dish.mealTime, filters.mealTime) &&
     matchesValue(dish.category, filters.category) &&
     matchesValue(dish.taste, filters.taste) &&
     matchesValue(dish.scene, filters.scene) &&
     !avoidHit
   );
+}
+
+function isMealTimeMismatch(dish, mealTime) {
+  if (mealTime !== "午餐" && mealTime !== "晚餐") return false;
+  const tags = dish.tags || [];
+  const isGenericBreakfast = (
+    dish.sourceBucket === "nationalGeneral" &&
+    tags.includes("早餐") &&
+    (dish.localIndex || 0) <= 2
+  );
+  return isGenericBreakfast;
 }
 
 function createNationalFallbackDish(template, city, province) {
@@ -430,7 +442,8 @@ function getProposalDishes(cityName, scope) {
 function getCandidateDishes(filters) {
   const normalized = normalizeFilters(filters);
   const cityDishes = getDishesByCity(normalized.city);
-  let pool = filterDishes(cityDishes, normalized);
+  let pool = filterDishes(cityDishes, normalized)
+    .filter((dish) => !isMealTimeMismatch(dish, normalized.mealTime));
   if (pool.length < MIN_CANDIDATE_COUNT) {
     const existingNames = cityDishes.reduce((map, dish) => {
       map[dish.name] = true;
