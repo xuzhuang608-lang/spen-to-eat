@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-06-15T07:25:14.398Z",
+  "source": "project-prep/food-import-ready-miniprogram.json",
+  "targetAdditions": 40,
+  "selectedCount": 40,
+  "byProvince": {
+    "安徽": 4,
+    "江西": 4,
+    "贵州": 5,
+    "福建": 1,
+    "四川": 4,
+    "陕西": 4,
+    "辽宁": 1,
+    "吉林": 1,
+    "新疆": 4,
+    "广东": 2,
+    "海南": 4,
+    "湖北": 4,
+    "云南": 2
+  },
+  "byBucket": {
+    "nationalGeneral": 24,
+    "provinceShared": 15,
+    "regionalShared": 1
+  },
+  "byMealTime": {
+    "午餐": 40,
+    "晚餐": 40,
+    "宵夜": 26,
+    "早餐": 14
+  },
+  "packageSize": {
+    "fileCount": 90,
+    "totalBytes": 1533740,
+    "totalMB": 1.463
+  },
+  "provinceFiles": [
+    {
+      "province": "安徽",
+      "slug": "anhui",
+      "file": "anhui.js",
+      "cityCount": 16,
+      "dishCount": 427,
+      "sizeKB": 51.25
+    },
+    {
+      "province": "澳门",
+      "slug": "aomen",
+      "file": "aomen.js",
+      "cityCount": 1,
+      "dishCount": 29,
+      "sizeKB": 3.68
+    },
+    {
+      "province": "北京",
+      "slug": "beijing",
+      "file": "beijing.js",
+      "cityCount": 1,
+      "dishCount": 33,
+      "sizeKB": 4.1
+    },
+    {
+      "province": "重庆",
+      "slug": "chongqing",
+      "file": "chongqing.js",
+      "cityCount": 1,
+      "dishCount": 30,
+      "sizeKB": 3.77
+    },
+    {
+      "province": "福建",
+      "slug": "fujian",
+      "file": "fujian.js",
+      "cityCount": 7,
+      "dishCount": 201,
+      "sizeKB": 23.93
+    },
+    {
+      "province": "甘肃",
+      "slug": "gansu",
+      "file": "gansu.js",
+      "cityCount": 13,
+      "dishCount": 374,
+      "sizeKB": 45.2
+    },
+    {
+      "province": "广东",
+      "slug": "guangdong",
+      "file": "guangdong.js",
+      "cityCount": 21,
+      "dishCount": 698,
+      "sizeKB": 83.11
+    },
+    {
+      "province": "广西",
+      "slug": "guangxi",
+      "file": "guangxi.js",
+      "cityCount": 14,
+      "dishCount": 363,
+      "sizeKB": 44.25
+    },
+    {
+      "province": "贵州",
+      "slug": "guizhou",
+      "file": "guizhou.js",
+      "cityCount": 9,
+      "dishCount": 246,
+      "sizeKB": 30.22
+    },
+    {
+      "province": "海南",
+      "slug": "hainan",
+      "file": "hainan.js",
+      "cityCount": 4,
+      "dishCount": 111,
+      "sizeKB": 13.45
+    },
+    {
+      "province": "河北",
+      "slug": "hebei",
+      "file": "hebei.js",
+      "cityCount": 11,
+      "dishCount": 304,
+      "sizeKB": 36.62
+    },
+    {
+      "province": "黑龙江",
+      "slug": "heilongjiang",
+      "file": "heilongjiang.js",
+      "cityCount": 13,
+      "dishCount": 365,
+      "sizeKB": 44.48
+    },
+    {
+      "province": "河南",
+      "slug": "henan",
+      "file": "henan.js",
+      "cityCount": 18,
+      "dishCount": 487,
+      "sizeKB": 58.84
+    },
+    {
+      "province": "湖北",
+      "slug": "hubei",
+      "file": "hubei.js",
+      "cityCount": 14,
+      "dishCount": 398,
+      "sizeKB": 47.65
+    },
+    {
+      "province": "湖南",
+      "slug": "hunan",
+      "file": "hunan.js",
+      "cityCount": 14,
+      "dishCount": 385,
+      "sizeKB": 45.87
+    },
+    {
+      "province": "江苏",
+      "slug": "jiangsu",
+      "file": "jiangsu.js",
+      "cityCount": 13,
+      "dishCount": 363,
+      "sizeKB": 43.84
+    },
+    {
+      "province": "江西",
+      "slug": "jiangxi",
+      "file": "jiangxi.js",
+      "cityCount": 10,
+      "dishCount": 276,
+      "sizeKB": 33.38
+    },
+    {
+      "province": "吉林",
+      "slug": "jilin",
+      "file": "jilin.js",
+      "cityCount": 9,
+      "dishCount": 259,
+      "sizeKB": 31.19
+    },
+    {
+      "province": "辽宁",
+      "slug": "liaoning",
+      "file": "liaoning.js",
+      "cityCount": 14,
+      "dishCount": 371,
+      "sizeKB": 44.94
+    },
+    {
+      "province": "内蒙古",
+      "slug": "neimenggu",
+      "file": "neimenggu.js",
+      "cityCount": 12,
+      "dishCount": 310,
+      "sizeKB": 38.36
+    },
+    {
+      "province": "宁夏",
+      "slug": "ningxia",
+      "file": "ningxia.js",
+      "cityCount": 5,
+      "dishCount": 149,
+      "sizeKB": 18.46
+    },
+    {
+      "province": "青海",
+      "slug": "qinghai",
+      "file": "qinghai.js",
+      "cityCount": 8,
+      "dishCount": 229,
+      "sizeKB": 27.12
+    },
+    {
+      "province": "陕西",
+      "slug": "shaanxi",
+      "file": "shaanxi.js",
+      "cityCount": 10,
+      "dishCount": 292,
+      "sizeKB": 35.24
+    },
+    {
+      "province": "山东",
+      "slug": "shandong",
+      "file": "shandong.js",
+      "cityCount": 16,
+      "dishCount": 435,
+      "sizeKB": 52.85
+    },
+    {
+      "province": "上海",
+      "slug": "shanghai",
+      "file": "shanghai.js",
+      "cityCount": 1,
+      "dishCount": 28,
+      "sizeKB": 3.51
+    },
+    {
+      "province": "山西",
+      "slug": "shanxi",
+      "file": "shanxi.js",
+      "cityCount": 11,
+      "dishCount": 306,
+      "sizeKB": 36.44
+    },
+    {
+      "province": "四川",
+      "slug": "sichuan",
+      "file": "sichuan.js",
+      "cityCount": 21,
+      "dishCount": 616,
+      "sizeKB": 73.49
+    },
+    {
+      "province": "台湾",
+      "slug": "taiwan",
+      "file": "taiwan.js",
+      "cityCount": 4,
+      "dishCount": 100,
+      "sizeKB": 12.07
+    },
+    {
+      "province": "天津",
+      "slug": "tianjin",
+      "file": "tianjin.js",
+      "cityCount": 1,
+      "dishCount": 29,
+      "sizeKB": 3.61
+    },
+    {
+      "province": "香港",
+      "slug": "xianggang",
+      "file": "xianggang.js",
+      "cityCount": 1,
+      "dishCount": 26,
+      "sizeKB": 3.25
+    },
+    {
+      "province": "新疆",
+      "slug": "xinjiang",
+      "file": "xinjiang.js",
+      "cityCount": 14,
+      "dishCount": 399,
+      "sizeKB": 48.89
+    },
+    {
+      "province": "西藏",
+      "slug": "xizang",
+      "file": "xizang.js",
+      "cityCount": 7,
+      "dishCount": 180,
+      "sizeKB": 21.99
+    },
+    {
+      "province": "云南",
+      "slug": "yunnan",
+      "file": "yunnan.js",
+      "cityCount": 16,
+      "dishCount": 439,
+      "sizeKB": 53.5
+    },
+    {
+      "province": "浙江",
+      "slug": "zhejiang",
+      "file": "zhejiang.js",
+      "cityCount": 11,
+      "dishCount": 307,
+      "sizeKB": 36.51
+    }
+  ]
+}
