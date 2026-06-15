@@ -11,7 +11,10 @@
   <view class="result-list">
     <view class="panel result-item" wx:for="{{results}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
       <view>
-        <view class="dish-name">{{item.name}}</view>
+        <view class="dish-title-row">
+          <view class="dish-name">{{item.name}}</view>
+          <view class="source-badge {{item.sourceClass}}">{{item.sourceLabel}}</view>
+        </view>
         <view class="muted">
           {{item.cityDisplay}} · {{item.category}} · {{item.taste}}
           <text wx:if="{{item.showDuplicate}}"> · 已合并同名</text>

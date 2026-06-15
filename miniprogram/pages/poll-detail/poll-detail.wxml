@@ -4,7 +4,7 @@
 
   <view class="proposal-tip">
     <view class="tip-title">饭局提议</view>
-    <view class="muted">点一下只是表达“我想吃”，不会做全群实时统计。</view>
+    <view class="muted">点一下表个态，不用投票也能看出大家想吃什么。</view>
   </view>
 
   <view class="dish-list">

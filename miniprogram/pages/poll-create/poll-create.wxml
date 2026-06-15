@@ -2,7 +2,7 @@
   <view class="poll-hero">
     <view>
       <view class="section-title">组个饭局</view>
-      <view class="muted">先把想吃的放桌上，发群里少纠结一点。</view>
+      <view class="muted">发群前先凑几道，别让饭点卡住。</view>
     </view>
   </view>
 
@@ -30,7 +30,7 @@
 
   <view class="selected-panel" wx:if="{{selectedDishes.length}}">
     <view class="selected-head">
-      <view class="selected-title">已经放上桌</view>
+      <view class="selected-title">发群前先放这些</view>
       <button class="clear-button" bindtap="onClearSelected">清空</button>
     </view>
     <view class="selected-chips">
@@ -78,6 +78,6 @@
     </view>
   </view>
 
-  <view class="create-copy">这几道先放桌上，发出去让大家有得聊。</view>
+  <view class="create-copy">发出去以后，大家点一下想吃的就行。</view>
   <button class="primary-button create-button" bindtap="onCreatePoll">生成饭局提议</button>
 </view>

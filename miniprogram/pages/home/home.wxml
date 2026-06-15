@@ -1,8 +1,11 @@
 <view class="page home">
   <view class="brand">
-    <view class="brand-kicker">全国城市特色美食</view>
+    <view class="brand-topline">
+      <view class="brand-kicker">全国城市特色美食</view>
+      <view class="city-pill">{{city}} · {{selectedMeal}}</view>
+    </view>
     <view class="brand-title">饭点到了，转一下</view>
-    <view class="brand-subtitle">先选这一顿的时间，再把选择交给饭点转转。</view>
+    <view class="brand-subtitle">不想再问“吃什么”，先让{{city}}给这一顿一个方向。</view>
   </view>
 
   <view class="location-bar">
@@ -30,7 +33,7 @@
     </view>
   </view>
 
-  <button class="primary-button start-button" bindtap="onStartSpin">开始转盘</button>
+  <button class="primary-button start-button" bindtap="onStartSpin">今天吃什么，转一下</button>
 
   <view class="assist-row">
     <view class="assist-card" bindtap="onCreatePoll">

@@ -26,11 +26,50 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18rpx;
+}
+
+.dish-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10rpx;
 }
 
 .dish-name {
   font-size: 32rpx;
   font-weight: 800;
+}
+
+.source-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 34rpx;
+  padding: 0 12rpx;
+  border-radius: 999rpx;
+  font-size: 20rpx;
+  font-weight: 900;
+  line-height: 34rpx;
+}
+
+.source-badge.current {
+  background: #fff0e8;
+  color: #e85d3d;
+}
+
+.source-badge.local {
+  background: #fff6e2;
+  color: #9b5b17;
+}
+
+.source-badge.province {
+  background: #edf7e5;
+  color: #47652d;
+}
+
+.source-badge.common {
+  background: #f2eee9;
+  color: #7a6a5f;
 }
 
 .arrow {

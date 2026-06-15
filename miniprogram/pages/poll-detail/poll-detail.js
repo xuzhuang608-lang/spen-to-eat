@@ -136,22 +136,49 @@ function getStoredProposal(id) {
   return oldPolls[id] || null;
 }
 
-function getPageCopy(isSingle, reacted) {
+function getDishNames(dishes, limit) {
+  return (dishes || []).slice(0, limit).map((dish) => dish.name).filter(Boolean);
+}
+
+function makeMultiTitle(dishes) {
+  const names = getDishNames(dishes, 2);
+  if (dishes.length <= 2 && names.length) {
+    return `${names.join("、")}里挑一个`;
+  }
+  if (names.length) {
+    return `${names.join("、")}等${dishes.length}道，挑一个`;
+  }
+  return "这几道，挑一个";
+}
+
+function makeShareTitle(dishes, isSingle) {
+  const names = getDishNames(dishes, 2);
+  if (isSingle && names[0]) {
+    return `今晚有人提了${names[0]}`;
+  }
+  if (names.length) {
+    return `今晚在${names.join("、")}里挑一个`;
+  }
+  return "今晚挑一个，别让饭点卡太久";
+}
+
+function getPageCopy(dishes, isSingle, reacted) {
+  const firstName = dishes[0] && dishes[0].name;
   if (isSingle) {
     return {
-      pageTitle: "这顿就它？",
-      pageDesc: "有人提了这道菜，看看你想不想一起吃。",
+      pageTitle: firstName ? `这顿就${firstName}？` : "这顿就它？",
+      pageDesc: "点一下表个态，发群里就有方向。",
       reactText: reacted ? "已经点头" : "我也想吃",
-      shareTitle: reacted ? "我也想吃，喊朋友一起看看" : "这道看起来可以，来看看？",
-      shareDesc: "发到群里，让大家先有个方向。"
+      shareTitle: makeShareTitle(dishes, true),
+      shareDesc: "发到群里，大家点一下就知道风向。"
     };
   }
   return {
-    pageTitle: "这几道，挑一个",
-    pageDesc: "先把想吃的放桌上，发群里少纠结一点。",
+    pageTitle: makeMultiTitle(dishes),
+    pageDesc: "先把选择摆出来，发群里少纠结一点。",
     reactText: "想吃",
-    shareTitle: "这几道先放桌上",
-    shareDesc: "今晚挑一个，别让饭点卡太久。"
+    shareTitle: makeShareTitle(dishes, false),
+    shareDesc: "发到群里，让大家先点个想吃。"
   };
 }
 
@@ -210,7 +237,7 @@ Page({
       proposalItems.find((item) => item.id === dishId) || getDishById(dishId)
     )).filter(Boolean).slice(0, MAX_PROPOSAL_ITEMS);
     const isSingle = rawDishes.length === 1;
-    const copy = getPageCopy(isSingle, false);
+    const copy = getPageCopy(rawDishes, isSingle, false);
     const dishes = decorateDishes(rawDishes, {}, isSingle, copy.reactText);
 
     this.setData({
@@ -227,7 +254,7 @@ Page({
     const selectedMap = Object.assign({}, this.data.selectedMap);
     selectedMap[id] = !selectedMap[id];
     const reacted = Object.keys(selectedMap).some((key) => selectedMap[key]);
-    const copy = getPageCopy(this.data.isSingle, reacted);
+    const copy = getPageCopy(this.data.dishes, this.data.isSingle, reacted);
     this.setData({
       selectedMap,
       dishes: decorateDishes(this.data.dishes, selectedMap, this.data.isSingle, copy.reactText),
@@ -257,7 +284,7 @@ Page({
     const selectedMap = Object.assign({}, this.data.selectedMap);
     selectedMap[dish.id] = true;
     const reacted = Object.keys(selectedMap).some((key) => selectedMap[key]);
-    const copy = getPageCopy(this.data.isSingle, reacted);
+    const copy = getPageCopy(this.data.dishes, this.data.isSingle, reacted);
     this.setData({
       selectedMap,
       dishes: decorateDishes(this.data.dishes, selectedMap, this.data.isSingle, copy.reactText),
@@ -385,7 +412,7 @@ Page({
       wx.setStorageSync("proposals", proposals);
     }
     const reacted = Object.keys(this.data.selectedMap).some((key) => this.data.selectedMap[key]);
-    const copy = getPageCopy(rawDishes.length === 1, reacted);
+    const copy = getPageCopy(rawDishes, rawDishes.length === 1, reacted);
     this.setData({
       proposal,
       dishes: decorateDishes(rawDishes, this.data.selectedMap, rawDishes.length === 1, copy.reactText),
@@ -405,7 +432,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: this.data.isSingle ? "这道看起来可以，来看看？" : "这几道先放桌上，今晚挑一个",
+      title: this.data.shareTitle,
       path: buildSharePath(this.data.dishes)
     };
   }

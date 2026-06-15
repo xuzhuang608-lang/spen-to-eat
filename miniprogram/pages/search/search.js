@@ -1,6 +1,34 @@
 const app = getApp();
 const { searchDishes } = require("../../services/dish");
 
+function getSourceInfo(dish, currentCity) {
+  if (dish.city === currentCity && dish.sourceBucket === "cityExact") {
+    return { sourceLabel: "当前城市", sourceClass: "current" };
+  }
+  if (dish.sourceBucket === "cityExact") {
+    return { sourceLabel: "本地特色", sourceClass: "local" };
+  }
+  if (dish.sourceBucket === "provinceShared" || dish.sourceBucket === "regionalShared") {
+    return { sourceLabel: "省内参考", sourceClass: "province" };
+  }
+  if (dish.sourceBucket === "nationalGeneral") {
+    return { sourceLabel: "常见菜", sourceClass: "common" };
+  }
+  return { sourceLabel: "推荐", sourceClass: "local" };
+}
+
+function getDishScore(dish, currentCity) {
+  let score = 0;
+  if (dish.city === currentCity) score += 1000;
+  if (dish.sourceBucket === "cityExact") score += 400;
+  if (dish.sourceBucket === "regionalShared") score += 220;
+  if (dish.sourceBucket === "provinceShared") score += 180;
+  if (dish.sourceBucket === "nationalGeneral") score -= 200;
+  score += (dish.localIndex || 0) * 20;
+  score += dish.weight || 0;
+  return score;
+}
+
 function groupResults(list, currentCity) {
   const groups = {};
   list.forEach((dish) => {
@@ -11,21 +39,18 @@ function groupResults(list, currentCity) {
   return Object.keys(groups).map((name) => {
     const items = groups[name];
     const sorted = items.slice().sort((a, b) => {
-      if (a.city === currentCity && b.city !== currentCity) return -1;
-      if (a.city !== currentCity && b.city === currentCity) return 1;
-      if (a.sourceBucket === "cityExact" && b.sourceBucket !== "cityExact") return -1;
-      if (a.sourceBucket !== "cityExact" && b.sourceBucket === "cityExact") return 1;
-      return (b.localIndex || 0) - (a.localIndex || 0);
+      return getDishScore(b, currentCity) - getDishScore(a, currentCity);
     });
     const main = sorted[0];
     const cities = Array.from(new Set(items.map((dish) => dish.city)));
-    return Object.assign({}, main, {
+    return Object.assign({}, main, getSourceInfo(main, currentCity), {
       cityLabel: cities.length > 1 ? `${main.city}等${cities.length}地` : main.city,
       duplicateCount: cities.length,
       cityDisplay: cities.length > 1 ? `${main.city}\u7b49${cities.length}\u5730` : main.city,
-      showDuplicate: cities.length > 1
+      showDuplicate: cities.length > 1,
+      score: getDishScore(main, currentCity)
     });
-  });
+  }).sort((a, b) => b.score - a.score);
 }
 
 Page({
