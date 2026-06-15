@@ -28,6 +28,8 @@
     </block>
   </view>
 
+  <view class="safety-note">口味、忌口和适合场景仅供参考。过敏、清真、素食等需求请以实际食材和个人判断为准。</view>
+
   <view class="action-row main-actions">
     <button class="ghost-button compact-action" bindtap="onSpinAgain">再来一轮</button>
     <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>

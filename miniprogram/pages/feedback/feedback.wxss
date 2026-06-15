@@ -1,3 +1,24 @@
+.feedback-note {
+  margin-top: 18rpx;
+  padding: 22rpx;
+  border: 2rpx solid #e8d6c6;
+  border-radius: 24rpx;
+  background: #fffdf8;
+}
+
+.note-title {
+  color: #35261d;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.note-desc {
+  margin-top: 8rpx;
+  color: #7a6a5f;
+  font-size: 25rpx;
+  line-height: 1.5;
+}
+
 .textarea {
   box-sizing: border-box;
   width: 100%;

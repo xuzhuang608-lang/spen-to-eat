@@ -1,3 +1,14 @@
+.para-title {
+  margin: 28rpx 0 10rpx;
+  color: #35261d;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.para-title:first-child {
+  margin-top: 0;
+}
+
 .para {
   margin-bottom: 20rpx;
   color: #5a463b;

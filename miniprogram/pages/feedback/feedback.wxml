@@ -1,9 +1,13 @@
 <view class="page">
   <view class="section-title">给饭点转转一点反馈</view>
+  <view class="feedback-note">
+    <view class="note-title">{{dishLabel}}</view>
+    <view class="note-desc">当前版本不上传云端。提交后可复制反馈内容，发给开发者处理。</view>
+  </view>
   <view class="chip-row">
     <view class="chip {{item.className}}" wx:for="{{typeOptions}}" wx:key="label" data-type="{{item.label}}" bindtap="onSelectType">{{item.label}}</view>
   </view>
 
-  <textarea class="textarea" value="{{content}}" placeholder="可以简单说说哪里不准，或者你想加什么美食。" bindinput="onInput" />
+  <textarea class="textarea" value="{{content}}" maxlength="300" placeholder="可以简单说说哪里不准，或者你想加什么美食。" bindinput="onInput" />
   <button class="primary-button" bindtap="onSubmit">提交反馈</button>
 </view>

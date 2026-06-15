@@ -1,9 +1,21 @@
 <view class="page">
   <view class="section-title">隐私说明</view>
   <view class="panel">
-    <view class="para">饭点转转用于展示城市特色美食信息，并提供转盘、收藏、历史、搜索和饭局提议功能。</view>
-    <view class="para">位置权限仅用于识别当前所在城市，推荐对应城市特色美食。用户可以拒绝定位，并手动选择城市。</view>
-    <view class="para">首版不强制获取头像昵称，不提供在线交易、点餐、外卖、团购或商家入驻服务。</view>
-    <view class="para">收藏、历史、饭局提议和反馈会用于改善产品体验。后续接入云开发时，会在正式隐私指引中进一步说明数据用途。</view>
+    <view class="para-title">服务范围</view>
+    <view class="para">饭点转转用于展示城市特色美食信息，并提供转盘、收藏、历史、搜索、饭局提议和反馈功能。</view>
+    <view class="para">当前版本不提供在线交易、点餐、外卖、团购、优惠券、商家入驻或商家推广服务。</view>
+
+    <view class="para-title">位置权限</view>
+    <view class="para">位置权限仅用于识别当前所在城市，帮助推荐对应城市的特色美食。用户可以拒绝定位，并手动选择城市。</view>
+
+    <view class="para-title">本地存储</view>
+    <view class="para">收藏、历史、饭局提议和反馈内容主要保存在用户本机，用于继续查看和改善个人使用体验。</view>
+    <view class="para">当前版本不强制获取头像昵称，不使用云数据库同步收藏、历史或反馈。</view>
+
+    <view class="para-title">反馈处理</view>
+    <view class="para">提交反馈后，小程序会在本机保存一份记录，并提供复制反馈内容的入口。是否发送给开发者由用户自行决定。</view>
+
+    <view class="para-title">内容提示</view>
+    <view class="para">菜品介绍、口味、忌口和适合场景仅供参考，实际做法和食材请以线下商家或个人判断为准。</view>
   </view>
 </view>
