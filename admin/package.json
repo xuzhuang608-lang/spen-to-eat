@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "refresh:data": "node ../scripts/export_admin_dish_snapshot.js"
   },
   "devDependencies": {
     "vite": "^5.4.0"
   }
 }
-
