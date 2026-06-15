@@ -18,6 +18,9 @@ const requiredColumns = [
   "sourceBucket"
 ];
 
+const optionalAuditColumns = new Set(["tags", "avoidTags"]);
+const requiredAuditColumns = requiredColumns.filter((column) => !optionalAuditColumns.has(column));
+
 const riskTerms = [
   "狗肉",
   "蛇",
@@ -191,7 +194,7 @@ function getAudit(rows) {
     const riskHit = riskTerms.find((term) => row.name.includes(term) || row.tags.includes(term));
     if (riskHit) risks.push({ index, row, riskHit });
 
-    const missing = requiredColumns.filter((column) => !row[column]);
+    const missing = requiredAuditColumns.filter((column) => !row[column]);
     if (missing.length) missingRequired.push({ index, row, missing });
 
     const localIndex = Number(row.localIndex);
