@@ -6,6 +6,12 @@
   margin-bottom: 22rpx;
 }
 
+.spin-subtitle {
+  margin-top: 8rpx;
+  font-size: 27rpx;
+  line-height: 1.55;
+}
+
 .plate-wrap {
   position: relative;
   padding-top: 18rpx;

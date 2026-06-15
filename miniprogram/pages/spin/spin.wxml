@@ -2,7 +2,7 @@
   <view class="spin-head">
     <view>
       <view class="section-title">{{city}}这一桌</view>
-      <view class="muted">先摆 {{candidateDishes.length}} 道看看，不合胃口就换一批，也能自己加一道。</view>
+      <view class="muted spin-subtitle">先摆 {{candidateDishes.length}} 道看看，不合胃口就换一批，也能自己加一道。</view>
     </view>
   </view>
 
