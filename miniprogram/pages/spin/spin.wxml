@@ -26,6 +26,14 @@
           </view>
         </block>
         <view class="plate-core">
+          <view class="rice-bowl" aria-hidden="true">
+            <view class="rice-face">
+              <view class="rice-eye left"></view>
+              <view class="rice-eye right"></view>
+              <view class="rice-smile"></view>
+            </view>
+            <view class="bowl-body"></view>
+          </view>
           <view class="turner-chopsticks" style="transform: translate(-50%, -50%) rotate({{spinAngle}}deg);">
             <view class="turner-stick one"></view>
             <view class="turner-stick two"></view>

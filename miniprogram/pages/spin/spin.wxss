@@ -46,10 +46,78 @@
     0 10rpx 24rpx rgba(53, 38, 29, 0.14);
 }
 
+.rice-bowl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 112rpx;
+  height: 96rpx;
+  transform: translate(-50%, -42%);
+}
+
+.rice-face {
+  position: absolute;
+  left: 16rpx;
+  top: 0;
+  width: 80rpx;
+  height: 62rpx;
+  border-radius: 48rpx 48rpx 34rpx 34rpx;
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.94) 0 10%, transparent 11%),
+    linear-gradient(180deg, #fffdf8 0%, #fff7e7 100%);
+  box-shadow:
+    inset 0 -5rpx 0 rgba(238, 212, 178, 0.28),
+    0 5rpx 10rpx rgba(86, 45, 18, 0.08);
+}
+
+.rice-eye {
+  position: absolute;
+  top: 25rpx;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #5f4030;
+}
+
+.rice-eye.left {
+  left: 25rpx;
+}
+
+.rice-eye.right {
+  right: 25rpx;
+}
+
+.rice-smile {
+  position: absolute;
+  left: 50%;
+  top: 35rpx;
+  width: 24rpx;
+  height: 12rpx;
+  border-bottom: 4rpx solid #d85c3d;
+  border-radius: 0 0 999rpx 999rpx;
+  transform: translateX(-50%);
+}
+
+.bowl-body {
+  position: absolute;
+  left: 4rpx;
+  bottom: 0;
+  width: 104rpx;
+  height: 48rpx;
+  border-radius: 8rpx 8rpx 46rpx 46rpx;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.64) 0 12%, transparent 13%),
+    linear-gradient(180deg, #ff7b55 0%, #e85d3d 100%);
+  box-shadow:
+    inset 0 -7rpx 0 rgba(155, 55, 35, 0.18),
+    0 7rpx 13rpx rgba(232, 93, 61, 0.16);
+}
+
 .turner-chopsticks {
   position: absolute;
   left: 50%;
   top: 50%;
+  z-index: 2;
   width: 128rpx;
   height: 128rpx;
   transform: translate(-50%, -50%);
