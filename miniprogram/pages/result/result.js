@@ -2,27 +2,85 @@ const { getDishById, getDishesByCity } = require("../../services/dish");
 const { iconRating, iconRatingItems } = require("../../utils/random");
 const storage = require("../../services/storage");
 
+function hashIndex(text, length) {
+  if (!length) return 0;
+  let hash = 0;
+  for (let index = 0; index < text.length; index += 1) {
+    hash = ((hash << 5) - hash + text.charCodeAt(index)) >>> 0;
+  }
+  return hash % length;
+}
+
+function pickStable(list, seed) {
+  return list[hashIndex(seed, list.length)];
+}
+
+function getDishFeature(dish) {
+  const tags = dish.tags || [];
+  const name = dish.name || "";
+  if (/粥|汤|羹|盅/.test(name) || tags.includes("粥品") || tags.includes("汤粥") || tags.includes("汤羹")) return "热乎顺口";
+  if (/粉|面|粿条|河粉|米线|馄饨|云吞|饺/.test(name) || tags.includes("粉面") || tags.includes("面食")) return "直接顶饱";
+  if (/虾|蟹|蚝|鱼|贝|海参|螺|鱿/.test(name) || tags.includes("海鲜")) return "鲜味更足";
+  if (/火锅|锅|煲|边炉/.test(name) || tags.includes("火锅")) return "适合慢慢吃";
+  if (dish.category === "甜品" || dish.category === "饮品" || tags.includes("甜品") || tags.includes("饮品")) return "给这顿加点轻松感";
+  if (/鸡|鸭|鹅|牛|羊|猪|肉|排骨|蹄|鸽/.test(name) || tags.includes("肉类")) return "吃起来更扎实";
+  if (dish.category === "小吃") return "不想吃太正式时也合适";
+  return "先把饭点定下来";
+}
+
 function buildNowReason(dish) {
   const meal = (dish.mealTime || []).slice(0, 2).join("、") || "这一顿";
   const taste = dish.taste || "顺口";
-  const category = dish.category || "本地味";
-  return `${meal}想吃点${taste}的，${dish.name}比随便点一份${category}更有方向。`;
+  const feature = getDishFeature(dish);
+  return pickStable([
+    `${meal}想吃点${taste}的，先选${dish.name}不绕。`,
+    `这一顿如果想快点定下来，${dish.name}能给你一个明确方向。`,
+    `${dish.name}${feature}，适合现在先拍板。`,
+    `现在不想继续纠结的话，${dish.name}可以先接住这一顿。`,
+    `胃口偏${taste}时，${dish.name}比随便点一份更稳。`,
+    `${meal}没想好吃什么，先从${dish.name}开始也顺。`,
+    `${dish.name}不算难选，适合把饭点从“再看看”拉回来。`,
+    `想吃${dish.category || "本地味"}的时候，${dish.name}可以先定下来。`
+  ], `${dish.city}|${dish.name}|now`);
 }
 
 function buildFitText(dish) {
   const scenes = (dish.scene || []).filter(Boolean);
   if (scenes.length) {
-    return `适合${scenes.slice(0, 3).join("、")}。想少纠结时，可以先把它放进候选。`;
+    const sceneText = scenes.slice(0, 3).join("、");
+    return pickStable([
+      `适合${sceneText}，不用凑很复杂的一桌。`,
+      `${sceneText}都能安排，点起来不太挑场景。`,
+      `如果是${sceneText}，这道放进这一顿不突兀。`,
+      `${sceneText}想少点纠结，可以先把它当作方向。`,
+      `这道对${sceneText}比较友好，饭点不会太难收场。`
+    ], `${dish.city}|${dish.name}|fit`);
   }
-  return "适合想快速定下一顿的人。先有一个选择，饭点就不容易拖住。";
+  return pickStable([
+    "适合想快速定下一顿的人，先有一个选择就好办。",
+    "不确定吃什么时，它可以先当一个稳妥答案。",
+    "如果只是想让饭点快点有方向，这道够用了。",
+    "不用把这顿想太复杂，先定它也说得过去。"
+  ], `${dish.city}|${dish.name}|fit-default`);
 }
 
 function buildCautionText(dish) {
   const avoidTags = (dish.avoidTags || []).filter(Boolean);
   if (avoidTags.length) {
-    return `如果你介意${avoidTags.slice(0, 3).join("、")}，点之前可以再确认一下。`;
+    const avoidText = avoidTags.slice(0, 3).join("、");
+    return pickStable([
+      `如果介意${avoidText}，点之前再确认一下做法。`,
+      `有${avoidText}顾虑的话，先问清楚食材更稳。`,
+      `不太吃${avoidText}的人，可以把它放到备选后面。`,
+      `如果今天想避开${avoidText}，再转一次会更省心。`
+    ], `${dish.city}|${dish.name}|caution`);
   }
-  return "没有明显避雷标签。口味仍以实际做法为准，可以按个人忌口再判断。";
+  return pickStable([
+    "没有明显避雷标签，口味还是以实际做法为准。",
+    "忌口不多的话，可以放心把它放进选择里。",
+    "如果没有特别忌口，这道不用太担心。",
+    "点之前按个人口味确认一下就行。"
+  ], `${dish.city}|${dish.name}|caution-default`);
 }
 
 function buildFitNotes(dish) {

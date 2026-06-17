@@ -1,6 +1,6 @@
 const provinceIndex = require("../data/provinces/index");
 const { cities, provinces } = require("../data/national-cities");
-const { filterDishes, weightedPick } = require("../utils/random");
+const { weightedPick } = require("../utils/random");
 
 const provinceDataMap = {
   anhui: require("../data/provinces/anhui"),
@@ -101,6 +101,16 @@ const SOURCE_BUCKET_PRIORITY = {
   provinceShared: 2,
   nationalGeneral: 1
 };
+const FOOD_ILLUSTRATIONS = {
+  meal: "/assets/food-categories/meal.png",
+  snack: "/assets/food-categories/snack.png",
+  dessert: "/assets/food-categories/dessert.png",
+  drink: "/assets/food-categories/drink.png",
+  seafood: "/assets/food-categories/seafood.png",
+  noodle: "/assets/food-categories/noodle.png",
+  hotpot: "/assets/food-categories/hotpot.png",
+  meat: "/assets/food-categories/meat.png"
+};
 const NATIONAL_FALLBACK_TEMPLATES = [
   { name: "\u8c46\u6d46", category: "\u996e\u54c1", taste: "\u6e05\u6de1", mealTime: ["\u65e9\u9910", "\u5348\u9910"], scene: ["\u4e00\u4e2a\u4eba", "\u4e24\u4e2a\u4eba"], avoidTags: [], tags: ["\u65e9\u9910", "\u996e\u54c1"], iconType: "bowl", weight: 4 },
   { name: "\u6cb9\u6761", category: "\u5c0f\u5403", taste: "\u9c9c\u9999", mealTime: ["\u65e9\u9910", "\u5348\u9910"], scene: ["\u4e00\u4e2a\u4eba", "\u4e24\u4e2a\u4eba"], avoidTags: [], tags: ["\u65e9\u9910", "\u5c0f\u5403"], iconType: "bowl", weight: 4 },
@@ -149,6 +159,15 @@ function hashText(text) {
   return hash.toString(36);
 }
 
+function hashIndex(text, length) {
+  if (!length) return 0;
+  let hash = 0;
+  for (let index = 0; index < text.length; index += 1) {
+    hash = ((hash << 5) - hash + text.charCodeAt(index)) >>> 0;
+  }
+  return hash % length;
+}
+
 function pickText(list, index, fallback) {
   return list[index] || fallback;
 }
@@ -164,17 +183,81 @@ function makePhrase(dish) {
     `${dish.name}已就位，适合认真吃一顿。`,
     `这一口交给${dish.name}，饭点刚刚好。`
   ];
-  return templates[hashText(dish.city + dish.name).charCodeAt(0) % templates.length];
+  return templates[hashIndex(dish.city + dish.name, templates.length)];
+}
+
+function getDishFeature(dish) {
+  const tags = dish.tags || [];
+  const name = dish.name || "";
+  if (/粥|汤|羹|盅/.test(name) || tags.includes("粥品") || tags.includes("汤粥") || tags.includes("汤羹")) {
+    return "热乎顺口";
+  }
+  if (/粉|面|粿条|河粉|米线|馄饨|云吞|饺/.test(name) || tags.includes("粉面") || tags.includes("面食")) {
+    return "直接顶饱";
+  }
+  if (/虾|蟹|蚝|鱼|贝|海参|螺|鱿/.test(name) || tags.includes("海鲜")) {
+    return "鲜味更足";
+  }
+  if (/火锅|锅|煲|边炉/.test(name) || tags.includes("火锅")) {
+    return "适合慢慢吃";
+  }
+  if (dish.category === "甜品" || dish.category === "饮品" || tags.includes("甜品") || tags.includes("饮品")) {
+    return "给这顿加点轻松感";
+  }
+  if (/鸡|鸭|鹅|牛|羊|猪|肉|排骨|蹄|鸽/.test(name) || tags.includes("肉类")) {
+    return "吃起来更扎实";
+  }
+  if (dish.category === "小吃") {
+    return "不想吃太正式时也合适";
+  }
+  return "先把饭点定下来";
 }
 
 function makeDescription(dish) {
-  const meal = dish.mealTime.length ? dish.mealTime.join("、") : "正餐";
-  const tags = dish.tags.length ? dish.tags.join("、") : dish.category;
-  return `${dish.name}是${dish.city}菜单里的${tags}选择，口味偏${dish.taste}，适合${meal}来一份。本地特色指数${dish.localIndex}星，适合在不知道吃什么的时候交给转盘决定。`;
+  const meal = dish.mealTime.length ? dish.mealTime.slice(0, 2).join("、") : "这一顿";
+  const taste = dish.taste || "顺口";
+  const feature = getDishFeature(dish);
+  const templates = [
+    `${meal}想吃点${taste}的，${dish.name}可以先放进选择里，${feature}。`,
+    `如果这一顿不想再来回选，${dish.name}是个省心方向，${feature}。`,
+    `${dish.city}这一口不绕，${dish.name}适合先把饭点定下来。`,
+    `想吃${dish.category || "本地味"}，又不想纠结太久，${dish.name}可以先试试。`,
+    `${dish.name}不需要想太复杂，${meal}来一份，饭点就顺了。`,
+    `今天胃口偏${taste}的话，${dish.name}比随便点一份更有方向。`,
+    `还没想好吃什么时，先从${dish.name}开始也不亏，${feature}。`,
+    `${dish.name}适合当作这一轮的答案，简单、明确，不拖饭点。`,
+    `想吃得稳一点，${dish.name}可以先上桌，${feature}。`,
+    `${dish.city}这一顿可以从${dish.name}开始，先有一个选择就好办。`,
+    `不想把饭点耗在选择上，${dish.name}能给这一顿一个落点。`,
+    `${dish.name}适合想快点定下来的人，${feature}。`
+  ];
+  return templates[hashIndex(`${dish.city}|${dish.name}|description`, templates.length)];
 }
 
 function makePollText(dish) {
   return `${dish.name}要不要进这轮饭局？投它一票，今晚少纠结一点。`;
+}
+
+function getDishIllustrationKey(dish) {
+  const tags = dish.tags || [];
+  const name = dish.name || "";
+  if (/早茶/.test(name)) return "snack";
+  if (/粥|饭/.test(name)) return "meal";
+  if (dish.category === "饮品") return "drink";
+  if (dish.category === "甜品" || tags.includes("甜品") || tags.includes("糕点")) return "dessert";
+  if (tags.includes("海鲜") || /虾|蟹|鱼|蚝|贝|海参|螺/.test(name)) return "seafood";
+  if (tags.includes("火锅") || /火锅|汤锅|锅子|煲/.test(name)) return "hotpot";
+  if (tags.includes("面食") || tags.includes("汤粉") || tags.includes("米粉") || tags.includes("粉面") || /面|粉|米线|河粉|馄饨|饺/.test(name)) return "noodle";
+  if (tags.includes("肉类") || /鸡|鸭|鹅|牛|羊|猪|肉|排骨|蹄|肘/.test(name)) return "meat";
+  if (dish.category === "小吃") return "snack";
+  return "meal";
+}
+
+function attachIllustration(dish) {
+  const illustrationKey = getDishIllustrationKey(dish);
+  dish.illustrationKey = illustrationKey;
+  dish.illustrationSrc = FOOD_ILLUSTRATIONS[illustrationKey] || FOOD_ILLUSTRATIONS.meal;
+  return dish;
 }
 
 function expandDish(compactDish, province, index) {
@@ -199,7 +282,7 @@ function expandDish(compactDish, province, index) {
   dish.phrase = makePhrase(dish);
   dish.description = makeDescription(dish);
   dish.pollText = makePollText(dish);
-  return dish;
+  return attachIllustration(dish);
 }
 
 function shouldDropSharedPlaceDish(dish) {
@@ -342,10 +425,39 @@ function matchesValue(value, selected) {
   return value === selected;
 }
 
+function dishText(dish) {
+  return [
+    dish.name,
+    dish.category,
+    dish.taste,
+    (dish.tags || []).join(""),
+    (dish.avoidTags || []).join("")
+  ].filter(Boolean).join("");
+}
+
+function dishMatchesAvoidTag(dish, tag) {
+  if (!tag) return false;
+  const avoidTags = dish.avoidTags || [];
+  const tags = dish.tags || [];
+  if (avoidTags.includes(tag) || tags.includes(tag)) return true;
+
+  const text = dishText(dish);
+  if (tag === "辣") return dish.taste === "重口" && /辣|麻|椒|酸辣/.test(text);
+  if (tag === "海鲜") return /海鲜|虾|蟹|鱼|蚝|螺|贝|鲍|鱿|蛤|蛏|鳝|泥鳅/.test(text);
+  if (tag === "甜") return dish.category === "甜品" || dish.taste === "甜口" || /糖|甜|糕|奶|酥|月饼|凉果|汤圆|双皮奶/.test(text);
+  if (tag === "肉类") return /肉类|鸡|鸭|鹅|鸽|牛|羊|猪|肉|排骨|扣肉|蹄|肘|腊|熏|丸|兔/.test(text);
+  if (tag === "牛肉") return /牛|牦牛/.test(text);
+  if (tag === "猪肉") return /猪|扣肉|排骨|蹄|肘|五花|叉烧|肉燕|肉松|肉糕|肉丸|肉饼/.test(text);
+  if (tag === "内脏") return /肝|肠|肚|腰|心|肺|杂|舌|肫|胗|蹄筋/.test(text);
+  if (tag === "生冷") return /生腌|生炊|刺身|凉拌|冷吃|冰|凉粉|冷面/.test(text);
+  return false;
+}
+
 function matchesCandidateFilters(dish, filters) {
   const avoidTags = filters.avoidTags || [];
-  const avoidHit = avoidTags.some((tag) => dish.avoidTags.includes(tag));
+  const avoidHit = avoidTags.some((tag) => dishMatchesAvoidTag(dish, tag));
   return (
+    dish.city === filters.city &&
     !isMealTimeMismatch(dish, filters.mealTime) &&
     matchesValue(dish.mealTime, filters.mealTime) &&
     matchesValue(dish.category, filters.category) &&
@@ -377,7 +489,7 @@ function createNationalFallbackDish(template, city, province) {
   dish.phrase = makePhrase(dish);
   dish.description = makeDescription(dish);
   dish.pollText = makePollText(dish);
-  return dish;
+  return attachIllustration(dish);
 }
 
 function registerNationalFallbackDishes() {
@@ -399,7 +511,7 @@ function getNationalFallbackDishes(filters, existingNames) {
   NATIONAL_FALLBACK_TEMPLATES.forEach((template) => {
     if (names[template.name]) return;
     const dish = createNationalFallbackDish(template, filters.city, province);
-    if (!matchesCandidateFilters(dish, filters)) return;
+    if (!matchesCandidateFilters(dish, Object.assign({}, filters, { city: filters.city }))) return;
     dishById[dish.id] = dish;
     fallbackDishes.push(dish);
   });
@@ -442,8 +554,7 @@ function getProposalDishes(cityName, scope) {
 function getCandidateDishes(filters) {
   const normalized = normalizeFilters(filters);
   const cityDishes = getDishesByCity(normalized.city);
-  let pool = filterDishes(cityDishes, normalized)
-    .filter((dish) => !isMealTimeMismatch(dish, normalized.mealTime));
+  let pool = cityDishes.filter((dish) => matchesCandidateFilters(dish, normalized));
   if (pool.length < MIN_CANDIDATE_COUNT) {
     const existingNames = cityDishes.reduce((map, dish) => {
       map[dish.name] = true;
@@ -451,9 +562,6 @@ function getCandidateDishes(filters) {
     }, {});
     const fallbackDishes = getNationalFallbackDishes(normalized, existingNames);
     pool = pool.concat(fallbackDishes).slice(0, MIN_CANDIDATE_COUNT);
-  }
-  if (!pool.length && (!normalized.category || normalized.category === ANY_FILTER)) {
-    pool = cityDishes;
   }
   return pool;
 }
