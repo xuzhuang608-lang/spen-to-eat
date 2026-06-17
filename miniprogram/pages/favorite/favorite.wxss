@@ -23,25 +23,37 @@
   font-weight: 700;
 }
 
+.tab-desc {
+  margin-top: 18rpx;
+  color: #7a6a5f;
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
 .manage-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20rpx;
+  gap: 14rpx;
   margin-top: 22rpx;
 }
 
 .manage-hint {
+  flex: 0 0 calc(50% - 7rpx);
+  min-width: 0;
   color: #9a7665;
   font-size: 24rpx;
 }
 
 .edit-button {
+  flex: 0 0 calc(50% - 7rpx);
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 132rpx;
+  width: calc(50% - 7rpx);
+  min-width: 0;
+  max-width: none;
   height: 56rpx;
   min-height: 56rpx;
   padding: 0;
@@ -59,11 +71,50 @@
   border: 0;
 }
 
-.empty {
-  padding: 60rpx 0;
-  color: #7a6a5f;
+.empty-panel {
+  margin-top: 24rpx;
+  padding: 34rpx 28rpx;
+  border: 2rpx solid #e8d6c6;
+  border-radius: 24rpx;
+  background: #fffdf8;
   text-align: center;
-  font-size: 28rpx;
+  box-shadow: 0 8rpx 22rpx rgba(78, 52, 39, 0.05);
+}
+
+.empty-title {
+  color: #35261d;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.empty-desc {
+  margin-top: 12rpx;
+  color: #7a6a5f;
+  font-size: 25rpx;
+  line-height: 1.5;
+}
+
+.empty-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 220rpx;
+  height: 70rpx;
+  min-height: 70rpx;
+  margin: 24rpx auto 0;
+  padding: 0;
+  border: 2rpx solid #efb49f;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #bf4e32;
+  font-size: 26rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.empty-action::after {
+  border: 0;
 }
 
 .dish-list {
@@ -77,10 +128,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18rpx;
+  gap: 14rpx;
+}
+
+.dish-copy {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .dish-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 32rpx;
   font-weight: 800;
 }
@@ -91,16 +150,18 @@
 }
 
 .delete-button {
-  flex: 0 0 auto;
+  flex: 0 0 140rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 104rpx;
-  height: 54rpx;
-  min-height: 54rpx;
+  width: 140rpx;
+  min-width: 140rpx;
+  max-width: 140rpx;
+  height: 56rpx;
+  min-height: 56rpx;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 auto;
   border: 2rpx solid #f0b8a8;
   border-radius: 999rpx;
   background: #fff6f0;

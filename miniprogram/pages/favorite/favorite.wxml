@@ -4,15 +4,21 @@
     <view class="tab {{historyTabClass}}" data-tab="history" bindtap="onSwitchTab">历史</view>
   </view>
 
-  <view class="manage-row">
+  <view class="tab-desc">{{tabDesc}}</view>
+
+  <view wx:if="{{dishes.length}}" class="manage-row">
     <view class="manage-hint">可整理不想保留的内容</view>
     <button class="edit-button" bindtap="onToggleEdit">{{editButtonText}}</button>
   </view>
 
-  <view wx:if="{{emptyVisible}}" class="empty">还没有内容，先去转一次吧。</view>
+  <view wx:if="{{emptyVisible}}" class="empty-panel">
+    <view class="empty-title">还没留下想吃的</view>
+    <view class="empty-desc">转到喜欢的菜，点“收藏起来”就会在这里。</view>
+    <button class="empty-action" bindtap="onGoSpin">去转一下</button>
+  </view>
   <view class="dish-list">
     <view class="panel dish-item" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
-      <view>
+      <view class="dish-copy">
         <view class="dish-name">{{item.name}}</view>
         <view class="muted">{{item.city}} · {{item.category}} · {{item.taste}}</view>
       </view>
@@ -22,7 +28,7 @@
   </view>
 
   <button wx:if="{{manageVisible}}" class="clear-current-button" bindtap="onClearCurrent">{{clearButtonText}}</button>
-  <button class="primary-button poll-button" bindtap="onCreatePoll">用这些组饭局</button>
+  <button wx:if="{{dishes.length}}" class="primary-button poll-button" bindtap="onCreatePoll">{{pollButtonText}}</button>
 
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

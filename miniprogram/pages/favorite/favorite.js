@@ -12,6 +12,8 @@ Page({
     editButtonText: "\u7f16\u8f91",
     manageVisible: false,
     clearButtonText: "\u6e05\u7a7a\u6536\u85cf",
+    tabDesc: "你认真收好的菜",
+    pollButtonText: "用收藏的菜组个饭局",
     dishSheetVisible: false,
     detailDish: null
   },
@@ -27,7 +29,9 @@ Page({
       favoriteTabClass: tab === "favorite" ? "active" : "",
       historyTabClass: tab === "history" ? "active" : "",
       editMode: false,
-      editButtonText: "\u7f16\u8f91"
+      editButtonText: "\u7f16\u8f91",
+      tabDesc: tab === "favorite" ? "你认真收好的菜" : "最近转到过的菜",
+      pollButtonText: tab === "favorite" ? "用收藏的菜组个饭局" : "用最近 8 道组个饭局"
     }, () => this.loadDishes());
   },
 
@@ -106,6 +110,10 @@ Page({
 
   onCloseDishSheet() {
     this.setData({ dishSheetVisible: false });
+  },
+
+  onGoSpin() {
+    wx.navigateTo({ url: "/pages/spin/spin" });
   },
 
   onCreatePoll() {
