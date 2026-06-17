@@ -35,6 +35,11 @@
   gap: 20rpx;
 }
 
+.sheet-head > view:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .sheet-city {
   color: #a65334;
   font-size: 24rpx;
@@ -47,6 +52,13 @@
   font-size: 46rpx;
   line-height: 1.12;
   font-weight: 900;
+}
+
+.sheet-illustration {
+  flex: 0 0 auto;
+  width: 148rpx;
+  height: 148rpx;
+  margin-top: -14rpx;
 }
 
 .sheet-close {
@@ -140,13 +152,15 @@
 }
 
 .sheet-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 12rpx;
   margin-top: 20rpx;
-  padding: 8rpx;
-  border-radius: 22rpx;
-  background: #fff0e8;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .sheet-action {
@@ -154,25 +168,27 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 100%;
-  height: 64rpx;
-  min-height: 64rpx;
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  min-width: 300rpx;
+  max-width: 300rpx;
+  height: 68rpx;
+  min-height: 68rpx;
   padding: 0;
   margin: 0;
-  border: 0;
-  border-radius: 18rpx;
-  background: transparent;
-  color: #7a6a5f;
-  font-size: 24rpx;
+  border: 2rpx solid #e85d3d;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #84452f;
+  font-size: 26rpx;
   font-weight: 900;
   line-height: 1;
 }
 
 .sheet-action.primary {
-  border: 2rpx solid #ee7558;
-  background: #ffe7dc;
+  background: #fff0e8;
   color: #e85d3d;
-  box-shadow: 0 8rpx 18rpx rgba(232, 93, 61, 0.1);
+  box-shadow: none;
 }
 
 .sheet-action::after {

@@ -6,6 +6,7 @@
         <view class="sheet-city">{{viewDish.city}}</view>
         <view class="sheet-title">{{viewDish.name}}</view>
       </view>
+      <image wx:if="{{viewDish.illustrationSrc}}" class="sheet-illustration" src="{{viewDish.illustrationSrc}}" mode="aspectFit"></image>
       <view class="sheet-close" catchtap="onClose">×</view>
     </view>
 
@@ -26,9 +27,11 @@
 
     <view class="sheet-actions">
       <button class="sheet-action primary" bindtap="onPick">{{pickLabel}}</button>
+      <button wx:if="{{showDislike}}" class="sheet-action" bindtap="onDislike">这顿不吃</button>
       <button class="sheet-action" bindtap="onFavorite">{{favoriteLabel}}</button>
-      <button class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
-      <button class="sheet-action" bindtap="onFeedback">提个建议</button>
+      <button wx:if="{{showCopy}}" class="sheet-action" bindtap="onCopyName">就吃这个</button>
+      <button wx:if="{{showProposal}}" class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
+      <button wx:if="{{showFeedback}}" class="sheet-action" bindtap="onFeedback">提个建议</button>
     </view>
   </view>
 </view>
