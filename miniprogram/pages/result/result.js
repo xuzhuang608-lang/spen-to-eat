@@ -25,20 +25,11 @@ function buildCautionText(dish) {
   return "没有明显避雷标签。口味仍以实际做法为准，可以按个人忌口再判断。";
 }
 
-function buildDecisionCards(dish) {
+function buildFitNotes(dish) {
   return [
-    {
-      title: "为什么现在适合吃",
-      text: buildNowReason(dish)
-    },
-    {
-      title: "适合这类饭局",
-      text: buildFitText(dish)
-    },
-    {
-      title: "可能不适合",
-      text: buildCautionText(dish)
-    }
+    buildNowReason(dish),
+    buildFitText(dish),
+    buildCautionText(dish)
   ];
 }
 
@@ -48,7 +39,7 @@ Page({
     rating: "",
     favorited: false,
     favoriteText: "\u6536\u85cf\u8d77\u6765",
-    decisionCards: [],
+    fitNotes: [],
     relatedDishes: [],
     dishSheetVisible: false,
     detailDish: null
@@ -79,7 +70,7 @@ Page({
       rating: iconRating(dish.localIndex, dish),
       favorited: storage.hasItem("favoriteDishIds", dish.id),
       favoriteText: storage.hasItem("favoriteDishIds", dish.id) ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765",
-      decisionCards: buildDecisionCards(dish),
+      fitNotes: buildFitNotes(dish),
       relatedDishes
     });
   },
@@ -98,13 +89,13 @@ Page({
     });
   },
 
-  onCopyName() {
+  onAcceptDish() {
     const dish = this.data.dish;
     if (!dish) return;
     wx.setClipboardData({
       data: dish.name,
       success: () => {
-        wx.showToast({ title: "\u83dc\u540d\u5df2\u590d\u5236", icon: "none" });
+        wx.showToast({ title: "菜名已复制，去地图或外卖搜搜", icon: "none" });
       },
       fail: (error) => {
         console.error("复制菜名失败", error);
@@ -114,25 +105,10 @@ Page({
   },
 
   onSpinAgain() {
-    const pages = getCurrentPages();
-    if (pages.length > 1) {
-      wx.navigateBack();
-      return;
-    }
-    wx.redirectTo({
-      url: `/pages/spin/spin?city=${encodeURIComponent(this.data.dish.city)}`
-    });
-  },
-
-  onDislikeDish() {
     const dish = this.data.dish;
-    const url = `/pages/spin/spin?city=${encodeURIComponent(dish.city)}&avoidDishId=${encodeURIComponent(dish.id)}`;
-    const pages = getCurrentPages();
-    if (pages.length > 1) {
-      wx.redirectTo({ url });
-      return;
-    }
-    wx.redirectTo({ url });
+    wx.redirectTo({
+      url: `/pages/spin/spin?city=${encodeURIComponent(dish.city)}&avoidDishId=${encodeURIComponent(dish.id)}`
+    });
   },
 
   onCreatePoll() {

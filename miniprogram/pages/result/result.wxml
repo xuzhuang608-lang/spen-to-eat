@@ -18,22 +18,20 @@
       <text wx:for="{{dish.mealTime}}" wx:key="*this">{{item}}</text>
     </view>
     <view class="desc">{{dish.description}}</view>
-  </view>
-
-  <view class="decision-panel">
-    <block wx:for="{{decisionCards}}" wx:key="title">
-      <view class="decision-item">
-        <view class="decision-title">{{item.title}}</view>
-        <view class="decision-text">{{item.text}}</view>
+    <view class="fit-notes">
+      <view class="fit-note" wx:for="{{fitNotes}}" wx:key="*this">
+        {{item}}
       </view>
-    </block>
+    </view>
   </view>
 
-  <view class="action-row main-actions">
+  <view class="decision-action">
+    <button class="primary-button accept-action" bindtap="onAcceptDish">就吃这个</button>
+  </view>
+
+  <view class="action-row">
     <button class="ghost-button compact-action" bindtap="onSpinAgain">再转一次</button>
-    <button class="ghost-button compact-action" bindtap="onDislikeDish">这顿不吃</button>
     <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>
-    <button class="ghost-button compact-action" bindtap="onCopyName">复制菜名</button>
     <button class="ghost-button compact-action" bindtap="onCreatePoll">组个饭局</button>
     <button class="ghost-button compact-action" bindtap="onFeedback">提个建议</button>
   </view>

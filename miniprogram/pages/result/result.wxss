@@ -92,30 +92,19 @@
   line-height: 1.6;
 }
 
-.decision-panel {
+.fit-notes {
   display: grid;
-  gap: 14rpx;
-  margin-top: 24rpx;
+  gap: 12rpx;
+  margin-top: 20rpx;
 }
 
-.decision-item {
-  padding: 22rpx;
-  border: 2rpx solid #eadbd0;
-  border-radius: 24rpx;
-  background: #fffdf8;
-}
-
-.decision-title {
-  color: #35261d;
-  font-size: 28rpx;
-  font-weight: 900;
-}
-
-.decision-text {
-  margin-top: 10rpx;
+.fit-note {
+  padding: 16rpx 18rpx;
+  border-radius: 18rpx;
+  background: #fff8ef;
   color: #6f5b50;
   font-size: 26rpx;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .safety-note {
@@ -134,11 +123,20 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 12rpx;
-  margin-top: 22rpx;
+  margin-top: 16rpx;
   padding: 0;
   border-radius: 0;
   background: transparent;
   box-sizing: border-box;
+}
+
+.decision-action {
+  margin-top: 22rpx;
+}
+
+.accept-action {
+  min-height: 92rpx;
+  font-size: 32rpx;
 }
 
 .compact-action {
