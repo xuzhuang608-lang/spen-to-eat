@@ -61,13 +61,22 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  width: 100%;
   gap: 18rpx;
 }
 
-.locate-button {
-  flex: 0 0 auto;
-  width: 118rpx;
+.decision-copy {
+  flex: 1 1 auto;
   min-width: 0;
+}
+
+.locate-button {
+  flex: 0 0 180rpx;
+  width: 180rpx;
+  min-width: 180rpx;
+  max-width: 180rpx;
+  margin-left: auto;
+  align-self: flex-start;
   height: 58rpx;
   padding: 0 8rpx;
   border: 2rpx solid #e8d6c6;
@@ -96,12 +105,6 @@
   font-size: 40rpx;
   line-height: 1.15;
   font-weight: 900;
-}
-
-.meal-subtitle {
-  margin-top: 8rpx;
-  color: #7a6a5f;
-  font-size: 26rpx;
 }
 
 .meal-grid {
@@ -158,18 +161,11 @@
   font-size: 34rpx;
 }
 
-.start-hint {
-  margin-top: 12rpx;
-  color: #7a6a5f;
-  font-size: 24rpx;
-  text-align: center;
-}
-
 .assist-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12rpx;
-  margin-top: 24rpx;
+  margin-top: 32rpx;
 }
 
 .assist-card {
@@ -197,7 +193,7 @@
 }
 
 .inspiration-head {
-  margin-top: 34rpx;
+  margin-top: 44rpx;
 }
 
 .section-title {

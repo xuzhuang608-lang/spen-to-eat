@@ -15,6 +15,89 @@ function pickStable(list, seed) {
   return list[hashIndex(seed, list.length)];
 }
 
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch (error) {
+    return value || "";
+  }
+}
+
+function getSourceFilters(query) {
+  const filters = {};
+  ["mealTime", "category", "taste", "scene", "avoidLabels"].forEach((key) => {
+    if (query && query[key]) {
+      filters[key] = safeDecode(query[key]);
+    }
+  });
+  return filters;
+}
+
+function buildSpinAgainUrl(dish, filters) {
+  const params = [
+    `city=${encodeURIComponent(dish.city)}`,
+    `avoidDishId=${encodeURIComponent(dish.id)}`
+  ];
+  ["mealTime", "category", "taste", "scene", "avoidLabels"].forEach((key) => {
+    const value = filters && filters[key];
+    if (value && value !== "不限") {
+      params.push(`${key}=${encodeURIComponent(value)}`);
+    }
+  });
+  return `/pages/spin/spin?${params.join("&")}`;
+}
+
+function shuffle(list) {
+  const copy = list.slice();
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const target = Math.floor(Math.random() * (index + 1));
+    const temp = copy[index];
+    copy[index] = copy[target];
+    copy[target] = temp;
+  }
+  return copy;
+}
+
+function getCurrentMealTime() {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 10) return "早餐";
+  if (hour >= 10 && hour < 15) return "午餐";
+  if (hour >= 15 && hour < 21) return "晚餐";
+  return "夜宵";
+}
+
+function normalizeMealTime(mealTime) {
+  return mealTime === "夜宵" ? "宵夜" : mealTime;
+}
+
+function dishMatchesMealTime(dish, mealTime) {
+  return (dish.mealTime || []).includes(normalizeMealTime(mealTime));
+}
+
+function decorateRelatedDish(item) {
+  return Object.assign({}, item, {
+    rating: iconRating(item.localIndex, item),
+    ratingItems: iconRatingItems(item.localIndex, item).map((ratingItem) =>
+      Object.assign({}, ratingItem, {
+        className: ratingItem.active ? "active" : ""
+      })
+    )
+  });
+}
+
+function buildRelatedDishes(dish) {
+  const currentMeal = getCurrentMealTime();
+  const sameCity = getDishesByCity(dish.city).filter((item) => (
+    item.id !== dish.id &&
+    item.sourceBucket === "cityExact"
+  ));
+  const mealMatched = sameCity.filter((item) => dishMatchesMealTime(item, currentMeal));
+  const selected = shuffle(mealMatched)
+    .concat(shuffle(sameCity.filter((item) => !dishMatchesMealTime(item, currentMeal))))
+    .slice(0, 3);
+  return selected.map(decorateRelatedDish);
+}
+
 function getDishFeature(dish) {
   const tags = dish.tags || [];
   const name = dish.name || "";
@@ -100,10 +183,12 @@ Page({
     fitNotes: [],
     relatedDishes: [],
     dishSheetVisible: false,
-    detailDish: null
+    detailDish: null,
+    sourceFilters: {}
   },
 
   onLoad(query) {
+    this.setData({ sourceFilters: getSourceFilters(query || {}) });
     this.loadDish(query.id);
   },
 
@@ -113,15 +198,7 @@ Page({
       wx.showToast({ title: "结果不存在", icon: "none" });
       return;
     }
-    const sameCity = getDishesByCity(dish.city).filter((item) => item.id !== dish.id);
-    const relatedDishes = sameCity.slice(0, 3).map((item) => Object.assign({}, item, {
-      rating: iconRating(item.localIndex, item),
-      ratingItems: iconRatingItems(item.localIndex, item).map((ratingItem) =>
-        Object.assign({}, ratingItem, {
-          className: ratingItem.active ? "active" : ""
-        })
-      )
-    }));
+    const relatedDishes = buildRelatedDishes(dish);
     storage.addUnique("historyDishIds", dish.id);
     this.setData({
       dish,
@@ -165,7 +242,7 @@ Page({
   onSpinAgain() {
     const dish = this.data.dish;
     wx.redirectTo({
-      url: `/pages/spin/spin?city=${encodeURIComponent(dish.city)}&avoidDishId=${encodeURIComponent(dish.id)}`
+      url: buildSpinAgainUrl(dish, this.data.sourceFilters)
     });
   },
 

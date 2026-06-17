@@ -78,5 +78,5 @@
     </view>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="{{detailPickLabel}}" pick-mode="emit" show-proposal="{{false}}" show-feedback="{{false}}" show-copy="{{false}}" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="{{detailPickLabel}}" pick-mode="emit" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

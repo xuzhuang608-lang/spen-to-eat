@@ -7,7 +7,8 @@ function matchesList(value, selected) {
 function filterDishes(dishes, filters) {
   const avoidTags = filters.avoidTags || [];
   return dishes.filter((dish) => {
-    const avoidHit = avoidTags.some((tag) => dish.avoidTags.includes(tag));
+    const dishAvoidTags = dish.avoidTags || [];
+    const avoidHit = avoidTags.some((tag) => dishAvoidTags.includes(tag));
     return (
       dish.city === filters.city &&
       matchesList(dish.mealTime, filters.mealTime) &&

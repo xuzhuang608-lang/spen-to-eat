@@ -13,13 +13,13 @@
     <view class="sheet-phrase">{{viewDish.phrase}}</view>
 
     <view class="sheet-tags">
-      <text wx:for="{{viewDish.tagLine}}" wx:key="*this">{{item}}</text>
+      <text wx:for="{{sheetTags}}" wx:key="*this">{{item}}</text>
     </view>
 
     <view class="sheet-rating">
       <text class="rating-label">本地特色</text>
       <view class="rating-icons">
-        <text class="rating-icon {{iconItem.className}}" wx:for="{{viewDish.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
+        <text class="rating-icon {{iconItem.className}}" wx:for="{{sheetRatingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
       </view>
     </view>
 
@@ -28,10 +28,7 @@
     <view class="sheet-actions">
       <button class="sheet-action primary" bindtap="onPick">{{pickLabel}}</button>
       <button wx:if="{{showDislike}}" class="sheet-action" bindtap="onDislike">这顿不吃</button>
-      <button class="sheet-action" bindtap="onFavorite">{{favoriteLabel}}</button>
-      <button wx:if="{{showCopy}}" class="sheet-action" bindtap="onCopyName">就吃这个</button>
-      <button wx:if="{{showProposal}}" class="sheet-action" bindtap="onCreateProposal">组个饭局</button>
-      <button wx:if="{{showFeedback}}" class="sheet-action" bindtap="onFeedback">提个建议</button>
+      <button wx:if="{{showFavorite}}" class="sheet-action" bindtap="onFavorite">{{favoriteLabel}}</button>
     </view>
   </view>
 </view>

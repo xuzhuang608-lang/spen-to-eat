@@ -77,27 +77,21 @@ Component({
       type: String,
       value: "result"
     },
-    showProposal: {
-      type: Boolean,
-      value: true
-    },
-    showFeedback: {
-      type: Boolean,
-      value: false
-    },
-    showCopy: {
-      type: Boolean,
-      value: true
-    },
     showDislike: {
       type: Boolean,
       value: false
+    },
+    showFavorite: {
+      type: Boolean,
+      value: true
     }
   },
 
   data: {
     showSheet: false,
     viewDish: null,
+    sheetTags: [],
+    sheetRatingItems: [],
     favorited: false,
     favoriteLabel: "\u6536\u85cf\u8d77\u6765"
   },
@@ -114,6 +108,8 @@ Component({
       this.setData({
         showSheet: !!(this.properties.visible && viewDish),
         viewDish,
+        sheetTags: viewDish ? viewDish.tagLine : [],
+        sheetRatingItems: viewDish ? viewDish.ratingItems : [],
         favorited: viewDish ? storage.hasItem("favoriteDishIds", viewDish.id) : false,
         favoriteLabel:
           viewDish && storage.hasItem("favoriteDishIds", viewDish.id)
@@ -135,8 +131,7 @@ Component({
         this.triggerEvent("pick", { dish });
         return;
       }
-      this.triggerEvent("close");
-      wx.navigateTo({ url: `/pages/result/result?id=${dish.id}` });
+      this.copyDishName(dish);
     },
 
     onFavorite() {
@@ -159,9 +154,7 @@ Component({
       });
     },
 
-    onCopyName() {
-      const dish = this.data.viewDish;
-      if (!dish) return;
+    copyDishName(dish) {
       wx.setClipboardData({
         data: dish.name,
         success: () => {
@@ -178,22 +171,6 @@ Component({
       const dish = this.data.viewDish;
       if (!dish) return;
       this.triggerEvent("dislike", { dish });
-    },
-
-    onCreateProposal() {
-      const dish = this.data.viewDish;
-      if (!dish) return;
-      this.triggerEvent("close");
-      wx.navigateTo({
-        url: `/pages/poll-create/poll-create?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
-      });
-    },
-
-    onFeedback() {
-      const dish = this.data.viewDish;
-      if (!dish) return;
-      this.triggerEvent("close");
-      wx.navigateTo({ url: `/pages/feedback/feedback?dishId=${dish.id}` });
     }
   }
 });

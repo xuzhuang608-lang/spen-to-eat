@@ -3,7 +3,7 @@
 }
 
 .spin-head {
-  margin-bottom: 22rpx;
+  margin-bottom: 34rpx;
 }
 
 .spin-subtitle {
@@ -14,7 +14,8 @@
 
 .plate-wrap {
   position: relative;
-  padding-top: 18rpx;
+  padding-top: 28rpx;
+  padding-bottom: 8rpx;
 }
 
 .plate {
@@ -404,7 +405,7 @@
   display: flex;
   justify-content: center;
   gap: 22rpx;
-  margin-top: 24rpx;
+  margin-top: 38rpx;
 }
 
 .secondary-button {
@@ -412,10 +413,10 @@
   width: 200rpx;
   min-height: 78rpx;
   line-height: 78rpx;
-  border: 2rpx solid #e8d6c6;
+  border: 2rpx solid #f4c7b6;
   border-radius: 22rpx;
-  background: #fff;
-  color: #5a463b;
+  background: #fff6f0;
+  color: #bf4e32;
   font-size: 28rpx;
   font-weight: 900;
 }
@@ -441,7 +442,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 18rpx;
-  margin-top: 24rpx;
+  margin-top: 34rpx;
   padding: 18rpx 20rpx;
   border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
@@ -475,8 +476,11 @@
 }
 
 .adjust-button {
-  flex: 0 0 auto;
-  width: 176rpx;
+  box-sizing: border-box;
+  flex: 0 0 160rpx;
+  width: 160rpx;
+  min-width: 160rpx;
+  max-width: 160rpx;
   height: 58rpx;
   line-height: 58rpx;
   padding: 0;
@@ -494,11 +498,12 @@
 }
 
 .menu-panel {
-  margin-top: 20rpx;
+  margin-top: 24rpx;
   padding: 22rpx;
   border: 2rpx solid #e8d6c6;
   border-radius: 24rpx;
-  background: #fff;
+  background: #fffdf8;
+  box-shadow: 0 8rpx 22rpx rgba(78, 52, 39, 0.05);
 }
 
 .menu-head {
@@ -506,6 +511,11 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 18rpx;
+}
+
+.menu-head > view {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .menu-title {
@@ -516,11 +526,14 @@
 }
 
 .add-dish-button {
-  flex: 0 0 auto;
-  width: 184rpx;
+  box-sizing: border-box;
+  flex: 0 0 160rpx;
+  width: 160rpx;
+  min-width: 160rpx;
+  max-width: 160rpx;
   height: 58rpx;
   line-height: 58rpx;
-  margin: 0;
+  margin: 0 0 0 auto;
   padding: 0;
   border: 2rpx solid #f4c7b6;
   border-radius: 999rpx;

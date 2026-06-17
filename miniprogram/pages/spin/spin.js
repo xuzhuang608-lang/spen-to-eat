@@ -188,6 +188,35 @@ function buildFilterSummary(filters) {
   return parts.length ? parts.join(" · ") : "不限条件";
 }
 
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch (error) {
+    return value || "";
+  }
+}
+
+function parseAvoidLabels(value) {
+  return safeDecode(value)
+    .split(",")
+    .map((item) => item.trim())
+    .filter((item) => rawAvoidOptions.includes(item));
+}
+
+function buildResultUrl(id, filters) {
+  const params = [`id=${encodeURIComponent(id)}`];
+  ["mealTime", "category", "taste", "scene"].forEach((key) => {
+    const value = filters[key];
+    if (value && value !== "不限") {
+      params.push(`${key}=${encodeURIComponent(value)}`);
+    }
+  });
+  if (filters.avoidLabels && filters.avoidLabels.length) {
+    params.push(`avoidLabels=${encodeURIComponent(filters.avoidLabels.join(","))}`);
+  }
+  return `/pages/result/result?${params.join("&")}`;
+}
+
 Page({
   data: {
     city: "广州",
@@ -219,17 +248,20 @@ Page({
   },
 
   onLoad(query) {
-    const city = query.city ? decodeURIComponent(query.city) : app.globalData.currentCity;
-    const avoidDishId = query.avoidDishId ? decodeURIComponent(query.avoidDishId) : "";
+    const city = query.city ? safeDecode(query.city) : app.globalData.currentCity;
+    const avoidDishId = query.avoidDishId ? safeDecode(query.avoidDishId) : "";
     if (city) {
       app.setCurrentCity(city);
     }
     const filters = Object.assign({}, defaultFilters, { avoidLabels: [] });
     ["mealTime", "category", "taste", "scene"].forEach((key) => {
       if (query[key]) {
-        filters[key] = decodeURIComponent(query[key]);
+        filters[key] = safeDecode(query[key]);
       }
     });
+    if (query.avoidLabels) {
+      filters.avoidLabels = parseAvoidLabels(query.avoidLabels);
+    }
 
     this.setData({
       city,
@@ -503,7 +535,7 @@ Page({
         return;
       }
       setTimeout(() => {
-        wx.navigateTo({ url: `/pages/result/result?id=${result.id}` });
+        wx.navigateTo({ url: buildResultUrl(result.id, this.data.filters) });
       }, 950);
     }, 1850);
   },
@@ -513,6 +545,6 @@ Page({
       wx.showToast({ title: "先转一道菜", icon: "none" });
       return;
     }
-    wx.navigateTo({ url: `/pages/result/result?id=${this.data.pickedDishId}` });
+    wx.navigateTo({ url: buildResultUrl(this.data.pickedDishId, this.data.filters) });
   }
 });

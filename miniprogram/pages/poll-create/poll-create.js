@@ -1,8 +1,16 @@
 const app = getApp();
 const { getCity, getDishById, getProposalDishes, searchDishes } = require("../../services/dish");
 const storage = require("../../services/storage");
+const {
+  shuffle,
+  uniqueByName,
+  buildWheelItems,
+  decorateAddWheelItems,
+  weightedPick,
+  getTargetWheelAngle
+} = require("../../utils/proposal-wheel");
 
-const MAX_SELECTED = 8;
+const MAX_SELECTED = 12;
 const MAX_CUSTOM_NAME_LENGTH = 8;
 const CANDIDATE_PAGE_SIZE = 24;
 
@@ -13,6 +21,13 @@ const scopeTabs = [
 ];
 
 const directCityNames = ["北京", "上海", "天津", "重庆", "香港", "澳门"];
+
+const partySizeOptions = [
+  { key: "one", label: "1人", range: "1-2" },
+  { key: "two", label: "2人", range: "2-3" },
+  { key: "small", label: "3-4人", range: "3-5" },
+  { key: "large", label: "5人以上", range: "5-8" }
+];
 
 const regularScopeCopy = {
   tabs: scopeTabs,
@@ -48,6 +63,17 @@ function isDirectCity(cityName) {
 
 function getScopeCopy(cityName) {
   return isDirectCity(cityName) ? directScopeCopy : regularScopeCopy;
+}
+
+function buildPartySizeOptions(activeKey) {
+  return partySizeOptions.map((item) => Object.assign({}, item, {
+    className: item.key === activeKey ? "active" : ""
+  }));
+}
+
+function getRecommendationText(partySizeKey, selectedCount) {
+  const option = partySizeOptions.find((item) => item.key === partySizeKey) || partySizeOptions[2];
+  return `建议 ${option.range} 道，已选 ${selectedCount || 0} 道`;
 }
 
 function createProposalId() {
@@ -128,8 +154,6 @@ Page({
     keyword: "",
     activeScope: "local",
     scopeTabs,
-    candidateTitle: regularScopeCopy.titles.local,
-    candidateDesc: regularScopeCopy.desc,
     emptyCandidateTitle: regularScopeCopy.emptyTitle,
     emptyCandidateDesc: regularScopeCopy.emptyDesc,
     candidates: [],
@@ -138,12 +162,20 @@ Page({
     selectedIds: [],
     selectedMap: {},
     selectedCount: 0,
-    autoAddedIds: [],
-    maxSelected: MAX_SELECTED,
-    fillButtonText: "来点本地味",
+    partySizeKey: "small",
+    partySizeOptions: buildPartySizeOptions("small"),
+    recommendationText: getRecommendationText("small", 0),
     batchOffset: 0,
     dishSheetVisible: false,
-    detailDish: null
+    detailDish: null,
+    addWheelVisible: false,
+    addWheelItems: [],
+    addWheelSpinning: false,
+    addWheelAngle: 0,
+    addWheelCounterAngle: 0,
+    addWheelPicked: null,
+    addWheelButtonText: "开始转动",
+    addWheelChosenMap: {}
   },
 
   onLoad(query) {
@@ -166,7 +198,8 @@ Page({
       selectedDishes,
       selectedIds: selectedDishes.map((dish) => dish.id),
       selectedMap: this.toMap(selectedDishes.map((dish) => dish.id)),
-      selectedCount: selectedDishes.length
+      selectedCount: selectedDishes.length,
+      recommendationText: getRecommendationText(this.data.partySizeKey, selectedDishes.length)
     });
     this.refreshCandidates("local", 0, savedDishes);
   },
@@ -186,9 +219,20 @@ Page({
       selectedIds,
       selectedMap,
       selectedCount: selectedIds.length,
+      recommendationText: getRecommendationText(this.data.partySizeKey, selectedIds.length),
       candidates: decorateCandidates(this.data.candidates, selectedMap),
       candidatesEmpty: !this.data.candidates.length
     }, extraData || {}));
+  },
+
+  onSelectPartySize(event) {
+    const key = event.currentTarget.dataset.key;
+    if (!partySizeOptions.some((item) => item.key === key)) return;
+    this.setData({
+      partySizeKey: key,
+      partySizeOptions: buildPartySizeOptions(key),
+      recommendationText: getRecommendationText(key, this.data.selectedCount)
+    });
   },
 
   getScopePool(scope) {
@@ -204,15 +248,12 @@ Page({
   refreshCandidates(scope, offset, prependList) {
     const activeScope = scope || this.data.activeScope;
     const batchOffset = offset || 0;
-    const scopeCopy = getScopeCopy(this.data.city);
     const scopedPrependList = this.filterByScope(prependList, activeScope);
     const pool = uniqueDishes(scopedPrependList.concat(this.getScopePool(activeScope)));
     const candidates = this.filterByScope(rotateList(pool, batchOffset), activeScope).slice(0, CANDIDATE_PAGE_SIZE);
     this.setData({
       activeScope,
       scopeTabs: buildScopeTabs(activeScope, this.data.city),
-      candidateTitle: scopeCopy.titles[activeScope],
-      candidateDesc: scopeCopy.desc,
       emptyCandidateTitle: activeScope === "province" && isDirectCity(this.data.city) ? directScopeCopy.emptyTitle : regularScopeCopy.emptyTitle,
       emptyCandidateDesc: activeScope === "province" && isDirectCity(this.data.city) ? directScopeCopy.emptyDesc : regularScopeCopy.emptyDesc,
       candidates: decorateCandidates(candidates, this.data.selectedMap),
@@ -243,7 +284,7 @@ Page({
 
   onSelectScope(event) {
     const scope = event.currentTarget.dataset.scope || event.target.dataset.scope;
-    if (!scope || !regularScopeCopy.titles[scope]) return;
+    if (!scope || !getScopeCopy(this.data.city).tabs.some((tab) => tab.key === scope)) return;
     this.setData({
       keyword: "",
       candidates: []
@@ -280,28 +321,20 @@ Page({
     }
   },
 
-  addSelectedDish(dish, autoAdded) {
+  addSelectedDish(dish) {
     if (!dish || this.data.selectedMap[dish.id]) return false;
     if (this.data.selectedDishes.length >= MAX_SELECTED) {
-      wx.showToast({ title: `最多放 ${MAX_SELECTED} 道`, icon: "none" });
+      wx.showToast({ title: "这桌已经够满了，先从里面挑吧", icon: "none" });
       return false;
     }
     const selectedDishes = this.data.selectedDishes.concat(decorateDish(dish, this.data.city));
-    const autoAddedIds = autoAdded ? this.data.autoAddedIds.concat(dish.id) : this.data.autoAddedIds;
-    this.syncSelection(selectedDishes, {
-      autoAddedIds,
-      fillButtonText: autoAddedIds.length ? "撤回本地味" : "来点本地味"
-    });
+    this.syncSelection(selectedDishes);
     return true;
   },
 
   removeSelectedDish(id) {
     const selectedDishes = this.data.selectedDishes.filter((dish) => dish.id !== id);
-    const autoAddedIds = this.data.autoAddedIds.filter((item) => item !== id);
-    this.syncSelection(selectedDishes, {
-      autoAddedIds,
-      fillButtonText: autoAddedIds.length ? "撤回本地味" : "来点本地味"
-    });
+    this.syncSelection(selectedDishes);
   },
 
   onToggleDish(event) {
@@ -323,6 +356,8 @@ Page({
       dishSheetVisible: true
     });
   },
+
+  noop() {},
 
   onCloseDishSheet() {
     this.setData({ dishSheetVisible: false });
@@ -347,37 +382,108 @@ Page({
     this.removeSelectedDish(event.currentTarget.dataset.id);
   },
 
-  onFillLocal() {
-    if (this.data.autoAddedIds.length) {
-      const autoMap = this.toMap(this.data.autoAddedIds);
-      const selectedDishes = this.data.selectedDishes.filter((dish) => !autoMap[dish.id]);
-      this.syncSelection(selectedDishes, {
-        autoAddedIds: [],
-        fillButtonText: "来点本地味"
-      });
-      return;
-    }
-
+  getWheelPool() {
     const selectedNames = this.data.selectedDishes.reduce((map, dish) => {
       map[dish.name] = true;
       return map;
     }, {});
-    const pool = this.getScopePool("local");
-    const selectedDishes = this.data.selectedDishes.slice();
-    const autoAddedIds = [];
+    return uniqueByName(this.getScopePool(this.data.activeScope))
+      .filter((dish) => !selectedNames[dish.name]);
+  },
 
-    pool.forEach((dish) => {
-      if (selectedDishes.length >= MAX_SELECTED) return;
-      if (selectedNames[dish.name]) return;
-      selectedNames[dish.name] = true;
-      selectedDishes.push(dish);
-      autoAddedIds.push(dish.id);
+  openAddWheelWithPool(pool) {
+    const addWheelItems = decorateAddWheelItems(buildWheelItems(shuffle(pool)), {});
+    if (!addWheelItems.length) {
+      wx.showToast({ title: "这栏暂时没有可转的菜", icon: "none" });
+      return;
+    }
+    this.setData({
+      addWheelVisible: true,
+      addWheelItems,
+      addWheelPicked: null,
+      addWheelButtonText: "开始转动",
+      addWheelChosenMap: {},
+      addWheelSpinning: false,
+      addWheelAngle: 0,
+      addWheelCounterAngle: 0
     });
+  },
 
-    this.syncSelection(selectedDishes, {
-      autoAddedIds,
-      fillButtonText: autoAddedIds.length ? "撤回本地味" : "来点本地味"
+  onOpenAddWheel() {
+    this.openAddWheelWithPool(this.getWheelPool());
+  },
+
+  onCloseAddWheel() {
+    if (this.data.addWheelSpinning) return;
+    this.setData({
+      addWheelVisible: false,
+      addWheelPicked: null,
+      addWheelButtonText: "开始转动",
+      addWheelChosenMap: {}
     });
+  },
+
+  onRefreshAddWheel() {
+    if (this.data.addWheelSpinning) return;
+    const previousIds = this.data.addWheelItems.map((dish) => dish.id);
+    const pool = this.getWheelPool();
+    const fresh = pool.filter((dish) => !previousIds.includes(dish.id));
+    this.setData({
+      addWheelItems: decorateAddWheelItems(buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)), {}),
+      addWheelPicked: null,
+      addWheelButtonText: "开始转动",
+      addWheelChosenMap: {},
+      addWheelAngle: 0,
+      addWheelCounterAngle: 0
+    });
+  },
+
+  onStartAddWheel() {
+    if (this.data.addWheelSpinning) return;
+    const result = weightedPick(this.data.addWheelItems);
+    if (!result) {
+      wx.showToast({ title: "暂时没有可转的菜", icon: "none" });
+      return;
+    }
+    const nextAngle = getTargetWheelAngle(this.data.addWheelAngle, result.slotIndex || 0);
+    this.setData({
+      addWheelSpinning: true,
+      addWheelAngle: nextAngle,
+      addWheelCounterAngle: -nextAngle,
+      addWheelPicked: null,
+      addWheelButtonText: "开始转动",
+      addWheelChosenMap: {}
+    });
+    setTimeout(() => {
+      this.setData({
+        addWheelSpinning: false,
+        addWheelPicked: result,
+        addWheelButtonText: "再转一次",
+        addWheelChosenMap: { [result.id]: true },
+        addWheelItems: decorateAddWheelItems(this.data.addWheelItems, { [result.id]: true })
+      });
+    }, 1850);
+  },
+
+  onAddPickedDish() {
+    const dish = this.data.addWheelPicked;
+    if (!dish) {
+      wx.showToast({ title: "先转一道菜", icon: "none" });
+      return;
+    }
+    if (this.data.selectedMap[dish.id]) {
+      wx.showToast({ title: "已在菜单里，换一道试试", icon: "none" });
+      return;
+    }
+    if (this.addSelectedDish(dish)) {
+      this.setData({
+        addWheelVisible: false,
+        addWheelPicked: null,
+        addWheelButtonText: "开始转动",
+        addWheelChosenMap: {}
+      });
+      wx.showToast({ title: "已加入菜单", icon: "none" });
+    }
   },
 
   onRefreshCandidates() {
@@ -387,10 +493,7 @@ Page({
   },
 
   onClearSelected() {
-    this.syncSelection([], {
-      autoAddedIds: [],
-      fillButtonText: "来点本地味"
-    });
+    this.syncSelection([]);
   },
 
   onCreatePoll() {

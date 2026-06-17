@@ -19,6 +19,11 @@
   line-height: 1.5;
 }
 
+.feedback-type-row {
+  justify-content: center;
+  margin-top: 24rpx;
+}
+
 .textarea {
   box-sizing: border-box;
   width: 100%;

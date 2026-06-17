@@ -11,28 +11,37 @@
     <button class="add-button" bindtap="onAddCandidate">加一道菜</button>
   </view>
 
-  <view class="proposal-note">
-    <view class="note-title">已选 {{selectedCount}} / {{maxSelected}}</view>
-    <button wx:if="{{selectedDishes.length}}" class="clear-button note-clear" bindtap="onClearSelected">清空</button>
-  </view>
+  <view class="plan-card">
+    <view class="plan-title">这桌怎么配</view>
 
-  <view class="selected-panel" wx:if="{{selectedDishes.length}}">
-    <view class="selected-head">
-      <view class="selected-title">已选菜单</view>
+    <view class="party-size-row">
+      <view
+        class="party-size-chip {{item.className}}"
+        wx:for="{{partySizeOptions}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="onSelectPartySize"
+      >{{item.label}}</view>
     </view>
-    <view class="selected-chips">
-      <view class="selected-chip" wx:for="{{selectedDishes}}" wx:key="id">
-        <text>{{item.name}}</text>
-        <text class="chip-source">{{item.sourceLabel}}</text>
-        <text class="chip-close" data-id="{{item.id}}" catchtap="onRemoveSelected">×</text>
+
+    <view class="proposal-note">
+      <view class="note-title">{{recommendationText}}</view>
+      <button wx:if="{{selectedDishes.length}}" class="clear-button note-clear" bindtap="onClearSelected">清空</button>
+    </view>
+
+    <view class="selected-panel" wx:if="{{selectedDishes.length}}">
+      <view class="selected-head">
+        <view class="selected-title">已选菜单</view>
+      </view>
+      <view class="selected-chips">
+        <view class="selected-chip" wx:for="{{selectedDishes}}" wx:key="id">
+          <text>{{item.name}}</text>
+          <text class="chip-source">{{item.sourceLabel}}</text>
+          <text class="chip-close" data-id="{{item.id}}" catchtap="onRemoveSelected">×</text>
+        </view>
       </view>
     </view>
-  </view>
 
-  <view class="candidate-head">
-    <view>
-      <view class="candidate-title">{{candidateTitle}}</view>
-    </view>
   </view>
 
   <view class="scope-tabs">
@@ -40,7 +49,7 @@
   </view>
 
   <view class="tool-row">
-    <button class="tool-button primary-tool" bindtap="onFillLocal">{{fillButtonText}}</button>
+    <button class="tool-button primary-tool" bindtap="onOpenAddWheel">转一道加入</button>
     <button class="tool-button" bindtap="onRefreshCandidates">换一桌菜品</button>
   </view>
 
@@ -67,5 +76,53 @@
     </view>
   </view>
   <button class="primary-button create-button" bindtap="onCreatePoll">生成饭局卡片</button>
-  <dish-sheet wx:if="{{dishSheetVisible}}" visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="加入菜单" pick-mode="emit" show-proposal="{{false}}" show-feedback="{{false}}" show-copy="{{false}}" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
+
+  <view wx:if="{{addWheelVisible}}" class="add-wheel-mask" catchtap="onCloseAddWheel">
+    <view class="add-wheel-panel" catchtap="noop">
+      <view class="add-wheel-head">
+        <view>
+          <view class="add-wheel-title">给这桌再转一道</view>
+          <view class="muted">转到以后再决定要不要加进菜单。</view>
+        </view>
+        <view class="add-wheel-close" catchtap="onCloseAddWheel">×</view>
+      </view>
+
+      <view class="mini-wheel-wrap">
+        <view class="mini-plate">
+          <view class="mini-plate-wheel" style="transform: rotate({{addWheelAngle}}deg);">
+            <view
+              class="mini-dish {{item.posClass}} {{item.chosenClass}}"
+              wx:for="{{addWheelItems}}"
+              wx:key="id"
+            >
+              <view class="mini-dish-face" style="transform: rotate({{addWheelCounterAngle}}deg);">
+                <view class="mini-dish-icon">{{item.icon}}</view>
+                <view class="mini-dish-name">{{item.shortName}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="mini-fixed-pointer">
+            <view class="mini-pointer-tip"></view>
+            <view class="mini-pointer-stem"></view>
+            <view class="mini-pointer-dot"></view>
+          </view>
+          <view class="mini-plate-center">
+            <view class="mini-center-copy">饭点</view>
+          </view>
+        </view>
+        <view class="add-wheel-result-line" wx:if="{{addWheelPicked}}">
+          <text class="add-wheel-result-prefix">这桌加它</text>
+          <text class="add-wheel-result-name">{{addWheelPicked.name}}</text>
+        </view>
+      </view>
+
+      <view class="add-wheel-actions">
+        <button class="add-wheel-button primary" bindtap="onStartAddWheel">{{addWheelButtonText}}</button>
+        <button class="add-wheel-button ghost" bindtap="onRefreshAddWheel">换一桌菜</button>
+      </view>
+      <button wx:if="{{addWheelPicked}}" class="add-wheel-confirm" bindtap="onAddPickedDish">加进菜单</button>
+    </view>
+  </view>
+
+  <dish-sheet wx:if="{{dishSheetVisible}}" visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="加入菜单" pick-mode="emit" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

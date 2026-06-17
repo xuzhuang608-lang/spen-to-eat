@@ -4,7 +4,7 @@
     <view class="note-title">{{dishLabel}}</view>
     <view class="note-desc">当前版本会先记录在本机。后续接入云端后，可用于统一处理菜品和标签问题。</view>
   </view>
-  <view class="chip-row">
+  <view class="chip-row feedback-type-row">
     <view class="chip {{item.className}}" wx:for="{{typeOptions}}" wx:key="label" data-type="{{item.label}}" bindtap="onSelectType">{{item.label}}</view>
   </view>
 

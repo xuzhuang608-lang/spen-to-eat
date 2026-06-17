@@ -139,5 +139,5 @@
     </block>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" show-dislike="{{true}}" show-proposal="{{false}}" binddislike="onDislikeDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" show-dislike="{{true}}" show-favorite="{{false}}" binddislike="onDislikeDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

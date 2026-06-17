@@ -199,5 +199,12 @@
 }
 
 .poll-button {
-  margin-top: 28rpx;
+  box-sizing: border-box;
+  width: 420rpx;
+  min-height: 82rpx;
+  margin: 28rpx auto 0;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  line-height: 1;
+  white-space: nowrap;
 }

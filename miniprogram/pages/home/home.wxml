@@ -10,11 +10,10 @@
 
   <view class="meal-panel">
     <view class="decision-head">
-      <view>
+      <view class="decision-copy">
         <view class="meal-title">今天吃点什么？</view>
-        <view class="meal-subtitle">{{city}} · {{selectedMeal}}</view>
       </view>
-      <button class="locate-button" loading="{{locating}}" bindtap="onUseLocation">定位</button>
+      <button class="locate-button" loading="{{locating}}" bindtap="onUseLocation">获取定位</button>
     </view>
     <view class="meal-grid">
       <block wx:for="{{mealOptions}}" wx:key="key">
@@ -34,7 +33,6 @@
   </view>
 
   <button class="primary-button start-button" bindtap="onStartSpin">帮我决定</button>
-  <view class="start-hint">先从{{city}}{{selectedMeal}}里挑一桌。</view>
 
   <view class="assist-row">
     <view class="assist-card" bindtap="onSearch">
@@ -43,11 +41,11 @@
     </view>
     <view class="assist-card" bindtap="onCreatePoll">
       <view class="assist-title">饭局</view>
-      <view class="assist-desc">先摆几道</view>
+      <view class="assist-desc">先摆上几道</view>
     </view>
     <view class="assist-card" bindtap="onFavorite">
       <view class="assist-title">收藏</view>
-      <view class="assist-desc">看历史</view>
+      <view class="assist-desc">收藏与历史</view>
     </view>
   </view>
 
@@ -82,7 +80,7 @@
           </view>
         </view>
         <view class="dish-rating">
-          <text class="rating-label">本地特色</text>
+          <text class="rating-label">{{item.ratingLabel}}</text>
           <view class="rating-icons">
             <text class="rating-icon {{iconItem.className}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
           </view>

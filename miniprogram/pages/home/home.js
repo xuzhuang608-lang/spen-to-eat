@@ -24,6 +24,33 @@ const defaultInspirations = [
   "这一顿不求复杂，先求想吃。"
 ];
 
+const mealInspirations = {
+  早餐: [
+    "早上先吃点顺口的，别空着肚子纠结。",
+    "早餐别太复杂，热乎、顶饱、好入口就行。",
+    "先把早饭定下来，这一天会轻松一点。",
+    "来点适合早上的，本地味也可以很清爽。"
+  ],
+  午餐: [
+    "中午要吃得稳一点，别把时间都花在纠结上。",
+    "午餐先找能吃饱的，下午才有力气。",
+    "这一顿别随便糊弄，先挑个靠谱方向。",
+    "中午适合来点明确的，省心也要好吃。"
+  ],
+  晚餐: [
+    "晚餐可以放松一点，吃点舒服的。",
+    "今天这顿慢慢定，适合晚上的先摆出来。",
+    "晚上别太赶，先看几道有胃口的。",
+    "晚餐要有点满足感，先从本地味里挑。"
+  ],
+  夜宵: [
+    "夜宵别太正式，来点解馋的就好。",
+    "这个点适合吃点轻松的，别再反复想。",
+    "夜里饿了就别硬扛，先看几道顺口的。",
+    "宵夜要的是痛快，先挑个想吃的方向。"
+  ]
+};
+
 const cityInspirations = {
   广州: ["老广说，先喝碗热的。", "早茶和烧味都在线，先挑个顺口的。", "广州这一顿，讲究一个热乎和妥帖。"],
   深圳: ["快一点，也要好吃一点。", "忙归忙，饭点不能随便糊弄。", "深圳这一顿，先给选择提提速。"],
@@ -47,8 +74,28 @@ function pickOne(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-function getCityInspiration(city) {
-  return pickOne(cityInspirations[city.name]) || city.slogan || pickOne(defaultInspirations);
+function shuffle(list) {
+  const copy = list.slice();
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const target = Math.floor(Math.random() * (index + 1));
+    const temp = copy[index];
+    copy[index] = copy[target];
+    copy[target] = temp;
+  }
+  return copy;
+}
+
+function normalizeMeal(meal) {
+  return meal === "夜宵" ? "宵夜" : meal;
+}
+
+function getCityInspiration(city, selectedMeal) {
+  const mealCopy = pickOne(mealInspirations[selectedMeal]);
+  const cityCopy = pickOne(cityInspirations[city.name]);
+  if (mealCopy && cityCopy && Math.random() > 0.45) {
+    return Math.random() > 0.5 ? mealCopy : cityCopy;
+  }
+  return mealCopy || cityCopy || city.slogan || pickOne(defaultInspirations);
 }
 
 function getCategoryIcon(category) {
@@ -147,7 +194,13 @@ function getDishBadges(dish, ratingIcon) {
 function withRatingIcons(dish) {
   const count = Math.max(0, Math.min(5, Number(dish.localIndex) || 0));
   const ratingIcon = getDishRatingIcon(dish);
+  const ratingLabel = dish.sourceBucket === "cityExact"
+    ? "本地特色"
+    : dish.sourceBucket === "regionalShared"
+      ? "周边参考"
+      : "换个口味";
   return Object.assign({}, dish, {
+    ratingLabel,
     ratingText: ratingIcon.repeat(count) || "🍚",
     ratingItems: iconRatingItems(dish.localIndex, dish).map((item) =>
       Object.assign({}, item, {
@@ -181,11 +234,84 @@ function uniqueByName(dishes) {
   });
 }
 
-function getFeaturedDishes(cityName) {
+function dishMatchesMeal(dish, selectedMeal) {
+  return (dish.mealTime || []).includes(normalizeMeal(selectedMeal));
+}
+
+function hasMismatchedPlaceName(dish, cityName) {
+  const placeNames = [
+    "宝安",
+    "顺德",
+    "潮州",
+    "汕头",
+    "东莞",
+    "广州",
+    "佛山",
+    "深圳",
+    "湛江",
+    "梅州",
+    "阳江",
+    "肇庆",
+    "珠海",
+    "中山",
+    "河源",
+    "惠州",
+    "江门",
+    "揭阳",
+    "茂名",
+    "清远",
+    "韶关",
+    "云浮"
+  ];
+  return placeNames.some((name) => name !== cityName && dish.name.includes(name));
+}
+
+function isSafeHomeFallback(dish, cityName) {
+  if (dish.sourceBucket === "cityExact") return true;
+  if (hasMismatchedPlaceName(dish, cityName)) return false;
+  return dish.localIndex <= 4;
+}
+
+function takeUnique(target, list) {
+  const used = target.reduce((map, dish) => {
+    map[dish.name] = true;
+    return map;
+  }, {});
+  list.forEach((dish) => {
+    if (target.length >= 3 || used[dish.name]) return;
+    used[dish.name] = true;
+    target.push(dish);
+  });
+}
+
+function getFeaturedDishes(cityName, selectedMeal) {
   const dishes = uniqueByName(getDishesByCity(cityName));
-  const localDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact");
-  const fallbackDishes = dishes.filter((dish) => dish.sourceBucket !== "cityExact");
-  return localDishes.concat(fallbackDishes).slice(0, 3).map((dish, index) =>
+  const normalizedMeal = normalizeMeal(selectedMeal);
+  const strictMeal = normalizedMeal === "午餐" || normalizedMeal === "晚餐";
+  const localMealDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact" && dishMatchesMeal(dish, selectedMeal));
+  const localDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact" && !dishMatchesMeal(dish, selectedMeal));
+  const safeFallbackMealDishes = dishes.filter((dish) => (
+    dish.sourceBucket !== "cityExact" &&
+    dishMatchesMeal(dish, selectedMeal) &&
+    isSafeHomeFallback(dish, cityName)
+  ));
+  const safeFallbackDishes = dishes.filter((dish) => (
+    dish.sourceBucket !== "cityExact" &&
+    !dishMatchesMeal(dish, selectedMeal) &&
+    isSafeHomeFallback(dish, cityName)
+  ));
+  const selected = [];
+
+  takeUnique(selected, shuffle(localMealDishes));
+  if (strictMeal) {
+    takeUnique(selected, shuffle(localDishes));
+  } else {
+    takeUnique(selected, shuffle(safeFallbackMealDishes));
+    takeUnique(selected, shuffle(localDishes));
+    takeUnique(selected, shuffle(safeFallbackDishes));
+  }
+
+  return selected.slice(0, 3).map((dish, index) =>
     Object.assign(withRatingIcons(dish), {
       cardClass: index === 0 ? "large" : ""
     })
@@ -215,13 +341,14 @@ Page({
 
   setCity(cityName) {
     const city = getCity(cityName);
-    const featuredDishes = getFeaturedDishes(city.name);
+    const selectedMeal = this.data.selectedMeal || "午餐";
+    const featuredDishes = getFeaturedDishes(city.name, selectedMeal);
     this.setData({
       city: city.name,
       province: city.province || "广东",
       featuredDishes,
       featuredEmpty: !featuredDishes.length,
-      inspiration: getCityInspiration(city)
+      inspiration: getCityInspiration(city, selectedMeal)
     });
   },
 
@@ -313,9 +440,14 @@ Page({
 
   onSelectMeal(event) {
     const selectedMeal = event.currentTarget.dataset.meal;
+    const city = getCity(this.data.city);
+    const featuredDishes = getFeaturedDishes(city.name, selectedMeal);
     this.setData({
       selectedMeal,
-      mealOptions: buildMealOptions(selectedMeal)
+      mealOptions: buildMealOptions(selectedMeal),
+      featuredDishes,
+      featuredEmpty: !featuredDishes.length,
+      inspiration: getCityInspiration(city, selectedMeal)
     });
   },
 

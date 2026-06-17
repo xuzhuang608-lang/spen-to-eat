@@ -95,6 +95,19 @@ const INVALID_DISH_NAMES = {
   "\u672c\u5730\u9e21": true,
   "\u7ca5\u7c7b": true
 };
+const PLACE_NAME_ALLOWED_CITIES = {
+  "\u5b9d\u5b89": ["\u6df1\u5733"],
+  "\u987a\u5fb7": ["\u4f5b\u5c71"]
+};
+const DISH_FIELD_OVERRIDES = {
+  "\u7092\u7cd5\u7cbf": {
+    category: "\u5c0f\u5403",
+    taste: "\u9c9c\u9999",
+    mealTime: ["\u5348\u9910", "\u665a\u9910"],
+    tags: ["\u5c0f\u5403", "\u4e0b\u996d"],
+    iconType: "bowl"
+  }
+};
 const SOURCE_BUCKET_PRIORITY = {
   cityExact: 4,
   regionalShared: 3,
@@ -260,9 +273,18 @@ function attachIllustration(dish) {
   return dish;
 }
 
+function applyDishOverrides(dish) {
+  const override = DISH_FIELD_OVERRIDES[dish.name];
+  if (!override) return dish;
+  return Object.assign(dish, override, {
+    mealTime: override.mealTime ? override.mealTime.slice() : dish.mealTime,
+    tags: override.tags ? override.tags.slice() : dish.tags
+  });
+}
+
 function expandDish(compactDish, province, index) {
   const dishName = normalizeDishName(compactDish.n);
-  const dish = {
+  const dish = applyDishOverrides({
     id: `dish_${hashText(`${province}|${compactDish.c}|${dishName}`)}`,
     city: compactDish.c,
     province,
@@ -278,11 +300,18 @@ function expandDish(compactDish, province, index) {
     weight: compactDish.w || 10,
     sourceBucket: pickText(dictionary.sourceBucket, compactDish.b, "cityExact"),
     order: index
-  };
+  });
   dish.phrase = makePhrase(dish);
   dish.description = makeDescription(dish);
   dish.pollText = makePollText(dish);
   return attachIllustration(dish);
+}
+
+function hasDisallowedPlaceName(dish) {
+  return Object.keys(PLACE_NAME_ALLOWED_CITIES).some((placeName) => (
+    dish.name.includes(placeName) &&
+    !PLACE_NAME_ALLOWED_CITIES[placeName].includes(dish.city)
+  ));
 }
 
 function shouldDropSharedPlaceDish(dish) {
@@ -291,6 +320,9 @@ function shouldDropSharedPlaceDish(dish) {
   }
   if (dish.sourceBucket === "cityExact" || dish.sourceBucket === "nationalGeneral") {
     return false;
+  }
+  if (hasDisallowedPlaceName(dish)) {
+    return true;
   }
   return selectableCityNames.some((cityName) => (
     cityName !== dish.city && dish.name.includes(cityName)
