@@ -19,7 +19,10 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "用于识别当前所在城市，推荐对应城市特色美食；也可以手动选择城市。"
+      "desc": "用于识别城市并推荐本地美食"
+    },
+    "scope.writeClipboard": {
+      "desc": "用于在点击就吃这个后复制菜名方便搜索"
     }
   },
   "requiredPrivateInfos": [

@@ -1,5 +1,5 @@
 const app = getApp();
-const { getDishById, getProposalDishes, searchDishes } = require("../../services/dish");
+const { getCity, getDishById, getProposalDishes, searchDishes } = require("../../services/dish");
 const storage = require("../../services/storage");
 
 const MAX_SELECTED = 8;
@@ -86,15 +86,20 @@ function uniqueDishes(list) {
   return Object.keys(byId).map((id) => byId[id]);
 }
 
-function getSourceInfo(dish) {
+function getSourceInfo(dish, cityName) {
+  const city = getCity(cityName);
   if (dish.custom) return { sourceKey: "custom", sourceLabel: "自定义" };
-  if (dish.sourceBucket === "provinceShared" || dish.sourceBucket === "regionalShared") return { sourceKey: "province", sourceLabel: "省内" };
+  if (dish.sourceBucket === "cityExact" && dish.city === city.name) return { sourceKey: "local", sourceLabel: "本地" };
+  if (
+    dish.province === city.province &&
+    (dish.sourceBucket === "provinceShared" || dish.sourceBucket === "regionalShared")
+  ) return { sourceKey: "province", sourceLabel: "省内" };
   if (dish.sourceBucket === "nationalGeneral") return { sourceKey: "common", sourceLabel: "常见" };
-  return { sourceKey: "local", sourceLabel: "本地" };
+  return { sourceKey: "other", sourceLabel: "外地" };
 }
 
-function decorateDish(dish) {
-  return Object.assign({}, dish, getSourceInfo(dish));
+function decorateDish(dish, cityName) {
+  return Object.assign({}, dish, getSourceInfo(dish, cityName));
 }
 
 function rotateList(list, offset) {
@@ -136,22 +141,25 @@ Page({
     autoAddedIds: [],
     maxSelected: MAX_SELECTED,
     fillButtonText: "来点本地味",
-    batchOffset: 0
+    batchOffset: 0,
+    dishSheetVisible: false,
+    detailDish: null
   },
 
   onLoad(query) {
-    const city = app.globalData.currentCity || "广州";
+    const queryCity = safeDecode((query || {}).city || "");
+    const city = queryCity || app.globalData.currentCity || "广州";
     const ids = parseQueryIds(query || {});
     const savedIds = storage.getList("favoriteDishIds").concat(storage.getList("historyDishIds"));
-    const selectedDishes = ids
+    const rawSelectedDishes = ids
       .map((id) => getDishById(id))
-      .filter(Boolean)
-      .map(decorateDish);
-    const proposalCity = selectedDishes[0] ? selectedDishes[0].city : city;
+      .filter(Boolean);
+    const proposalCity = rawSelectedDishes[0] ? rawSelectedDishes[0].city : city;
+    const selectedDishes = rawSelectedDishes.map((dish) => decorateDish(dish, proposalCity));
     const savedDishes = Array.from(new Set(savedIds))
       .map((id) => getDishById(id))
       .filter(Boolean)
-      .map(decorateDish);
+      .map((dish) => decorateDish(dish, proposalCity));
 
     this.setData({
       city: proposalCity,
@@ -184,12 +192,12 @@ Page({
   },
 
   getScopePool(scope) {
-    return uniqueDishes(getProposalDishes(this.data.city, scope).map(decorateDish));
+    return uniqueDishes(getProposalDishes(this.data.city, scope).map((dish) => decorateDish(dish, this.data.city)));
   },
 
   filterByScope(list, scope) {
     return uniqueDishes((list || [])
-      .map(decorateDish)
+      .map((dish) => decorateDish(dish, this.data.city))
       .filter((dish) => dish.sourceKey === scope));
   },
 
@@ -220,7 +228,7 @@ Page({
       this.refreshCandidates(this.data.activeScope, 0);
       return;
     }
-    const searched = searchDishes(keyword).map(decorateDish).sort((a, b) => {
+    const searched = searchDishes(keyword).map((dish) => decorateDish(dish, this.data.city)).sort((a, b) => {
       if (a.city === this.data.city && b.city !== this.data.city) return -1;
       if (a.city !== this.data.city && b.city === this.data.city) return 1;
       return 0;
@@ -263,7 +271,7 @@ Page({
       category: "自定义",
       taste: "想吃",
       custom: true
-    });
+    }, this.data.city);
     if (this.addSelectedDish(customDish)) {
       this.setData({
         keyword: ""
@@ -278,7 +286,7 @@ Page({
       wx.showToast({ title: `最多放 ${MAX_SELECTED} 道`, icon: "none" });
       return false;
     }
-    const selectedDishes = this.data.selectedDishes.concat(decorateDish(dish));
+    const selectedDishes = this.data.selectedDishes.concat(decorateDish(dish, this.data.city));
     const autoAddedIds = autoAdded ? this.data.autoAddedIds.concat(dish.id) : this.data.autoAddedIds;
     this.syncSelection(selectedDishes, {
       autoAddedIds,
@@ -306,6 +314,35 @@ Page({
     this.addSelectedDish(dish);
   },
 
+  onOpenDishDetail(event) {
+    const { id } = event.currentTarget.dataset;
+    const dish = this.data.candidates.find((item) => item.id === id);
+    if (!dish || dish.custom) return;
+    this.setData({
+      detailDish: dish,
+      dishSheetVisible: true
+    });
+  },
+
+  onCloseDishSheet() {
+    this.setData({ dishSheetVisible: false });
+  },
+
+  onPickDetailDish(event) {
+    const dish = event.detail && event.detail.dish;
+    if (!dish) return;
+    if (this.data.selectedMap[dish.id]) {
+      this.setData({ dishSheetVisible: false });
+      wx.showToast({ title: "已在菜单里", icon: "none" });
+      return;
+    }
+    const added = this.addSelectedDish(dish);
+    if (added) {
+      this.setData({ dishSheetVisible: false });
+      wx.showToast({ title: "已加入菜单", icon: "none" });
+    }
+  },
+
   onRemoveSelected(event) {
     this.removeSelectedDish(event.currentTarget.dataset.id);
   },
@@ -325,9 +362,7 @@ Page({
       map[dish.name] = true;
       return map;
     }, {});
-    const pool = ["local", "province", "common"].reduce((list, scope) => (
-      list.concat(this.getScopePool(scope))
-    ), []);
+    const pool = this.getScopePool("local");
     const selectedDishes = this.data.selectedDishes.slice();
     const autoAddedIds = [];
 

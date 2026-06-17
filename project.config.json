@@ -30,7 +30,6 @@
   "appid": "wxecb26692be20801a",
   "projectname": "饭点转转",
   "miniprogramRoot": "miniprogram/",
-  "cloudfunctionRoot": "cloudfunctions/",
   "simulatorPluginLibVersion": {},
   "packOptions": {
     "ignore": [],

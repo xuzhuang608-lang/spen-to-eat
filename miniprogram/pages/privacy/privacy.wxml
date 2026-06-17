@@ -8,6 +8,9 @@
     <view class="para-title">位置权限</view>
     <view class="para">位置权限仅用于识别当前所在城市，帮助推荐对应城市的特色美食。用户可以拒绝定位，并手动选择城市。</view>
 
+    <view class="para-title">剪贴板</view>
+    <view class="para">当用户主动点击“就吃这个”时，小程序会将当前菜名写入系统剪贴板，方便用户到外卖、地图或搜索工具中检索。小程序不会在未点击按钮时主动读取或写入剪贴板内容。</view>
+
     <view class="para-title">本地存储</view>
     <view class="para">收藏、历史、饭局提议和反馈内容主要保存在用户本机，用于继续查看和改善个人使用体验。</view>
     <view class="para">当前版本不强制获取头像昵称，不使用云数据库同步收藏、历史或反馈。</view>

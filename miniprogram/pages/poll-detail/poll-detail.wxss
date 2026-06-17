@@ -107,13 +107,15 @@
 }
 
 .action-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 12rpx;
   margin: 24rpx 0 0;
-  padding: 8rpx;
-  border-radius: 22rpx;
-  background: #fff0e8;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -121,27 +123,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-width: 0;
-  height: 62rpx;
-  min-height: 62rpx;
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  min-width: 300rpx;
+  max-width: 300rpx;
+  height: 68rpx;
+  min-height: 68rpx;
   padding: 0;
   margin: 0;
-  border: 0;
-  border-radius: 18rpx;
-  background: transparent;
-  color: #7a6a5f;
+  border: 2rpx solid #e85d3d;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #84452f;
   box-sizing: border-box;
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-weight: 900;
   line-height: 1;
 }
 
 .action-button:first-child {
-  background: #ffe7dc;
-  border: 2rpx solid #ee7558;
+  background: #fff0e8;
+  border: 2rpx solid #e85d3d;
   color: #e85d3d;
-  box-shadow: 0 8rpx 18rpx rgba(232, 93, 61, 0.1);
+  box-shadow: none;
 }
 
 .action-button::after {
@@ -261,6 +265,15 @@
     inset 0 0 0 10rpx rgba(255, 255, 255, 0.58),
     inset 0 -14rpx 24rpx rgba(255, 153, 78, 0.08),
     0 16rpx 36rpx rgba(214, 118, 61, 0.14);
+  overflow: hidden;
+}
+
+.mini-plate-wheel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
 }
 
 .mini-dish {
@@ -286,6 +299,14 @@
   box-shadow:
     inset 0 0 0 3rpx rgba(232, 93, 61, 0.34),
     0 8rpx 18rpx rgba(232, 93, 61, 0.12);
+}
+
+.mini-dish-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
 }
 
 .mini-dish-icon {
@@ -349,74 +370,118 @@
   top: 62rpx;
 }
 
-.mini-plate-core {
+.mini-fixed-pointer {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 156rpx;
-  height: 156rpx;
+  z-index: 5;
+  width: 142rpx;
+  height: 142rpx;
   transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.mini-pointer-tip {
+  position: absolute;
+  left: 50%;
+  top: -2rpx;
+  width: 0;
+  height: 0;
+  border-left: 18rpx solid transparent;
+  border-right: 18rpx solid transparent;
+  border-bottom: 42rpx solid #f04e38;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 5rpx 8rpx rgba(191, 45, 32, 0.18));
+}
+
+.mini-pointer-stem {
+  position: absolute;
+  left: 50%;
+  top: 34rpx;
+  width: 14rpx;
+  height: 72rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(180deg, #ff735f 0%, #d82921 100%);
+  transform: translateX(-50%);
+  box-shadow: 0 5rpx 10rpx rgba(191, 45, 32, 0.18);
+}
+
+.mini-pointer-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  border: 5rpx solid #fff5ee;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 50%, #fffdf8 0 48%, #ffe7c7 49% 64%, #fff7eb 65% 100%);
-  box-shadow:
-    inset 0 0 0 7rpx rgba(255, 255, 255, 0.68),
-    inset 0 -9rpx 16rpx rgba(255, 157, 88, 0.08),
-    0 10rpx 20rpx rgba(214, 118, 61, 0.12);
-}
-
-.mini-rice-bowl-image {
-  position: absolute;
-  left: 50%;
-  top: 54%;
-  z-index: 1;
-  width: 126rpx;
-  height: 126rpx;
+  background: #e5392d;
   transform: translate(-50%, -50%);
+  box-shadow: 0 5rpx 12rpx rgba(191, 45, 32, 0.2);
 }
 
-.mini-chopsticks-pointer-image {
+.mini-plate-center {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 2;
-  width: 154rpx;
-  height: 154rpx;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.92);
+  border: 7rpx solid rgba(255, 228, 197, 0.9);
   transform: translate(-50%, -50%);
-  transition: transform 1.5s cubic-bezier(0.15, 0.86, 0.18, 1);
-  transform-origin: 50% 50%;
+  box-shadow: 0 10rpx 20rpx rgba(214, 118, 61, 0.12);
+  pointer-events: none;
 }
 
-.add-wheel-result {
+.mini-center-copy {
+  margin-top: 34rpx;
+  color: #bf4e32;
+  font-size: 18rpx;
+  font-weight: 900;
+}
+
+.add-wheel-result-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10rpx;
+  flex-wrap: wrap;
   margin: 18rpx auto 0;
-  padding: 16rpx 20rpx;
-  border: 2rpx solid #f4c7b6;
-  border-radius: 22rpx;
-  background: #fff6f0;
+  padding: 0 24rpx;
   text-align: center;
 }
 
-.add-wheel-result-label {
+.add-wheel-result-prefix {
   color: #bf4e32;
-  font-size: 22rpx;
+  font-size: 24rpx;
   font-weight: 900;
 }
 
 .add-wheel-result-name {
-  margin-top: 6rpx;
+  max-width: 390rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: #35261d;
   font-size: 34rpx;
+  line-height: 1.2;
   font-weight: 900;
 }
 
 .add-wheel-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 12rpx;
   margin-top: 18rpx;
-  padding: 8rpx;
-  border-radius: 22rpx;
-  background: #fff0e8;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .add-wheel-button,
@@ -425,16 +490,24 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 100%;
-  height: 66rpx;
-  min-height: 66rpx;
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  min-width: 300rpx;
+  max-width: 300rpx;
+  height: 68rpx;
+  min-height: 68rpx;
   padding: 0;
   margin: 0;
-  border: 0;
-  border-radius: 18rpx;
-  font-size: 25rpx;
+  border: 2rpx solid #e85d3d;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #84452f;
+  font-size: 26rpx;
   font-weight: 900;
   line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .add-wheel-button::after,
@@ -443,17 +516,17 @@
 }
 
 .add-wheel-button.ghost {
-  background: transparent;
-  color: #7a6a5f;
+  background: #fff0e8;
+  color: #84452f;
 }
 
 .add-wheel-button.primary,
 .add-wheel-confirm {
-  border: 2rpx solid #ee7558;
-  background: #ffe7dc;
+  border-color: #e85d3d;
+  background: #fff0e8;
   color: #e85d3d;
 }
 
 .add-wheel-confirm {
-  margin-top: 14rpx;
+  margin: 14rpx auto 0;
 }
