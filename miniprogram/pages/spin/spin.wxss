@@ -440,12 +440,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14rpx;
-  margin-top: 22rpx;
-  padding: 12rpx 0;
-  border-top: 2rpx solid rgba(232, 214, 198, 0.72);
-  border-bottom: 2rpx solid rgba(232, 214, 198, 0.72);
-  background: transparent;
+  gap: 18rpx;
+  margin-top: 24rpx;
+  padding: 18rpx 20rpx;
+  border: 2rpx solid #e8d6c6;
+  border-radius: 24rpx;
+  background: #fffdf8;
+  box-shadow: 0 8rpx 22rpx rgba(78, 52, 39, 0.05);
 }
 
 .summary-copy {
@@ -475,9 +476,9 @@
 
 .adjust-button {
   flex: 0 0 auto;
-  width: 148rpx;
-  height: 54rpx;
-  line-height: 54rpx;
+  width: 176rpx;
+  height: 58rpx;
+  line-height: 58rpx;
   padding: 0;
   margin: 0;
   border-radius: 999rpx;
