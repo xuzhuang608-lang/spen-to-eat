@@ -1,23 +1,43 @@
 .result-card {
+  position: relative;
   padding: 44rpx 32rpx;
   border-radius: 32rpx;
   background: #4a3025;
   color: #fffdf8;
+  overflow: hidden;
+}
+
+.result-illustration {
+  position: absolute;
+  right: 20rpx;
+  top: 14rpx;
+  width: 210rpx;
+  height: 210rpx;
+  opacity: 0.96;
 }
 
 .city {
+  position: relative;
+  z-index: 1;
+  max-width: 62%;
   color: #ffd36b;
   font-size: 26rpx;
   font-weight: 700;
 }
 
 .dish-name {
+  position: relative;
+  z-index: 1;
+  max-width: 62%;
   margin-top: 10rpx;
   font-size: 54rpx;
   font-weight: 900;
 }
 
 .phrase {
+  position: relative;
+  z-index: 1;
+  max-width: 68%;
   margin-top: 18rpx;
   color: #ffe3d3;
   font-size: 30rpx;
@@ -25,6 +45,8 @@
 }
 
 .rating {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,13 +129,15 @@
 }
 
 .action-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 12rpx;
-  margin-top: 26rpx;
-  padding: 8rpx;
-  border-radius: 22rpx;
-  background: #fff0e8;
+  margin-top: 22rpx;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -121,27 +145,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-width: 0;
-  height: 62rpx;
-  min-height: 62rpx;
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  min-width: 300rpx;
+  max-width: 300rpx;
+  height: 68rpx;
+  min-height: 68rpx;
   padding: 0;
   margin: 0;
-  border: 0;
-  border-radius: 18rpx;
-  background: transparent;
-  color: #7a6a5f;
+  border: 2rpx solid #e85d3d;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #84452f;
   box-sizing: border-box;
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-weight: 900;
   line-height: 1;
 }
 
 .compact-action:first-child {
-  background: #ffe7dc;
-  border: 2rpx solid #ee7558;
+  background: #fff0e8;
   color: #e85d3d;
-  box-shadow: 0 8rpx 18rpx rgba(232, 93, 61, 0.1);
+  box-shadow: none;
 }
 
 .compact-action::after {
