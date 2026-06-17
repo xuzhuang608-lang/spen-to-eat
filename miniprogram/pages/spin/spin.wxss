@@ -35,6 +35,97 @@
     inset 0 0 0 10rpx rgba(255, 255, 255, 0.58),
     inset 0 -16rpx 28rpx rgba(255, 153, 78, 0.08),
     0 18rpx 42rpx rgba(214, 118, 61, 0.14);
+  overflow: hidden;
+}
+
+.plate-wheel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
+}
+
+.dish-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
+}
+
+.fixed-pointer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: 164rpx;
+  height: 164rpx;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.pointer-tip {
+  position: absolute;
+  left: 50%;
+  top: -4rpx;
+  width: 0;
+  height: 0;
+  border-left: 22rpx solid transparent;
+  border-right: 22rpx solid transparent;
+  border-bottom: 52rpx solid #f04e38;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 6rpx 8rpx rgba(191, 45, 32, 0.18));
+}
+
+.pointer-stem {
+  position: absolute;
+  left: 50%;
+  top: 42rpx;
+  width: 16rpx;
+  height: 82rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(180deg, #ff735f 0%, #d82921 100%);
+  transform: translateX(-50%);
+  box-shadow: 0 6rpx 12rpx rgba(191, 45, 32, 0.18);
+}
+
+.pointer-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42rpx;
+  height: 42rpx;
+  border: 5rpx solid #fff5ee;
+  border-radius: 50%;
+  background: #e5392d;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5rpx 12rpx rgba(191, 45, 32, 0.2);
+}
+
+.plate-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.92);
+  border: 8rpx solid rgba(255, 228, 197, 0.9);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10rpx 20rpx rgba(214, 118, 61, 0.12);
+  pointer-events: none;
+}
+
+.center-copy {
+  margin-top: 38rpx;
+  color: #bf4e32;
+  font-size: 20rpx;
+  font-weight: 900;
 }
 
 .plate-core {
@@ -54,26 +145,53 @@
     0 10rpx 22rpx rgba(214, 118, 61, 0.12);
 }
 
-.rice-bowl-image {
-  position: absolute;
-  left: 50%;
-  top: 54%;
-  z-index: 1;
-  width: 150rpx;
-  height: 150rpx;
-  transform: translate(-50%, -50%);
-}
-
-.chopsticks-pointer-image {
+.spin-arrow-pointer {
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 2;
-  width: 184rpx;
-  height: 184rpx;
+  width: 170rpx;
+  height: 170rpx;
   transform: translate(-50%, -50%);
   transition: transform 1.65s cubic-bezier(0.15, 0.86, 0.18, 1);
   transform-origin: 50% 50%;
+}
+
+.spin-arrow-head {
+  position: absolute;
+  left: 50%;
+  top: 10rpx;
+  width: 0;
+  height: 0;
+  border-left: 18rpx solid transparent;
+  border-right: 18rpx solid transparent;
+  border-bottom: 42rpx solid #e5392d;
+  transform: translateX(-50%);
+}
+
+.spin-arrow-tail {
+  position: absolute;
+  left: 50%;
+  top: 48rpx;
+  width: 14rpx;
+  height: 74rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(180deg, #ff735f 0%, #d82921 100%);
+  transform: translateX(-50%);
+  box-shadow: 0 6rpx 12rpx rgba(191, 45, 32, 0.18);
+}
+
+.spin-arrow-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34rpx;
+  height: 34rpx;
+  border: 5rpx solid #fff5ee;
+  border-radius: 50%;
+  background: #e5392d;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5rpx 12rpx rgba(191, 45, 32, 0.2);
 }
 
 .plate-dish {
@@ -96,10 +214,11 @@
   min-height: 154rpx;
   padding: 0;
   border-radius: 50%;
-  background: rgba(255, 246, 239, 0.66);
+  background: rgba(255, 201, 103, 0.2);
   box-shadow:
-    inset 0 0 0 3rpx rgba(232, 93, 61, 0.34),
-    0 8rpx 18rpx rgba(232, 93, 61, 0.12);
+    inset 0 0 0 4rpx rgba(255, 209, 112, 0.72),
+    0 0 0 10rpx rgba(255, 209, 112, 0.18),
+    0 14rpx 26rpx rgba(232, 93, 61, 0.16);
 }
 
 .plate-dish.replace-target {
@@ -118,6 +237,42 @@
   background: #6d8f42;
   color: #fff;
   font-size: 16rpx;
+  font-weight: 900;
+}
+
+.spin-result-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12rpx;
+  flex-wrap: wrap;
+  margin: 20rpx auto 0;
+  padding: 0 24rpx;
+  color: #35261d;
+  text-align: center;
+}
+
+.result-prefix {
+  color: #bf4e32;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.result-name {
+  max-width: 440rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #35261d;
+  font-size: 38rpx;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.result-status {
+  width: 100%;
+  color: #a65334;
+  font-size: 20rpx;
   font-weight: 900;
 }
 
@@ -285,37 +440,44 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18rpx;
-  margin-top: 28rpx;
-  padding: 22rpx;
-  border: 2rpx solid #e8d6c6;
-  border-radius: 24rpx;
-  background: #fff;
+  gap: 14rpx;
+  margin-top: 22rpx;
+  padding: 12rpx 0;
+  border-top: 2rpx solid rgba(232, 214, 198, 0.72);
+  border-bottom: 2rpx solid rgba(232, 214, 198, 0.72);
+  background: transparent;
 }
 
 .summary-copy {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
   flex: 1 1 auto;
   min-width: 0;
 }
 
-.summary-title {
-  margin-bottom: 6rpx;
-  color: #35261d;
-  font-size: 28rpx;
+.summary-label {
+  flex: 0 0 auto;
+  color: #a65334;
+  font-size: 24rpx;
   font-weight: 900;
 }
 
 .summary-text {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #6f5f55;
+  font-size: 24rpx;
+  font-weight: 800;
 }
 
 .adjust-button {
   flex: 0 0 auto;
-  width: 176rpx;
-  height: 58rpx;
-  line-height: 58rpx;
+  width: 148rpx;
+  height: 54rpx;
+  line-height: 54rpx;
   padding: 0;
   margin: 0;
   border-radius: 999rpx;
@@ -518,4 +680,27 @@
   color: #7a6a5f;
   font-size: 26rpx;
   line-height: 1.5;
+}
+
+.empty-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 220rpx;
+  height: 64rpx;
+  min-height: 64rpx;
+  margin: 24rpx 0 0;
+  padding: 0;
+  border: 2rpx solid #e85d3d;
+  border-radius: 999rpx;
+  background: #fff0e8;
+  color: #e85d3d;
+  font-size: 25rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.empty-action::after {
+  border: 0;
 }

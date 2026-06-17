@@ -9,46 +9,53 @@
   <view wx:if="{{emptyVisible}}" class="empty-panel">
     <view class="empty-title">这座城市的菜单还在整理</view>
     <view class="empty-desc">可以先换个附近城市，或放宽偏好条件再转一次。</view>
+    <button class="empty-action" bindtap="onChooseCity">更换城市</button>
   </view>
 
   <view wx:else>
     <view class="plate-wrap">
-      <view class="plate">
-        <block wx:for="{{candidateDishes}}" wx:key="id">
-          <view
-            class="plate-dish {{item.posClass}} {{item.plateClass}} {{item.spinStateClass}}"
-            data-id="{{item.id}}"
-            bindtap="onOpenDish"
-          >
-            <view wx:if="{{item.custom}}" class="custom-badge">自选</view>
-            <view class="dish-icon">{{item.icon}}</view>
-            <view class="dish-title">{{item.shortName}}</view>
-          </view>
-        </block>
-        <view class="plate-core">
-          <image class="rice-bowl-image" src="/assets/spin/rice-bowl.png" mode="aspectFit"></image>
-          <image class="chopsticks-pointer-image" src="/assets/spin/chopsticks-pointer.png" mode="aspectFit" style="transform: translate(-50%, -50%) rotate({{spinAngle}}deg);"></image>
+      <view class="plate {{spinningClass}}">
+        <view class="plate-wheel" style="transform: rotate({{spinAngle}}deg);">
+          <block wx:for="{{candidateDishes}}" wx:key="id">
+            <view
+              class="plate-dish {{item.posClass}} {{item.plateClass}} {{item.spinStateClass}}"
+              data-id="{{item.id}}"
+              bindtap="onOpenDish"
+            >
+              <view class="dish-face" style="transform: rotate({{counterSpinAngle}}deg);">
+                <view wx:if="{{item.custom}}" class="custom-badge">自选</view>
+                <view class="dish-icon">{{item.icon}}</view>
+                <view class="dish-title">{{item.shortName}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="fixed-pointer">
+          <view class="pointer-tip"></view>
+          <view class="pointer-stem"></view>
+          <view class="pointer-dot"></view>
+        </view>
+        <view class="plate-center">
+          <view class="center-copy">饭点</view>
         </view>
       </view>
-      <view wx:if="{{pickedName}}" class="spin-result-panel">
-        <view class="spin-reveal">这顿就它了：{{pickedName}}</view>
-        <view wx:if="{{pickedDishId}}" class="spin-result-actions">
-          <button class="result-action secondary" bindtap="onSpin">再转一次</button>
-          <button class="result-action primary" bindtap="onViewResult">看详情</button>
-        </view>
+      <view wx:if="{{pickedName}}" class="spin-result-line">
+        <text class="result-prefix">今晚就它了</text>
+        <text class="result-name">{{pickedName}}</text>
+        <text wx:if="{{jumpingToResult}}" class="result-status">正在打开详情</text>
       </view>
     </view>
 
     <view class="spin-actions">
-      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">开始转动</button>
+      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">{{spinButtonText}}</button>
       <button class="secondary-button" bindtap="onRefreshCandidates">换一桌菜</button>
     </view>
   </view>
 
   <view class="filter-summary">
     <view class="summary-copy">
-      <view class="summary-title">当前条件</view>
-      <view class="muted summary-text">{{filterSummary}}</view>
+      <text class="summary-label">当前</text>
+      <text class="summary-text">{{filterSummary}}</text>
     </view>
     <button class="adjust-button" bindtap="onToggleFilters">{{filterToggleText}}</button>
   </view>
@@ -98,6 +105,21 @@
   </view>
 
   <view class="filter-panel" wx:if="{{filterVisible}}">
+    <view class="filter-block">
+      <view class="filter-title">避雷</view>
+      <view class="chip-row">
+        <block wx:for="{{avoidOptions}}" wx:key="label">
+          <view
+            class="chip {{item.className}}"
+            data-value="{{item.label}}"
+            bindtap="onToggleAvoid"
+          >
+            {{item.label}}
+          </view>
+        </block>
+      </view>
+    </view>
+
     <block wx:for="{{optionGroups}}" wx:key="key">
       <view class="filter-block">
         <view class="filter-title">{{item.title}}</view>
@@ -115,22 +137,7 @@
         </view>
       </view>
     </block>
-
-    <view class="filter-block">
-      <view class="filter-title">避雷</view>
-      <view class="chip-row">
-        <block wx:for="{{avoidOptions}}" wx:key="label">
-          <view
-            class="chip {{item.className}}"
-            data-value="{{item.label}}"
-            bindtap="onToggleAvoid"
-          >
-            {{item.label}}
-          </view>
-        </block>
-      </view>
-    </view>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" show-dislike="{{true}}" show-proposal="{{false}}" binddislike="onDislikeDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

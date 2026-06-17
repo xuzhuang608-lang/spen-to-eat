@@ -2,13 +2,13 @@ const app = getApp();
 const { getCandidateDishes, getDishById } = require("../../services/dish");
 
 const rawOptionGroups = [
-  { key: "mealTime", title: "用餐时间", options: ["不限", "早餐", "午餐", "晚餐", "夜宵"] },
-  { key: "category", title: "类型", options: ["不限", "正餐", "小吃", "甜品", "饮品"] },
+  { key: "scene", title: "场景", options: ["不限", "一个人", "两个人", "朋友聚餐"] },
   { key: "taste", title: "口味", options: ["不限", "清淡", "鲜香", "重口", "甜口"] },
-  { key: "scene", title: "场景", options: ["不限", "一个人", "两个人", "朋友聚餐"] }
+  { key: "category", title: "类型", options: ["不限", "正餐", "小吃", "甜品", "饮品"] },
+  { key: "mealTime", title: "用餐时间", options: ["不限", "早餐", "午餐", "晚餐", "夜宵"] }
 ];
 
-const rawAvoidOptions = ["不吃辣", "不吃海鲜", "不吃甜", "不吃内脏", "不吃牛肉", "不吃猪肉", "不吃生冷", "素食优先"];
+const rawAvoidOptions = ["不吃辣", "不吃海鲜", "不吃甜", "不吃内脏", "不吃牛肉", "不吃猪肉", "不吃生冷", "吃素食"];
 
 const avoidMap = {
   不吃辣: "辣",
@@ -18,7 +18,7 @@ const avoidMap = {
   不吃牛肉: "牛肉",
   不吃猪肉: "猪肉",
   不吃生冷: "生冷",
-  素食优先: "肉类"
+  吃素食: "肉类"
 };
 
 const defaultFilters = {
@@ -29,8 +29,7 @@ const defaultFilters = {
   avoidLabels: []
 };
 
-const slotAngles = [315, 0, 45, 90, 135, 180, 225, 270];
-const chopstickOffset = 0;
+const slotAngles = [0, 45, 90, 135, 180, 225, 270, 315];
 
 function buildOptionGroups(filters) {
   return rawOptionGroups.map((group) => ({
@@ -143,6 +142,25 @@ function createCustomDish(name, index, replacedDish) {
   };
 }
 
+function createCandidateFromDish(dish, index, replacedDish) {
+  return {
+    id: dish.id,
+    name: dish.name,
+    shortName: String(dish.name || "").trim().slice(0, 6),
+    icon: getDishIcon(dish),
+    category: dish.category,
+    taste: dish.taste,
+    weight: dish.weight || (replacedDish && replacedDish.weight) || 1,
+    posClass: `pos-${index}`,
+    slotIndex: index,
+    plateClass: getDishPlateClass(dish),
+    spinStateClass: "",
+    menuStateClass: "",
+    replaceClass: "",
+    custom: !!dish.custom
+  };
+}
+
 function weightedPick(list) {
   if (!list.length) return null;
   const total = list.reduce((sum, item) => sum + (item.weight || 1), 0);
@@ -155,10 +173,10 @@ function weightedPick(list) {
 }
 
 function getTargetSpinAngle(currentAngle, slotIndex) {
-  const target = (slotAngles[slotIndex] + chopstickOffset + 360) % 360;
+  const target = (360 - slotAngles[slotIndex]) % 360;
   const current = ((currentAngle % 360) + 360) % 360;
   const delta = (target - current + 360) % 360;
-  return currentAngle + 2160 + delta;
+  return currentAngle + 2520 + delta;
 }
 
 function buildFilterSummary(filters) {
@@ -181,10 +199,14 @@ Page({
     filterVisible: false,
     candidateDishes: [],
     spinning: false,
+    spinningClass: "",
     spinRound: 0,
     spinAngle: 0,
+    counterSpinAngle: 0,
     pickedName: "",
     pickedDishId: "",
+    spinButtonText: "开始转动",
+    jumpingToResult: false,
     chosenMap: {},
     hasContent: true,
     emptyVisible: false,
@@ -192,11 +214,13 @@ Page({
     customTargetIndex: -1,
     customName: "",
     dishSheetVisible: false,
-    detailDish: null
+    detailDish: null,
+    avoidDishId: ""
   },
 
   onLoad(query) {
     const city = query.city ? decodeURIComponent(query.city) : app.globalData.currentCity;
+    const avoidDishId = query.avoidDishId ? decodeURIComponent(query.avoidDishId) : "";
     if (city) {
       app.setCurrentCity(city);
     }
@@ -212,24 +236,42 @@ Page({
       filters,
       optionGroups: buildOptionGroups(filters),
       avoidOptions: buildAvoidOptions(filters.avoidLabels),
-      filterSummary: buildFilterSummary(filters)
-    }, () => this.refreshCandidates([]));
+      filterSummary: buildFilterSummary(filters),
+      avoidDishId
+    }, () => {
+      this.refreshCandidates([]);
+      if (avoidDishId) {
+        wx.showToast({ title: "这次先避开它", icon: "none" });
+      }
+    });
   },
 
   onShow() {
     const city = app.globalData.currentCity;
-    if (!city || city === this.data.city) return;
+    if (!city || city === this.data.city) {
+      if (this.data.jumpingToResult) {
+        this.setData({ jumpingToResult: false, spinButtonText: "再转一次" });
+      }
+      return;
+    }
     this.setData({
       city,
       candidateDishes: [],
       pickedName: "",
       pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false,
       chosenMap: {},
       spinning: false,
+      spinningClass: "",
       customMode: false,
       customTargetIndex: -1,
       customName: ""
     }, () => this.refreshCandidates([]));
+  },
+
+  onChooseCity() {
+    wx.navigateTo({ url: "/pages/city/city" });
   },
 
   getAvoidTags() {
@@ -237,7 +279,7 @@ Page({
   },
 
   getPool() {
-    return getCandidateDishes({
+    const pool = getCandidateDishes({
       city: this.data.city,
       mealTime: this.data.filters.mealTime,
       category: this.data.filters.category,
@@ -245,6 +287,7 @@ Page({
       scene: this.data.filters.scene,
       avoidTags: this.getAvoidTags()
     });
+    return this.data.avoidDishId ? pool.filter((dish) => dish.id !== this.data.avoidDishId) : pool;
   },
 
   refreshCandidates(previousIds) {
@@ -255,7 +298,9 @@ Page({
       hasContent: pool.length > 0,
       emptyVisible: pool.length <= 0,
       pickedName: "",
-      pickedDishId: ""
+      pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false
     });
   },
 
@@ -264,6 +309,8 @@ Page({
     this.setData({
       pickedName: "",
       pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false,
       chosenMap: {},
       customMode: false,
       customTargetIndex: -1,
@@ -336,6 +383,37 @@ Page({
     this.setData({ dishSheetVisible: false });
   },
 
+  onDislikeDetailDish(event) {
+    const dish = event.detail && event.detail.dish;
+    if (!dish) return;
+    const index = this.data.candidateDishes.findIndex((item) => item.id === dish.id);
+    if (index < 0) {
+      this.setData({ dishSheetVisible: false });
+      return;
+    }
+    const usedIds = this.data.candidateDishes.map((item) => item.id);
+    const pool = this.getPool().filter((item) => !usedIds.includes(item.id) && item.id !== dish.id);
+    if (!pool.length) {
+      wx.showToast({ title: "暂时没有可换的菜", icon: "none" });
+      return;
+    }
+    const candidateDishes = this.data.candidateDishes.slice();
+    candidateDishes[index] = createCandidateFromDish(shuffle(pool)[0], index, candidateDishes[index]);
+    this.setData({
+      candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
+      dishSheetVisible: false,
+      pickedName: "",
+      pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false,
+      chosenMap: {},
+      customMode: false,
+      customTargetIndex: -1,
+      customName: ""
+    });
+    wx.showToast({ title: "已换掉这道", icon: "none" });
+  },
+
   onStartCustomReplace() {
     if (!this.data.candidateDishes.length) return;
     this.setData({
@@ -376,6 +454,8 @@ Page({
       candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       pickedName: "",
       pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false,
       chosenMap: {},
       customMode: false,
       customTargetIndex: -1,
@@ -395,9 +475,14 @@ Page({
 
     this.setData({
       spinning: true,
+      spinningClass: "spinning",
       spinRound: this.data.spinRound + 1,
       spinAngle: nextAngle,
+      counterSpinAngle: -nextAngle,
       pickedName: "",
+      pickedDishId: "",
+      spinButtonText: "转动中",
+      jumpingToResult: false,
       chosenMap: {},
       candidateDishes: decorateCandidateState(this.data.candidateDishes, {}, this.data.customMode, this.data.customTargetIndex)
     });
@@ -405,15 +490,22 @@ Page({
     setTimeout(() => {
       this.setData({
         spinning: false,
+        spinningClass: "",
         pickedName: result.name,
         pickedDishId: result.custom ? "" : result.id,
+        spinButtonText: "再转一次",
+        jumpingToResult: !result.custom,
         chosenMap: { [result.id]: true },
         candidateDishes: decorateCandidateState(this.data.candidateDishes, { [result.id]: true }, this.data.customMode, this.data.customTargetIndex)
       });
       if (result.custom) {
         wx.showToast({ title: `就吃${result.name}`, icon: "none" });
+        return;
       }
-    }, 1650);
+      setTimeout(() => {
+        wx.navigateTo({ url: `/pages/result/result?id=${result.id}` });
+      }, 950);
+    }, 1850);
   },
 
   onViewResult() {
