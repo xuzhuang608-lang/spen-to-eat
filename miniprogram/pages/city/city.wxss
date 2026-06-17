@@ -37,6 +37,72 @@
   margin-top: 26rpx;
 }
 
+.quick-panel {
+  margin-top: 24rpx;
+  padding: 22rpx;
+  border: 2rpx solid #e8d6c6;
+  border-radius: 24rpx;
+  background: #fffdf8;
+  box-shadow: 0 8rpx 22rpx rgba(78, 52, 39, 0.05);
+}
+
+.current-city-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+  padding: 20rpx;
+  border: 2rpx solid #efc5ad;
+  border-radius: 22rpx;
+  background: #fff0e8;
+}
+
+.current-city-name {
+  color: #35261d;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.current-city-desc {
+  margin-top: 6rpx;
+  color: #7a6a5f;
+  font-size: 23rpx;
+}
+
+.current-city-action {
+  flex: 0 0 auto;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #4a3025;
+  color: #fffdf8;
+  font-size: 23rpx;
+  font-weight: 900;
+}
+
+.popular-title {
+  margin-top: 24rpx;
+}
+
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10rpx;
+}
+
+.popular-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60rpx;
+  padding: 0 8rpx;
+  border: 2rpx solid #e8d6c6;
+  border-radius: 999rpx;
+  background: #fff8ef;
+  color: #5a463b;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
 .province-title {
   margin-top: 28rpx;
   margin-bottom: 18rpx;

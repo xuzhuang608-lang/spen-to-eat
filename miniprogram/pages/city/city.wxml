@@ -1,6 +1,6 @@
 <view class="page city-page">
   <view class="section-title">选择城市</view>
-  <view class="muted">点开省份选择城市，也可以直接搜索城市名。</view>
+  <view class="muted">先定城市，转出来才像本地味。</view>
 
   <view class="search-row">
     <input class="search-input" value="{{keyword}}" placeholder="搜索城市或省份" bindinput="onSearchInput" />
@@ -21,7 +21,25 @@
   </view>
 
   <view wx:else>
-    <view class="block-title province-title">选择省份</view>
+    <view class="quick-panel">
+      <view class="block-title">当前城市</view>
+      <view class="current-city-card" data-city="{{currentCity}}" bindtap="onSelectCity">
+        <view>
+          <view class="current-city-name">{{currentCity}}</view>
+          <view class="current-city-desc">现在按这里推荐本地味</view>
+        </view>
+        <view class="current-city-action">继续用</view>
+      </view>
+
+      <view class="block-title popular-title">常用城市</view>
+      <view class="popular-grid">
+        <block wx:for="{{popularCities}}" wx:key="name">
+          <view class="popular-chip" data-city="{{item.name}}" bindtap="onSelectCity">{{item.name}}</view>
+        </block>
+      </view>
+    </view>
+
+    <view class="block-title province-title">按省份找</view>
     <view class="province-groups">
       <block wx:for="{{provinceGroups}}" wx:key="letter">
         <view class="province-group">

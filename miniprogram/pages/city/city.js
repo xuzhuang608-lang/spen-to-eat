@@ -1,6 +1,8 @@
 const app = getApp();
 const { getCities, getProvinces } = require("../../services/dish");
 
+const popularCityNames = ["广州", "深圳", "上海", "成都", "北京", "重庆", "杭州", "长沙"];
+
 const provinceLetters = {
   安徽: "A",
   澳门: "A",
@@ -78,6 +80,8 @@ function markSelectedProvinceGroups(groups, selectedProvince) {
 Page({
   data: {
     keyword: "",
+    currentCity: "广州",
+    popularCities: [],
     provinceGroups: [],
     searchResults: [],
     searchEmpty: false
@@ -86,7 +90,14 @@ Page({
   onLoad() {
     const provinces = getProvinces();
     const groups = buildProvinceGroups(provinces);
+    const cities = getCities();
+    const cityMap = cities.reduce((map, city) => {
+      map[city.name] = city;
+      return map;
+    }, {});
     this.setData({
+      currentCity: app.globalData.currentCity || "广州",
+      popularCities: popularCityNames.map((name) => cityMap[name]).filter(Boolean),
       provinceGroups: markSelectedProvinceGroups(groups, null)
     });
   },
