@@ -72,6 +72,13 @@
   color: #7a6a5f;
 }
 
+.result-hint {
+  margin-top: 8rpx;
+  color: #a65334;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
 .arrow {
   color: #c55335;
   font-size: 46rpx;

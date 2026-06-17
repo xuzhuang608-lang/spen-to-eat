@@ -60,7 +60,7 @@ Page({
     resultsEmpty: true,
     dishSheetVisible: false,
     detailDish: null,
-    hotTags: ["宵夜", "甜品", "不吃辣", "海鲜", "早餐", "牛肉"]
+    hotTags: ["火锅", "粥", "粉面", "海鲜", "早餐", "夜宵", "清淡", "重口"]
   },
 
   updateResults(keyword) {
