@@ -66,8 +66,8 @@ Page({
     }
     const sameCity = getDishesByCity(dish.city).filter((item) => item.id !== dish.id);
     const relatedDishes = sameCity.slice(0, 3).map((item) => Object.assign({}, item, {
-      rating: iconRating(item.localIndex, item),
-      ratingItems: iconRatingItems(item.localIndex, item).map((ratingItem) =>
+      rating: iconRating(item.localIndex, item.iconType),
+      ratingItems: iconRatingItems(item.localIndex, item.iconType).map((ratingItem) =>
         Object.assign({}, ratingItem, {
           className: ratingItem.active ? "active" : ""
         })
@@ -76,7 +76,7 @@ Page({
     storage.addUnique("historyDishIds", dish.id);
     this.setData({
       dish,
-      rating: iconRating(dish.localIndex, dish),
+      rating: iconRating(dish.localIndex, dish.iconType),
       favorited: storage.hasItem("favoriteDishIds", dish.id),
       favoriteText: storage.hasItem("favoriteDishIds", dish.id) ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765",
       decisionCards: buildDecisionCards(dish),
@@ -98,36 +98,6 @@ Page({
     });
   },
 
-  onCopyName() {
-    const dish = this.data.dish;
-    if (!dish) return;
-    wx.setClipboardData({
-      data: dish.name,
-      success: () => {
-        wx.showToast({ title: "\u83dc\u540d\u5df2\u590d\u5236", icon: "none" });
-      },
-      fail: (error) => {
-        console.error("复制菜名失败", error);
-        wx.showToast({ title: "\u590d\u5236\u5931\u8d25", icon: "none" });
-      }
-    });
-  },
-
-  onAcceptDish() {
-    const dish = this.data.dish;
-    if (!dish) return;
-    wx.setClipboardData({
-      data: dish.name,
-      success: () => {
-        wx.showToast({ title: "已复制菜名，去搜它吧", icon: "none" });
-      },
-      fail: (error) => {
-        console.error("复制菜名失败", error);
-        wx.showToast({ title: "复制失败", icon: "none" });
-      }
-    });
-  },
-
   onSpinAgain() {
     const pages = getCurrentPages();
     if (pages.length > 1) {
@@ -139,21 +109,10 @@ Page({
     });
   },
 
-  onDislikeDish() {
-    const dish = this.data.dish;
-    const url = `/pages/spin/spin?city=${encodeURIComponent(dish.city)}&avoidDishId=${encodeURIComponent(dish.id)}`;
-    const pages = getCurrentPages();
-    if (pages.length > 1) {
-      wx.redirectTo({ url });
-      return;
-    }
-    wx.redirectTo({ url });
-  },
-
   onCreatePoll() {
     const dish = this.data.dish;
     wx.navigateTo({
-      url: `/pages/poll-create/poll-create?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
+      url: `/pages/poll-detail/poll-detail?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
     });
   },
 
