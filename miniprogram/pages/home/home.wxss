@@ -26,8 +26,8 @@
 
 .city-pill {
   flex: 0 0 auto;
-  max-width: 280rpx;
-  padding: 8rpx 16rpx;
+  max-width: 320rpx;
+  padding: 9rpx 17rpx;
   border-radius: 999rpx;
   background: rgba(255, 248, 239, 0.14);
   color: #fff8ef;
@@ -36,6 +36,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.city-pill:active {
+  opacity: 0.78;
 }
 
 .brand-title {
@@ -53,18 +57,16 @@
   line-height: 1.45;
 }
 
-.location-bar {
+.decision-head {
   display: flex;
-  justify-content: center;
-  gap: 28rpx;
-  margin-top: 18rpx;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
 }
 
-.text-action {
-  width: 168rpx;
+.locate-button {
+  flex: 0 0 auto;
+  width: 118rpx;
   min-width: 0;
   height: 58rpx;
   padding: 0 8rpx;
@@ -76,6 +78,10 @@
   font-weight: 800;
   line-height: 54rpx;
   white-space: nowrap;
+}
+
+.locate-button::after {
+  border: 0;
 }
 
 .meal-panel {
@@ -148,41 +154,50 @@
 
 .start-button {
   margin-top: 20rpx;
-  font-size: 31rpx;
+  min-height: 98rpx;
+  font-size: 34rpx;
+}
+
+.start-hint {
+  margin-top: 12rpx;
+  color: #7a6a5f;
+  font-size: 24rpx;
+  text-align: center;
 }
 
 .assist-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16rpx;
-  margin-top: 18rpx;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+  margin-top: 24rpx;
 }
 
 .assist-card {
-  min-height: 112rpx;
-  padding: 20rpx;
-  border-radius: 22rpx;
+  min-height: 86rpx;
+  padding: 16rpx 12rpx;
+  border-radius: 20rpx;
   background: #fffdf8;
   border: 2rpx solid #e8d6c6;
+  text-align: center;
+}
+
+.assist-card:active {
+  background: #fff8ef;
 }
 
 .assist-title {
-  font-size: 29rpx;
+  font-size: 27rpx;
   font-weight: 900;
 }
 
 .assist-desc {
-  margin-top: 8rpx;
+  margin-top: 6rpx;
   color: #7a6a5f;
-  font-size: 23rpx;
+  font-size: 21rpx;
 }
 
 .inspiration-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18rpx;
-  margin-top: 30rpx;
+  margin-top: 34rpx;
 }
 
 .section-title {
@@ -190,17 +205,6 @@
   font-size: 36rpx;
   line-height: 1.15;
   font-weight: 900;
-}
-
-.search-button {
-  flex: 0 0 auto;
-  min-width: 116rpx;
-  height: 58rpx;
-  border-radius: 999rpx;
-  background: #4a3025;
-  color: #fff;
-  font-size: 24rpx;
-  font-weight: 800;
 }
 
 .inspiration-grid {
@@ -244,11 +248,13 @@
 }
 
 .inspiration-card {
+  position: relative;
   min-height: 190rpx;
   padding: 20rpx;
   border-radius: 24rpx;
   border: 2rpx solid #e8d6c6;
   background: #fffdf8;
+  overflow: hidden;
 }
 
 .inspiration-card.large {
@@ -258,13 +264,36 @@
   border-color: #efc5ad;
 }
 
+.dish-illustration {
+  position: absolute;
+  right: 10rpx;
+  top: 6rpx;
+  width: 118rpx;
+  height: 118rpx;
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.inspiration-card.large .dish-illustration {
+  right: 18rpx;
+  top: 10rpx;
+  width: 154rpx;
+  height: 154rpx;
+}
+
 .dish-meta {
+  position: relative;
+  z-index: 1;
+  max-width: 72%;
   color: #a65334;
   font-size: 22rpx;
   font-weight: 800;
 }
 
 .dish-name {
+  position: relative;
+  z-index: 1;
+  max-width: 74%;
   margin-top: 10rpx;
   color: #35261d;
   font-size: 36rpx;
@@ -273,10 +302,14 @@
 }
 
 .inspiration-card.large .dish-name {
+  max-width: 70%;
   font-size: 42rpx;
 }
 
 .dish-phrase {
+  position: relative;
+  z-index: 1;
+  max-width: 76%;
   margin-top: 12rpx;
   color: #6f5f55;
   font-size: 24rpx;
@@ -284,6 +317,8 @@
 }
 
 .dish-badges {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 8rpx;
@@ -309,6 +344,8 @@
 }
 
 .dish-rating {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

@@ -2,20 +2,20 @@
   <view class="brand">
     <view class="brand-topline">
       <view class="brand-kicker">全国城市特色美食</view>
-      <view class="city-pill">{{city}} · {{selectedMeal}}</view>
+      <view class="city-pill" bindtap="onChooseCity">{{city}} · {{selectedMeal}} ›</view>
     </view>
     <view class="brand-title">饭点到了，转一下</view>
-    <view class="brand-subtitle">不想再问“吃什么”，先让{{city}}给这一顿一个方向。</view>
-  </view>
-
-  <view class="location-bar">
-    <button class="text-action" loading="{{locating}}" bindtap="onUseLocation">获取定位</button>
-    <button class="text-action" bindtap="onChooseCity">更换城市</button>
+    <view class="brand-subtitle">不想再问“吃什么”，先让{{city}}本地菜给这一顿一个方向。</view>
   </view>
 
   <view class="meal-panel">
-    <view class="meal-title">今天吃点什么？</view>
-    <view class="meal-subtitle">{{city}}这一顿，先从饭点开始选。</view>
+    <view class="decision-head">
+      <view>
+        <view class="meal-title">今天吃点什么？</view>
+        <view class="meal-subtitle">{{city}} · {{selectedMeal}}</view>
+      </view>
+      <button class="locate-button" loading="{{locating}}" bindtap="onUseLocation">定位</button>
+    </view>
     <view class="meal-grid">
       <block wx:for="{{mealOptions}}" wx:key="key">
         <view
@@ -33,16 +33,21 @@
     </view>
   </view>
 
-  <button class="primary-button start-button" bindtap="onStartSpin">今天吃什么，转一下</button>
+  <button class="primary-button start-button" bindtap="onStartSpin">帮我决定</button>
+  <view class="start-hint">先从{{city}}{{selectedMeal}}里挑一桌。</view>
 
   <view class="assist-row">
+    <view class="assist-card" bindtap="onSearch">
+      <view class="assist-title">搜索</view>
+      <view class="assist-desc">找想吃的菜</view>
+    </view>
     <view class="assist-card" bindtap="onCreatePoll">
-      <view class="assist-title">组个饭局</view>
-      <view class="assist-desc">把想吃的发出去</view>
+      <view class="assist-title">饭局</view>
+      <view class="assist-desc">发群里挑</view>
     </view>
     <view class="assist-card" bindtap="onFavorite">
-      <view class="assist-title">收藏历史</view>
-      <view class="assist-desc">上次想吃的还在</view>
+      <view class="assist-title">收藏</view>
+      <view class="assist-desc">看历史</view>
     </view>
   </view>
 
@@ -51,7 +56,6 @@
       <view class="section-title">今日灵感</view>
       <view class="muted">{{inspiration}}</view>
     </view>
-    <button class="search-button" bindtap="onSearch">搜美食</button>
   </view>
 
   <view class="inspiration-empty" wx:if="{{featuredEmpty}}">
@@ -67,6 +71,7 @@
         data-id="{{item.id}}"
         bindtap="onOpenDish"
       >
+        <image wx:if="{{item.illustrationSrc}}" class="dish-illustration" src="{{item.illustrationSrc}}" mode="aspectFit"></image>
         <view class="dish-meta">{{item.city}} · {{item.category}} · {{item.taste}}</view>
         <view class="dish-name">{{item.name}}</view>
         <view class="dish-phrase">{{item.phrase}}</view>
