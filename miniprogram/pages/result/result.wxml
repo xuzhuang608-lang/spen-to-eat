@@ -1,11 +1,25 @@
 <view class="page" wx:if="{{dish}}">
   <view class="result-card">
+    <image wx:if="{{dish.illustrationSrc}}" class="result-illustration" src="{{dish.illustrationSrc}}" mode="aspectFit"></image>
     <view class="city">{{dish.city}}</view>
     <view class="dish-name">{{dish.name}}</view>
     <view class="phrase">{{dish.phrase}}</view>
     <view class="rating">
       <text class="rating-label">本地特色指数</text>
       <text>{{rating}}</text>
+    </view>
+  </view>
+
+  <view class="decision-actions">
+    <button class="primary-button accept-button" bindtap="onAcceptDish">就吃这个</button>
+    <view class="secondary-actions">
+      <button class="secondary-action" bindtap="onSpinAgain">换一道</button>
+      <button class="secondary-action" bindtap="onDislikeDish">这顿不吃</button>
+    </view>
+    <view class="utility-actions">
+      <view class="utility-action" bindtap="onFavorite">{{favoriteText}}</view>
+      <view class="utility-action" bindtap="onCreatePoll">组饭局</view>
+      <view class="utility-action" bindtap="onFeedback">提建议</view>
     </view>
   </view>
 
@@ -26,15 +40,6 @@
         <view class="decision-text">{{item.text}}</view>
       </view>
     </block>
-  </view>
-
-  <view class="safety-note">口味、忌口和适合场景仅供参考。过敏、清真、素食等需求请以实际食材和个人判断为准。</view>
-
-  <view class="action-row main-actions">
-    <button class="ghost-button compact-action" bindtap="onSpinAgain">再来一轮</button>
-    <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>
-    <button class="ghost-button compact-action" bindtap="onCreatePoll">组个饭局</button>
-    <button class="ghost-button compact-action" bindtap="onFeedback">提个建议</button>
   </view>
 
   <view class="panel related" wx:if="{{relatedDishes.length}}">
@@ -58,6 +63,8 @@
       </block>
     </view>
   </view>
+
+  <view class="safety-note">口味、忌口和适合场景仅供参考。过敏、清真、素食等需求请以实际食材和个人判断为准。</view>
 
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
 </view>
