@@ -43,7 +43,7 @@
     </view>
     <view class="assist-card" bindtap="onCreatePoll">
       <view class="assist-title">饭局</view>
-      <view class="assist-desc">发群里挑</view>
+      <view class="assist-desc">先摆几道</view>
     </view>
     <view class="assist-card" bindtap="onFavorite">
       <view class="assist-title">收藏</view>

@@ -2,36 +2,23 @@
   <view class="poll-hero">
     <view>
       <view class="section-title">组个饭局</view>
-      <view class="muted">发群前先凑几道，别让饭点卡住。</view>
+      <view class="muted">先摆几道菜，发群里少纠结。</view>
     </view>
   </view>
 
   <view class="add-box">
-    <input class="search-input" value="{{keyword}}" placeholder="输入菜名，比如牛杂、砂锅粥" bindinput="onInput" confirm-type="done" bindconfirm="onAddCandidate" />
-    <button class="add-button" bindtap="onAddCandidate">加一道</button>
+    <input class="search-input" value="{{keyword}}" placeholder="输入菜名，没有对应的菜也可自定义菜名" bindinput="onInput" confirm-type="done" bindconfirm="onAddCandidate" />
+    <button class="add-button" bindtap="onAddCandidate">加一道菜</button>
   </view>
-  <view class="custom-hint">菜单里没有也没关系，输入名字就能自己加一道。</view>
 
   <view class="proposal-note">
-    <view class="note-title">已放 {{selectedCount}} / {{maxSelected}} 道</view>
-    <view class="muted">先把想吃的放桌上，够一桌人慢慢挑。</view>
-  </view>
-
-  <view class="tips-row">
-    <view class="tip-card">
-      <view class="tip-title">看到想吃的</view>
-      <view class="muted">顺手放进这顿饭局。</view>
-    </view>
-    <view class="tip-card">
-      <view class="tip-title">人多别纠结</view>
-      <view class="muted">多放几道，群里更好聊。</view>
-    </view>
+    <view class="note-title">已选 {{selectedCount}} / {{maxSelected}}</view>
+    <button wx:if="{{selectedDishes.length}}" class="clear-button note-clear" bindtap="onClearSelected">清空</button>
   </view>
 
   <view class="selected-panel" wx:if="{{selectedDishes.length}}">
     <view class="selected-head">
-      <view class="selected-title">发群前先放这些</view>
-      <button class="clear-button" bindtap="onClearSelected">清空</button>
+      <view class="selected-title">已选菜单</view>
     </view>
     <view class="selected-chips">
       <view class="selected-chip" wx:for="{{selectedDishes}}" wx:key="id">
@@ -45,7 +32,6 @@
   <view class="candidate-head">
     <view>
       <view class="candidate-title">{{candidateTitle}}</view>
-      <view class="muted">{{candidateDesc}}</view>
     </view>
   </view>
 
@@ -55,7 +41,7 @@
 
   <view class="tool-row">
     <button class="tool-button primary-tool" bindtap="onFillLocal">{{fillButtonText}}</button>
-    <button class="tool-button" bindtap="onRefreshCandidates">换一批</button>
+    <button class="tool-button" bindtap="onRefreshCandidates">换一桌菜品</button>
   </view>
 
   <view wx:if="{{candidatesEmpty}}" class="empty-candidates">
@@ -74,10 +60,12 @@
           <text>{{item.city}} · {{item.category}} · {{item.taste}}</text>
         </view>
       </view>
-      <view class="select-dot"><text wx:if="{{item.selected}}">✓</text></view>
+      <view class="dish-actions">
+        <view class="detail-link" data-id="{{item.id}}" catchtap="onOpenDishDetail">看详细</view>
+        <view class="select-dot"><text wx:if="{{item.selected}}">✓</text></view>
+      </view>
     </view>
   </view>
-
-  <view class="create-copy">发出去以后，大家点一下想吃的就行。</view>
-  <button class="primary-button create-button" bindtap="onCreatePoll">生成饭局提议</button>
+  <button class="primary-button create-button" bindtap="onCreatePoll">生成饭局卡片</button>
+  <dish-sheet wx:if="{{dishSheetVisible}}" visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="加入菜单" pick-mode="emit" show-proposal="{{false}}" show-feedback="{{false}}" show-copy="{{false}}" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>

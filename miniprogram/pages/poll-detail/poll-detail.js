@@ -1,7 +1,7 @@
 const { getDishById, getProposalDishes } = require("../../services/dish");
 
 const MAX_PROPOSAL_ITEMS = 8;
-const wheelSlotAngles = [315, 0, 45, 90, 135, 180, 225, 270];
+const wheelSlotAngles = [0, 45, 90, 135, 180, 225, 270, 315];
 
 function shuffle(list) {
   const copy = list.slice();
@@ -78,10 +78,10 @@ function weightedPick(list) {
 }
 
 function getTargetWheelAngle(currentAngle, slotIndex) {
-  const target = (wheelSlotAngles[slotIndex] + 360) % 360;
+  const target = (360 - wheelSlotAngles[slotIndex]) % 360;
   const current = ((currentAngle % 360) + 360) % 360;
   const delta = (target - current + 360) % 360;
-  return currentAngle + 2160 + delta;
+  return currentAngle + 2520 + delta;
 }
 
 function safeDecode(value) {
@@ -96,7 +96,7 @@ function parseCustomDishes(value, city) {
   if (!value) return [];
   try {
     const list = JSON.parse(safeDecode(value));
-    return list.slice(0, 2).map((item, index) => ({
+    return list.slice(0, MAX_PROPOSAL_ITEMS).map((item, index) => ({
       id: item.id || `share-custom-${index}`,
       name: String(item.name || item.n || "").slice(0, 8),
       city: item.city || item.c || city || "自定义",
@@ -143,12 +143,12 @@ function getDishNames(dishes, limit) {
 function makeMultiTitle(dishes) {
   const names = getDishNames(dishes, 2);
   if (dishes.length <= 2 && names.length) {
-    return `${names.join("、")}里挑一个`;
+    return `${names.join("、")}先摆出来`;
   }
   if (names.length) {
-    return `${names.join("、")}等${dishes.length}道，挑一个`;
+    return `${names.join("、")}等${dishes.length}道先摆出来`;
   }
-  return "这几道，挑一个";
+  return "这几道先摆出来";
 }
 
 function makeShareTitle(dishes, isSingle) {
@@ -157,34 +157,34 @@ function makeShareTitle(dishes, isSingle) {
     return `今晚有人提了${names[0]}`;
   }
   if (names.length) {
-    return `今晚在${names.join("、")}里挑一个`;
+    return `今晚先看看${names.join("、")}`;
   }
-  return "今晚挑一个，别让饭点卡太久";
+  return "今晚先摆几道，别让饭点卡太久";
 }
 
 function getPageCopy(dishes, isSingle, reacted) {
   const firstName = dishes[0] && dishes[0].name;
   if (isSingle) {
     return {
-      pageTitle: firstName ? `这顿就${firstName}？` : "这顿就它？",
-      pageDesc: "点一下表个态，发群里就有方向。",
+      pageTitle: firstName ? `有人提到了${firstName}` : "有人提到了这道菜",
+      pageDesc: "点一下想吃的，群里就好聊了。",
       reactText: reacted ? "已经点头" : "我也想吃",
       shareTitle: makeShareTitle(dishes, true),
-      shareDesc: "发到群里，大家点一下就知道风向。"
+      shareDesc: "发给朋友看看，不用从“随便”开始。"
     };
   }
   return {
     pageTitle: makeMultiTitle(dishes),
-    pageDesc: "先把选择摆出来，发群里少纠结一点。",
+    pageDesc: "点一下想吃的，群里就好聊了。",
     reactText: "想吃",
     shareTitle: makeShareTitle(dishes, false),
-    shareDesc: "发到群里，让大家先点个想吃。"
+    shareDesc: "让大家先看看这一桌，不用从“随便”开始。"
   };
 }
 
 function buildSharePath(dishes) {
   const normalIds = dishes.filter((dish) => !dish.custom).map((dish) => dish.id);
-  const custom = dishes.filter((dish) => dish.custom).slice(0, 2).map((dish) => ({
+  const custom = dishes.filter((dish) => dish.custom).slice(0, MAX_PROPOSAL_ITEMS).map((dish) => ({
     id: dish.id,
     n: dish.name,
     c: dish.city,
@@ -207,14 +207,15 @@ Page({
     pageTitle: "这顿吃什么",
     pageDesc: "",
     reactText: "想吃这个",
-    shareTitle: "把这顿饭局发出去",
-    shareDesc: "发到群里，让大家先有个方向。",
+    shareTitle: "把这几道发出去",
+    shareDesc: "让大家先看看这一桌，不用从“随便”开始。",
     addWheelVisible: false,
     addWheelItems: [],
     addWheelSpinning: false,
     addWheelAngle: 0,
+    addWheelCounterAngle: 0,
     addWheelPicked: null,
-    addWheelButtonText: "\u5f00\u59cb\u8f6c",
+    addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
     addWheelChosenMap: {},
     dishSheetVisible: false,
     detailDish: null,
@@ -228,7 +229,7 @@ Page({
   loadProposal(query) {
     const proposal = query.id ? getStoredProposal(query.id) : makeProposalFromQuery(query);
     if (!proposal) {
-      wx.showToast({ title: "提议内容不见了", icon: "none" });
+      wx.showToast({ title: "这桌菜不见了", icon: "none" });
       return;
     }
 
@@ -324,9 +325,11 @@ Page({
       addWheelVisible: true,
       addWheelItems,
       addWheelPicked: null,
-      addWheelButtonText: "\u5f00\u59cb\u8f6c",
+      addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
       addWheelChosenMap: {},
-      addWheelSpinning: false
+      addWheelSpinning: false,
+      addWheelAngle: 0,
+      addWheelCounterAngle: 0
     });
   },
 
@@ -335,7 +338,7 @@ Page({
     this.setData({
       addWheelVisible: false,
       addWheelPicked: null,
-      addWheelButtonText: "\u5f00\u59cb\u8f6c",
+      addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
       addWheelChosenMap: {}
     });
   },
@@ -355,8 +358,10 @@ Page({
     this.setData({
       addWheelItems: decorateAddWheelItems(buildWheelItems(shuffle(fresh.length >= 4 ? fresh : pool)), {}),
       addWheelPicked: null,
-      addWheelButtonText: "\u5f00\u59cb\u8f6c",
-      addWheelChosenMap: {}
+      addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
+      addWheelChosenMap: {},
+      addWheelAngle: 0,
+      addWheelCounterAngle: 0
     });
   },
 
@@ -371,8 +376,9 @@ Page({
     this.setData({
       addWheelSpinning: true,
       addWheelAngle: nextAngle,
+      addWheelCounterAngle: -nextAngle,
       addWheelPicked: null,
-      addWheelButtonText: "\u5f00\u59cb\u8f6c",
+      addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
       addWheelChosenMap: {}
     });
     setTimeout(() => {
@@ -383,7 +389,7 @@ Page({
         addWheelChosenMap: { [result.id]: true },
         addWheelItems: decorateAddWheelItems(this.data.addWheelItems, { [result.id]: true })
       });
-    }, 1500);
+    }, 1850);
   },
 
   onAddPickedDish() {
@@ -419,7 +425,7 @@ Page({
       isSingle: rawDishes.length === 1,
       addWheelVisible: false,
       addWheelPicked: null,
-      addWheelButtonText: "\u5f00\u59cb\u8f6c",
+      addWheelButtonText: "\u5f00\u59cb\u8f6c\u52a8",
       addWheelChosenMap: {},
       ...copy
     });
@@ -427,7 +433,14 @@ Page({
   },
 
   onCreateAgain() {
-    wx.navigateTo({ url: "/pages/poll-create/poll-create" });
+    const city = this.data.proposal && this.data.proposal.city
+      ? this.data.proposal.city
+      : this.data.dishes[0] && this.data.dishes[0].city;
+    wx.navigateTo({
+      url: city
+        ? `/pages/poll-create/poll-create?city=${encodeURIComponent(city)}`
+        : "/pages/poll-create/poll-create"
+    });
   },
 
   onShareAppMessage() {

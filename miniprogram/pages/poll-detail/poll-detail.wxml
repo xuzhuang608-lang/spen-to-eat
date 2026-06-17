@@ -2,15 +2,9 @@
   <view class="section-title">{{pageTitle}}</view>
   <view class="muted">{{pageDesc}}</view>
 
-  <view class="proposal-tip">
-    <view class="tip-title">饭局提议</view>
-    <view class="muted">点一下表个态，不用投票也能看出大家想吃什么。</view>
-  </view>
-
   <view class="dish-list">
     <view class="panel dish-item {{item.cardClass}}" wx:for="{{dishes}}" wx:key="id" data-id="{{item.id}}" bindtap="onToggleWant">
       <view class="dish-main">
-        <view wx:if="{{isSingle}}" class="proposal-label">就这道</view>
         <view class="dish-title-row">
           <text class="dish-name">{{item.name}}</text>
           <text wx:if="{{item.custom}}" class="custom-badge">自定义</text>
@@ -25,7 +19,7 @@
   </view>
 
   <view class="action-row">
-    <button class="ghost-button action-button" bindtap="onSpinAgain">转一道菜</button>
+    <button class="ghost-button action-button" bindtap="onSpinAgain">再摆一道</button>
     <button class="ghost-button action-button" bindtap="onCreateAgain">重新配菜</button>
   </view>
 
@@ -34,7 +28,7 @@
       <view class="share-title">{{shareTitle}}</view>
       <view class="muted">{{shareDesc}}</view>
     </view>
-    <button class="share-button" open-type="share">发到群聊</button>
+    <button class="share-button" open-type="share">发给朋友</button>
   </view>
 
   <view wx:if="{{addWheelVisible}}" class="add-wheel-mask" catchtap="onCloseAddWheel">
@@ -49,33 +43,40 @@
 
       <view class="mini-wheel-wrap">
         <view class="mini-plate">
-          <view
-            class="mini-dish {{item.posClass}} {{item.chosenClass}}"
-            wx:for="{{addWheelItems}}"
-            wx:key="id"
-          >
-            <view class="mini-dish-icon">{{item.icon}}</view>
-            <view class="mini-dish-name">{{item.shortName}}</view>
+          <view class="mini-plate-wheel" style="transform: rotate({{addWheelAngle}}deg);">
+            <view
+              class="mini-dish {{item.posClass}} {{item.chosenClass}}"
+              wx:for="{{addWheelItems}}"
+              wx:key="id"
+            >
+              <view class="mini-dish-face" style="transform: rotate({{addWheelCounterAngle}}deg);">
+                <view class="mini-dish-icon">{{item.icon}}</view>
+                <view class="mini-dish-name">{{item.shortName}}</view>
+              </view>
+            </view>
           </view>
-          <view class="mini-plate-core">
-            <image class="mini-rice-bowl-image" src="/assets/spin/rice-bowl.png" mode="aspectFit"></image>
-            <image class="mini-chopsticks-pointer-image" src="/assets/spin/chopsticks-pointer.png" mode="aspectFit" style="transform: translate(-50%, -50%) rotate({{addWheelAngle}}deg);"></image>
+          <view class="mini-fixed-pointer">
+            <view class="mini-pointer-tip"></view>
+            <view class="mini-pointer-stem"></view>
+            <view class="mini-pointer-dot"></view>
           </view>
+          <view class="mini-plate-center">
+            <view class="mini-center-copy">饭点</view>
+          </view>
+        </view>
+        <view class="add-wheel-result-line" wx:if="{{addWheelPicked}}">
+          <text class="add-wheel-result-prefix">这桌加它</text>
+          <text class="add-wheel-result-name">{{addWheelPicked.name}}</text>
         </view>
       </view>
 
-      <view class="add-wheel-result" wx:if="{{addWheelPicked}}">
-        <view class="add-wheel-result-label">转到了</view>
-        <view class="add-wheel-result-name">{{addWheelPicked.name}}</view>
-      </view>
-
       <view class="add-wheel-actions">
-        <button class="add-wheel-button ghost" bindtap="onRefreshAddWheel">换一批</button>
         <button class="add-wheel-button primary" bindtap="onStartAddWheel">{{addWheelButtonText}}</button>
+        <button class="add-wheel-button ghost" bindtap="onRefreshAddWheel">换一桌菜</button>
       </view>
       <button wx:if="{{addWheelPicked}}" class="add-wheel-confirm" bindtap="onAddPickedDish">加进这桌</button>
     </view>
   </view>
 
-  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="{{detailPickLabel}}" pick-mode="emit" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" pick-label="{{detailPickLabel}}" pick-mode="emit" show-proposal="{{false}}" show-feedback="{{false}}" show-copy="{{false}}" bindpick="onPickDetailDish" bindclose="onCloseDishSheet"></dish-sheet>
 </view>
