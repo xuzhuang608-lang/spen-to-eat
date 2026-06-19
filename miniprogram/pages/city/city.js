@@ -1,5 +1,5 @@
 const app = getApp();
-const { getCities, getProvinces } = require("../../services/dish");
+const { getCities, getProvinces, ensureProvinceLoaded } = require("../../services/dish");
 
 const popularCityNames = ["广州", "深圳", "上海", "成都", "北京", "重庆", "杭州", "长沙"];
 
@@ -84,10 +84,11 @@ Page({
     popularCities: [],
     provinceGroups: [],
     searchResults: [],
-    searchEmpty: false
+    searchEmpty: false,
+    locationFailHintVisible: false
   },
 
-  onLoad() {
+  onLoad(query) {
     const provinces = getProvinces();
     const groups = buildProvinceGroups(provinces);
     const cities = getCities();
@@ -97,6 +98,7 @@ Page({
     }, {});
     this.setData({
       currentCity: app.globalData.currentCity || "广州",
+      locationFailHintVisible: !!(query && query.from === "locationFail"),
       popularCities: popularCityNames.map((name) => cityMap[name]).filter(Boolean),
       provinceGroups: markSelectedProvinceGroups(groups, null)
     });
@@ -135,8 +137,45 @@ Page({
   },
 
   onSelectCity(event) {
-    const { city } = event.currentTarget.dataset;
-    app.setCurrentCity(city);
-    wx.navigateBack();
+    const cityName = event.currentTarget.dataset.city;
+    if (!cityName) return;
+    const city = getCities().find((item) => item.name === cityName);
+    app.setCurrentCity(cityName);
+    this.setData({ currentCity: cityName });
+
+    wx.showLoading({
+      title: "加载本地菜",
+      mask: true
+    });
+
+    ensureProvinceLoaded(city && city.province).then((provinceData) => {
+      if (!provinceData && city && city.province !== "广东") {
+        wx.showToast({
+          title: "本地菜加载较慢，先用通用推荐",
+          icon: "none"
+        });
+      }
+    }).catch(() => {
+      wx.showToast({
+        title: "本地菜加载较慢，先用通用推荐",
+        icon: "none"
+      });
+    }).then(() => {
+      const pages = getCurrentPages();
+      const previousPage = pages.length >= 2 ? pages[pages.length - 2] : null;
+      if (previousPage && previousPage.route === "pages/home/home" && typeof previousPage.setCity === "function") {
+        previousPage.setCity(cityName);
+        previousPage.__citySelectionHandled = true;
+      }
+      if (previousPage && previousPage.route === "pages/inspiration/inspiration" && typeof previousPage.refresh === "function") {
+        previousPage.refresh(cityName, previousPage.data.selectedMeal || "午餐");
+        previousPage.__citySelectionHandled = true;
+      }
+      wx.navigateBack();
+    }).then(() => {
+      wx.hideLoading();
+    }, () => {
+      wx.hideLoading();
+    });
   }
 });

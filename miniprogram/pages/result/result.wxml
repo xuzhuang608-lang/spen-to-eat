@@ -4,10 +4,6 @@
     <view class="city">{{dish.city}}</view>
     <view class="dish-name">{{dish.name}}</view>
     <view class="phrase">{{dish.phrase}}</view>
-    <view class="rating">
-      <text class="rating-label">本地特色指数</text>
-      <text>{{rating}}</text>
-    </view>
   </view>
 
   <view class="panel detail">
@@ -34,28 +30,6 @@
     <button class="ghost-button compact-action" bindtap="onFavorite">{{favoriteText}}</button>
     <button class="ghost-button compact-action" bindtap="onCreatePoll">组个饭局</button>
     <button class="ghost-button compact-action" bindtap="onFeedback">提个建议</button>
-  </view>
-
-  <view class="panel related" wx:if="{{relatedDishes.length}}">
-    <view class="related-head">
-      <view>
-        <view class="related-title">同城还可以试试</view>
-        <view class="muted">没被这道说服，就换个本地口味。</view>
-      </view>
-    </view>
-    <view class="related-list">
-      <block wx:for="{{relatedDishes}}" wx:key="id">
-        <view class="related-item" data-id="{{item.id}}" bindtap="onOpenRelated">
-          <view>
-            <view class="related-name">{{item.name}}</view>
-            <view class="related-meta">{{item.taste}} · {{item.category}}</view>
-          </view>
-          <view class="related-index">
-            <text class="related-icon {{iconItem.className}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
-          </view>
-        </view>
-      </block>
-    </view>
   </view>
 
   <view class="safety-note">口味、忌口和适合场景仅供参考。过敏、清真、素食等需求请以实际食材和个人判断为准。</view>

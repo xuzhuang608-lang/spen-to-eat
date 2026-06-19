@@ -1,0 +1,29 @@
+<view class="page">
+  <input class="search-input" value="{{keyword}}" placeholder="想吃什么？搜菜名、城市、餐段、口味" bindinput="onInput" />
+
+  <view class="section-title">热门搜索</view>
+  <view class="chip-row">
+    <view class="chip" wx:for="{{hotTags}}" wx:key="*this" data-value="{{item}}" bindtap="onTapHot">{{item}}</view>
+  </view>
+
+  <view class="section-title">搜索结果</view>
+  <view wx:if="{{resultsEmpty}}" class="empty">可以搜菜名、城市，也可以点上面的饭点灵感。</view>
+  <view class="result-list">
+    <view class="panel result-item" wx:for="{{results}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenDish">
+      <view>
+        <view class="dish-title-row">
+          <view class="dish-name">{{item.name}}</view>
+          <view class="source-badge {{item.sourceClass}}">{{item.sourceLabel}}</view>
+        </view>
+        <view class="muted">
+          {{item.cityDisplay}} · {{item.category}} · {{item.taste}}
+          <text wx:if="{{item.showDuplicate}}"> · 已合并同名</text>
+        </view>
+        <view class="result-hint">点开看看适不适合这顿</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+  </view>
+
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
+</view>

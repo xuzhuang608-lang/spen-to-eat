@@ -1,5 +1,5 @@
 const app = getApp();
-const { getCandidateDishes, getDishById } = require("../../services/dish");
+const { getCandidateDishes, getDishById, getCity, ensureProvinceLoaded } = require("../../services/dish");
 
 const rawOptionGroups = [
   { key: "scene", title: "场景", options: ["不限", "一个人", "两个人", "朋友聚餐"] },
@@ -9,6 +9,8 @@ const rawOptionGroups = [
 ];
 
 const rawAvoidOptions = ["不吃辣", "不吃海鲜", "不吃甜", "不吃内脏", "不吃牛肉", "不吃猪肉", "不吃生冷", "吃素食"];
+const SPIN_DURATION_MS = 2200;
+const RESULT_REVEAL_DELAY_MS = 1800;
 
 const avoidMap = {
   不吃辣: "辣",
@@ -29,7 +31,6 @@ const defaultFilters = {
   avoidLabels: []
 };
 
-const slotAngles = [0, 45, 90, 135, 180, 225, 270, 315];
 
 function buildOptionGroups(filters) {
   return rawOptionGroups.map((group) => ({
@@ -84,27 +85,63 @@ function getDishPlateClass(dish) {
   return "plain";
 }
 
+function getDishPositionStyle(index, count) {
+  const safeCount = Math.max(1, count || 1);
+  const angle = (360 / safeCount) * index;
+  const radian = angle * Math.PI / 180;
+  const radius = safeCount <= 2 ? 188 : safeCount <= 4 ? 202 : 210;
+  const center = 285;
+  const itemWidth = 154;
+  const itemHeight = 92;
+  const left = Math.round(center + Math.sin(radian) * radius - itemWidth / 2);
+  const top = Math.round(center - Math.cos(radian) * radius - itemHeight / 2);
+  return {
+    angle,
+    style: `left:${left}rpx;top:${top}rpx;`
+  };
+}
+
 function pickCandidates(pool, previousIds) {
   if (!pool.length) return [];
   const previous = previousIds || [];
   const fresh = pool.filter((dish) => !previous.includes(dish.id));
   const source = fresh.length >= 8 ? fresh : pool;
-  return shuffle(source).slice(0, 8).map((dish, index) => ({
-    id: dish.id,
-    name: dish.name,
-    shortName: String(dish.name || "").trim().slice(0, 6),
-    icon: getDishIcon(dish),
-    category: dish.category,
-    taste: dish.taste,
-    weight: dish.weight || 1,
-    posClass: `pos-${index}`,
-    slotIndex: index,
-    plateClass: getDishPlateClass(dish),
-    spinStateClass: "",
-    menuStateClass: dish.custom ? "custom" : "",
-    replaceClass: "",
-    custom: !!dish.custom
-  }));
+  const selected = shuffle(source).slice(0, 8);
+  const count = selected.length;
+  return selected.map((dish, index) => {
+    const position = getDishPositionStyle(index, count);
+    return {
+      id: dish.id,
+      name: dish.name,
+      shortName: String(dish.name || "").trim().slice(0, 6),
+      icon: getDishIcon(dish),
+      category: dish.category,
+      taste: dish.taste,
+      weight: dish.weight || 1,
+      posClass: `pos-${count}-${index}`,
+      positionStyle: position.style,
+      slotIndex: index,
+      slotAngle: position.angle,
+      plateClass: getDishPlateClass(dish),
+      spinStateClass: "",
+      menuStateClass: dish.custom ? "custom" : "",
+      replaceClass: "",
+      custom: !!dish.custom
+    };
+  });
+}
+
+function relayoutCandidates(list) {
+  const count = (list || []).length;
+  return (list || []).map((dish, index) => {
+    const position = getDishPositionStyle(index, count);
+    return Object.assign({}, dish, {
+      posClass: `pos-${count}-${index}`,
+      positionStyle: position.style,
+      slotIndex: index,
+      slotAngle: position.angle
+    });
+  });
 }
 
 function decorateCandidateState(list, chosenMap, customMode, customTargetIndex) {
@@ -125,8 +162,9 @@ function decorateCandidateState(list, chosenMap, customMode, customTargetIndex) 
   });
 }
 
-function createCustomDish(name, index, replacedDish) {
+function createCustomDish(name, index, replacedDish, count) {
   const text = String(name || "").trim().slice(0, 8);
+  const position = getDishPositionStyle(index, count || 1);
   return {
     id: `custom-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
     name: text,
@@ -135,14 +173,17 @@ function createCustomDish(name, index, replacedDish) {
     category: "自选",
     taste: "想吃",
     weight: replacedDish && replacedDish.weight ? replacedDish.weight : 1,
-    posClass: `pos-${index}`,
+    posClass: `pos-${count || 1}-${index}`,
+    positionStyle: position.style,
     slotIndex: index,
+    slotAngle: position.angle,
     plateClass: "custom",
     custom: true
   };
 }
 
-function createCandidateFromDish(dish, index, replacedDish) {
+function createCandidateFromDish(dish, index, replacedDish, count) {
+  const position = getDishPositionStyle(index, count || 1);
   return {
     id: dish.id,
     name: dish.name,
@@ -151,8 +192,10 @@ function createCandidateFromDish(dish, index, replacedDish) {
     category: dish.category,
     taste: dish.taste,
     weight: dish.weight || (replacedDish && replacedDish.weight) || 1,
-    posClass: `pos-${index}`,
+    posClass: `pos-${count || 1}-${index}`,
+    positionStyle: position.style,
     slotIndex: index,
+    slotAngle: position.angle,
     plateClass: getDishPlateClass(dish),
     spinStateClass: "",
     menuStateClass: "",
@@ -172,8 +215,8 @@ function weightedPick(list) {
   return list[list.length - 1];
 }
 
-function getTargetSpinAngle(currentAngle, slotIndex) {
-  const target = (360 - slotAngles[slotIndex]) % 360;
+function getTargetSpinAngle(currentAngle, slotAngle) {
+  const target = (360 - (Number(slotAngle) || 0)) % 360;
   const current = ((currentAngle % 360) + 360) % 360;
   const delta = (target - current + 360) % 360;
   return currentAngle + 2520 + delta;
@@ -217,6 +260,39 @@ function buildResultUrl(id, filters) {
   return `/pages/result/result?${params.join("&")}`;
 }
 
+function getStoredInspirationDishes(key, city, mealTime) {
+  if (!key) return [];
+  const payload = wx.getStorageSync("inspirationSpinDishes") || {};
+  if (payload.key !== key) return [];
+  if (city && payload.city && payload.city !== city) return [];
+  if (mealTime && payload.mealTime && payload.mealTime !== mealTime) return [];
+  return Array.isArray(payload.dishes) ? payload.dishes.filter(Boolean) : [];
+}
+
+function getStoredInspirationDishById(id) {
+  const payload = wx.getStorageSync("inspirationSpinDishes") || {};
+  const dishes = Array.isArray(payload.dishes) ? payload.dishes : [];
+  return dishes.find((dish) => dish && dish.id === id) || null;
+}
+
+function mergeInspirationPool(inspirationDishes, regularPool, avoidDishId) {
+  const selected = [];
+  const usedIds = {};
+  const usedNames = {};
+  const addDish = (dish) => {
+    if (!dish || selected.length >= 8) return;
+    if (avoidDishId && dish.id === avoidDishId) return;
+    const name = String(dish.name || "");
+    if (usedIds[dish.id] || usedNames[name]) return;
+    usedIds[dish.id] = true;
+    usedNames[name] = true;
+    selected.push(dish);
+  };
+  (inspirationDishes || []).forEach(addDish);
+  shuffle(regularPool || []).forEach(addDish);
+  return selected;
+}
+
 Page({
   data: {
     city: "广州",
@@ -239,17 +315,22 @@ Page({
     chosenMap: {},
     hasContent: true,
     emptyVisible: false,
+    loadingMenu: false,
+    loadingText: "正在准备本地菜单",
     customMode: false,
     customTargetIndex: -1,
     customName: "",
     dishSheetVisible: false,
     detailDish: null,
-    avoidDishId: ""
+    avoidDishId: "",
+    inspirationKey: "",
+    inspirationDishes: []
   },
 
   onLoad(query) {
     const city = query.city ? safeDecode(query.city) : app.globalData.currentCity;
     const avoidDishId = query.avoidDishId ? safeDecode(query.avoidDishId) : "";
+    const inspirationKey = query.inspirationKey ? safeDecode(query.inspirationKey) : "";
     if (city) {
       app.setCurrentCity(city);
     }
@@ -269,9 +350,11 @@ Page({
       optionGroups: buildOptionGroups(filters),
       avoidOptions: buildAvoidOptions(filters.avoidLabels),
       filterSummary: buildFilterSummary(filters),
-      avoidDishId
+      avoidDishId,
+      inspirationKey,
+      inspirationDishes: getStoredInspirationDishes(inspirationKey, city, filters.mealTime)
     }, () => {
-      this.refreshCandidates([]);
+      this.refreshCandidatesAfterLoad([]);
       if (avoidDishId) {
         wx.showToast({ title: "这次先避开它", icon: "none" });
       }
@@ -299,7 +382,7 @@ Page({
       customMode: false,
       customTargetIndex: -1,
       customName: ""
-    }, () => this.refreshCandidates([]));
+    }, () => this.refreshCandidatesAfterLoad([]));
   },
 
   onChooseCity() {
@@ -310,7 +393,7 @@ Page({
     return this.data.filters.avoidLabels.map((label) => avoidMap[label]).filter(Boolean);
   },
 
-  getPool() {
+  getRegularPool() {
     const pool = getCandidateDishes({
       city: this.data.city,
       mealTime: this.data.filters.mealTime,
@@ -320,6 +403,13 @@ Page({
       avoidTags: this.getAvoidTags()
     });
     return this.data.avoidDishId ? pool.filter((dish) => dish.id !== this.data.avoidDishId) : pool;
+  },
+
+  getPool() {
+    if (this.data.inspirationDishes && this.data.inspirationDishes.length) {
+      return mergeInspirationPool(this.data.inspirationDishes, this.getRegularPool(), this.data.avoidDishId);
+    }
+    return this.getRegularPool();
   },
 
   refreshCandidates(previousIds) {
@@ -336,6 +426,38 @@ Page({
     });
   },
 
+  refreshCandidatesAfterLoad(previousIds) {
+    const city = getCity(this.data.city);
+    const requestId = (this.__cityLoadRequestId || 0) + 1;
+    this.__cityLoadRequestId = requestId;
+    this.setData({
+      loadingMenu: true,
+      loadingText: `正在准备${city.name}菜单`,
+      emptyVisible: false
+    });
+    return ensureProvinceLoaded(city.province).then((provinceData) => {
+      if (requestId !== this.__cityLoadRequestId) return;
+      if (!provinceData && city.province !== "广东") {
+        wx.showToast({
+          title: "本地菜单加载较慢，先用通用菜单",
+          icon: "none"
+        });
+      }
+      this.refreshCandidates(previousIds);
+    }).catch((error) => {
+      if (requestId !== this.__cityLoadRequestId) return;
+      console.error("菜单加载失败", error);
+      wx.showToast({
+        title: "菜单加载失败，已先放通用菜",
+        icon: "none"
+      });
+      this.refreshCandidates(previousIds);
+    }).then(() => {
+      if (requestId !== this.__cityLoadRequestId) return;
+      this.setData({ loadingMenu: false });
+    });
+  },
+
   onRefreshCandidates() {
     const previousIds = this.data.candidateDishes.map((dish) => dish.id);
     this.setData({
@@ -348,7 +470,28 @@ Page({
       customTargetIndex: -1,
       customName: ""
     });
-    this.refreshCandidates(previousIds);
+    this.refreshCandidatesAfterLoad(previousIds);
+  },
+
+  onRemoveCandidate(event) {
+    if (this.data.spinning) return;
+    const { id } = event.currentTarget.dataset;
+    const candidateDishes = relayoutCandidates(
+      this.data.candidateDishes.filter((dish) => dish.id !== id)
+    );
+    this.setData({
+      candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
+      hasContent: candidateDishes.length > 0,
+      emptyVisible: candidateDishes.length <= 0,
+      pickedName: "",
+      pickedDishId: "",
+      spinButtonText: "开始转动",
+      jumpingToResult: false,
+      chosenMap: {},
+      customMode: false,
+      customTargetIndex: -1,
+      customName: ""
+    });
   },
 
   onToggleFilters() {
@@ -366,7 +509,7 @@ Page({
       filters,
       optionGroups: buildOptionGroups(filters),
       filterSummary: buildFilterSummary(filters)
-    }, () => this.refreshCandidates([]));
+    }, () => this.refreshCandidatesAfterLoad([]));
   },
 
   onToggleAvoid(event) {
@@ -383,7 +526,7 @@ Page({
       filters,
       avoidOptions: buildAvoidOptions(avoidLabels),
       filterSummary: buildFilterSummary(filters)
-    }, () => this.refreshCandidates([]));
+    }, () => this.refreshCandidatesAfterLoad([]));
   },
 
   onOpenDish(event) {
@@ -403,7 +546,7 @@ Page({
       wx.showToast({ title: "自选菜不看详情", icon: "none" });
       return;
     }
-    const detailDish = getDishById(id);
+    const detailDish = getDishById(id) || getStoredInspirationDishById(id);
     if (!detailDish) return;
     this.setData({
       detailDish,
@@ -430,7 +573,7 @@ Page({
       return;
     }
     const candidateDishes = this.data.candidateDishes.slice();
-    candidateDishes[index] = createCandidateFromDish(shuffle(pool)[0], index, candidateDishes[index]);
+    candidateDishes[index] = createCandidateFromDish(shuffle(pool)[0], index, candidateDishes[index], candidateDishes.length);
     this.setData({
       candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       dishSheetVisible: false,
@@ -481,7 +624,7 @@ Page({
       return;
     }
     const candidateDishes = this.data.candidateDishes.slice();
-    candidateDishes[index] = createCustomDish(name, index, candidateDishes[index]);
+    candidateDishes[index] = createCustomDish(name, index, candidateDishes[index], candidateDishes.length);
     this.setData({
       candidateDishes: decorateCandidateState(candidateDishes, {}, false, -1),
       pickedName: "",
@@ -503,7 +646,7 @@ Page({
       return;
     }
 
-    const nextAngle = getTargetSpinAngle(this.data.spinAngle, result.slotIndex || 0);
+    const nextAngle = getTargetSpinAngle(this.data.spinAngle, result.slotAngle);
 
     this.setData({
       spinning: true,
@@ -536,8 +679,8 @@ Page({
       }
       setTimeout(() => {
         wx.navigateTo({ url: buildResultUrl(result.id, this.data.filters) });
-      }, 950);
-    }, 1850);
+      }, RESULT_REVEAL_DELAY_MS);
+    }, SPIN_DURATION_MS);
   },
 
   onViewResult() {

@@ -16,13 +16,6 @@
       <text wx:for="{{sheetTags}}" wx:key="*this">{{item}}</text>
     </view>
 
-    <view class="sheet-rating">
-      <text class="rating-label">本地特色</text>
-      <view class="rating-icons">
-        <text class="rating-icon {{iconItem.className}}" wx:for="{{sheetRatingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
-      </view>
-    </view>
-
     <view class="sheet-desc">{{viewDish.description}}</view>
 
     <view class="sheet-actions">

@@ -1,6 +1,7 @@
 <view class="page city-page">
   <view class="section-title">选择城市</view>
-  <view class="muted">先定城市，转出来才像本地味。</view>
+  <view class="muted">先定城市，转出来才更贴近当地美食。</view>
+  <view wx:if="{{locationFailHintVisible}}" class="location-fail-hint">定位没成功，可以先手动选一个城市继续用。</view>
 
   <view class="search-row">
     <input class="search-input" value="{{keyword}}" placeholder="搜索城市或省份" bindinput="onSearchInput" />
@@ -26,7 +27,7 @@
       <view class="current-city-card" data-city="{{currentCity}}" bindtap="onSelectCity">
         <view>
           <view class="current-city-name">{{currentCity}}</view>
-          <view class="current-city-desc">现在按这里推荐本地味</view>
+          <view class="current-city-desc">现在按这里推荐本地美食</view>
         </view>
         <view class="current-city-action">继续用</view>
       </view>

@@ -44,7 +44,7 @@
   inset: 0;
   border-radius: 50%;
   transform-origin: 50% 50%;
-  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
+  transition: transform 2.2s cubic-bezier(0.13, 0.86, 0.16, 1);
 }
 
 .dish-face {
@@ -52,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 1.85s cubic-bezier(0.13, 0.86, 0.16, 1);
+  transition: transform 2.2s cubic-bezier(0.13, 0.86, 0.16, 1);
 }
 
 .fixed-pointer {
@@ -69,12 +69,12 @@
 .pointer-tip {
   position: absolute;
   left: 50%;
-  top: -4rpx;
+  top: -6rpx;
   width: 0;
   height: 0;
-  border-left: 22rpx solid transparent;
-  border-right: 22rpx solid transparent;
-  border-bottom: 52rpx solid #f04e38;
+  border-left: 20rpx solid transparent;
+  border-right: 20rpx solid transparent;
+  border-bottom: 56rpx solid #f04e38;
   transform: translateX(-50%);
   filter: drop-shadow(0 6rpx 8rpx rgba(191, 45, 32, 0.18));
 }
@@ -82,9 +82,9 @@
 .pointer-stem {
   position: absolute;
   left: 50%;
-  top: 42rpx;
-  width: 16rpx;
-  height: 82rpx;
+  top: 46rpx;
+  width: 14rpx;
+  height: 76rpx;
   border-radius: 999rpx;
   background: linear-gradient(180deg, #ff735f 0%, #d82921 100%);
   transform: translateX(-50%);
@@ -95,8 +95,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 42rpx;
-  height: 42rpx;
+  width: 44rpx;
+  height: 44rpx;
   border: 5rpx solid #fff5ee;
   border-radius: 50%;
   background: #e5392d;
@@ -555,13 +555,37 @@
 }
 
 .menu-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
   max-width: 100%;
-  padding: 12rpx 18rpx;
+  padding: 10rpx 10rpx 10rpx 18rpx;
   border-radius: 999rpx;
   background: #fff0e8;
   color: #794631;
   font-size: 24rpx;
   font-weight: 800;
+}
+
+.menu-chip-name {
+  max-width: 420rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  background: rgba(191, 78, 50, 0.12);
+  color: #bf4e32;
+  font-size: 26rpx;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .menu-chip.custom {
@@ -676,11 +700,52 @@
   font-weight: 900;
 }
 
+.loading-panel,
 .empty-panel {
   padding: 32rpx;
   border: 2rpx solid #e8d6c6;
   border-radius: 26rpx;
   background: #fff;
+}
+
+.loading-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.loading-dot {
+  width: 46rpx;
+  height: 46rpx;
+  margin-bottom: 18rpx;
+  border: 6rpx solid #ffe1d4;
+  border-top-color: #e85d3d;
+  border-radius: 50%;
+  animation: menu-loading 0.9s linear infinite;
+}
+
+.loading-title {
+  color: #35261d;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.loading-desc {
+  margin-top: 12rpx;
+  color: #7a6a5f;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+@keyframes menu-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .empty-title {

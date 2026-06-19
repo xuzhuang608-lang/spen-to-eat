@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText":  "饭点灵感",
+    "usingComponents":  {
+                            "dish-sheet":  "/components/dish-sheet/dish-sheet",
+                            "bottom-nav":  "/components/bottom-nav/bottom-nav"
+                        }
+}

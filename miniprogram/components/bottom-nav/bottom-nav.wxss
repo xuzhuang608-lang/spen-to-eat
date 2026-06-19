@@ -1,0 +1,48 @@
+.bottom-nav-shell {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 18;
+  padding: 10rpx 42rpx calc(10rpx + env(safe-area-inset-bottom));
+  background: #fffdf8;
+  border-top: 2rpx solid #f0dfd2;
+  box-shadow: 0 -10rpx 24rpx rgba(78, 52, 39, 0.06);
+}
+
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 82rpx;
+  color: #5a463b;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.nav-icon {
+  width: 52rpx;
+  height: 52rpx;
+  opacity: 0.84;
+}
+
+.nav-label {
+  margin-top: 3rpx;
+  line-height: 1.1;
+}
+
+.nav-item.active {
+  color: #e85d3d;
+}
+
+.nav-item.active .nav-icon {
+  opacity: 1;
+}
+

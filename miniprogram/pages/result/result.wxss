@@ -44,23 +44,6 @@
   line-height: 1.45;
 }
 
-.rating {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 26rpx;
-  padding-top: 22rpx;
-  border-top: 2rpx solid rgba(255, 255, 255, 0.16);
-  font-size: 34rpx;
-}
-
-.rating-label {
-  font-size: 26rpx;
-  color: #ffe3d3;
-}
-
 .detail {
   margin-top: 26rpx;
 }

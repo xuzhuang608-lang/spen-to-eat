@@ -231,3 +231,15 @@
   text-align: center;
   font-size: 28rpx;
 }
+
+.location-fail-hint {
+  margin-top: 18rpx;
+  padding: 18rpx 20rpx;
+  border: 2rpx solid #efc5ad;
+  border-radius: 20rpx;
+  background: #fff0e8;
+  color: #9a4a32;
+  font-size: 25rpx;
+  font-weight: 800;
+  line-height: 1.42;
+}

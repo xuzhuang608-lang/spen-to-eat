@@ -49,46 +49,6 @@
     </view>
   </view>
 
-  <view class="inspiration-head">
-    <view>
-      <view class="section-title">今日灵感</view>
-      <view class="muted">{{inspiration}}</view>
-    </view>
-  </view>
-
-  <view class="inspiration-empty" wx:if="{{featuredEmpty}}">
-    <view class="empty-title">这座城市的菜单还在整理</view>
-    <view class="empty-desc">可以先换个附近城市，或用常见菜先顶上。</view>
-    <button class="empty-button" bindtap="onChooseCity">切换城市</button>
-  </view>
-
-  <view class="inspiration-grid" wx:else>
-    <block wx:for="{{featuredDishes}}" wx:key="id">
-      <view
-        class="inspiration-card {{item.cardClass}}"
-        data-id="{{item.id}}"
-        bindtap="onOpenDish"
-      >
-        <image wx:if="{{item.illustrationSrc}}" class="dish-illustration" src="{{item.illustrationSrc}}" mode="aspectFit"></image>
-        <view class="dish-meta">{{item.city}} · {{item.category}} · {{item.taste}}</view>
-        <view class="dish-name">{{item.name}}</view>
-        <view class="dish-phrase">{{item.phrase}}</view>
-        <view class="dish-badges">
-          <view class="dish-badge" wx:for="{{item.iconBadges}}" wx:for-item="badge" wx:key="label">
-            <text class="badge-icon">{{badge.icon}}</text>
-            <text>{{badge.label}}</text>
-          </view>
-        </view>
-        <view class="dish-rating">
-          <text class="rating-label">{{item.ratingLabel}}</text>
-          <view class="rating-icons">
-            <text class="rating-icon {{iconItem.className}}" wx:for="{{item.ratingItems}}" wx:for-item="iconItem" wx:key="key">{{iconItem.icon}}</text>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
-
   <view class="home-footer">
     <text class="privacy-link" bindtap="onOpenPrivacy">隐私说明</text>
   </view>
@@ -112,4 +72,6 @@
   </view>
 
   <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
+  <bottom-nav current="home"></bottom-nav>
 </view>
+

@@ -1,10 +1,25 @@
-const { iconRatingItems } = require("../../utils/random");
 const storage = require("../../services/storage");
 
 function addTag(list, used, label) {
   if (!label || used[label] || list.length >= 6) return;
   used[label] = true;
   list.push(label);
+}
+
+function isGenericNightSnack(dish) {
+  const name = dish.name || "";
+  const meals = dish.mealTime || [];
+  if (!meals.includes("宵夜") && !meals.includes("夜宵")) return false;
+  if (/^(烤|炸|凉拌|卤|香辣|爆炒|蛋炒|扬州炒|腊肠炒)/.test(name)) return true;
+  return /烤茄子|凉拌青瓜|凉拌黄瓜|烤韭菜|烤玉米|烤金针菇|烤面筋|炸豆腐|炸薯条|关东煮|麻辣拌/.test(name);
+}
+
+function sourceTag(dish) {
+  if (dish.sourceBucket === "mealPool" || isGenericNightSnack(dish)) return "餐段灵感";
+  if (dish.sourceBucket === "cityExact") return "本地美食";
+  if (dish.sourceBucket === "regionalShared" || dish.sourceBucket === "provinceShared") return "省内美食";
+  if (dish.sourceBucket === "nationalGeneral") return "常见美食";
+  return "";
 }
 
 function buildTagLine(dish) {
@@ -14,8 +29,7 @@ function buildTagLine(dish) {
   const tagLine = [];
   const used = {};
 
-  if (dish.sourceBucket === "cityExact") addTag(tagLine, used, "本地味");
-  if (dish.localIndex >= 5) addTag(tagLine, used, "很本地");
+  addTag(tagLine, used, sourceTag(dish));
   if (meals.includes("早餐")) addTag(tagLine, used, "适合早餐");
   if (meals.includes("晚餐")) addTag(tagLine, used, "适合晚餐");
   if (meals.includes("夜宵")) addTag(tagLine, used, "夜宵可选");
@@ -41,15 +55,9 @@ function buildTagLine(dish) {
 
 function buildViewDish(dish) {
   if (!dish) return null;
-  const ratingItems = iconRatingItems(dish.localIndex, dish).map((item) =>
-    Object.assign({}, item, {
-      className: item.active ? "active" : ""
-    })
-  );
   return Object.assign({}, dish, {
     mealLine: (dish.mealTime || []).join(" / "),
-    tagLine: buildTagLine(dish),
-    ratingItems
+    tagLine: buildTagLine(dish)
   });
 }
 
@@ -91,7 +99,6 @@ Component({
     showSheet: false,
     viewDish: null,
     sheetTags: [],
-    sheetRatingItems: [],
     favorited: false,
     favoriteLabel: "\u6536\u85cf\u8d77\u6765"
   },
@@ -109,7 +116,6 @@ Component({
         showSheet: !!(this.properties.visible && viewDish),
         viewDish,
         sheetTags: viewDish ? viewDish.tagLine : [],
-        sheetRatingItems: viewDish ? viewDish.ratingItems : [],
         favorited: viewDish ? storage.hasItem("favoriteDishIds", viewDish.id) : false,
         favoriteLabel:
           viewDish && storage.hasItem("favoriteDishIds", viewDish.id)

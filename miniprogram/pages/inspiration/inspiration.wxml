@@ -1,0 +1,53 @@
+<view class="page inspiration-page">
+  <view class="hero">
+    <view class="hero-copy">
+      <view class="hero-kicker">{{city}} · {{selectedMeal}}</view>
+      <view class="hero-title">今天先看点想吃的</view>
+      <view class="hero-desc">{{heroCopy}}</view>
+    </view>
+    <button class="city-button" bindtap="onChooseCity">换城市</button>
+  </view>
+
+  <view class="meal-tabs">
+    <view
+      class="meal-tab {{item.className}}"
+      wx:for="{{mealOptions}}"
+      wx:key="key"
+      data-meal="{{item.key}}"
+      bindtap="onSelectMeal"
+    >
+      <text>{{item.icon}}</text>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{emptyVisible}}" class="empty-panel">
+    <view class="empty-title">这座城市的菜单还在整理</view>
+    <view class="empty-desc">可以先换个附近城市，或直接去转一桌。</view>
+    <button class="empty-action" bindtap="onStartSpin">去转一下</button>
+  </view>
+
+  <view wx:else class="dish-list">
+    <view
+      class="dish-card {{item.cardClass}}"
+      wx:for="{{dishes}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onOpenDish"
+    >
+      <image wx:if="{{item.illustrationSrc}}" class="dish-illustration" src="{{item.illustrationSrc}}" mode="aspectFit"></image>
+      <view class="dish-meta">{{item.sourceLabel}} · {{item.category}} · {{item.taste}}</view>
+      <view class="dish-name">{{item.name}}</view>
+      <view class="dish-phrase">{{item.phrase}}</view>
+      <view class="dish-tags">
+        <text wx:for="{{item.displayTags}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <button wx:if="{{dishes.length}}" class="primary-button spin-button" bindtap="onStartSpin">按这个方向转一桌</button>
+
+  <dish-sheet visible="{{dishSheetVisible}}" dish="{{detailDish}}" bindclose="onCloseDishSheet"></dish-sheet>
+  <bottom-nav current="inspiration"></bottom-nav>
+</view>
+

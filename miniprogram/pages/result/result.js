@@ -1,5 +1,4 @@
-const { getDishById, getDishesByCity } = require("../../services/dish");
-const { iconRating, iconRatingItems } = require("../../utils/random");
+﻿const { getDishById } = require("../../services/dish");
 const storage = require("../../services/storage");
 
 function hashIndex(text, length) {
@@ -33,6 +32,12 @@ function getSourceFilters(query) {
   return filters;
 }
 
+function getStoredInspirationDishById(id) {
+  const payload = wx.getStorageSync("inspirationSpinDishes") || {};
+  const dishes = Array.isArray(payload.dishes) ? payload.dishes : [];
+  return dishes.find((dish) => dish && dish.id === id) || null;
+}
+
 function buildSpinAgainUrl(dish, filters) {
   const params = [
     `city=${encodeURIComponent(dish.city)}`,
@@ -45,57 +50,6 @@ function buildSpinAgainUrl(dish, filters) {
     }
   });
   return `/pages/spin/spin?${params.join("&")}`;
-}
-
-function shuffle(list) {
-  const copy = list.slice();
-  for (let index = copy.length - 1; index > 0; index -= 1) {
-    const target = Math.floor(Math.random() * (index + 1));
-    const temp = copy[index];
-    copy[index] = copy[target];
-    copy[target] = temp;
-  }
-  return copy;
-}
-
-function getCurrentMealTime() {
-  const hour = new Date().getHours();
-  if (hour >= 5 && hour < 10) return "早餐";
-  if (hour >= 10 && hour < 15) return "午餐";
-  if (hour >= 15 && hour < 21) return "晚餐";
-  return "夜宵";
-}
-
-function normalizeMealTime(mealTime) {
-  return mealTime === "夜宵" ? "宵夜" : mealTime;
-}
-
-function dishMatchesMealTime(dish, mealTime) {
-  return (dish.mealTime || []).includes(normalizeMealTime(mealTime));
-}
-
-function decorateRelatedDish(item) {
-  return Object.assign({}, item, {
-    rating: iconRating(item.localIndex, item),
-    ratingItems: iconRatingItems(item.localIndex, item).map((ratingItem) =>
-      Object.assign({}, ratingItem, {
-        className: ratingItem.active ? "active" : ""
-      })
-    )
-  });
-}
-
-function buildRelatedDishes(dish) {
-  const currentMeal = getCurrentMealTime();
-  const sameCity = getDishesByCity(dish.city).filter((item) => (
-    item.id !== dish.id &&
-    item.sourceBucket === "cityExact"
-  ));
-  const mealMatched = sameCity.filter((item) => dishMatchesMealTime(item, currentMeal));
-  const selected = shuffle(mealMatched)
-    .concat(shuffle(sameCity.filter((item) => !dishMatchesMealTime(item, currentMeal))))
-    .slice(0, 3);
-  return selected.map(decorateRelatedDish);
 }
 
 function getDishFeature(dish) {
@@ -123,7 +77,7 @@ function buildNowReason(dish) {
     `胃口偏${taste}时，${dish.name}比随便点一份更稳。`,
     `${meal}没想好吃什么，先从${dish.name}开始也顺。`,
     `${dish.name}不算难选，适合把饭点从“再看看”拉回来。`,
-    `想吃${dish.category || "本地味"}的时候，${dish.name}可以先定下来。`
+    `想吃${dish.category || "美食"}的时候，${dish.name}可以先定下来。`
   ], `${dish.city}|${dish.name}|now`);
 }
 
@@ -167,6 +121,9 @@ function buildCautionText(dish) {
 }
 
 function buildFitNotes(dish) {
+  if (dish.truthNotes && dish.truthNotes.length) {
+    return dish.truthNotes;
+  }
   return [
     buildNowReason(dish),
     buildFitText(dish),
@@ -177,13 +134,9 @@ function buildFitNotes(dish) {
 Page({
   data: {
     dish: null,
-    rating: "",
     favorited: false,
     favoriteText: "\u6536\u85cf\u8d77\u6765",
     fitNotes: [],
-    relatedDishes: [],
-    dishSheetVisible: false,
-    detailDish: null,
     sourceFilters: {}
   },
 
@@ -193,20 +146,17 @@ Page({
   },
 
   loadDish(id) {
-    const dish = getDishById(id);
+    const dish = getDishById(id) || getStoredInspirationDishById(id);
     if (!dish) {
       wx.showToast({ title: "结果不存在", icon: "none" });
       return;
     }
-    const relatedDishes = buildRelatedDishes(dish);
     storage.addUnique("historyDishIds", dish.id);
     this.setData({
       dish,
-      rating: iconRating(dish.localIndex, dish),
       favorited: storage.hasItem("favoriteDishIds", dish.id),
       favoriteText: storage.hasItem("favoriteDishIds", dish.id) ? "\u5df2\u7ecf\u6536\u597d" : "\u6536\u85cf\u8d77\u6765",
-      fitNotes: buildFitNotes(dish),
-      relatedDishes
+      fitNotes: buildFitNotes(dish)
     });
   },
 
@@ -249,26 +199,12 @@ Page({
   onCreatePoll() {
     const dish = this.data.dish;
     wx.navigateTo({
-      url: `/pages/poll-create/poll-create?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
+      url: `/package-feature/pages/poll-create/poll-create?ids=${encodeURIComponent(dish.id)}&city=${encodeURIComponent(dish.city)}`
     });
-  },
-
-  onOpenRelated(event) {
-    const { id } = event.currentTarget.dataset;
-    const detailDish = this.data.relatedDishes.find((item) => item.id === id) || getDishById(id);
-    if (!detailDish) return;
-    this.setData({
-      detailDish,
-      dishSheetVisible: true
-    });
-  },
-
-  onCloseDishSheet() {
-    this.setData({ dishSheetVisible: false });
   },
 
   onFeedback() {
-    wx.navigateTo({ url: `/pages/feedback/feedback?dishId=${this.data.dish.id}` });
+    wx.navigateTo({ url: `/package-feature/pages/feedback/feedback?dishId=${this.data.dish.id}` });
   },
 
   onShareAppMessage() {

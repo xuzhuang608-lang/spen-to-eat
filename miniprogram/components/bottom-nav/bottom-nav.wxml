@@ -1,0 +1,12 @@
+<view class="bottom-nav-shell">
+  <view class="bottom-nav">
+    <view class="nav-item {{current === 'home' ? 'active' : ''}}" data-page="home" bindtap="onTapNav">
+      <image class="nav-icon" src="/assets/tab-icons/tab-home.png" mode="aspectFit"></image>
+      <view class="nav-label">首页</view>
+    </view>
+    <view class="nav-item {{current === 'inspiration' ? 'active' : ''}}" data-page="inspiration" bindtap="onTapNav">
+      <image class="nav-icon" src="/assets/tab-icons/tab-inspiration.png" mode="aspectFit"></image>
+      <view class="nav-label">灵感</view>
+    </view>
+  </view>
+</view>

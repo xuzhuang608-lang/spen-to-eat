@@ -6,7 +6,13 @@
     </view>
   </view>
 
-  <view wx:if="{{emptyVisible}}" class="empty-panel">
+  <view wx:if="{{loadingMenu}}" class="loading-panel">
+    <view class="loading-dot"></view>
+    <view class="loading-title">{{loadingText}}</view>
+    <view class="loading-desc">外省菜单首次打开需要一点时间，马上给你摆上这一桌。</view>
+  </view>
+
+  <view wx:elif="{{emptyVisible}}" class="empty-panel">
     <view class="empty-title">这座城市的菜单还在整理</view>
     <view class="empty-desc">可以先换个附近城市，或放宽偏好条件再转一次。</view>
     <button class="empty-action" bindtap="onChooseCity">更换城市</button>
@@ -19,6 +25,7 @@
           <block wx:for="{{candidateDishes}}" wx:key="id">
             <view
               class="plate-dish {{item.posClass}} {{item.plateClass}} {{item.spinStateClass}}"
+              style="{{item.positionStyle}}"
               data-id="{{item.id}}"
               bindtap="onOpenDish"
             >
@@ -47,12 +54,12 @@
     </view>
 
     <view class="spin-actions">
-      <button class="primary-button spin-button" loading="{{spinning}}" bindtap="onSpin">{{spinButtonText}}</button>
-      <button class="secondary-button" bindtap="onRefreshCandidates">换一桌菜</button>
+      <button class="primary-button spin-button" loading="{{spinning}}" disabled="{{loadingMenu}}" bindtap="onSpin">{{spinButtonText}}</button>
+      <button class="secondary-button" disabled="{{loadingMenu}}" bindtap="onRefreshCandidates">换一桌菜</button>
     </view>
   </view>
 
-  <view class="filter-summary">
+  <view class="filter-summary" wx:if="{{!loadingMenu}}">
     <view class="summary-copy">
       <text class="summary-label">当前</text>
       <text class="summary-text">{{filterSummary}}</text>
@@ -60,7 +67,7 @@
     <button class="adjust-button" bindtap="onToggleFilters">{{filterToggleText}}</button>
   </view>
 
-  <view class="menu-panel" wx:if="{{hasContent}}">
+  <view class="menu-panel" wx:if="{{hasContent && !loadingMenu}}">
     <view class="menu-head">
       <view>
         <view class="menu-title">这轮先摆这些</view>
@@ -75,7 +82,8 @@
           data-id="{{item.id}}"
           bindtap="onOpenDish"
         >
-          {{item.name}}<text wx:if="{{item.custom}}"> · 自选</text>
+          <text class="menu-chip-name">{{item.name}}<text wx:if="{{item.custom}}"> · 自选</text></text>
+          <text class="menu-chip-remove" data-id="{{item.id}}" catchtap="onRemoveCandidate">×</text>
         </view>
       </block>
     </view>
@@ -104,7 +112,7 @@
     </view>
   </view>
 
-  <view class="filter-panel" wx:if="{{filterVisible}}">
+  <view class="filter-panel" wx:if="{{filterVisible && !loadingMenu}}">
     <view class="filter-block">
       <view class="filter-title">避雷</view>
       <view class="chip-row">

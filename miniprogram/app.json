@@ -1,34 +1,61 @@
 {
-  "pages": [
-    "pages/home/home",
-    "pages/city/city",
-    "pages/spin/spin",
-    "pages/result/result",
-    "pages/search/search",
-    "pages/favorite/favorite",
-    "pages/poll-create/poll-create",
-    "pages/poll-detail/poll-detail",
-    "pages/feedback/feedback",
-    "pages/privacy/privacy"
-  ],
-  "window": {
-    "navigationBarTitleText": "饭点转转",
-    "navigationBarBackgroundColor": "#fff8ef",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#fff8ef"
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于识别城市并推荐本地美食"
-    },
-    "scope.writeClipboard": {
-      "desc": "用于在点击就吃这个后复制菜名方便搜索"
-    }
-  },
-  "requiredPrivateInfos": [
-    "getLocation"
-  ],
-  "__usePrivacyCheck__": true,
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "pages":  [
+                  "pages/home/home",
+                  "pages/inspiration/inspiration",
+                  "pages/city/city",
+                  "pages/spin/spin",
+                  "pages/result/result"
+              ],
+    "subPackages":  [
+                        {
+                            "root":  "package-feature",
+                            "pages":  [
+                                          "pages/search/search",
+                                          "pages/favorite/favorite",
+                                          "pages/poll-create/poll-create",
+                                          "pages/poll-detail/poll-detail",
+                                          "pages/feedback/feedback",
+                                          "pages/privacy/privacy"
+                                      ]
+                        },
+                        {
+                            "root":  "package-data",
+                            "pages":  [
+                                          "pages/loader/loader"
+                                      ]
+                        },
+                        {
+                            "root":  "package-category-assets",
+                            "pages":  [
+                                          "pages/loader/loader"
+                                      ]
+                        },
+                        {
+                            "root":  "package-dish-assets",
+                            "pages":  [
+                                          "pages/loader/loader"
+                                      ]
+                        }
+              ],
+    "window":  {
+                   "navigationBarTitleText":  "饭点转转",
+                   "navigationBarBackgroundColor":  "#fff8ef",
+                   "navigationBarTextStyle":  "black",
+                   "backgroundColor":  "#fff8ef"
+               },
+    "permission":  {
+                       "scope.userLocation":  {
+                                                  "desc":  "用于识别城市并推荐本地美食"
+                                              },
+                       "scope.writeClipboard":  {
+                                                    "desc":  "用于在点击就吃这个后复制菜名方便搜索"
+                                                }
+                   },
+    "requiredPrivateInfos":  [
+                                 "getLocation"
+                             ],
+    "__usePrivacyCheck__":  true,
+    "style":  "v2",
+    "lazyCodeLoading":  "requiredComponents",
+    "sitemapLocation":  "sitemap.json"
 }

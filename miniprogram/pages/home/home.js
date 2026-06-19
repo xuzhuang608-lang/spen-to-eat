@@ -1,7 +1,7 @@
 const app = getApp();
-const { getCity, getDishesByCity } = require("../../services/dish");
+const { getCity, getDishesByCity, ensureProvinceLoaded, attachDishIllustration } = require("../../services/dish");
+const homeMealPools = require("../../data/home-meal-pools");
 const { getCurrentCityByLocation } = require("../../services/location");
-const { getDishRatingIcon, iconRatingItems } = require("../../utils/random");
 
 const mealOptions = [
   { key: "早餐", icon: "🥟", title: "早餐", subtitle: "先垫一口" },
@@ -17,19 +17,19 @@ function buildMealOptions(selectedMeal) {
 }
 
 const defaultInspirations = [
-  "今天这一顿，交给本地味带路。",
+  "今天这一顿，交给本地美食带路。",
   "别再来回问了，先转出一个方向。",
   "从一道能点的菜开始，饭点就顺了。",
-  "先看本地菜，不够再换一桌。",
+  "先看本地美食，不够再换一桌。",
   "这一顿不求复杂，先求想吃。"
 ];
 
 const mealInspirations = {
   早餐: [
-    "早上先吃点顺口的，别空着肚子纠结。",
+    "早上先吃点顺口的，别空着肚子。",
     "早餐别太复杂，热乎、顶饱、好入口就行。",
     "先把早饭定下来，这一天会轻松一点。",
-    "来点适合早上的，本地味也可以很清爽。"
+    "今天早餐简单点也可以。"
   ],
   午餐: [
     "中午要吃得稳一点，别把时间都花在纠结上。",
@@ -41,7 +41,7 @@ const mealInspirations = {
     "晚餐可以放松一点，吃点舒服的。",
     "今天这顿慢慢定，适合晚上的先摆出来。",
     "晚上别太赶，先看几道有胃口的。",
-    "晚餐要有点满足感，先从本地味里挑。"
+    "晚餐要有点满足感，先从本地美食里挑。"
   ],
   夜宵: [
     "夜宵别太正式，来点解馋的就好。",
@@ -58,8 +58,8 @@ const cityInspirations = {
   潮州: ["鲜味这件事，潮州很认真。", "卤味、粿条、砂锅粥，总有一口能中。", "潮州这一顿，先让鲜香开场。"],
   汕头: ["牛肉丸先弹一下。", "汕头这口鲜，适合把饭点定下来。", "粿条和牛肉都在等，先转一道。"],
   珠海: ["海风吹到饭点。", "珠海这一顿，清爽一点也不错。", "靠海的城市，先给胃口一点鲜。"],
-  东莞: ["这一顿，吃点实在的。", "东莞饭点不绕弯，先来点管饱的。", "想吃得踏实，就从本地味开始。"],
-  中山: ["烟火气刚刚好。", "中山这一顿，家常一点也舒服。", "先让本地味给饭局打个底。"],
+  东莞: ["这一顿，吃点实在的。", "东莞饭点不绕弯，先来点管饱的。", "想吃得踏实，就从本地美食开始。"],
+  中山: ["烟火气刚刚好。", "中山这一顿，家常一点也舒服。", "先让本地美食给饭局打个底。"],
   汕尾: ["海味和小吃都安排。", "汕尾本地菜，先让海味开个头。", "今天别纠结，汕尾这口先试试。", "汕尾这一顿，鲜香和小吃都能上桌。"],
   湛江: ["鸡香海鲜香，转到都不慌。", "湛江这一顿，海鲜和白切鸡都很有底气。", "想吃鲜一点，湛江很会安排。"],
   长春: ["长春这一顿，先吃点扎实的。", "东北味上桌，饭点就不虚。", "想吃热乎管饱的，长春很合适。"],
@@ -91,6 +91,9 @@ function normalizeMeal(meal) {
 
 function getCityInspiration(city, selectedMeal) {
   const mealCopy = pickOne(mealInspirations[selectedMeal]);
+  if (selectedMeal === "早餐" || selectedMeal === "夜宵") {
+    return mealCopy || pickOne(defaultInspirations);
+  }
   const cityCopy = pickOne(cityInspirations[city.name]);
   if (mealCopy && cityCopy && Math.random() > 0.45) {
     return Math.random() > 0.5 ? mealCopy : cityCopy;
@@ -152,17 +155,17 @@ function addNameBadges(dish, badges, used) {
   if (/酸|辣|麻/.test(name)) addBadge(badges, used, "🌶", "开胃");
 }
 
-function getDishBadges(dish, ratingIcon) {
+function getDishBadges(dish) {
   const tags = dish.tags || [];
   const meals = dish.mealTime || [];
   const scenes = dish.scene || [];
   const badges = [];
   const used = {};
 
-  if (dish.sourceBucket === "cityExact") addBadge(badges, used, "📍", "本地味");
-  if (dish.sourceBucket === "regionalShared" || dish.sourceBucket === "provinceShared") addBadge(badges, used, "🗺", "省内味");
-  if (dish.sourceBucket === "nationalGeneral") addBadge(badges, used, "🍽", "常见款");
-  if (dish.localIndex >= 5) addBadge(badges, used, ratingIcon, "很本地");
+  if (dish.sourceBucket === "cityExact") addBadge(badges, used, "📍", "本地美食");
+  if (dish.sourceBucket === "regionalShared" || dish.sourceBucket === "provinceShared") addBadge(badges, used, "🗺", "省内美食");
+  if (dish.sourceBucket === "nationalGeneral") addBadge(badges, used, "🍽", "常见美食");
+  if (dish.sourceBucket === "mealPool") addBadge(badges, used, "⏱", "餐段灵感");
   addNameBadges(dish, badges, used);
   if (meals.includes("早餐")) addBadge(badges, used, "🌤", "适合早餐");
   if (meals.includes("午餐")) addBadge(badges, used, "☀️", "午餐可点");
@@ -187,27 +190,12 @@ function getDishBadges(dish, ratingIcon) {
 
   addBadge(badges, used, getKindIcon(dish), dish.category);
   addBadge(badges, used, getTasteIcon(dish.taste), dish.taste);
-  addBadge(badges, used, ratingIcon, `特色${dish.localIndex || 0}`);
   return badges.slice(0, 5);
 }
 
 function withRatingIcons(dish) {
-  const count = Math.max(0, Math.min(5, Number(dish.localIndex) || 0));
-  const ratingIcon = getDishRatingIcon(dish);
-  const ratingLabel = dish.sourceBucket === "cityExact"
-    ? "本地特色"
-    : dish.sourceBucket === "regionalShared"
-      ? "周边参考"
-      : "换个口味";
   return Object.assign({}, dish, {
-    ratingLabel,
-    ratingText: ratingIcon.repeat(count) || "🍚",
-    ratingItems: iconRatingItems(dish.localIndex, dish).map((item) =>
-      Object.assign({}, item, {
-        className: item.active ? "active" : ""
-      })
-    ),
-    iconBadges: getDishBadges(dish, ratingIcon)
+    iconBadges: getDishBadges(dish)
   });
 }
 
@@ -232,6 +220,13 @@ function uniqueByName(dishes) {
     used[dish.name] = true;
     return true;
   });
+}
+
+function normalizeMealDishKey(name) {
+  return String(name || "")
+    .replace(/[\s·・,，。.（）()【】[\]“”"']/g, "")
+    .replace(/^(广东|广式|港式|老式|传统|特色|鲜虾|虾仁|猪肉|牛肉|鸡蛋)/, "")
+    .replace(/皇$/, "");
 }
 
 function dishMatchesMeal(dish, selectedMeal) {
@@ -272,6 +267,14 @@ function isSafeHomeFallback(dish, cityName) {
   return dish.localIndex <= 4;
 }
 
+function dishMatchesCityScope(dish, city) {
+  if (!dish || !city) return false;
+  if (dish.sourceBucket === "mealPool") return true;
+  if (dish.sourceBucket === "cityExact") return dish.city === city.name;
+  if (dish.sourceBucket === "nationalGeneral") return dish.city === city.name;
+  return dish.province && dish.province === city.province;
+}
+
 function takeUnique(target, list) {
   const used = target.reduce((map, dish) => {
     map[dish.name] = true;
@@ -284,32 +287,107 @@ function takeUnique(target, list) {
   });
 }
 
+function hashText(text) {
+  let hash = 0;
+  for (let index = 0; index < text.length; index += 1) {
+    hash = ((hash << 5) - hash + text.charCodeAt(index)) >>> 0;
+  }
+  return hash.toString(36);
+}
+
+function getMealPoolKey(selectedMeal) {
+  if (selectedMeal === "早餐") return "breakfast";
+  if (selectedMeal === "夜宵") return "lateNight";
+  return "";
+}
+
+function makeMealPoolDish(item, selectedMeal, cityName, index) {
+  const mealTime = selectedMeal === "早餐" ? ["早餐"] : ["夜宵"];
+  const tags = item.tags || [];
+  const avoidTags = item.avoidTags || [];
+  return attachDishIllustration({
+    id: `home_${getMealPoolKey(selectedMeal)}_${hashText(`${cityName}|${item.name}`)}`,
+    city: cityName,
+    province: "",
+    name: item.name,
+    category: item.category || "小吃",
+    taste: item.taste || "鲜香",
+    mealTime,
+    scene: ["一个人", "两个人"],
+    avoidTags: avoidTags.slice(),
+    tags: tags.slice(),
+    localIndex: 0,
+    iconType: "bowl",
+    weight: 6,
+    sourceBucket: "mealPool",
+    order: index,
+    phrase: item.phrase || (selectedMeal === "早餐" ? `${item.name}适合早上先垫一口。` : `${item.name}适合夜里解个馋。`),
+    description: item.description || `${selectedMeal}想吃点顺口的，可以看看${item.name}。`,
+    truthNotes: [
+      item.description || `${item.name}适合${selectedMeal}。`,
+      avoidTags.length ? `介意${avoidTags.slice(0, 3).join("、")}的话，换一个更稳。` : "具体口味和分量看店家做法。",
+      selectedMeal === "早餐" ? "早餐专属备选" : "宵夜专属备选"
+    ],
+    pollText: `${item.name}要不要放进这顿？想吃就投一票。`
+  });
+}
+
+function getMealPoolFeaturedDishes(selectedMeal, cityName) {
+  const poolKey = getMealPoolKey(selectedMeal);
+  const pool = homeMealPools[poolKey] || [];
+  const usedKeys = {};
+  return shuffle(pool)
+    .filter((item) => {
+      const key = normalizeMealDishKey(item.name);
+      if (usedKeys[key]) return false;
+      usedKeys[key] = true;
+      return true;
+    })
+    .slice(0, 3)
+    .map((item, index) => withRatingIcons(makeMealPoolDish(item, selectedMeal, cityName, index)));
+}
+
 function getFeaturedDishes(cityName, selectedMeal) {
+  const city = getCity(cityName);
   const dishes = uniqueByName(getDishesByCity(cityName));
-  const normalizedMeal = normalizeMeal(selectedMeal);
-  const strictMeal = normalizedMeal === "午餐" || normalizedMeal === "晚餐";
-  const localMealDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact" && dishMatchesMeal(dish, selectedMeal));
-  const localDishes = dishes.filter((dish) => dish.sourceBucket === "cityExact" && !dishMatchesMeal(dish, selectedMeal));
-  const safeFallbackMealDishes = dishes.filter((dish) => (
-    dish.sourceBucket !== "cityExact" &&
+  const scopedMealDishes = dishes.filter((dish) => (
     dishMatchesMeal(dish, selectedMeal) &&
-    isSafeHomeFallback(dish, cityName)
+    dishMatchesCityScope(dish, city)
   ));
-  const safeFallbackDishes = dishes.filter((dish) => (
+  const localMealDishes = scopedMealDishes.filter((dish) => (
+    dish.sourceBucket === "cityExact" && dish.city === city.name
+  ));
+
+  if (selectedMeal === "早餐" || selectedMeal === "夜宵") {
+    const selected = [];
+    const usedKeys = {};
+    shuffle(localMealDishes).forEach((dish) => {
+      const key = normalizeMealDishKey(dish.name);
+      if (selected.length >= 3 || usedKeys[key]) return;
+      usedKeys[key] = true;
+      selected.push(dish);
+    });
+    getMealPoolFeaturedDishes(selectedMeal, city.name).forEach((dish) => {
+      const key = normalizeMealDishKey(dish.name);
+      if (selected.length >= 3 || usedKeys[key]) return;
+      usedKeys[key] = true;
+      selected.push(dish);
+    });
+    return selected.slice(0, 3).map((dish, index) =>
+      Object.assign(withRatingIcons(dish), {
+        cardClass: index === 0 ? "large" : ""
+      })
+    );
+  }
+
+  const safeFallbackMealDishes = scopedMealDishes.filter((dish) => (
     dish.sourceBucket !== "cityExact" &&
-    !dishMatchesMeal(dish, selectedMeal) &&
     isSafeHomeFallback(dish, cityName)
   ));
   const selected = [];
 
   takeUnique(selected, shuffle(localMealDishes));
-  if (strictMeal) {
-    takeUnique(selected, shuffle(localDishes));
-  } else {
-    takeUnique(selected, shuffle(safeFallbackMealDishes));
-    takeUnique(selected, shuffle(localDishes));
-    takeUnique(selected, shuffle(safeFallbackDishes));
-  }
+  takeUnique(selected, shuffle(safeFallbackMealDishes));
 
   return selected.slice(0, 3).map((dish, index) =>
     Object.assign(withRatingIcons(dish), {
@@ -326,6 +404,7 @@ Page({
     selectedMeal: "午餐",
     mealOptions: buildMealOptions("午餐"),
     featuredDishes: [],
+    previewDishes: [],
     featuredEmpty: true,
     inspiration: "",
     dishSheetVisible: false,
@@ -335,11 +414,25 @@ Page({
   },
 
   onShow() {
+    if (this.__citySelectionHandled) {
+      this.__citySelectionHandled = false;
+      return;
+    }
     const city = app.globalData.currentCity || "广州";
     this.setCity(city);
   },
 
   setCity(cityName) {
+    const city = getCity(cityName);
+    const requestId = (this.__cityLoadRequestId || 0) + 1;
+    this.__cityLoadRequestId = requestId;
+    return ensureProvinceLoaded(city.province).then(() => {
+      if (requestId !== this.__cityLoadRequestId) return;
+      this.renderCity(city.name);
+    });
+  },
+
+  renderCity(cityName) {
     const city = getCity(cityName);
     const selectedMeal = this.data.selectedMeal || "午餐";
     const featuredDishes = getFeaturedDishes(city.name, selectedMeal);
@@ -347,6 +440,7 @@ Page({
       city: city.name,
       province: city.province || "广东",
       featuredDishes,
+      previewDishes: featuredDishes.slice(0, 1),
       featuredEmpty: !featuredDishes.length,
       inspiration: getCityInspiration(city, selectedMeal)
     });
@@ -379,12 +473,12 @@ Page({
 
   onOpenPrivacyContract() {
     if (typeof wx.openPrivacyContract !== "function") {
-      wx.navigateTo({ url: "/pages/privacy/privacy" });
+      wx.navigateTo({ url: "/package-feature/pages/privacy/privacy" });
       return;
     }
     wx.openPrivacyContract({
       fail: () => {
-        wx.navigateTo({ url: "/pages/privacy/privacy" });
+        wx.navigateTo({ url: "/package-feature/pages/privacy/privacy" });
       }
     });
   },
@@ -413,10 +507,11 @@ Page({
     getCurrentCityByLocation()
       .then(({ city }) => {
         app.setCurrentCity(city);
-        this.setCity(city);
-        wx.showToast({
-          title: `已切到${city}`,
-          icon: "success"
+        this.setCity(city).then(() => {
+          wx.showToast({
+            title: `已切到${city}`,
+            icon: "success"
+          });
         });
       })
       .catch((error) => {
@@ -427,7 +522,7 @@ Page({
           confirmText: "手动选城",
           cancelText: "知道了",
           success: (res) => {
-            if (res.confirm) this.onChooseCity();
+            if (res.confirm) wx.navigateTo({ url: "/pages/city/city?from=locationFail" });
           }
         });
       })
@@ -441,13 +536,19 @@ Page({
   onSelectMeal(event) {
     const selectedMeal = event.currentTarget.dataset.meal;
     const city = getCity(this.data.city);
-    const featuredDishes = getFeaturedDishes(city.name, selectedMeal);
-    this.setData({
-      selectedMeal,
-      mealOptions: buildMealOptions(selectedMeal),
-      featuredDishes,
-      featuredEmpty: !featuredDishes.length,
-      inspiration: getCityInspiration(city, selectedMeal)
+    const requestId = (this.__cityLoadRequestId || 0) + 1;
+    this.__cityLoadRequestId = requestId;
+    ensureProvinceLoaded(city.province).then(() => {
+      if (requestId !== this.__cityLoadRequestId) return;
+      const featuredDishes = getFeaturedDishes(city.name, selectedMeal);
+      this.setData({
+        selectedMeal,
+        mealOptions: buildMealOptions(selectedMeal),
+        featuredDishes,
+        previewDishes: featuredDishes.slice(0, 1),
+        featuredEmpty: !featuredDishes.length,
+        inspiration: getCityInspiration(city, selectedMeal)
+      });
     });
   },
 
@@ -473,18 +574,23 @@ Page({
   },
 
   onSearch() {
-    wx.navigateTo({ url: "/pages/search/search" });
+    wx.navigateTo({ url: "/package-feature/pages/search/search" });
   },
 
   onFavorite() {
-    wx.navigateTo({ url: "/pages/favorite/favorite" });
+    wx.navigateTo({ url: "/package-feature/pages/favorite/favorite" });
   },
 
   onCreatePoll() {
-    wx.navigateTo({ url: "/pages/poll-create/poll-create" });
+    wx.navigateTo({ url: "/package-feature/pages/poll-create/poll-create" });
+  },
+
+  onOpenInspiration() {
+    wx.redirectTo({ url: "/pages/inspiration/inspiration" });
   },
 
   onOpenPrivacy() {
-    wx.navigateTo({ url: "/pages/privacy/privacy" });
+    wx.navigateTo({ url: "/package-feature/pages/privacy/privacy" });
   }
 });
+
